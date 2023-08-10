@@ -1,0 +1,382 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXFileReference section */
+		05C3C13B2A8568D500436F6D /* libMOS-6502-Emulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMOS-6502-Emulator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
+		05C3C1492A85698100436F6D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		05C3C14B2A856AA400436F6D /* FUNDING.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = FUNDING.yml; sourceTree = "<group>"; };
+		05C3C14D2A856AA400436F6D /* ci-mac.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "ci-mac.yaml"; sourceTree = "<group>"; };
+		05C3C14F2A856B6F00436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
+		05C3C1502A856B6F00436F6D /* Release - ccache.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release - ccache.xcconfig"; sourceTree = "<group>"; };
+		05C3C1512A856B6F00436F6D /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		05C3C1522A856B6F00436F6D /* Debug - ccache.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - ccache.xcconfig"; sourceTree = "<group>"; };
+		05C3C1532A856B6F00436F6D /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		05C3C1542A856B6F00436F6D /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		05C3C1552A856B6F00436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		05C3C1562A856B6F00436F6D /* Release - Library.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release - Library.xcconfig"; sourceTree = "<group>"; };
+		05C3C1582A856B6F00436F6D /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
+		05C3C1592A856B6F00436F6D /* Architectures.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Architectures.xcconfig; sourceTree = "<group>"; };
+		05C3C15B2A856B6F00436F6D /* Issues.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Issues.xcconfig; sourceTree = "<group>"; };
+		05C3C15D2A856B6F00436F6D /* Apple-APIs.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Apple-APIs.xcconfig"; sourceTree = "<group>"; };
+		05C3C15E2A856B6F00436F6D /* Generic-Issues.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Generic-Issues.xcconfig"; sourceTree = "<group>"; };
+		05C3C15F2A856B6F00436F6D /* Security.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Security.xcconfig; sourceTree = "<group>"; };
+		05C3C1602A856B6F00436F6D /* Objective-C.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C.xcconfig"; sourceTree = "<group>"; };
+		05C3C1612A856B6F00436F6D /* Analysis-Policy.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Analysis-Policy.xcconfig"; sourceTree = "<group>"; };
+		05C3C1622A856B6F00436F6D /* Deployment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Deployment.xcconfig; sourceTree = "<group>"; };
+		05C3C1632A856B6F00436F6D /* Build-Options.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Build-Options.xcconfig"; sourceTree = "<group>"; };
+		05C3C1642A856B6F00436F6D /* Swift-Compiler.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Swift-Compiler.xcconfig"; sourceTree = "<group>"; };
+		05C3C1652A856B6F00436F6D /* Static-Analyzer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Static-Analyzer.xcconfig"; sourceTree = "<group>"; };
+		05C3C1672A856B6F00436F6D /* Warnings-Policies.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Warnings-Policies.xcconfig"; sourceTree = "<group>"; };
+		05C3C1682A856B6F00436F6D /* Code-Generation.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Code-Generation.xcconfig"; sourceTree = "<group>"; };
+		05C3C1692A856B6F00436F6D /* Language.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Language.xcconfig; sourceTree = "<group>"; };
+		05C3C16A2A856B6F00436F6D /* General.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = General.xcconfig; sourceTree = "<group>"; };
+		05C3C16B2A856B6F00436F6D /* Search-Paths.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Search-Paths.xcconfig"; sourceTree = "<group>"; };
+		05C3C16C2A856B6F00436F6D /* Apple-LLVM.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Apple-LLVM.xcconfig"; sourceTree = "<group>"; };
+		05C3C16F2A856B6F00436F6D /* Modules.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Modules.xcconfig; sourceTree = "<group>"; };
+		05C3C1702A856B6F00436F6D /* Objective-C.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C.xcconfig"; sourceTree = "<group>"; };
+		05C3C1712A856B6F00436F6D /* C++.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "C++.xcconfig"; sourceTree = "<group>"; };
+		05C3C1722A856B6F00436F6D /* Code-Generation.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Code-Generation.xcconfig"; sourceTree = "<group>"; };
+		05C3C1732A856B6F00436F6D /* Address-Sanitizer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Address-Sanitizer.xcconfig"; sourceTree = "<group>"; };
+		05C3C1742A856B6F00436F6D /* Language.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Language.xcconfig; sourceTree = "<group>"; };
+		05C3C1752A856B6F00436F6D /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		05C3C1762A856B6F00436F6D /* Undefined-Behavior-Sanitizer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Undefined-Behavior-Sanitizer.xcconfig"; sourceTree = "<group>"; };
+		05C3C1772A856B6F00436F6D /* Warning-Policies.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Warning-Policies.xcconfig"; sourceTree = "<group>"; };
+		05C3C1792A856B6F00436F6D /* Objective-C-ARC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C-ARC.xcconfig"; sourceTree = "<group>"; };
+		05C3C17A2A856B6F00436F6D /* Objective-C.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C.xcconfig"; sourceTree = "<group>"; };
+		05C3C17B2A856B6F00436F6D /* C++.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "C++.xcconfig"; sourceTree = "<group>"; };
+		05C3C17C2A856B6F00436F6D /* All-Languages.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "All-Languages.xcconfig"; sourceTree = "<group>"; };
+		05C3C17D2A856B6F00436F6D /* Preprocessing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Preprocessing.xcconfig; sourceTree = "<group>"; };
+		05C3C17E2A856B6F00436F6D /* Debug - Library.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - Library.xcconfig"; sourceTree = "<group>"; };
+		05C3C17F2A856B6F00436F6D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		05C3C1812A856B6F00436F6D /* ccache-config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ccache-config.sh"; sourceTree = "<group>"; };
+		05C3C1822A856B6F00436F6D /* ccache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ccache.sh; sourceTree = "<group>"; };
+		05C3C1842A856B6F00436F6D /* FUNDING.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = FUNDING.yml; sourceTree = "<group>"; };
+		05C3C1852A856B6F00436F6D /* Debug - zld.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - zld.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05C3C1392A8568D500436F6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05C3C1322A8568D500436F6D = {
+			isa = PBXGroup;
+			children = (
+				05C3C1472A85698100436F6D /* README.md */,
+				05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */,
+				05C3C1492A85698100436F6D /* LICENSE */,
+				05C3C14A2A856AA400436F6D /* .github */,
+				05C3C14E2A856B6F00436F6D /* xcconfig */,
+				05C3C13D2A8568D500436F6D /* MOS-6502-Emulator */,
+				05C3C13C2A8568D500436F6D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05C3C13C2A8568D500436F6D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C13B2A8568D500436F6D /* libMOS-6502-Emulator.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05C3C13D2A8568D500436F6D /* MOS-6502-Emulator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "MOS-6502-Emulator";
+			sourceTree = "<group>";
+		};
+		05C3C14A2A856AA400436F6D /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C14B2A856AA400436F6D /* FUNDING.yml */,
+				05C3C14C2A856AA400436F6D /* workflows */,
+			);
+			path = .github;
+			sourceTree = "<group>";
+		};
+		05C3C14C2A856AA400436F6D /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C14D2A856AA400436F6D /* ci-mac.yaml */,
+			);
+			path = workflows;
+			sourceTree = "<group>";
+		};
+		05C3C14E2A856B6F00436F6D /* xcconfig */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C14F2A856B6F00436F6D /* CODE_OF_CONDUCT.md */,
+				05C3C1502A856B6F00436F6D /* Release - ccache.xcconfig */,
+				05C3C1512A856B6F00436F6D /* Common.xcconfig */,
+				05C3C1522A856B6F00436F6D /* Debug - ccache.xcconfig */,
+				05C3C1532A856B6F00436F6D /* Debug.xcconfig */,
+				05C3C1542A856B6F00436F6D /* Release.xcconfig */,
+				05C3C1552A856B6F00436F6D /* README.md */,
+				05C3C1562A856B6F00436F6D /* Release - Library.xcconfig */,
+				05C3C1572A856B6F00436F6D /* Common */,
+				05C3C17E2A856B6F00436F6D /* Debug - Library.xcconfig */,
+				05C3C17F2A856B6F00436F6D /* .gitignore */,
+				05C3C1802A856B6F00436F6D /* Scripts */,
+				05C3C1832A856B6F00436F6D /* .github */,
+				05C3C1852A856B6F00436F6D /* Debug - zld.xcconfig */,
+			);
+			name = xcconfig;
+			path = Submodules/xcconfig;
+			sourceTree = "<group>";
+		};
+		05C3C1572A856B6F00436F6D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C1582A856B6F00436F6D /* Signing.xcconfig */,
+				05C3C1592A856B6F00436F6D /* Architectures.xcconfig */,
+				05C3C15A2A856B6F00436F6D /* Static-Analyzer */,
+				05C3C1622A856B6F00436F6D /* Deployment.xcconfig */,
+				05C3C1632A856B6F00436F6D /* Build-Options.xcconfig */,
+				05C3C1642A856B6F00436F6D /* Swift-Compiler.xcconfig */,
+				05C3C1652A856B6F00436F6D /* Static-Analyzer.xcconfig */,
+				05C3C1662A856B6F00436F6D /* Swift-Compiler */,
+				05C3C16B2A856B6F00436F6D /* Search-Paths.xcconfig */,
+				05C3C16C2A856B6F00436F6D /* Apple-LLVM.xcconfig */,
+				05C3C16D2A856B6F00436F6D /* Apple-LLVM */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		05C3C15A2A856B6F00436F6D /* Static-Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C15B2A856B6F00436F6D /* Issues.xcconfig */,
+				05C3C15C2A856B6F00436F6D /* Issues */,
+			);
+			path = "Static-Analyzer";
+			sourceTree = "<group>";
+		};
+		05C3C15C2A856B6F00436F6D /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C15D2A856B6F00436F6D /* Apple-APIs.xcconfig */,
+				05C3C15E2A856B6F00436F6D /* Generic-Issues.xcconfig */,
+				05C3C15F2A856B6F00436F6D /* Security.xcconfig */,
+				05C3C1602A856B6F00436F6D /* Objective-C.xcconfig */,
+				05C3C1612A856B6F00436F6D /* Analysis-Policy.xcconfig */,
+			);
+			path = Issues;
+			sourceTree = "<group>";
+		};
+		05C3C1662A856B6F00436F6D /* Swift-Compiler */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C1672A856B6F00436F6D /* Warnings-Policies.xcconfig */,
+				05C3C1682A856B6F00436F6D /* Code-Generation.xcconfig */,
+				05C3C1692A856B6F00436F6D /* Language.xcconfig */,
+				05C3C16A2A856B6F00436F6D /* General.xcconfig */,
+			);
+			path = "Swift-Compiler";
+			sourceTree = "<group>";
+		};
+		05C3C16D2A856B6F00436F6D /* Apple-LLVM */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C16E2A856B6F00436F6D /* Language */,
+				05C3C1722A856B6F00436F6D /* Code-Generation.xcconfig */,
+				05C3C1732A856B6F00436F6D /* Address-Sanitizer.xcconfig */,
+				05C3C1742A856B6F00436F6D /* Language.xcconfig */,
+				05C3C1752A856B6F00436F6D /* Warnings.xcconfig */,
+				05C3C1762A856B6F00436F6D /* Undefined-Behavior-Sanitizer.xcconfig */,
+				05C3C1772A856B6F00436F6D /* Warning-Policies.xcconfig */,
+				05C3C1782A856B6F00436F6D /* Warnings */,
+				05C3C17D2A856B6F00436F6D /* Preprocessing.xcconfig */,
+			);
+			path = "Apple-LLVM";
+			sourceTree = "<group>";
+		};
+		05C3C16E2A856B6F00436F6D /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C16F2A856B6F00436F6D /* Modules.xcconfig */,
+				05C3C1702A856B6F00436F6D /* Objective-C.xcconfig */,
+				05C3C1712A856B6F00436F6D /* C++.xcconfig */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		05C3C1782A856B6F00436F6D /* Warnings */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C1792A856B6F00436F6D /* Objective-C-ARC.xcconfig */,
+				05C3C17A2A856B6F00436F6D /* Objective-C.xcconfig */,
+				05C3C17B2A856B6F00436F6D /* C++.xcconfig */,
+				05C3C17C2A856B6F00436F6D /* All-Languages.xcconfig */,
+			);
+			path = Warnings;
+			sourceTree = "<group>";
+		};
+		05C3C1802A856B6F00436F6D /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C1812A856B6F00436F6D /* ccache-config.sh */,
+				05C3C1822A856B6F00436F6D /* ccache.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		05C3C1832A856B6F00436F6D /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C1842A856B6F00436F6D /* FUNDING.yml */,
+			);
+			path = .github;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		05C3C1372A8568D500436F6D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		05C3C13A2A8568D500436F6D /* MOS-6502-Emulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05C3C1442A8568D500436F6D /* Build configuration list for PBXNativeTarget "MOS-6502-Emulator" */;
+			buildPhases = (
+				05C3C1372A8568D500436F6D /* Headers */,
+				05C3C1382A8568D500436F6D /* Sources */,
+				05C3C1392A8568D500436F6D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MOS-6502-Emulator";
+			productName = "MOS-6502-Emulator";
+			productReference = 05C3C13B2A8568D500436F6D /* libMOS-6502-Emulator.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05C3C1332A8568D500436F6D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					05C3C13A2A8568D500436F6D = {
+						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
+					};
+				};
+			};
+			buildConfigurationList = 05C3C1362A8568D500436F6D /* Build configuration list for PBXProject "MOS-6502-Emulator" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 05C3C1322A8568D500436F6D;
+			productRefGroup = 05C3C13C2A8568D500436F6D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05C3C13A2A8568D500436F6D /* MOS-6502-Emulator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05C3C1382A8568D500436F6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		05C3C1422A8568D500436F6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05C3C1532A856B6F00436F6D /* Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		05C3C1432A8568D500436F6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05C3C1542A856B6F00436F6D /* Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		05C3C1452A8568D500436F6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		05C3C1462A8568D500436F6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05C3C1362A8568D500436F6D /* Build configuration list for PBXProject "MOS-6502-Emulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05C3C1422A8568D500436F6D /* Debug */,
+				05C3C1432A8568D500436F6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05C3C1442A8568D500436F6D /* Build configuration list for PBXNativeTarget "MOS-6502-Emulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05C3C1452A8568D500436F6D /* Debug */,
+				05C3C1462A8568D500436F6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 05C3C1332A8568D500436F6D /* Project object */;
+}
