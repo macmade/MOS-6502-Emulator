@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "F3E05ED2-C52C-4272-B65F-0EAD8C6D3940",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MOS-6502-Emulator.xcodeproj",
+        "identifier" : "05C3C19B2A856EC400436F6D",
+        "name" : "MOS-6502-Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

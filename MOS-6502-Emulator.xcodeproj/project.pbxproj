@@ -6,6 +6,24 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
+		05C3C1A02A856EC400436F6D /* libMOS-6502-Emulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS-6502-Emulator.a */; };
+		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
+		05C3C1A92A85700700436F6D /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A82A85700700436F6D /* CPU.swift */; };
+		05C3C1AB2A85703200436F6D /* Test-CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1AA2A85703200436F6D /* Test-CPU.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		05C3C1A12A856EC400436F6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05C3C1332A8568D500436F6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05C3C13A2A8568D500436F6D;
+			remoteInfo = "MOS-6502-Emulator";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		05C3C13B2A8568D500436F6D /* libMOS-6502-Emulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMOS-6502-Emulator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -59,6 +77,12 @@
 		05C3C1822A856B6F00436F6D /* ccache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ccache.sh; sourceTree = "<group>"; };
 		05C3C1842A856B6F00436F6D /* FUNDING.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = FUNDING.yml; sourceTree = "<group>"; };
 		05C3C1852A856B6F00436F6D /* Debug - zld.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - zld.xcconfig"; sourceTree = "<group>"; };
+		05C3C1972A856EA000436F6D /* MOS-6502-Emulator.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MOS-6502-Emulator.xctestplan"; sourceTree = "<group>"; };
+		05C3C19C2A856EC400436F6D /* MOS-6502-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MOS-6502-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05C3C19E2A856EC400436F6D /* Test-Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Memory.swift"; sourceTree = "<group>"; };
+		05C3C1A62A85700100436F6D /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		05C3C1A82A85700700436F6D /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
+		05C3C1AA2A85703200436F6D /* Test-CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-CPU.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +90,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05C3C1992A856EC400436F6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05C3C1A02A856EC400436F6D /* libMOS-6502-Emulator.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,9 +110,11 @@
 				05C3C1472A85698100436F6D /* README.md */,
 				05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */,
 				05C3C1492A85698100436F6D /* LICENSE */,
+				05C3C1972A856EA000436F6D /* MOS-6502-Emulator.xctestplan */,
 				05C3C14A2A856AA400436F6D /* .github */,
 				05C3C14E2A856B6F00436F6D /* xcconfig */,
 				05C3C13D2A8568D500436F6D /* MOS-6502-Emulator */,
+				05C3C19D2A856EC400436F6D /* MOS-6502-Tests */,
 				05C3C13C2A8568D500436F6D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				05C3C13B2A8568D500436F6D /* libMOS-6502-Emulator.a */,
+				05C3C19C2A856EC400436F6D /* MOS-6502-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,6 +131,8 @@
 		05C3C13D2A8568D500436F6D /* MOS-6502-Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				05C3C1A62A85700100436F6D /* Memory.swift */,
+				05C3C1A82A85700700436F6D /* CPU.swift */,
 			);
 			path = "MOS-6502-Emulator";
 			sourceTree = "<group>";
@@ -243,6 +280,15 @@
 			path = .github;
 			sourceTree = "<group>";
 		};
+		05C3C19D2A856EC400436F6D /* MOS-6502-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C19E2A856EC400436F6D /* Test-Memory.swift */,
+				05C3C1AA2A85703200436F6D /* Test-CPU.swift */,
+			);
+			path = "MOS-6502-Tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -273,6 +319,24 @@
 			productReference = 05C3C13B2A8568D500436F6D /* libMOS-6502-Emulator.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		05C3C19B2A856EC400436F6D /* MOS-6502-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05C3C1A32A856EC400436F6D /* Build configuration list for PBXNativeTarget "MOS-6502-Tests" */;
+			buildPhases = (
+				05C3C1982A856EC400436F6D /* Sources */,
+				05C3C1992A856EC400436F6D /* Frameworks */,
+				05C3C19A2A856EC400436F6D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05C3C1A22A856EC400436F6D /* PBXTargetDependency */,
+			);
+			name = "MOS-6502-Tests";
+			productName = "MOS-6502-Tests";
+			productReference = 05C3C19C2A856EC400436F6D /* MOS-6502-Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -286,6 +350,9 @@
 					05C3C13A2A8568D500436F6D = {
 						CreatedOnToolsVersion = 14.3.1;
 						LastSwiftMigration = 1430;
+					};
+					05C3C19B2A856EC400436F6D = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
@@ -303,19 +370,49 @@
 			projectRoot = "";
 			targets = (
 				05C3C13A2A8568D500436F6D /* MOS-6502-Emulator */,
+				05C3C19B2A856EC400436F6D /* MOS-6502-Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05C3C19A2A856EC400436F6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		05C3C1382A8568D500436F6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
+				05C3C1A72A85700100436F6D /* Memory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05C3C1982A856EC400436F6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05C3C1AB2A85703200436F6D /* Test-CPU.swift in Sources */,
+				05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05C3C1A22A856EC400436F6D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05C3C13A2A8568D500436F6D /* MOS-6502-Emulator */;
+			targetProxy = 05C3C1A12A856EC400436F6D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		05C3C1422A8568D500436F6D /* Debug */ = {
@@ -355,6 +452,30 @@
 			};
 			name = Release;
 		};
+		05C3C1A42A856EC400436F6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.MOS-6502-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		05C3C1A52A856EC400436F6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.MOS-6502-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -372,6 +493,15 @@
 			buildConfigurations = (
 				05C3C1452A8568D500436F6D /* Debug */,
 				05C3C1462A8568D500436F6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05C3C1A32A856EC400436F6D /* Build configuration list for PBXNativeTarget "MOS-6502-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05C3C1A42A856EC400436F6D /* Debug */,
+				05C3C1A52A856EC400436F6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
