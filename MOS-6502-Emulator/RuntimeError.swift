@@ -23,15 +23,18 @@
  ******************************************************************************/
 
 import Foundation
-import MOS_6502_Emulator
 
-do
+open class RuntimeError: Error
 {
-    let memory = try Memory( size: 1024, options: [ .wrapAround ], initializeTo: 0 )
+    public private( set ) var message: String
 
-    print( memory )
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+    public init( message: String )
+    {
+        self.message = message
+    }
+
+    open var localizedDescription: String
+    {
+        self.message
+    }
 }

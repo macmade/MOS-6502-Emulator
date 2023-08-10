@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
+import MOS_6502_Emulator
 import XCTest
 
 final class Test_CPU: XCTestCase
