@@ -23,24 +23,24 @@
  ******************************************************************************/
 
 import Foundation
-import MOS_6502_Emulator
 
-do
+public class LDA
 {
-    let buffer = UnsafeMutableBufferPointer< UInt8 >.allocate( capacity: Int( CPU.totalMemory ) )
+    private init()
+    {}
 
-    buffer[ Int( CPU.resetVector )     ] = 0x00
-    buffer[ Int( CPU.resetVector + 1 ) ] = 0x02
+    public class func immediate( cpu: CPU ) throws
+    {
+        cpu.registers.A = try cpu.readUInt8FromMemoryAtPC()
 
-    buffer[ 0x200 ] = Instructions.LDA_Immediate
-    buffer[ 0x201 ] = 0x42
+        if cpu.registers.A == 0
+        {
+            cpu.registers.PS.insert( .zeroFlag )
+        }
 
-    let memory = try Memory( buffer: buffer, options: [ .wrapAround ] )
-    let cpu    = try CPU( memory: memory )
-
-    try cpu.run( cycles: 2 )
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+        if cpu.registers.A.bits[ 7 ]
+        {
+            cpu.registers.PS.insert( .negativeFlag )
+        }
+    }
 }

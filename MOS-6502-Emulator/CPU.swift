@@ -27,17 +27,27 @@ import Foundation
 open class CPU
 {
     public private( set ) var registers = Registers()
-    public private( set ) var memory:     Memory
     public private( set ) var cycles:     UInt64 = 0
+
+    private var memory: Memory
+
+    public static let zeroPageStart: UInt64 = 0x0000
+    public static let zeroPageEnd:   UInt64 = 0x00FF
+    public static let zeroPageSize:  UInt64 = 0x00FF
+    public static let stackStart:    UInt64 = 0x0100
+    public static let stackEnd:      UInt64 = 0x01FF
+    public static let stackSize:     UInt64 = 0x00FF
+    public static let resetVector:   UInt64 = 0xFFFC
+    public static let totalMemory:   UInt64 = 0xFFFF
 
     public convenience init() throws
     {
-        try self.init( memory: try Memory( size: 64 * 1024, options: [ .wrapAround ], initializeTo: 0 ) )
+        try self.init( memory: try Memory( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 ) )
     }
 
     public init( memory: Memory ) throws
     {
-        if memory.size < 64 * 1024
+        if memory.size < CPU.totalMemory
         {
             throw RuntimeError( message: "Invalid memory size: must be at least 64KB" )
         }
@@ -52,39 +62,80 @@ open class CPU
         try self.reset()
     }
 
-    public func reset() throws
+    open func reset() throws
     {
-        self.registers.PC          = try self.memory.readUInt16( at: 0xFFFC )
+        self.registers.PC          = try self.memory.readUInt16( at: CPU.resetVector )
         self.registers.SP          = 0
         self.registers.A           = 0
         self.registers.X           = 0
         self.registers.Y           = 0
         self.registers.PS          = []
-        self.cycles                = 7
+        self.cycles                = 0
     }
 
-    open func run( cycles: UInt = 0 )
+    open func run( cycles: UInt = 0 ) throws
     {
-        if cycles > 0
+        while true
         {
-            var cycles = cycles
+            try self.decodeAndExecuteNextInstruction()
 
-            while cycles > 0
+            if self.cycles >= cycles
             {
-                self.executeInstruction()
-
-                cycles -= 1
-            }
-        }
-        else
-        {
-            while true
-            {
-                self.executeInstruction()
+                break
             }
         }
     }
 
-    open func executeInstruction()
-    {}
+    open func decodeAndExecuteNextInstruction() throws
+    {
+        let instruction = try self.readUInt8FromMemoryAtPC()
+
+        defer
+        {
+            self.registers.PC += 1
+        }
+
+        switch instruction
+        {
+            case Instructions.LDA_Immediate: try LDA.immediate( cpu: self )
+
+            default: throw RuntimeError( message: "Unhandled instruction: \( instruction )" )
+        }
+    }
+
+    open func readUInt8FromMemoryAtPC() throws -> UInt8
+    {
+        let value          = try self.readUInt8FromMemory( at: UInt64( self.registers.PC ) )
+        self.registers.PC += 1
+
+        return value
+    }
+
+    open func readUInt8FromMemory( at address: UInt64 ) throws -> UInt8
+    {
+        self.cycles += 1
+
+        return try self.memory.readUInt8( at: address )
+    }
+
+    open func readUInt16FromMemory( at address: UInt64 ) throws -> UInt16
+    {
+        self.cycles += 2
+
+        return try self.memory.readUInt16( at: address )
+    }
+
+    open func writeUInt8FromMemory( _ value: UInt8, at address: UInt64 ) throws
+    {
+        self.cycles += 1
+
+        try self.memory.writeUInt8( value, at: address )
+    }
+
+    open func writeUInt16FromMemory( _ value: UInt16, at address: UInt64 ) throws
+    {
+        self.cycles += 2
+
+        try self.memory.writeUInt16( value, at: address )
+    }
 }

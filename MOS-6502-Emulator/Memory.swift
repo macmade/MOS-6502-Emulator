@@ -130,35 +130,35 @@ open class Memory
         return ( n2 << 32 ) | n1
     }
 
-    open func writeUInt8( _ byte: UInt8, at address: UInt64 ) throws
+    open func writeUInt8( _ value: UInt8, at address: UInt64 ) throws
     {
         let offset = try self.offset( for: address )
 
-        self.data[ offset ] = byte
+        self.data[ offset ] = value
     }
 
-    open func writeUInt16( _ byte: UInt16, at address: UInt64 ) throws
+    open func writeUInt16( _ value: UInt16, at address: UInt64 ) throws
     {
-        let n1 = UInt8( byte & 0xFF )
-        let n2 = UInt8( ( byte >> 8 ) & 0xFF )
+        let n1 = UInt8( value & 0xFF )
+        let n2 = UInt8( ( value >> 8 ) & 0xFF )
 
         try self.writeUInt8( n1, at: address )
         try self.writeUInt8( n2, at: address + 1 )
     }
 
-    open func writeUInt32( _ byte: UInt32, at address: UInt64 ) throws
+    open func writeUInt32( _ value: UInt32, at address: UInt64 ) throws
     {
-        let n1 = UInt16( byte & 0xFFFF )
-        let n2 = UInt16( ( byte >> 16 ) & 0xFFFF )
+        let n1 = UInt16( value & 0xFFFF )
+        let n2 = UInt16( ( value >> 16 ) & 0xFFFF )
 
         try self.writeUInt16( n1, at: address )
         try self.writeUInt16( n2, at: address + 2 )
     }
 
-    open func writeUInt64( _ byte: UInt64, at address: UInt64 ) throws
+    open func writeUInt64( _ value: UInt64, at address: UInt64 ) throws
     {
-        let n1 = UInt32( byte & 0xFFFFFFFF )
-        let n2 = UInt32( ( byte >> 32 ) & 0xFFFFFFFF )
+        let n1 = UInt32( value & 0xFFFFFFFF )
+        let n2 = UInt32( ( value >> 32 ) & 0xFFFFFFFF )
 
         try self.writeUInt32( n1, at: address )
         try self.writeUInt32( n2, at: address + 4 )

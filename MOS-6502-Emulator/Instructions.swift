@@ -23,24 +23,33 @@
  ******************************************************************************/
 
 import Foundation
-import MOS_6502_Emulator
 
-do
+public class Instructions
 {
-    let buffer = UnsafeMutableBufferPointer< UInt8 >.allocate( capacity: Int( CPU.totalMemory ) )
+    private init()
+    {}
 
-    buffer[ Int( CPU.resetVector )     ] = 0x00
-    buffer[ Int( CPU.resetVector + 1 ) ] = 0x02
+    /*
+     * LDA - Load Accumulator
+     *
+     * Loads a byte of memory into the accumulator setting the zero and negative flags as appropriate.
+     *
+     * Flags:
+     *     - Carry Flag:           N/A
+     *     - Zero Flag:            Set if A = 0
+     *     - Interrupt Disable:    N/A
+     *     - Decimal Mode:         N/A
+     *     - Break Command:        N/A
+     *     - Overflow Flag:        N/A
+     *     - Negative Flag:        Set if bit 7 of A is set
+     */
 
-    buffer[ 0x200 ] = Instructions.LDA_Immediate
-    buffer[ 0x201 ] = 0x42
-
-    let memory = try Memory( buffer: buffer, options: [ .wrapAround ] )
-    let cpu    = try CPU( memory: memory )
-
-    try cpu.run( cycles: 2 )
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+    public static let LDA_Immediate: UInt8 = 0xA9 // 2 bytes, 2 cycles
+    public static let LDA_ZeroPage:  UInt8 = 0xA5 // 2 bytes, 3 cycles
+    public static let LDA_ZeroPageX: UInt8 = 0xB5 // 2 bytes, 4 cycles
+    public static let LDA_Absolute:  UInt8 = 0xAD // 3 bytes, 4 cycles
+    public static let LDA_AbsoluteX: UInt8 = 0xBD // 3 bytes, 4 cycles (+1 if page crossed)
+    public static let LDA_AbsoluteY: UInt8 = 0xB9 // 3 bytes, 4 cycles (+1 if page crossed)
+    public static let LDA_IndirectX: UInt8 = 0xA1 // 2 bytes, 6 cycles
+    public static let LDA_IndirectY: UInt8 = 0xB1 // 2 bytes, 5 cycles (+1 if page crossed)
 }

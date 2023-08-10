@@ -23,24 +23,14 @@
  ******************************************************************************/
 
 import Foundation
-import MOS_6502_Emulator
 
-do
+public extension BinaryInteger
 {
-    let buffer = UnsafeMutableBufferPointer< UInt8 >.allocate( capacity: Int( CPU.totalMemory ) )
-
-    buffer[ Int( CPU.resetVector )     ] = 0x00
-    buffer[ Int( CPU.resetVector + 1 ) ] = 0x02
-
-    buffer[ 0x200 ] = Instructions.LDA_Immediate
-    buffer[ 0x201 ] = 0x42
-
-    let memory = try Memory( buffer: buffer, options: [ .wrapAround ] )
-    let cpu    = try CPU( memory: memory )
-
-    try cpu.run( cycles: 2 )
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+    var bits: [ Bool ]
+    {
+        ( 0 ..< self.bitWidth ).map
+        {
+            ( self >> $0 ) & 0x01 == 1
+        }
+    }
 }
