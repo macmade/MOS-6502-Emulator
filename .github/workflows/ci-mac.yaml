@@ -8,6 +8,8 @@ jobs:
                 run-config:
                     - { scheme: 'MOS-6502-Emulator', configuration: 'Debug',   project: 'MOS-6502-Emulator.xcodeproj', build: 1, analyze: 1, test: 1, info: 1, destination: 'platform=macOS' }
                     - { scheme: 'MOS-6502-Emulator', configuration: 'Release', project: 'MOS-6502-Emulator.xcodeproj', build: 1, analyze: 1, test: 1, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'MOS-6502-Demo',     configuration: 'Debug',   project: 'MOS-6502-Emulator.xcodeproj', build: 1, analyze: 1, test: 1, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'MOS-6502-Demo',     configuration: 'Release', project: 'MOS-6502-Emulator.xcodeproj', build: 1, analyze: 1, test: 1, info: 1, destination: 'platform=macOS' }
         steps:
             
             - uses: actions/checkout@v1
