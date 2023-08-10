@@ -26,22 +26,22 @@ import Foundation
 
 open class Registers
 {
-    public var PC: UInt16 = 0
-    public var SP: UInt8  = 0
-    public var A:  UInt8  = 0
-    public var X:  UInt8  = 0
-    public var Y:  UInt8  = 0
-    public var PS: Flags  = .init( rawValue: 0 )
+    public var PC: UInt16 = 0                    // Program Counter
+    public var SP: UInt8  = 0                    // Stack Pointer (256 bytes, 0x0100 to 0x01FF)
+    public var A:  UInt8  = 0                    // Accumulator
+    public var X:  UInt8  = 0                    // Index X Register
+    public var Y:  UInt8  = 0                    // Index Y Register
+    public var PS: Flags  = .init( rawValue: 0 ) // Processor Status
 
     public struct Flags: OptionSet
     {
-        public static let carryFlag        = Flags( rawValue: 1 << 0 )
-        public static let zeroFlag         = Flags( rawValue: 1 << 1 )
-        public static let interruptDisable = Flags( rawValue: 1 << 2 )
-        public static let decimalMode      = Flags( rawValue: 1 << 3 )
-        public static let breakCommand     = Flags( rawValue: 1 << 4 )
-        public static let overflowFlag     = Flags( rawValue: 1 << 5 )
-        public static let negativeFlag     = Flags( rawValue: 1 << 6 )
+        public static let carryFlag        = Flags( rawValue: 1 << 0 ) // Set if the last operation caused an overflow from bit 7 or an underflow from bit 0
+        public static let zeroFlag         = Flags( rawValue: 1 << 1 ) // Set if the result of the last operation was zero
+        public static let interruptDisable = Flags( rawValue: 1 << 2 ) // Set with SEI, cleared with CLI
+        public static let decimalMode      = Flags( rawValue: 1 << 3 ) // Set with SED, cleared with CLD
+        public static let breakCommand     = Flags( rawValue: 1 << 4 ) // Set after BRK if an interrupt has been generated
+        public static let overflowFlag     = Flags( rawValue: 1 << 5 ) // Set during arithmetic operations if the result has yielded an invalid 2's complement result
+        public static let negativeFlag     = Flags( rawValue: 1 << 6 ) // Set if the result of the last operation had bit 7 set
 
         public let rawValue: UInt8
 
