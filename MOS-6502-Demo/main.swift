@@ -27,9 +27,10 @@ import MOS_6502_Emulator
 
 do
 {
-    let memory = try Memory( size: 1024, options: [ .wrapAround ], initializeTo: 0 )
+    let memory = try Memory( size: 64 * 1024, options: [ .wrapAround ], initializeTo: 0 )
+    let cpu    = try CPU( memory: memory )
 
-    print( memory )
+    cpu.run()
 }
 catch
 {
