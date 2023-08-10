@@ -68,7 +68,7 @@ open class Memory
         self.size    = UInt64( buffer.count )
         self.options = options
 
-        _ = self.data.initialize( fromContentsOf: buffer )
+        _ = self.data.initialize( from: buffer )
     }
 
     deinit
