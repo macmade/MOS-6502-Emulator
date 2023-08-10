@@ -15,6 +15,7 @@
 		05C3C1B32A85708C00436F6D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1B22A85708C00436F6D /* main.swift */; };
 		05C3C1BA2A8570A900436F6D /* libMOS-6502-Emulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS-6502-Emulator.a */; };
 		05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1BC2A8572B100436F6D /* RuntimeError.swift */; };
+		05C3C1D52A85948500436F6D /* Registers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1D42A85948500436F6D /* Registers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		05C3C1B22A85708C00436F6D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		05C3C1BB2A85710800436F6D /* MOS-6502-Demo.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MOS-6502-Demo.xctestplan"; sourceTree = "<group>"; };
 		05C3C1BC2A8572B100436F6D /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
+		05C3C1D42A85948500436F6D /* Registers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				05C3C1A62A85700100436F6D /* Memory.swift */,
 				05C3C1A82A85700700436F6D /* CPU.swift */,
+				05C3C1D42A85948500436F6D /* Registers.swift */,
 				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
 			);
 			path = "MOS-6502-Emulator";
@@ -468,6 +471,7 @@
 			files = (
 				05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */,
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
+				05C3C1D52A85948500436F6D /* Registers.swift in Sources */,
 				05C3C1A72A85700100436F6D /* Memory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

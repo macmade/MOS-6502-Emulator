@@ -24,5 +24,30 @@
 
 import Foundation
 
-open class CPU
-{}
+open class Registers
+{
+    public var PC: UInt16 = 0
+    public var SP: UInt8  = 0
+    public var A:  UInt8  = 0
+    public var X:  UInt8  = 0
+    public var Y:  UInt8  = 0
+    public var PS: Flags  = .init( rawValue: 0 )
+
+    public struct Flags: OptionSet
+    {
+        public static let carryFlag        = Flags( rawValue: 1 << 0 )
+        public static let zeroFlag         = Flags( rawValue: 1 << 1 )
+        public static let interruptDisable = Flags( rawValue: 1 << 2 )
+        public static let decimalMode      = Flags( rawValue: 1 << 3 )
+        public static let breakCommand     = Flags( rawValue: 1 << 4 )
+        public static let overflowFlag     = Flags( rawValue: 1 << 5 )
+        public static let negativeFlag     = Flags( rawValue: 1 << 6 )
+
+        public let rawValue: UInt8
+
+        public init( rawValue: UInt8 )
+        {
+            self.rawValue = rawValue
+        }
+    }
+}
