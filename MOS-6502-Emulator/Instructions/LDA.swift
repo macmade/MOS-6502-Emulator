@@ -43,4 +43,25 @@ public class LDA
             cpu.registers.PS.insert( .negativeFlag )
         }
     }
+
+    public class func zeroPage( cpu: CPU ) throws
+    {}
+
+    public class func zeroPageX( cpu: CPU ) throws
+    {}
+
+    public class func absolute( cpu: CPU ) throws
+    {}
+
+    public class func absoluteX( cpu: CPU ) throws
+    {}
+
+    public class func absoluteY( cpu: CPU ) throws
+    {}
+
+    public class func indirectX( cpu: CPU ) throws
+    {}
+
+    public class func indirectY( cpu: CPU ) throws
+    {}
 }

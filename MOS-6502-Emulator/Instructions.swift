@@ -43,7 +43,6 @@ public class Instructions
      *     - Overflow Flag:        N/A
      *     - Negative Flag:        Set if bit 7 of A is set
      */
-
     public static let LDA_Immediate: UInt8 = 0xA9 // 2 bytes, 2 cycles
     public static let LDA_ZeroPage:  UInt8 = 0xA5 // 2 bytes, 3 cycles
     public static let LDA_ZeroPageX: UInt8 = 0xB5 // 2 bytes, 4 cycles

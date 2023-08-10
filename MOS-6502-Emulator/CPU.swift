@@ -98,6 +98,13 @@ open class CPU
         switch instruction
         {
             case Instructions.LDA_Immediate: try LDA.immediate( cpu: self )
+            case Instructions.LDA_ZeroPage:  try LDA.zeroPage(  cpu: self )
+            case Instructions.LDA_ZeroPageX: try LDA.zeroPageX( cpu: self )
+            case Instructions.LDA_Absolute:  try LDA.absolute(  cpu: self )
+            case Instructions.LDA_AbsoluteX: try LDA.absoluteX( cpu: self )
+            case Instructions.LDA_AbsoluteY: try LDA.absoluteY( cpu: self )
+            case Instructions.LDA_IndirectX: try LDA.indirectX( cpu: self )
+            case Instructions.LDA_IndirectY: try LDA.indirectY( cpu: self )
 
             default: throw RuntimeError( message: "Unhandled instruction: \( instruction )" )
         }
