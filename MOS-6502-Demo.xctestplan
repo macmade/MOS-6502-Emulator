@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "7C6059FA-FCDF-440F-A9F9-6D646920A235",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MOS-6502-Emulator.xcodeproj",
+      "identifier" : "05C3C1AF2A85708C00436F6D",
+      "name" : "MOS-6502-Demo"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MOS-6502-Emulator.xcodeproj",
+        "identifier" : "05C3C19B2A856EC400436F6D",
+        "name" : "MOS-6502-Tests"
+      }
+    }
+  ],
+  "version" : 1
+}
