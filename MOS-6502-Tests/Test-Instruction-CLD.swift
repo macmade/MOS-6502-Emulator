@@ -35,7 +35,7 @@ final class Test_Instruction_CLD: Test_Instruction
         cpu.registers.PS.remove( .decimalMode )
         XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
 
-        try cpu.run( cycles: Instructions.CLD.cycles )
+        try cpu.run( instructions: 1 )
 
         XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
         XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLD.cycles ) )
@@ -49,7 +49,7 @@ final class Test_Instruction_CLD: Test_Instruction
         cpu.registers.PS.insert( .decimalMode )
         XCTAssertTrue( cpu.registers.PS.contains( .decimalMode ) )
 
-        try cpu.run( cycles: Instructions.CLD.cycles )
+        try cpu.run( instructions: 1 )
 
         XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
         XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLD.cycles ) )

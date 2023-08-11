@@ -35,7 +35,7 @@ final class Test_Instruction_CLI: Test_Instruction
         cpu.registers.PS.remove( .interruptDisable )
         XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
 
-        try cpu.run( cycles: Instructions.CLI.cycles )
+        try cpu.run( instructions: 1 )
 
         XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
         XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLI.cycles ) )
@@ -49,7 +49,7 @@ final class Test_Instruction_CLI: Test_Instruction
         cpu.registers.PS.insert( .interruptDisable )
         XCTAssertTrue( cpu.registers.PS.contains( .interruptDisable ) )
 
-        try cpu.run( cycles: Instructions.CLI.cycles )
+        try cpu.run( instructions: 1 )
 
         XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
         XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLI.cycles ) )

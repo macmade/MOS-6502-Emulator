@@ -32,7 +32,7 @@ final class Test_Instruction_LDA: Test_Instruction
         let cpu    = try self.setup( bytes: [ 0xA9, 0x42 ] )
         let cycles = cpu.cycles
 
-        try cpu.run( cycles: Instructions.LDA_Immediate.cycles )
+        try cpu.run( instructions: 1 )
 
         XCTAssertEqual( cpu.registers.A, 0x42 )
         XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.LDA_Immediate.cycles ) )
@@ -43,7 +43,7 @@ final class Test_Instruction_LDA: Test_Instruction
         let cpu    = try self.setup( bytes: [ 0xA9, 0xFF ] )
         let cycles = cpu.cycles
 
-        try cpu.run( cycles: Instructions.LDA_Immediate.cycles )
+        try cpu.run( instructions: 1 )
 
         XCTAssertEqual( cpu.registers.A, 0xFF )
         XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.LDA_Immediate.cycles ) )
