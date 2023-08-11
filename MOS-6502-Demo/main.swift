@@ -41,10 +41,7 @@ do
 
     try cpu.run( cycles: 6 )
 
-    print( "CPU Cycles:      \( cpu.cycles )" )
-    print( "CPU Accumulator: \( cpu.registers.A )" )
-    print( "CPU X Register:  \( cpu.registers.X )" )
-    print( "CPU Y Register:  \( cpu.registers.Y )" )
+    print( "\( cpu )" )
 }
 catch
 {

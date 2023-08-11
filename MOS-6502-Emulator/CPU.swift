@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class CPU
+open class CPU: CustomStringConvertible
 {
     public private( set ) var registers      = Registers()
     public private( set ) var cycles: UInt64 = 0
@@ -151,5 +151,23 @@ open class CPU
         self.cycles += 2
 
         try self.memory.writeUInt16( value, at: address )
+    }
+
+    open var description: String
+    {
+        """
+        MOS 6502
+        {
+            Cycles: \( self.cycles )
+            {
+                PC: \( self.registers.PC.asHex )
+                SP: \( self.registers.SP.asHex )
+                A:  \( self.registers.A.asHex )
+                X:  \( self.registers.X.asHex )
+                Y:  \( self.registers.Y.asHex )
+                PS: \( self.registers.PS.rawValue.asHex ) (\( self.registers.PS ))
+            }
+        }
+        """
     }
 }

@@ -33,4 +33,15 @@ public extension BinaryInteger
             ( self >> $0 ) & 0x01 == 1
         }
     }
+
+    var asHex: String
+    {
+        switch self.bitWidth
+        {
+            case 8:  return String( format: "0x%02X", UInt64( self ) )
+            case 16: return String( format: "0x%04X", UInt64( self ) )
+            case 32: return String( format: "0x%08X", UInt64( self ) )
+            default: return String( format: "0x%16X", UInt64( self ) )
+        }
+    }
 }

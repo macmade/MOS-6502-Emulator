@@ -33,7 +33,7 @@ open class Registers
     public var Y:  UInt8  = 0                    // Index Y Register
     public var PS: Flags  = .init( rawValue: 0 ) // Processor Status
 
-    public struct Flags: OptionSet
+    public struct Flags: OptionSet, CustomStringConvertible
     {
         public static let carryFlag        = Flags( rawValue: 1 << 0 ) // Set if the last operation caused an overflow from bit 7 or an underflow from bit 0
         public static let zeroFlag         = Flags( rawValue: 1 << 1 ) // Set if the result of the last operation was zero
@@ -48,6 +48,26 @@ open class Registers
         public init( rawValue: UInt8 )
         {
             self.rawValue = rawValue
+        }
+
+        public var description: String
+        {
+            if self.isEmpty
+            {
+                return "--"
+            }
+
+            var s = ""
+
+            if self.contains( .carryFlag        ) { s += "C" }
+            if self.contains( .zeroFlag         ) { s += "Z" }
+            if self.contains( .interruptDisable ) { s += "I" }
+            if self.contains( .decimalMode      ) { s += "D" }
+            if self.contains( .breakCommand     ) { s += "B" }
+            if self.contains( .overflowFlag     ) { s += "O" }
+            if self.contains( .negativeFlag     ) { s += "N" }
+
+            return s
         }
     }
 }
