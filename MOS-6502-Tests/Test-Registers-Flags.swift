@@ -27,12 +27,6 @@ import XCTest
 
 final class Test_Registers_Flags: XCTestCase
 {
-    override func setUpWithError() throws
-    {}
-
-    override func tearDownWithError() throws
-    {}
-
     func testDescriptionEmpty() throws
     {
         let flags = Registers.Flags( rawValue: 0 )

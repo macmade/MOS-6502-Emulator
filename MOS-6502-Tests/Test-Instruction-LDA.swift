@@ -25,8 +25,16 @@
 import MOS_6502_Emulator
 import XCTest
 
-final class Test_CPU: XCTestCase
+final class Test_Instruction_LDA: Test_Instruction
 {
-    func test1() throws
-    {}
+    func testImmediate() throws
+    {
+        let cpu    = try self.setup( bytes: [ 0xA9, 0x42 ] )
+        let cycles = cpu.cycles
+
+        try cpu.run( cycles: Instructions.LDA_Immediate.cycles )
+
+        XCTAssertEqual( cpu.registers.A, 0x42 )
+        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.LDA_Immediate.cycles ) )
+    }
 }

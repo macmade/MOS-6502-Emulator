@@ -34,6 +34,8 @@
 		05C3C2032A86798800436F6D /* STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2022A86798800436F6D /* STX.swift */; };
 		05C3C2052A86798D00436F6D /* STY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2042A86798D00436F6D /* STY.swift */; };
 		05C3C2082A867F4600436F6D /* Apple1BasicROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2072A867F4600436F6D /* Apple1BasicROM.swift */; };
+		05C3C20A2A8687EC00436F6D /* Test-Instruction-LDA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2092A8687EC00436F6D /* Test-Instruction-LDA.swift */; };
+		05C3C20C2A868A6300436F6D /* Test-Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C20B2A868A6300436F6D /* Test-Instruction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,8 @@
 		05C3C2022A86798800436F6D /* STX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STX.swift; sourceTree = "<group>"; };
 		05C3C2042A86798D00436F6D /* STY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STY.swift; sourceTree = "<group>"; };
 		05C3C2072A867F4600436F6D /* Apple1BasicROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1BasicROM.swift; sourceTree = "<group>"; };
+		05C3C2092A8687EC00436F6D /* Test-Instruction-LDA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-LDA.swift"; sourceTree = "<group>"; };
+		05C3C20B2A868A6300436F6D /* Test-Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Instruction.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +376,8 @@
 				05C3C1AA2A85703200436F6D /* Test-CPU.swift */,
 				05C3C19E2A856EC400436F6D /* Test-Memory.swift */,
 				05C3C1E32A8645F200436F6D /* Test-Registers-Flags.swift */,
+				05C3C2092A8687EC00436F6D /* Test-Instruction-LDA.swift */,
+				05C3C20B2A868A6300436F6D /* Test-Instruction.swift */,
 			);
 			path = "MOS-6502-Tests";
 			sourceTree = "<group>";
@@ -568,6 +574,8 @@
 			files = (
 				05C3C1AB2A85703200436F6D /* Test-CPU.swift in Sources */,
 				05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */,
+				05C3C20C2A868A6300436F6D /* Test-Instruction.swift in Sources */,
+				05C3C20A2A8687EC00436F6D /* Test-Instruction-LDA.swift in Sources */,
 				05C3C1E42A8645F200436F6D /* Test-Registers-Flags.swift in Sources */,
 				05C3C1E62A86471300436F6D /* Test-BinaryInteger.swift in Sources */,
 			);

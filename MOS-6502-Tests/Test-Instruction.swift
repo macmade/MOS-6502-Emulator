@@ -25,8 +25,24 @@
 import MOS_6502_Emulator
 import XCTest
 
-final class Test_CPU: XCTestCase
+class Test_Instruction: XCTestCase
 {
-    func test1() throws
-    {}
+    func setup( bytes: [ UInt8 ] ) throws -> CPU
+    {
+        let memory = try Memory( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 )
+        let origin = UInt16( 0xFF00 )
+
+        try bytes.enumerated().forEach
+        {
+            try memory.writeUInt8( $0.element, at: UInt64( origin ) + UInt64( $0.offset ) )
+        }
+
+        try memory.writeUInt16( origin, at: CPU.resetVector )
+
+        let cpu = try CPU( memory: memory )
+
+        try cpu.reset()
+
+        return cpu
+    }
 }

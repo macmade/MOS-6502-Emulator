@@ -27,12 +27,6 @@ import XCTest
 
 final class Test_Memory: XCTestCase
 {
-    override func setUpWithError() throws
-    {}
-
-    override func tearDownWithError() throws
-    {}
-
     func testInitSizeZero() throws
     {
         XCTAssertThrowsError( _ = try Memory( size: 0, options: [], initializeTo: 0 ) )

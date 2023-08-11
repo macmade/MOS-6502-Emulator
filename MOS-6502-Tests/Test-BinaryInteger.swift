@@ -31,12 +31,6 @@ final class Test_BinaryInteger: XCTestCase
     let bitsAllOne    = [ true,  true,  true,  true,  true,  true,  true,  true  ]
     let bitsAlternate = [ true,  false, true,  false, true,  false, true,  false ]
 
-    override func setUpWithError() throws
-    {}
-
-    override func tearDownWithError() throws
-    {}
-
     func testBits8() throws
     {
         XCTAssertEqual( UInt8( 0x00 ).bits, self.bitsAllZero )
