@@ -29,8 +29,7 @@ open class CPU: CustomStringConvertible
     public private( set ) var registers      = Registers()
     public private( set ) var cycles: UInt64 = 0
 
-    private var memory:       Memory
-    private var disassembler: Disassembler
+    private var memory: Memory
 
     public static let zeroPageStart: UInt64 = 0x0000
     public static let zeroPageEnd:   UInt64 = 0x00FF
@@ -58,8 +57,7 @@ open class CPU: CustomStringConvertible
             throw RuntimeError( message: "Invalid memory: the .wrapAround flag must be set" )
         }
 
-        self.memory       = memory
-        self.disassembler = Disassembler( memory: self.memory )
+        self.memory = memory
 
         try self.reset()
     }
@@ -90,7 +88,13 @@ open class CPU: CustomStringConvertible
 
     open func decodeAndExecuteNextInstruction() throws
     {
-        print( self.disassembler.disassemble( at: UInt64( self.registers.PC ), instructions: 1 ) )
+        var error:        Error?
+        let disassembly = Disassembler.disassemble( at: UInt64( self.registers.PC ), from: self.memory, instructions: 1, error: &error )
+
+        if error == nil, disassembly.isEmpty == false
+        {
+            print( "    \( disassembly )" )
+        }
 
         let instruction = try self.readUInt8FromMemoryAtPC()
 

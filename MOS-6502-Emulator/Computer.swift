@@ -53,7 +53,16 @@ open class Computer
         try self.memory.writeUInt16( rom.origin, at: CPU.resetVector )
 
         print( "Loaded ROM at \( rom.origin.asHex ): \( data.count ) bytes" )
-        print( Disassembler( memory: self.memory ).disassemble( at: UInt64( rom.origin ), size: UInt64( data.count ) ) )
+
+        var error:        Error?
+        let disassembly = Disassembler.disassemble( at: UInt64( rom.origin ), from: self.memory, size: UInt64( data.count ), error: &error )
+
+        print( disassembly.components( separatedBy: "\n" ).map { "    \( $0 )" }.joined( separator: "\n" ) )
+
+        if let error = error
+        {
+            print( "Disassembler error - \( error.localizedDescription )" )
+        }
     }
 
     open func start() throws
