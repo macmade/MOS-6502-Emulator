@@ -106,6 +106,18 @@ open class CPU
             case Instructions.LDA_IndirectX: try LDA.indirectX( cpu: self )
             case Instructions.LDA_IndirectY: try LDA.indirectY( cpu: self )
 
+            case Instructions.LDX_Immediate: try LDX.immediate( cpu: self )
+            case Instructions.LDX_ZeroPage:  try LDX.zeroPage(  cpu: self )
+            case Instructions.LDX_ZeroPageY: try LDX.zeroPageY( cpu: self )
+            case Instructions.LDX_Absolute:  try LDX.absolute(  cpu: self )
+            case Instructions.LDX_AbsoluteY: try LDX.absoluteY( cpu: self )
+
+            case Instructions.LDY_Immediate: try LDY.immediate( cpu: self )
+            case Instructions.LDY_ZeroPage:  try LDY.zeroPage(  cpu: self )
+            case Instructions.LDY_ZeroPageX: try LDY.zeroPageX( cpu: self )
+            case Instructions.LDY_Absolute:  try LDY.absolute(  cpu: self )
+            case Instructions.LDY_AbsoluteX: try LDY.absoluteX( cpu: self )
+
             default: throw RuntimeError( message: "Unhandled instruction: \( instruction )" )
         }
     }

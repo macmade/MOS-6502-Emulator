@@ -51,4 +51,44 @@ public class Instructions
     public static let LDA_AbsoluteY: UInt8 = 0xB9 // 3 bytes, 4 cycles (+1 if page crossed)
     public static let LDA_IndirectX: UInt8 = 0xA1 // 2 bytes, 6 cycles
     public static let LDA_IndirectY: UInt8 = 0xB1 // 2 bytes, 5 cycles (+1 if page crossed)
+
+    /*
+     * LDX - Load X Register
+     *
+     * Loads a byte of memory into the X register setting the zero and negative flags as appropriate.
+     *
+     * Flags:
+     *     - Carry Flag:           N/A
+     *     - Zero Flag:            Set if X = 0
+     *     - Interrupt Disable:    N/A
+     *     - Decimal Mode:         N/A
+     *     - Break Command:        N/A
+     *     - Overflow Flag:        N/A
+     *     - Negative Flag:        Set if bit 7 of X is set
+     */
+    public static let LDX_Immediate: UInt8 = 0xA2 // 2 bytes, 2 cycles
+    public static let LDX_ZeroPage:  UInt8 = 0xA6 // 2 bytes, 3 cycles
+    public static let LDX_ZeroPageY: UInt8 = 0xB6 // 2 bytes, 4 cycles
+    public static let LDX_Absolute:  UInt8 = 0xAE // 3 bytes, 4 cycles
+    public static let LDX_AbsoluteY: UInt8 = 0xBE // 3 bytes, 4 cycles (+1 if page crossed)
+
+    /*
+     * LDX - Load Y Register
+     *
+     * Loads a byte of memory into the Y register setting the zero and negative flags as appropriate.
+     *
+     * Flags:
+     *     - Carry Flag:           N/A
+     *     - Zero Flag:            Set if Y = 0
+     *     - Interrupt Disable:    N/A
+     *     - Decimal Mode:         N/A
+     *     - Break Command:        N/A
+     *     - Overflow Flag:        N/A
+     *     - Negative Flag:        Set if bit 7 of Y is set
+     */
+    public static let LDY_Immediate: UInt8 = 0xA0 // 2 bytes, 2 cycles
+    public static let LDY_ZeroPage:  UInt8 = 0xA4 // 2 bytes, 3 cycles
+    public static let LDY_ZeroPageX: UInt8 = 0xB4 // 2 bytes, 4 cycles
+    public static let LDY_Absolute:  UInt8 = 0xAC // 3 bytes, 4 cycles
+    public static let LDY_AbsoluteX: UInt8 = 0xBC // 3 bytes, 4 cycles (+1 if page crossed)
 }
