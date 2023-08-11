@@ -22,6 +22,8 @@
 		05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1DD2A85B1A400436F6D /* LDX.swift */; };
 		05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1DF2A85B1AE00436F6D /* LDY.swift */; };
 		05C3C1E22A85B28F00436F6D /* LD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1E12A85B28F00436F6D /* LD.swift */; };
+		05C3C1E42A8645F200436F6D /* Test-Registers-Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1E32A8645F200436F6D /* Test-Registers-Flags.swift */; };
+		05C3C1E62A86471300436F6D /* Test-BinaryInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1E52A86471300436F6D /* Test-BinaryInteger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		05C3C1DD2A85B1A400436F6D /* LDX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDX.swift; sourceTree = "<group>"; };
 		05C3C1DF2A85B1AE00436F6D /* LDY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDY.swift; sourceTree = "<group>"; };
 		05C3C1E12A85B28F00436F6D /* LD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LD.swift; sourceTree = "<group>"; };
+		05C3C1E32A8645F200436F6D /* Test-Registers-Flags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Registers-Flags.swift"; sourceTree = "<group>"; };
+		05C3C1E52A86471300436F6D /* Test-BinaryInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-BinaryInteger.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +346,8 @@
 			children = (
 				05C3C19E2A856EC400436F6D /* Test-Memory.swift */,
 				05C3C1AA2A85703200436F6D /* Test-CPU.swift */,
+				05C3C1E32A8645F200436F6D /* Test-Registers-Flags.swift */,
+				05C3C1E52A86471300436F6D /* Test-BinaryInteger.swift */,
 			);
 			path = "MOS-6502-Tests";
 			sourceTree = "<group>";
@@ -514,6 +520,8 @@
 			files = (
 				05C3C1AB2A85703200436F6D /* Test-CPU.swift in Sources */,
 				05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */,
+				05C3C1E42A8645F200436F6D /* Test-Registers-Flags.swift in Sources */,
+				05C3C1E62A86471300436F6D /* Test-BinaryInteger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

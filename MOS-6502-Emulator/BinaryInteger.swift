@@ -38,10 +38,10 @@ public extension BinaryInteger
     {
         switch self.bitWidth
         {
-            case 8:  return String( format: "0x%02X", UInt64( self ) )
-            case 16: return String( format: "0x%04X", UInt64( self ) )
-            case 32: return String( format: "0x%08X", UInt64( self ) )
-            default: return String( format: "0x%16X", UInt64( self ) )
+            case 8:  return String( format: "0x%02llX",  UInt64( self ) )
+            case 16: return String( format: "0x%04llX",  UInt64( self ) )
+            case 32: return String( format: "0x%08llX",  UInt64( self ) )
+            default: return String( format: "0x%016llX", UInt64( self ) )
         }
     }
 }
