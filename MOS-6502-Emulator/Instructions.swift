@@ -26,6 +26,8 @@ import Foundation
 
 public class Instructions
 {
+    public typealias Instruction = ( opcode: UInt8, size: UInt, cycles: UInt )
+
     private init()
     {}
 
@@ -43,7 +45,7 @@ public class Instructions
      *     - Overflow Flag:        N/A
      *     - Negative Flag:        N/A
      */
-    public static let CLD: UInt8 = 0xD8 // 1 byte, 2 cycles
+    public static let CLD: Instruction = ( opcode: 0xD8, size: 1, cycles: 2 )
 
     /*
      * CLI - Clear Interrupt Disable
@@ -59,7 +61,7 @@ public class Instructions
      *     - Overflow Flag:        N/A
      *     - Negative Flag:        N/A
      */
-    public static let CLI: UInt8 = 0x58 // 1 byte, 2 cycles
+    public static let CLI: Instruction = ( opcode: 0x58, size: 1, cycles: 2 )
 
     /*
      * LDA - Load Accumulator
@@ -75,14 +77,14 @@ public class Instructions
      *     - Overflow Flag:        N/A
      *     - Negative Flag:        Set if bit 7 of A is set
      */
-    public static let LDA_Immediate: UInt8 = 0xA9 // 2 bytes, 2 cycles
-    public static let LDA_ZeroPage:  UInt8 = 0xA5 // 2 bytes, 3 cycles
-    public static let LDA_ZeroPageX: UInt8 = 0xB5 // 2 bytes, 4 cycles
-    public static let LDA_Absolute:  UInt8 = 0xAD // 3 bytes, 4 cycles
-    public static let LDA_AbsoluteX: UInt8 = 0xBD // 3 bytes, 4 cycles (+1 if page crossed)
-    public static let LDA_AbsoluteY: UInt8 = 0xB9 // 3 bytes, 4 cycles (+1 if page crossed)
-    public static let LDA_IndirectX: UInt8 = 0xA1 // 2 bytes, 6 cycles
-    public static let LDA_IndirectY: UInt8 = 0xB1 // 2 bytes, 5 cycles (+1 if page crossed)
+    public static let LDA_Immediate: Instruction = ( opcode: 0xA9, size: 2, cycles: 2 )
+    public static let LDA_ZeroPage:  Instruction = ( opcode: 0xA5, size: 2, cycles: 3 )
+    public static let LDA_ZeroPageX: Instruction = ( opcode: 0xB5, size: 2, cycles: 4 )
+    public static let LDA_Absolute:  Instruction = ( opcode: 0xAD, size: 3, cycles: 4 )
+    public static let LDA_AbsoluteX: Instruction = ( opcode: 0xBD, size: 3, cycles: 4 ) // +1 if page crossed
+    public static let LDA_AbsoluteY: Instruction = ( opcode: 0xB9, size: 3, cycles: 4 ) // +1 if page crossed
+    public static let LDA_IndirectX: Instruction = ( opcode: 0xA1, size: 2, cycles: 6 )
+    public static let LDA_IndirectY: Instruction = ( opcode: 0xB1, size: 2, cycles: 5 ) // +1 if page crossed
 
     /*
      * LDX - Load X Register
@@ -98,11 +100,11 @@ public class Instructions
      *     - Overflow Flag:        N/A
      *     - Negative Flag:        Set if bit 7 of X is set
      */
-    public static let LDX_Immediate: UInt8 = 0xA2 // 2 bytes, 2 cycles
-    public static let LDX_ZeroPage:  UInt8 = 0xA6 // 2 bytes, 3 cycles
-    public static let LDX_ZeroPageY: UInt8 = 0xB6 // 2 bytes, 4 cycles
-    public static let LDX_Absolute:  UInt8 = 0xAE // 3 bytes, 4 cycles
-    public static let LDX_AbsoluteY: UInt8 = 0xBE // 3 bytes, 4 cycles (+1 if page crossed)
+    public static let LDX_Immediate: Instruction = ( opcode: 0xA2, size: 2, cycles: 2 )
+    public static let LDX_ZeroPage:  Instruction = ( opcode: 0xA6, size: 2, cycles: 3 )
+    public static let LDX_ZeroPageY: Instruction = ( opcode: 0xB6, size: 2, cycles: 4 )
+    public static let LDX_Absolute:  Instruction = ( opcode: 0xAE, size: 3, cycles: 4 )
+    public static let LDX_AbsoluteY: Instruction = ( opcode: 0xBE, size: 3, cycles: 4 ) // +1 if page crossed
 
     /*
      * LDX - Load Y Register
@@ -118,11 +120,11 @@ public class Instructions
      *     - Overflow Flag:        N/A
      *     - Negative Flag:        Set if bit 7 of Y is set
      */
-    public static let LDY_Immediate: UInt8 = 0xA0 // 2 bytes, 2 cycles
-    public static let LDY_ZeroPage:  UInt8 = 0xA4 // 2 bytes, 3 cycles
-    public static let LDY_ZeroPageX: UInt8 = 0xB4 // 2 bytes, 4 cycles
-    public static let LDY_Absolute:  UInt8 = 0xAC // 3 bytes, 4 cycles
-    public static let LDY_AbsoluteX: UInt8 = 0xBC // 3 bytes, 4 cycles (+1 if page crossed)
+    public static let LDY_Immediate: Instruction = ( opcode: 0xA0, size: 2, cycles: 2 )
+    public static let LDY_ZeroPage:  Instruction = ( opcode: 0xA4, size: 2, cycles: 3 )
+    public static let LDY_ZeroPageX: Instruction = ( opcode: 0xB4, size: 2, cycles: 4 )
+    public static let LDY_Absolute:  Instruction = ( opcode: 0xAC, size: 3, cycles: 4 )
+    public static let LDY_AbsoluteX: Instruction = ( opcode: 0xBC, size: 3, cycles: 4 ) // +1 if page crossed
 
     /*
      * STA - Store Accumulator
@@ -138,13 +140,13 @@ public class Instructions
      *     - Overflow Flag:        N/A
      *     - Negative Flag:        N/A
      */
-    public static let STA_ZeroPage:  UInt8 = 0x85 // 2 bytes, 3 cycles
-    public static let STA_ZeroPageY: UInt8 = 0x95 // 2 bytes, 4 cycles
-    public static let STA_Absolute:  UInt8 = 0x8D // 3 bytes, 4 cycles
-    public static let STA_AbsoluteX: UInt8 = 0x9D // 3 bytes, 5 cycles
-    public static let STA_AbsoluteY: UInt8 = 0x99 // 3 bytes, 5 cycles
-    public static let STA_IndirectX: UInt8 = 0x81 // 2 bytes, 6 cycles
-    public static let STA_IndirectY: UInt8 = 0x91 // 2 bytes, 6 cycles
+    public static let STA_ZeroPage:  Instruction = ( opcode: 0x85, size: 2, cycles: 3 )
+    public static let STA_ZeroPageY: Instruction = ( opcode: 0x95, size: 2, cycles: 4 )
+    public static let STA_Absolute:  Instruction = ( opcode: 0x8D, size: 3, cycles: 4 )
+    public static let STA_AbsoluteX: Instruction = ( opcode: 0x9D, size: 3, cycles: 5 )
+    public static let STA_AbsoluteY: Instruction = ( opcode: 0x99, size: 3, cycles: 5 )
+    public static let STA_IndirectX: Instruction = ( opcode: 0x81, size: 2, cycles: 6 )
+    public static let STA_IndirectY: Instruction = ( opcode: 0x91, size: 2, cycles: 6 )
 
     /*
      * STY - Store X Register
@@ -160,9 +162,9 @@ public class Instructions
      *     - Overflow Flag:        N/A
      *     - Negative Flag:        N/A
      */
-    public static let STX_ZeroPage:  UInt8 = 0x86 // 2 bytes, 2 cycles
-    public static let STX_ZeroPageY: UInt8 = 0x96 // 2 bytes, 4 cycles
-    public static let STX_Absolute:  UInt8 = 0x8E // 3 bytes, 4 cycles
+    public static let STX_ZeroPage:  Instruction = ( opcode: 0x86, size: 2, cycles: 2 )
+    public static let STX_ZeroPageY: Instruction = ( opcode: 0x96, size: 2, cycles: 4 )
+    public static let STX_Absolute:  Instruction = ( opcode: 0x8E, size: 3, cycles: 4 )
 
     /*
      * STY - Store Y Register
@@ -178,7 +180,7 @@ public class Instructions
      *     - Overflow Flag:        N/A
      *     - Negative Flag:        N/A
      */
-    public static let STY_ZeroPage:  UInt8 = 0x84 // 2 bytes, 2 cycles
-    public static let STY_ZeroPageX: UInt8 = 0x94 // 2 bytes, 4 cycles
-    public static let STY_Absolute:  UInt8 = 0x8C // 3 bytes, 4 cycles
+    public static let STY_ZeroPage:  Instruction = ( opcode: 0x84, size: 2, cycles: 2 )
+    public static let STY_ZeroPageX: Instruction = ( opcode: 0x94, size: 2, cycles: 4 )
+    public static let STY_Absolute:  Instruction = ( opcode: 0x8C, size: 3, cycles: 4 )
 }

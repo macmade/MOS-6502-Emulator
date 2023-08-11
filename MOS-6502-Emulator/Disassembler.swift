@@ -111,60 +111,60 @@ open class Disassembler
 
         switch instruction
         {
-            case Instructions.CLD:
+            case Instructions.CLD.opcode:
 
                 try self.cld( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
 
-            case Instructions.CLI:
+            case Instructions.CLI.opcode:
 
                 try self.cli( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
 
-            case Instructions.LDA_Immediate,
-                 Instructions.LDA_ZeroPage,
-                 Instructions.LDA_ZeroPageX,
-                 Instructions.LDA_Absolute,
-                 Instructions.LDA_AbsoluteX,
-                 Instructions.LDA_AbsoluteY,
-                 Instructions.LDA_IndirectX,
-                 Instructions.LDA_IndirectY:
+            case Instructions.LDA_Immediate.opcode,
+                 Instructions.LDA_ZeroPage.opcode,
+                 Instructions.LDA_ZeroPageX.opcode,
+                 Instructions.LDA_Absolute.opcode,
+                 Instructions.LDA_AbsoluteX.opcode,
+                 Instructions.LDA_AbsoluteY.opcode,
+                 Instructions.LDA_IndirectX.opcode,
+                 Instructions.LDA_IndirectY.opcode:
 
                 try self.lda( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
 
-            case Instructions.LDX_Immediate,
-                 Instructions.LDX_ZeroPage,
-                 Instructions.LDX_ZeroPageY,
-                 Instructions.LDX_Absolute,
-                 Instructions.LDX_AbsoluteY:
+            case Instructions.LDX_Immediate.opcode,
+                 Instructions.LDX_ZeroPage.opcode,
+                 Instructions.LDX_ZeroPageY.opcode,
+                 Instructions.LDX_Absolute.opcode,
+                 Instructions.LDX_AbsoluteY.opcode:
 
                 try self.ldx( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
 
-            case Instructions.LDY_Immediate,
-                 Instructions.LDY_ZeroPage,
-                 Instructions.LDY_ZeroPageX,
-                 Instructions.LDY_Absolute,
-                 Instructions.LDY_AbsoluteX:
+            case Instructions.LDY_Immediate.opcode,
+                 Instructions.LDY_ZeroPage.opcode,
+                 Instructions.LDY_ZeroPageX.opcode,
+                 Instructions.LDY_Absolute.opcode,
+                 Instructions.LDY_AbsoluteX.opcode:
 
                 try self.ldy( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
 
-            case Instructions.STA_ZeroPage,
-                 Instructions.STA_ZeroPageY,
-                 Instructions.STA_Absolute,
-                 Instructions.STA_AbsoluteX,
-                 Instructions.STA_AbsoluteY,
-                 Instructions.STA_IndirectX,
-                 Instructions.STA_IndirectY:
+            case Instructions.STA_ZeroPage.opcode,
+                 Instructions.STA_ZeroPageY.opcode,
+                 Instructions.STA_Absolute.opcode,
+                 Instructions.STA_AbsoluteX.opcode,
+                 Instructions.STA_AbsoluteY.opcode,
+                 Instructions.STA_IndirectX.opcode,
+                 Instructions.STA_IndirectY.opcode:
 
                 try self.sta( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
 
-            case Instructions.STX_ZeroPage,
-                 Instructions.STX_ZeroPageY,
-                 Instructions.STX_Absolute:
+            case Instructions.STX_ZeroPage.opcode,
+                 Instructions.STX_ZeroPageY.opcode,
+                 Instructions.STX_Absolute.opcode:
 
                 try self.stx( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
 
-            case Instructions.STY_ZeroPage,
-                 Instructions.STY_ZeroPageX,
-                 Instructions.STY_Absolute:
+            case Instructions.STY_ZeroPage.opcode,
+                 Instructions.STY_ZeroPageX.opcode,
+                 Instructions.STY_Absolute.opcode:
 
                 try self.sty( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
 
@@ -198,7 +198,7 @@ open class Disassembler
 
     open func ldy( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
     {
-        if instruction == Instructions.LDY_Immediate
+        if instruction == Instructions.LDY_Immediate.opcode
         {
             let n = try self.readUInt8()
 
@@ -224,7 +224,7 @@ open class Disassembler
 
     open func sty( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
     {
-        if instruction == Instructions.STY_Absolute
+        if instruction == Instructions.STY_Absolute.opcode
         {
             let n = try self.readUInt16()
 
