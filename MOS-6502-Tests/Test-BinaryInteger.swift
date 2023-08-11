@@ -65,6 +65,34 @@ final class Test_BinaryInteger: XCTestCase
         XCTAssertEqual( UInt64( 0x5555555555555555 ).bits, [ self.bitsAlternate, self.bitsAlternate, self.bitsAlternate, self.bitsAlternate, self.bitsAlternate, self.bitsAlternate, self.bitsAlternate, self.bitsAlternate ].flatMap { $0 } )
     }
 
+    func testBytes8() throws
+    {
+        XCTAssertEqual( UInt8( 0x00 ).bytes, [ 0x00 ] )
+        XCTAssertEqual( UInt8( 0xFF ).bytes, [ 0xFF ] )
+        XCTAssertEqual( UInt8( 0xAB ).bytes, [ 0xAB ] )
+    }
+
+    func testBytes16() throws
+    {
+        XCTAssertEqual( UInt16( 0x0000 ).bytes, [ 0x00, 0x00 ] )
+        XCTAssertEqual( UInt16( 0xFFFF ).bytes, [ 0xFF, 0xFF ] )
+        XCTAssertEqual( UInt16( 0xABCD ).bytes, [ 0xCD, 0xAB ] )
+    }
+
+    func testBytes32() throws
+    {
+        XCTAssertEqual( UInt32( 0x00000000 ).bytes, [ 0x00, 0x00, 0x00, 0x00 ] )
+        XCTAssertEqual( UInt32( 0xFFFFFFFF ).bytes, [ 0xFF, 0xFF, 0xFF, 0xFF ] )
+        XCTAssertEqual( UInt32( 0xABCDEF12 ).bytes, [ 0x12, 0xEF, 0xCD, 0xAB ] )
+    }
+
+    func testBytes64() throws
+    {
+        XCTAssertEqual( UInt64( 0x0000000000000000 ).bytes, [ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ] )
+        XCTAssertEqual( UInt64( 0xFFFFFFFFFFFFFFFF ).bytes, [ 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF ] )
+        XCTAssertEqual( UInt64( 0xABCDEF1234567890 ).bytes, [ 0x90, 0x78, 0x56, 0x34, 0x12, 0xEF, 0xCD, 0xAB ] )
+    }
+
     func testAsHex8()
     {
         XCTAssertEqual( UInt8( 0x00 ).asHex, "0x00" )
