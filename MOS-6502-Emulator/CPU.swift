@@ -79,7 +79,7 @@ open class CPU: CustomStringConvertible
         {
             try self.decodeAndExecuteNextInstruction()
 
-            if self.cycles >= cycles
+            if cycles != 0, self.cycles >= cycles
             {
                 break
             }
@@ -92,6 +92,9 @@ open class CPU: CustomStringConvertible
 
         switch instruction
         {
+            case Instructions.CLD: try CLD( cpu: self )
+            case Instructions.CLI: try CLI( cpu: self )
+
             case Instructions.LDA_Immediate: try LDA.immediate( cpu: self )
             case Instructions.LDA_ZeroPage:  try LDA.zeroPage(  cpu: self )
             case Instructions.LDA_ZeroPageX: try LDA.zeroPageX( cpu: self )
@@ -115,6 +118,13 @@ open class CPU: CustomStringConvertible
 
             default: throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
         }
+    }
+
+    open func clearFlag( _ flag: Registers.Flags )
+    {
+        self.registers.PS.remove( flag )
+
+        self.cycles += 1
     }
 
     open func readUInt8FromMemoryAtPC() throws -> UInt8

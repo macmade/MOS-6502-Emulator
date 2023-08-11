@@ -30,6 +30,38 @@ public class Instructions
     {}
 
     /*
+     * CLD - Clear Decimal Mode
+     *
+     * Sets the decimal mode flag to zero.
+     *
+     * Flags:
+     *     - Carry Flag:           N/A
+     *     - Zero Flag:            N/A
+     *     - Interrupt Disable:    N/A
+     *     - Decimal Mode:         Set to 0
+     *     - Break Command:        N/A
+     *     - Overflow Flag:        N/A
+     *     - Negative Flag:        N/A
+     */
+    public static let CLD: UInt8 = 0xD8 // 1 byte, 2 cycles
+
+    /*
+     * CLI - Clear Interrupt Disable
+     *
+     * Clears the interrupt disable flag allowing normal interrupt requests to be serviced.
+     *
+     * Flags:
+     *     - Carry Flag:           N/A
+     *     - Zero Flag:            N/A
+     *     - Interrupt Disable:    Set to 0
+     *     - Decimal Mode:         N/A
+     *     - Break Command:        N/A
+     *     - Overflow Flag:        N/A
+     *     - Negative Flag:        N/A
+     */
+    public static let CLI: UInt8 = 0x58 // 1 byte, 2 cycles
+
+    /*
      * LDA - Load Accumulator
      *
      * Loads a byte of memory into the accumulator setting the zero and negative flags as appropriate.
