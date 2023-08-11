@@ -81,19 +81,6 @@ open class CPU: CustomStringConvertible
         }
     }
 
-    open func run( cycles: UInt = 0 ) throws
-    {
-        while true
-        {
-            try self.decodeAndExecuteNextInstruction()
-
-            if cycles != 0, self.cycles >= cycles
-            {
-                break
-            }
-        }
-    }
-
     open func run( instructions: UInt = 0 ) throws
     {
         var n = instructions
