@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class WozMonitorROM: ROM
+open class Apple1ROM: ROM
 {
     public init()
     {}

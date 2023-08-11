@@ -28,11 +28,12 @@
 		05C3C1F32A86572F00436F6D /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F22A86572F00436F6D /* CLI.swift */; };
 		05C3C1F72A865D5300436F6D /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F62A865D5300436F6D /* Computer.swift */; };
 		05C3C1F92A865D5900436F6D /* ROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F82A865D5900436F6D /* ROM.swift */; };
-		05C3C1FB2A865D6D00436F6D /* WozMonitorROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */; };
+		05C3C1FB2A865D6D00436F6D /* Apple1ROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* Apple1ROM.swift */; };
 		05C3C1FF2A8661E800436F6D /* Disassembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FE2A8661E800436F6D /* Disassembler.swift */; };
 		05C3C2012A86798200436F6D /* STA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2002A86798200436F6D /* STA.swift */; };
 		05C3C2032A86798800436F6D /* STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2022A86798800436F6D /* STX.swift */; };
 		05C3C2052A86798D00436F6D /* STY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2042A86798D00436F6D /* STY.swift */; };
+		05C3C2082A867F4600436F6D /* Apple1BasicROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2072A867F4600436F6D /* Apple1BasicROM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,11 +141,12 @@
 		05C3C1F22A86572F00436F6D /* CLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLI.swift; sourceTree = "<group>"; };
 		05C3C1F62A865D5300436F6D /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 		05C3C1F82A865D5900436F6D /* ROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROM.swift; sourceTree = "<group>"; };
-		05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WozMonitorROM.swift; sourceTree = "<group>"; };
+		05C3C1FA2A865D6D00436F6D /* Apple1ROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1ROM.swift; sourceTree = "<group>"; };
 		05C3C1FE2A8661E800436F6D /* Disassembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disassembler.swift; sourceTree = "<group>"; };
 		05C3C2002A86798200436F6D /* STA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STA.swift; sourceTree = "<group>"; };
 		05C3C2022A86798800436F6D /* STX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STX.swift; sourceTree = "<group>"; };
 		05C3C2042A86798D00436F6D /* STY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STY.swift; sourceTree = "<group>"; };
+		05C3C2072A867F4600436F6D /* Apple1BasicROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1BasicROM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +217,7 @@
 				05C3C1D42A85948500436F6D /* Registers.swift */,
 				05C3C1F82A865D5900436F6D /* ROM.swift */,
 				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
-				05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */,
+				05C3C2062A867F2400436F6D /* ROMS */,
 			);
 			path = "MOS-6502-Emulator";
 			sourceTree = "<group>";
@@ -405,6 +407,15 @@
 			path = Instructions;
 			sourceTree = "<group>";
 		};
+		05C3C2062A867F2400436F6D /* ROMS */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C1FA2A865D6D00436F6D /* Apple1ROM.swift */,
+				05C3C2072A867F4600436F6D /* Apple1BasicROM.swift */,
+			);
+			path = ROMS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -528,7 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05C3C1FB2A865D6D00436F6D /* WozMonitorROM.swift in Sources */,
+				05C3C1FB2A865D6D00436F6D /* Apple1ROM.swift in Sources */,
 				05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */,
 				05C3C1F72A865D5300436F6D /* Computer.swift in Sources */,
 				05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */,
@@ -546,6 +557,7 @@
 				05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */,
 				05C3C2032A86798800436F6D /* STX.swift in Sources */,
 				05C3C1F92A865D5900436F6D /* ROM.swift in Sources */,
+				05C3C2082A867F4600436F6D /* Apple1BasicROM.swift in Sources */,
 				05C3C1A72A85700100436F6D /* Memory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
