@@ -23,16 +23,16 @@
  ******************************************************************************/
 
 import Foundation
-import MOS_6502_Emulator
 
-do
+public protocol ROM
 {
-    let computer = try Computer()
+    var origin: UInt16
+    {
+        get
+    }
 
-    try computer.loadROM( WozMonitorROM() )
-    try computer.start()
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+    var data: Data
+    {
+        get
+    }
 }

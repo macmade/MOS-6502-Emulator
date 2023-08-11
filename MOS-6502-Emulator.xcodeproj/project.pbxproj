@@ -24,6 +24,11 @@
 		05C3C1E22A85B28F00436F6D /* LD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1E12A85B28F00436F6D /* LD.swift */; };
 		05C3C1E42A8645F200436F6D /* Test-Registers-Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1E32A8645F200436F6D /* Test-Registers-Flags.swift */; };
 		05C3C1E62A86471300436F6D /* Test-BinaryInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1E52A86471300436F6D /* Test-BinaryInteger.swift */; };
+		05C3C1F12A8655B100436F6D /* CLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F02A8655B100436F6D /* CLD.swift */; };
+		05C3C1F32A86572F00436F6D /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F22A86572F00436F6D /* CLI.swift */; };
+		05C3C1F72A865D5300436F6D /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F62A865D5300436F6D /* Computer.swift */; };
+		05C3C1F92A865D5900436F6D /* ROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F82A865D5900436F6D /* ROM.swift */; };
+		05C3C1FB2A865D6D00436F6D /* WozMonitorROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,14 +49,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		05C3C1AE2A85708C00436F6D /* CopyFiles */ = {
+		05C3C1EC2A8652BF00436F6D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -127,6 +132,11 @@
 		05C3C1E12A85B28F00436F6D /* LD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LD.swift; sourceTree = "<group>"; };
 		05C3C1E32A8645F200436F6D /* Test-Registers-Flags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Registers-Flags.swift"; sourceTree = "<group>"; };
 		05C3C1E52A86471300436F6D /* Test-BinaryInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-BinaryInteger.swift"; sourceTree = "<group>"; };
+		05C3C1F02A8655B100436F6D /* CLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLD.swift; sourceTree = "<group>"; };
+		05C3C1F22A86572F00436F6D /* CLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLI.swift; sourceTree = "<group>"; };
+		05C3C1F62A865D5300436F6D /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
+		05C3C1F82A865D5900436F6D /* ROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROM.swift; sourceTree = "<group>"; };
+		05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WozMonitorROM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,13 +197,16 @@
 		05C3C13D2A8568D500436F6D /* MOS-6502-Emulator */ = {
 			isa = PBXGroup;
 			children = (
-				05C3C1A62A85700100436F6D /* Memory.swift */,
-				05C3C1A82A85700700436F6D /* CPU.swift */,
-				05C3C1D42A85948500436F6D /* Registers.swift */,
-				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
-				05C3C1D62A85A43A00436F6D /* Instructions.swift */,
 				05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */,
+				05C3C1F62A865D5300436F6D /* Computer.swift */,
+				05C3C1A82A85700700436F6D /* CPU.swift */,
 				05C3C1D82A85A95A00436F6D /* Instructions */,
+				05C3C1D62A85A43A00436F6D /* Instructions.swift */,
+				05C3C1A62A85700100436F6D /* Memory.swift */,
+				05C3C1D42A85948500436F6D /* Registers.swift */,
+				05C3C1F82A865D5900436F6D /* ROM.swift */,
+				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
+				05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */,
 			);
 			path = "MOS-6502-Emulator";
 			sourceTree = "<group>";
@@ -344,10 +357,10 @@
 		05C3C19D2A856EC400436F6D /* MOS-6502-Tests */ = {
 			isa = PBXGroup;
 			children = (
-				05C3C19E2A856EC400436F6D /* Test-Memory.swift */,
-				05C3C1AA2A85703200436F6D /* Test-CPU.swift */,
-				05C3C1E32A8645F200436F6D /* Test-Registers-Flags.swift */,
 				05C3C1E52A86471300436F6D /* Test-BinaryInteger.swift */,
+				05C3C1AA2A85703200436F6D /* Test-CPU.swift */,
+				05C3C19E2A856EC400436F6D /* Test-Memory.swift */,
+				05C3C1E32A8645F200436F6D /* Test-Registers-Flags.swift */,
 			);
 			path = "MOS-6502-Tests";
 			sourceTree = "<group>";
@@ -370,6 +383,8 @@
 		05C3C1D82A85A95A00436F6D /* Instructions */ = {
 			isa = PBXGroup;
 			children = (
+				05C3C1F02A8655B100436F6D /* CLD.swift */,
+				05C3C1F22A86572F00436F6D /* CLI.swift */,
 				05C3C1E12A85B28F00436F6D /* LD.swift */,
 				05C3C1D92A85A96600436F6D /* LDA.swift */,
 				05C3C1DD2A85B1A400436F6D /* LDX.swift */,
@@ -432,7 +447,7 @@
 			buildPhases = (
 				05C3C1AC2A85708C00436F6D /* Sources */,
 				05C3C1AD2A85708C00436F6D /* Frameworks */,
-				05C3C1AE2A85708C00436F6D /* CopyFiles */,
+				05C3C1EC2A8652BF00436F6D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -501,15 +516,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05C3C1FB2A865D6D00436F6D /* WozMonitorROM.swift in Sources */,
 				05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */,
+				05C3C1F72A865D5300436F6D /* Computer.swift in Sources */,
 				05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */,
 				05C3C1DA2A85A96600436F6D /* LDA.swift in Sources */,
+				05C3C1F12A8655B100436F6D /* CLD.swift in Sources */,
 				05C3C1E22A85B28F00436F6D /* LD.swift in Sources */,
 				05C3C1D72A85A43A00436F6D /* Instructions.swift in Sources */,
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
+				05C3C1F32A86572F00436F6D /* CLI.swift in Sources */,
 				05C3C1D52A85948500436F6D /* Registers.swift in Sources */,
 				05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */,
+				05C3C1F92A865D5900436F6D /* ROM.swift in Sources */,
 				05C3C1A72A85700100436F6D /* Memory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

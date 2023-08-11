@@ -23,16 +23,37 @@
  ******************************************************************************/
 
 import Foundation
-import MOS_6502_Emulator
 
-do
+open class Computer
 {
-    let computer = try Computer()
+    private var cpu:    CPU
+    private var memory: Memory
 
-    try computer.loadROM( WozMonitorROM() )
-    try computer.start()
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+    public init() throws
+    {
+        self.memory = try Memory( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 )
+        self.cpu    = try CPU( memory: self.memory )
+    }
+
+    open func loadROM( _ rom: ROM ) throws
+    {
+        guard rom.data.isEmpty == false
+        else
+        {
+            throw RuntimeError( message: "Cannot load empty ROM" )
+        }
+
+        try rom.data.enumerated().forEach
+        {
+            try memory.writeUInt8( $0.element, at: UInt64( rom.origin ) + UInt64( $0.offset ) )
+        }
+
+        try self.memory.writeUInt16( rom.origin, at: CPU.resetVector )
+    }
+
+    open func start() throws
+    {
+        try self.cpu.reset()
+        try self.cpu.run()
+    }
 }
