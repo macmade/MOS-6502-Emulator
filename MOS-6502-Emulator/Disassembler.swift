@@ -24,43 +24,18 @@
 
 import Foundation
 
-open class Computer
+open class Disassembler
 {
-    private var cpu:    CPU
-    private var memory: Memory
+    public init( memory: Memory )
+    {}
 
-    public init() throws
+    open func disassemble( at address: UInt64, instructions: UInt64 = 0 ) -> String
     {
-        self.memory = try Memory( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 )
-        self.cpu    = try CPU( memory: self.memory )
+        ""
     }
 
-    open func loadROM( _ rom: ROM ) throws
+    open func disassemble( at address: UInt64, size: UInt64 ) -> String
     {
-        let data = rom.data
-
-        guard data.isEmpty == false
-        else
-        {
-            throw RuntimeError( message: "Cannot load empty ROM" )
-        }
-
-        try data.enumerated().forEach
-        {
-            try memory.writeUInt8( $0.element, at: UInt64( rom.origin ) + UInt64( $0.offset ) )
-        }
-
-        try self.memory.writeUInt16( rom.origin, at: CPU.resetVector )
-
-        print( "Loaded ROM at \( rom.origin.asHex ): \( data.count ) bytes" )
-        print( Disassembler( memory: self.memory ).disassemble( at: UInt64( rom.origin ), size: UInt64( data.count ) ) )
-    }
-
-    open func start() throws
-    {
-        print( "Resetting CPU and running..." )
-
-        try self.cpu.reset()
-        try self.cpu.run()
+        ""
     }
 }

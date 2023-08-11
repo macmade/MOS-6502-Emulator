@@ -29,6 +29,7 @@
 		05C3C1F72A865D5300436F6D /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F62A865D5300436F6D /* Computer.swift */; };
 		05C3C1F92A865D5900436F6D /* ROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F82A865D5900436F6D /* ROM.swift */; };
 		05C3C1FB2A865D6D00436F6D /* WozMonitorROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */; };
+		05C3C1FF2A8661E800436F6D /* Disassembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FE2A8661E800436F6D /* Disassembler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		05C3C1F62A865D5300436F6D /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 		05C3C1F82A865D5900436F6D /* ROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROM.swift; sourceTree = "<group>"; };
 		05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WozMonitorROM.swift; sourceTree = "<group>"; };
+		05C3C1FE2A8661E800436F6D /* Disassembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disassembler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */,
 				05C3C1F62A865D5300436F6D /* Computer.swift */,
 				05C3C1A82A85700700436F6D /* CPU.swift */,
+				05C3C1FE2A8661E800436F6D /* Disassembler.swift */,
 				05C3C1D82A85A95A00436F6D /* Instructions */,
 				05C3C1D62A85A43A00436F6D /* Instructions.swift */,
 				05C3C1A62A85700100436F6D /* Memory.swift */,
@@ -527,6 +530,7 @@
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
 				05C3C1F32A86572F00436F6D /* CLI.swift in Sources */,
+				05C3C1FF2A8661E800436F6D /* Disassembler.swift in Sources */,
 				05C3C1D52A85948500436F6D /* Registers.swift in Sources */,
 				05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */,
 				05C3C1F92A865D5900436F6D /* ROM.swift in Sources */,
