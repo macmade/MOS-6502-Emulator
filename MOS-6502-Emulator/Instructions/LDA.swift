@@ -37,7 +37,12 @@ public class LDA
     }
 
     public class func zeroPage( cpu: CPU ) throws
-    {}
+    {
+        let address     = try cpu.readUInt8FromMemoryAtPC()
+        cpu.registers.A = try cpu.readUInt8FromMemory( at: UInt64( address ) )
+
+        LD.setStatus( for: cpu.registers.A, cpu: cpu )
+    }
 
     public class func zeroPageX( cpu: CPU ) throws
     {}
