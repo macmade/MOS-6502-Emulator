@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class RuntimeError: Error
+open class RuntimeError: LocalizedError
 {
     public private( set ) var message: String
 
@@ -33,7 +33,7 @@ open class RuntimeError: Error
         self.message = message
     }
 
-    open var localizedDescription: String
+    open var errorDescription: String?
     {
         self.message
     }

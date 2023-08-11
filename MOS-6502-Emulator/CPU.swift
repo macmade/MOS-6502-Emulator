@@ -90,11 +90,6 @@ open class CPU
     {
         let instruction = try self.readUInt8FromMemoryAtPC()
 
-        defer
-        {
-            self.registers.PC += 1
-        }
-
         switch instruction
         {
             case Instructions.LDA_Immediate: try LDA.immediate( cpu: self )

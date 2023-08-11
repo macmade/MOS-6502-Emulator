@@ -32,13 +32,19 @@ do
     try memory.writeUInt16( 0x0200,                     at: CPU.resetVector )
     try memory.writeUInt8(  Instructions.LDA_Immediate, at: 0x200 )
     try memory.writeUInt8(  0x42,                       at: 0x201 )
+    try memory.writeUInt8(  Instructions.LDX_Immediate, at: 0x202 )
+    try memory.writeUInt8(  0x43,                       at: 0x203 )
+    try memory.writeUInt8(  Instructions.LDY_Immediate, at: 0x204 )
+    try memory.writeUInt8(  0x44,                       at: 0x205 )
 
     let cpu = try CPU( memory: memory )
 
-    try cpu.run( cycles: 2 )
+    try cpu.run( cycles: 6 )
 
     print( "CPU Cycles:      \( cpu.cycles )" )
     print( "CPU Accumulator: \( cpu.registers.A )" )
+    print( "CPU X Register:  \( cpu.registers.X )" )
+    print( "CPU Y Register:  \( cpu.registers.Y )" )
 }
 catch
 {
