@@ -27,18 +27,18 @@ import MOS_6502_Emulator
 
 do
 {
-    let buffer = UnsafeMutableBufferPointer< UInt8 >.allocate( capacity: Int( CPU.totalMemory ) )
+    let memory = try Memory( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 )
 
-    buffer[ Int( CPU.resetVector )     ] = 0x00
-    buffer[ Int( CPU.resetVector + 1 ) ] = 0x02
+    try memory.writeUInt16( 0x0200,                     at: CPU.resetVector )
+    try memory.writeUInt8(  Instructions.LDA_Immediate, at: 0x200 )
+    try memory.writeUInt8(  0x42,                       at: 0x201 )
 
-    buffer[ 0x200 ] = Instructions.LDA_Immediate
-    buffer[ 0x201 ] = 0x42
-
-    let memory = try Memory( buffer: buffer, options: [ .wrapAround ] )
-    let cpu    = try CPU( memory: memory )
+    let cpu = try CPU( memory: memory )
 
     try cpu.run( cycles: 2 )
+
+    print( "CPU Cycles:      \( cpu.cycles )" )
+    print( "CPU Accumulator: \( cpu.registers.A )" )
 }
 catch
 {
