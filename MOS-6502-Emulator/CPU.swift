@@ -124,6 +124,22 @@ open class CPU: CustomStringConvertible
             case Instructions.LDY_Absolute:  try LDY.absolute(  cpu: self )
             case Instructions.LDY_AbsoluteX: try LDY.absoluteX( cpu: self )
 
+            case Instructions.STA_ZeroPage:  try STA.zeroPage(  cpu: self )
+            case Instructions.STA_ZeroPageY: try STA.zeroPageY( cpu: self )
+            case Instructions.STA_Absolute:  try STA.absolute(  cpu: self )
+            case Instructions.STA_AbsoluteX: try STA.absoluteX( cpu: self )
+            case Instructions.STA_AbsoluteY: try STA.absoluteY( cpu: self )
+            case Instructions.STA_IndirectX: try STA.indirectX( cpu: self )
+            case Instructions.STA_IndirectY: try STA.indirectY( cpu: self )
+
+            case Instructions.STX_ZeroPage:  try STX.zeroPage(  cpu: self )
+            case Instructions.STX_ZeroPageY: try STX.zeroPageY( cpu: self )
+            case Instructions.STX_Absolute:  try STX.absolute(  cpu: self )
+
+            case Instructions.STY_ZeroPage:  try STY.zeroPage(  cpu: self )
+            case Instructions.STY_ZeroPageX: try STY.zeroPageX( cpu: self )
+            case Instructions.STY_Absolute:  try STY.absolute(  cpu: self )
+
             default: throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
         }
     }
@@ -143,6 +159,14 @@ open class CPU: CustomStringConvertible
         return value
     }
 
+    open func readUInt16FromMemoryAtPC() throws -> UInt16
+    {
+        let value          = try self.readUInt16FromMemory( at: UInt64( self.registers.PC ) )
+        self.registers.PC += 2
+
+        return value
+    }
+
     open func readUInt8FromMemory( at address: UInt64 ) throws -> UInt8
     {
         self.cycles += 1
@@ -157,14 +181,14 @@ open class CPU: CustomStringConvertible
         return try self.memory.readUInt16( at: address )
     }
 
-    open func writeUInt8FromMemory( _ value: UInt8, at address: UInt64 ) throws
+    open func writeUInt8ToMemory( _ value: UInt8, at address: UInt64 ) throws
     {
         self.cycles += 1
 
         try self.memory.writeUInt8( value, at: address )
     }
 
-    open func writeUInt16FromMemory( _ value: UInt16, at address: UInt64 ) throws
+    open func writeUInt16ToMemory( _ value: UInt16, at address: UInt64 ) throws
     {
         self.cycles += 2
 

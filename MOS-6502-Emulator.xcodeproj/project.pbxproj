@@ -30,6 +30,9 @@
 		05C3C1F92A865D5900436F6D /* ROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F82A865D5900436F6D /* ROM.swift */; };
 		05C3C1FB2A865D6D00436F6D /* WozMonitorROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */; };
 		05C3C1FF2A8661E800436F6D /* Disassembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FE2A8661E800436F6D /* Disassembler.swift */; };
+		05C3C2012A86798200436F6D /* STA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2002A86798200436F6D /* STA.swift */; };
+		05C3C2032A86798800436F6D /* STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2022A86798800436F6D /* STX.swift */; };
+		05C3C2052A86798D00436F6D /* STY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2042A86798D00436F6D /* STY.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +142,9 @@
 		05C3C1F82A865D5900436F6D /* ROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROM.swift; sourceTree = "<group>"; };
 		05C3C1FA2A865D6D00436F6D /* WozMonitorROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WozMonitorROM.swift; sourceTree = "<group>"; };
 		05C3C1FE2A8661E800436F6D /* Disassembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disassembler.swift; sourceTree = "<group>"; };
+		05C3C2002A86798200436F6D /* STA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STA.swift; sourceTree = "<group>"; };
+		05C3C2022A86798800436F6D /* STX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STX.swift; sourceTree = "<group>"; };
+		05C3C2042A86798D00436F6D /* STY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STY.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +398,9 @@
 				05C3C1D92A85A96600436F6D /* LDA.swift */,
 				05C3C1DD2A85B1A400436F6D /* LDX.swift */,
 				05C3C1DF2A85B1AE00436F6D /* LDY.swift */,
+				05C3C2002A86798200436F6D /* STA.swift */,
+				05C3C2022A86798800436F6D /* STX.swift */,
+				05C3C2042A86798D00436F6D /* STY.swift */,
 			);
 			path = Instructions;
 			sourceTree = "<group>";
@@ -528,11 +537,14 @@
 				05C3C1E22A85B28F00436F6D /* LD.swift in Sources */,
 				05C3C1D72A85A43A00436F6D /* Instructions.swift in Sources */,
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
+				05C3C2012A86798200436F6D /* STA.swift in Sources */,
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
 				05C3C1F32A86572F00436F6D /* CLI.swift in Sources */,
+				05C3C2052A86798D00436F6D /* STY.swift in Sources */,
 				05C3C1FF2A8661E800436F6D /* Disassembler.swift in Sources */,
 				05C3C1D52A85948500436F6D /* Registers.swift in Sources */,
 				05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */,
+				05C3C2032A86798800436F6D /* STX.swift in Sources */,
 				05C3C1F92A865D5900436F6D /* ROM.swift in Sources */,
 				05C3C1A72A85700100436F6D /* Memory.swift in Sources */,
 			);
