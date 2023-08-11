@@ -146,6 +146,28 @@ open class Disassembler
 
                 try self.ldy( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
 
+            case Instructions.STA_ZeroPage,
+                 Instructions.STA_ZeroPageY,
+                 Instructions.STA_Absolute,
+                 Instructions.STA_AbsoluteX,
+                 Instructions.STA_AbsoluteY,
+                 Instructions.STA_IndirectX,
+                 Instructions.STA_IndirectY:
+
+                try self.sta( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+
+            case Instructions.STX_ZeroPage,
+                 Instructions.STX_ZeroPageY,
+                 Instructions.STX_Absolute:
+
+                try self.stx( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+
+            case Instructions.STY_ZeroPage,
+                 Instructions.STY_ZeroPageX,
+                 Instructions.STY_Absolute:
+
+                try self.sty( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+
             default:
 
                 throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
@@ -182,6 +204,32 @@ open class Disassembler
 
             bytes.append( n )
             disassembly.append( "LDY" )
+            disassembly.append( n.asHex )
+        }
+        else
+        {
+            throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
+        }
+    }
+
+    open func sta( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
+    {
+        throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
+    }
+
+    open func stx( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
+    {
+        throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
+    }
+
+    open func sty( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
+    {
+        if instruction == Instructions.STY_Absolute
+        {
+            let n = try self.readUInt16()
+
+            bytes.append( contentsOf: n.bytes )
+            disassembly.append( "STY" )
             disassembly.append( n.asHex )
         }
         else

@@ -123,4 +123,62 @@ public class Instructions
     public static let LDY_ZeroPageX: UInt8 = 0xB4 // 2 bytes, 4 cycles
     public static let LDY_Absolute:  UInt8 = 0xAC // 3 bytes, 4 cycles
     public static let LDY_AbsoluteX: UInt8 = 0xBC // 3 bytes, 4 cycles (+1 if page crossed)
+
+    /*
+     * STA - Store Accumulator
+     *
+     * Stores the contents of the accumulator into memory.
+     *
+     * Flags:
+     *     - Carry Flag:           N/A
+     *     - Zero Flag:            N/A
+     *     - Interrupt Disable:    N/A
+     *     - Decimal Mode:         N/A
+     *     - Break Command:        N/A
+     *     - Overflow Flag:        N/A
+     *     - Negative Flag:        N/A
+     */
+    public static let STA_ZeroPage:  UInt8 = 0x85 // 2 bytes, 3 cycles
+    public static let STA_ZeroPageY: UInt8 = 0x95 // 2 bytes, 4 cycles
+    public static let STA_Absolute:  UInt8 = 0x8D // 3 bytes, 4 cycles
+    public static let STA_AbsoluteX: UInt8 = 0x9D // 3 bytes, 5 cycles
+    public static let STA_AbsoluteY: UInt8 = 0x99 // 3 bytes, 5 cycles
+    public static let STA_IndirectX: UInt8 = 0x81 // 2 bytes, 6 cycles
+    public static let STA_IndirectY: UInt8 = 0x91 // 2 bytes, 6 cycles
+
+    /*
+     * STY - Store X Register
+     *
+     * Stores the contents of the X register into memory.
+     *
+     * Flags:
+     *     - Carry Flag:           N/A
+     *     - Zero Flag:            N/A
+     *     - Interrupt Disable:    N/A
+     *     - Decimal Mode:         N/A
+     *     - Break Command:        N/A
+     *     - Overflow Flag:        N/A
+     *     - Negative Flag:        N/A
+     */
+    public static let STX_ZeroPage:  UInt8 = 0x86 // 2 bytes, 2 cycles
+    public static let STX_ZeroPageY: UInt8 = 0x96 // 2 bytes, 4 cycles
+    public static let STX_Absolute:  UInt8 = 0x8E // 3 bytes, 4 cycles
+
+    /*
+     * STY - Store Y Register
+     *
+     * Stores the contents of the Y register into memory.
+     *
+     * Flags:
+     *     - Carry Flag:           N/A
+     *     - Zero Flag:            N/A
+     *     - Interrupt Disable:    N/A
+     *     - Decimal Mode:         N/A
+     *     - Break Command:        N/A
+     *     - Overflow Flag:        N/A
+     *     - Negative Flag:        N/A
+     */
+    public static let STY_ZeroPage:  UInt8 = 0x84 // 2 bytes, 2 cycles
+    public static let STY_ZeroPageX: UInt8 = 0x94 // 2 bytes, 4 cycles
+    public static let STY_Absolute:  UInt8 = 0x8C // 3 bytes, 4 cycles
 }

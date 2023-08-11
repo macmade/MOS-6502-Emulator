@@ -34,6 +34,17 @@ public extension BinaryInteger
         }
     }
 
+    var bytes: [ UInt8 ]
+    {
+        switch self.bitWidth
+        {
+            case 8:  return [ UInt8( self ) ]
+            case 16: return [ UInt8( self & 0xFF ), UInt8( ( self >> 8 ) & 0xFF ) ]
+            case 32: return [ UInt8( self & 0xFF ), UInt8( ( self >> 8 ) & 0xFF ), UInt8( ( self >> 16 ) & 0xFF ), UInt8( ( self >> 24 ) & 0xFF ) ]
+            default: return [ UInt8( self & 0xFF ), UInt8( ( self >> 8 ) & 0xFF ), UInt8( ( self >> 16 ) & 0xFF ), UInt8( ( self >> 24 ) & 0xFF ), UInt8( ( self >> 32 ) & 0xFF ), UInt8( ( self >> 40 ) & 0xFF ), UInt8( ( self >> 48 ) & 0xFF ), UInt8( ( self >> 56 ) & 0xFF ) ]
+        }
+    }
+
     var asHex: String
     {
         switch self.bitWidth
