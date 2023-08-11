@@ -113,7 +113,7 @@ open class CPU: CustomStringConvertible
             case Instructions.LDY_Absolute:  try LDY.absolute(  cpu: self )
             case Instructions.LDY_AbsoluteX: try LDY.absoluteX( cpu: self )
 
-            default: throw RuntimeError( message: "Unhandled instruction: \( instruction )" )
+            default: throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
         }
     }
 

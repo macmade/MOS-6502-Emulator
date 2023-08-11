@@ -84,7 +84,7 @@ open class Memory
         }
         else if self.options.contains( .wrapAround ) == false
         {
-            throw RuntimeError( message: "Invalid memory address: \( address )" )
+            throw RuntimeError( message: "Invalid memory address: \( address.asHex )" )
         }
         else
         {
