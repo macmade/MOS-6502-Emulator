@@ -26,8 +26,8 @@ import Foundation
 
 open class CPU
 {
-    public private( set ) var registers = Registers()
-    public private( set ) var cycles:     UInt64 = 0
+    public private( set ) var registers      = Registers()
+    public private( set ) var cycles: UInt64 = 0
 
     private var memory: Memory
 
