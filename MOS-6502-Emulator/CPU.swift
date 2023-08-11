@@ -64,13 +64,13 @@ open class CPU
 
     open func reset() throws
     {
-        self.registers.PC          = try self.memory.readUInt16( at: CPU.resetVector )
-        self.registers.SP          = 0
-        self.registers.A           = 0
-        self.registers.X           = 0
-        self.registers.Y           = 0
-        self.registers.PS          = []
-        self.cycles                = 0
+        self.registers.PC = try self.memory.readUInt16( at: CPU.resetVector )
+        self.registers.SP = 0
+        self.registers.A  = 0
+        self.registers.X  = 0
+        self.registers.Y  = 0
+        self.registers.PS = []
+        self.cycles       = 0
     }
 
     open func run( cycles: UInt = 0 ) throws
