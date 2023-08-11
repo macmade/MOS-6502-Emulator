@@ -33,15 +33,7 @@ public class LDY
     {
         cpu.registers.Y = try cpu.readUInt8FromMemoryAtPC()
 
-        if cpu.registers.Y == 0
-        {
-            cpu.registers.PS.insert( .zeroFlag )
-        }
-
-        if cpu.registers.Y.bits[ 7 ]
-        {
-            cpu.registers.PS.insert( .negativeFlag )
-        }
+        LD.setStatus( for: cpu.registers.Y, cpu: cpu )
     }
 
     public class func zeroPage( cpu: CPU ) throws

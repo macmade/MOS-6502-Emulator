@@ -21,6 +21,7 @@
 		05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */; };
 		05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1DD2A85B1A400436F6D /* LDX.swift */; };
 		05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1DF2A85B1AE00436F6D /* LDY.swift */; };
+		05C3C1E22A85B28F00436F6D /* LD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1E12A85B28F00436F6D /* LD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryInteger.swift; sourceTree = "<group>"; };
 		05C3C1DD2A85B1A400436F6D /* LDX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDX.swift; sourceTree = "<group>"; };
 		05C3C1DF2A85B1AE00436F6D /* LDY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDY.swift; sourceTree = "<group>"; };
+		05C3C1E12A85B28F00436F6D /* LD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +364,7 @@
 		05C3C1D82A85A95A00436F6D /* Instructions */ = {
 			isa = PBXGroup;
 			children = (
+				05C3C1E12A85B28F00436F6D /* LD.swift */,
 				05C3C1D92A85A96600436F6D /* LDA.swift */,
 				05C3C1DD2A85B1A400436F6D /* LDX.swift */,
 				05C3C1DF2A85B1AE00436F6D /* LDY.swift */,
@@ -495,6 +498,7 @@
 				05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */,
 				05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */,
 				05C3C1DA2A85A96600436F6D /* LDA.swift in Sources */,
+				05C3C1E22A85B28F00436F6D /* LD.swift in Sources */,
 				05C3C1D72A85A43A00436F6D /* Instructions.swift in Sources */,
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,

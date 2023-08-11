@@ -33,15 +33,7 @@ public class LDA
     {
         cpu.registers.A = try cpu.readUInt8FromMemoryAtPC()
 
-        if cpu.registers.A == 0
-        {
-            cpu.registers.PS.insert( .zeroFlag )
-        }
-
-        if cpu.registers.A.bits[ 7 ]
-        {
-            cpu.registers.PS.insert( .negativeFlag )
-        }
+        LD.setStatus( for: cpu.registers.A, cpu: cpu )
     }
 
     public class func zeroPage( cpu: CPU ) throws

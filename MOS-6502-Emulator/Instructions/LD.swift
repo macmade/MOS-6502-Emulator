@@ -24,27 +24,21 @@
 
 import Foundation
 
-public class LDX
+public class LD
 {
     private init()
     {}
 
-    public class func immediate( cpu: CPU ) throws
+    public class func setStatus( for byte: UInt8, cpu: CPU )
     {
-        cpu.registers.X = try cpu.readUInt8FromMemoryAtPC()
+        if byte == 0
+        {
+            cpu.registers.PS.insert( .zeroFlag )
+        }
 
-        LD.setStatus( for: cpu.registers.X, cpu: cpu )
+        if byte.bits[ 7 ]
+        {
+            cpu.registers.PS.insert( .negativeFlag )
+        }
     }
-
-    public class func zeroPage( cpu: CPU ) throws
-    {}
-
-    public class func zeroPageY( cpu: CPU ) throws
-    {}
-
-    public class func absolute( cpu: CPU ) throws
-    {}
-
-    public class func absoluteY( cpu: CPU ) throws
-    {}
 }
