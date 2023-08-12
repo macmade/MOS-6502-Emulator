@@ -319,3 +319,245 @@ achieve this.
             ROR MEM+1       ; And back into the MSB
             ROR MEM+0       ; Rotate the LSB as normal
 
+### Addition & Subtraction
+
+The 6502 processor provides 8 bit addition and subtraction instructions and a
+carry/borrow flag that is used to propagate the carry bit between operations.
+
+To implement a 16 bit addition the programmer must code two pairs of additions;
+one for the least significant bytes and one for the most significant bytes.
+The carry flag must be cleared before the first addition to ensure that an
+additional increment isn't performed.
+
+    ; 16 bit Binary Addition
+            CLC             ; Ensure carry is clear
+            LDA VLA+0       ; Add the two least significant bytes
+            ADC VLB+0
+            STA RES+0       ; ... and store the result
+            LDA VLA+1       ; Add the two most significant bytes
+            ADC VLB+1       ; ... and any propagated carry bit
+            STA RES+1       ; ... and store the result
+
+Subtraction follows the same pattern but the carry must be set before the first
+pair of bytes are subtracted to get the correct result.
+
+    ; 16 bit Binary Subtraction
+            SEC             ; Ensure carry is set
+            LDA VLA+0       ; Subtract the two least significant bytes
+            SBC VLB+0
+            STA RES+0       ; ... and store the result
+            LDA VLA+1       ; Subtract the two most significant bytes
+            SBC VLB+1       ; ... and any propagated borrow bit
+            STA RES+1       ; ... and store the result
+
+Both the addition and subtraction algorithm can be extended to 32 bits by
+repeating the `LDA/ADC/STA` or `LDA/SBC/STA` pattern for two further bytes
+worth of data.
+
+### Negation
+
+The traditional approach to negating a twos complement number is to reverse all
+the bits (by EORing with `$FF`) and add one as shown below.
+
+    ; 8 bit Binary Negation
+            CLC         ; Ensure carry is clear
+            EOR #$FF    ; Invert all the bits
+            ADC #1      ; ... and add one
+
+This technique works well with a single byte already held in the accumulator
+but not with bigger numbers. With these it is easier just to subtract them
+from zero.
+
+    ; 16 bit Binary Negation
+            SEC             ; Ensure carry is set
+            LDA #0          ; Load constant zero
+            SBC SRC+0       ; ... subtract the least significant byte
+            STA DST+0       ; ... and store the result
+            LDA #0          ; Load constant zero again
+            SBC SRC+1       ; ... subtract the most significant byte
+            STA DST+1       ; ... and store the result
+
+### Decimal Arithmetic
+
+The behavior of the `ADC` and `SBC` instructions can be modified by setting or
+clearing the decimal mode flag in the processor status register. Normally
+decimal mode is disabled and `ADC/SBC` perform simple binary arithmetic
+(e.g. `$99 + $01 => $9A Carry = 0`), but if the flag is set with a `SED`
+instruction the processor will perform binary coded decimal arithmetic instead
+(e.g. `$99 + $01 => $00 Carry = 1`).
+
+To make the 16 bit addition/subtraction code work in decimal mode simply include
+an `SED` at the start and a `CLD` at the end (to restore the processor to
+normal).
+
+    ; 16 bit Binary Code Decimal Addition
+            SED             ; Set decimal mode flag
+            CLC             ; Ensure carry is clear
+            LDA VLA+0       ; Add the two least significant bytes
+            ADC VLB+0
+            STA RES+0       ; ... and store the result
+            LDA VLA+1       ; Add the two most significant bytes
+            ADC VLB+1       ; ... and any propagated carry bit
+            STA RES+1       ; ... and store the result
+            CLD             ; Clear decimal mode
+
+Binary coded values are more easily converted to displayable digits and are
+useful for holding numbers such as high scores.
+
+    ; Print the BCD value in A as two ASCII digits
+            PHA             ; Save the BCD value
+            LSR A           ; Shift the four most significant bits
+            LSR A           ; ... into the four least significant
+            LSR A
+            LSR A
+            ORA #'0'        ; Make an ASCII digit
+            JSR PRINT       ; ... and print it
+            PLA             ; Recover the BCD value
+            AND #$0F        ; Mask out all but the bottom 4 bits
+            ORA #'0'        ; Make an ASCII digit
+            JSR PRINT       ; ... and print it
+
+Another use for `BCD` is in the conversion of binary values to decimal ones.
+Some algorithms perform this conversion by counting the number of times that
+10000's, 1000's, 100's, 10's and 1's can be subtracted from the binary value
+before it underflows, but I normally use a simple fixed loop that shifts the
+bits out of the binary value one at a time and adds it to an intermediate
+result that is being doubled (in BCD) on each iteration.
+
+    ; Convert an 16 bit binary value into a 24bit BCD value
+    BIN2BCD LDA #0          ; Clear the result area
+            STA RES+0
+            STA RES+1
+            STA RES+2
+            LDX #16         ; Setup the bit counter
+            SED             ; Enter decimal mode
+    _LOOP   ASL VAL+0       ; Shift a bit out of the binary
+            ROL VAL+1       ; ... value
+            LDA RES+0       ; And add it into the result, doubling
+            ADC RES+0       ; ... it at the same time
+            STA RES+0
+            LDA RES+1
+            ADC RES+1
+            STA RES+1
+            LDA RES+2
+            ADC RES+2
+            STA RES+2
+            DEX             ; More bits to process?
+            BNE _LOOP
+            CLD             ; Leave decimal mode
+
+One final odd use of decimal arithmetic is the conversion of hexadecimal digits
+to printable ASCII characters. The usual way to perform this conversion is to
+add `$30` to the digit (`$00 - $0F`) to make an intermediate result which is
+then examined to see if it is greater than or equal to `$3A`. If it is then an
+additional `$06` is added to make the result fall in the range `$41 - $46`
+(e.g. 'A' - 'F').
+
+    ; Convert a hex digit ($00-$0F) to ASCII ('0'-'9' or 'A'-'F')
+    HEX2ASC ORA #$30        ; Form the basic character code
+            CMP #$3A        ; Does the result need adjustment?
+            BCC .+4
+            ADC #$05        ; Add 6 (5 and the carry) if needed
+
+It turns out that in decimal mode the processor does basically the same
+correction after an addition and with the right arguments we can convert the
+digit to its ASCII character without performing any comparisons as shown in the
+following code.
+
+    ; Convert a hex digit ($00-$0F) to ASCII ('0'-'9' or 'A'-'F')
+    HEX2ASC SED             ; Enter BCD mode
+            CLC             ; Ensure the carry is clear
+            ADC #$90        ; Produce $90-$99 (C=0) or $00-$05 (C=1)
+            ADC #$40        ; Produce $30-$39 or $41-$46
+            CLD             ; Leave BCD mode
+
+### Increments & Decrements
+
+Assembly programs frequently use memory based counters that occasionally need
+incrementing or decrementing by one. One way to achieve this would be to load
+the LSB and MSB in turn and add or subtract one with the ADC/SBC instructions,
+but the 6502 has a more efficient way to do this using `INC` and `DEC`.
+
+Incrementing is straight forward, we just increment the least significant byte
+until the result becomes zero. This indicates that the calculation has wrapped
+round (e.g. `$FF + $01 => $00`) and an increment to the most significant byte
+is needed.
+
+    ; Increment a 16 bit value by one
+    _INC16  INC MEM+0       ; Increment the LSB
+            BNE _DONE       ; If the result was not zero we're done
+            INC MEM+1       ; Increment the MSB if LSB wrapped round
+    _DONE   EQU *
+
+Decrementing is a little trickier because we need to know when the least
+significant byte is about to underflow from `$00` to `$FF`. The answer is to
+test it first by loading it into the accumulator to set the processor flags.
+
+    ; Decrement a 16 bit value by one
+    _DEC16  LDA MEM+0       ; Test if the LSB is zero
+            BNE _SKIP       ; If it isn't we can skip the next instruction
+            DEC MEM+1       ; Decrement the MSB when the LSB will underflow
+    _SKIP   DEC MEM+0       ; Decrement the LSB
+
+### Complex Memory Transfers
+
+Moving data from one place to another is a common operation. If the amount of
+data to moved is 256 bytes or less and the source and target locations of the
+data are fixed then a simple loop around an indexed `LDA` followed by an
+indexed `STA` is the most efficient. Note that whilst both the X and Y registers
+can be used in indexed addressing modes  an asymmetry in the 6502's instruction
+means that X is the better register to use if one or both of the memory areas
+resides on zero page.
+
+    ; Move 256 bytes or less in a forward direction
+            LDX #0          ; Start with the first byte
+    _LOOP   LDA SRC,X       ; Move it
+            STA DST,X
+            INX             ; Then bump the index ...
+            CPX #LEN        ; ... until we reach the limit
+            BNE _LOOP
+
+The corresponding code moving the last byte first is as follows:
+
+    ; Move 256 bytes or less in a reverse direction
+            LDX #LEN        ; Start with the last byte
+    _LOOP   DEX             ; Bump the index
+            LDA SRC,X       ; Move a byte
+            STA DST,X
+            CPX #0          ; ... until all bytes have moved
+            BNE _LOOP
+
+If the amount is even smaller (128 bytes or less) then we can eliminate the
+comparison against the limit and use the settings of the flags after a `DEX`
+to determine if the loop has finished.
+
+    ; Move 128 bytes or less in a reverse direction
+            LDX #LEN-1      ; Start with the last byte
+    _LOOP   LDA SRC,X       ; Move it
+            STA DST,X
+            DEX             ; Then bump the index ...
+            BPL _LOOP       ; ... until all bytes have moved
+
+To create a completely generic memory transfer we must change to using indirect
+indexed addressing to access memory and use all the registers. The following
+code shows a forward transferring algorithm which first moves complete pages
+of 256 bytes followed by any remaining fragments of smaller size.
+
+    _MOVFWD LDY #0          ; Initialise the index
+            LDX LEN+1       ; Load the page count
+            BEQ _FRAG       ; ... Do we only have a fragment?
+    _PAGE   LDA (SRC),Y     ; Move a byte in a page transfer
+            STA (DST),Y
+            INY             ; And repeat for the rest of the
+            BNE _PAGE       ; ... page
+            INC SRC+1       ; Then bump the src and dst addresses
+            INC DST+1       ; ... by a page
+            DEX             ; And repeat while there are more
+            BNE _PAGE       ; ... pages to move
+    _FRAG   CPY LEN+0       ; Then while the index has not reached
+            BEQ _DONE       ; ... the limit
+            LDA (SRC),Y     ; Move a fragment byte
+            STA (DST),Y
+            INY             ; Bump the index and repeat
+            BNE _FRAG\?
+    _DONE   EQU *           ; All done
