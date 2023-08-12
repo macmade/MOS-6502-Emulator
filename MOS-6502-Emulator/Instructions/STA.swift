@@ -57,7 +57,7 @@ public class STA
     {
         let address = try cpu.readUInt16FromMemoryAtPC()
 
-        try cpu.writeUInt8ToMemory( cpu.registers.A, at: UInt64( address ) )
+        try cpu.writeUInt8ToMemory( cpu.registers.A, at: address )
     }
 
     public class func absoluteX( cpu: CPU ) throws

@@ -24,11 +24,11 @@
 
 import Foundation
 
-open class Memory
+open class Memory< SizeType > where SizeType: UnsignedInteger
 {
     public struct Options: OptionSet
     {
-        public static let wrapAround = Options( rawValue: 1 << 0 )
+        public static var wrapAround: Options { Options( rawValue: 1 << 0 ) }
 
         public let rawValue: Int
 
@@ -38,12 +38,12 @@ open class Memory
         }
     }
 
-    public private( set ) var size:    UInt64
+    public private( set ) var size:    SizeType
     public private( set ) var options: Options
 
     private var data: UnsafeMutableBufferPointer< UInt8 >
 
-    public init( size: UInt64, options: Options, initializeTo defaultValue: UInt8 ) throws
+    public init( size: SizeType, options: Options, initializeTo defaultValue: UInt8 ) throws
     {
         if size == 0 || size > Int.max
         {
@@ -65,7 +65,7 @@ open class Memory
         }
 
         self.data    = .allocate( capacity: buffer.count )
-        self.size    = UInt64( buffer.count )
+        self.size    = SizeType( buffer.count )
         self.options = options
 
         _ = self.data.initialize( from: buffer )
@@ -76,7 +76,7 @@ open class Memory
         self.data.deallocate()
     }
 
-    open func offset( for address: UInt64 ) throws -> Int
+    open func offset( for address: SizeType ) throws -> Int
     {
         if address < self.size
         {
@@ -99,14 +99,14 @@ open class Memory
         }
     }
 
-    open func readUInt8( at address: UInt64 ) throws -> UInt8
+    open func readUInt8( at address: SizeType ) throws -> UInt8
     {
         let offset = try self.offset( for: address )
 
         return self.data[ offset ]
     }
 
-    open func readUInt16( at address: UInt64 ) throws -> UInt16
+    open func readUInt16( at address: SizeType ) throws -> UInt16
     {
         let n1 = try UInt16( self.readUInt8( at: address ) )
         let n2 = try UInt16( self.readUInt8( at: address + 1 ) )
@@ -114,7 +114,7 @@ open class Memory
         return ( n2 << 8 ) | n1
     }
 
-    open func readUInt32( at address: UInt64 ) throws -> UInt32
+    open func readUInt32( at address: SizeType ) throws -> UInt32
     {
         let n1 = try UInt32( self.readUInt16( at: address ) )
         let n2 = try UInt32( self.readUInt16( at: address + 2 ) )
@@ -122,7 +122,7 @@ open class Memory
         return ( n2 << 16 ) | n1
     }
 
-    open func readUInt64( at address: UInt64 ) throws -> UInt64
+    open func readUInt64( at address: SizeType ) throws -> UInt64
     {
         let n1 = try UInt64( self.readUInt32( at: address ) )
         let n2 = try UInt64( self.readUInt32( at: address + 4 ) )
@@ -130,14 +130,14 @@ open class Memory
         return ( n2 << 32 ) | n1
     }
 
-    open func writeUInt8( _ value: UInt8, at address: UInt64 ) throws
+    open func writeUInt8( _ value: UInt8, at address: SizeType ) throws
     {
         let offset = try self.offset( for: address )
 
         self.data[ offset ] = value
     }
 
-    open func writeUInt16( _ value: UInt16, at address: UInt64 ) throws
+    open func writeUInt16( _ value: UInt16, at address: SizeType ) throws
     {
         let n1 = UInt8( value & 0xFF )
         let n2 = UInt8( ( value >> 8 ) & 0xFF )
@@ -146,7 +146,7 @@ open class Memory
         try self.writeUInt8( n2, at: address + 1 )
     }
 
-    open func writeUInt32( _ value: UInt32, at address: UInt64 ) throws
+    open func writeUInt32( _ value: UInt32, at address: SizeType ) throws
     {
         let n1 = UInt16( value & 0xFFFF )
         let n2 = UInt16( ( value >> 16 ) & 0xFFFF )
@@ -155,7 +155,7 @@ open class Memory
         try self.writeUInt16( n2, at: address + 2 )
     }
 
-    open func writeUInt64( _ value: UInt64, at address: UInt64 ) throws
+    open func writeUInt64( _ value: UInt64, at address: SizeType ) throws
     {
         let n1 = UInt32( value & 0xFFFFFFFF )
         let n2 = UInt32( ( value >> 32 ) & 0xFFFFFFFF )

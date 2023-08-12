@@ -26,20 +26,20 @@ import Foundation
 
 open class Disassembler
 {
-    private var memory: Memory
+    private var memory: Memory< UInt16 >
     private var offset: UInt64
 
-    private init( memory: Memory, offset: UInt64 )
+    private init( memory: Memory< UInt16 >, offset: UInt16 )
     {
         self.memory = memory
-        self.offset = offset
+        self.offset = UInt64( offset )
     }
 
-    public class func disassemble( at address: UInt64, from memory: Memory, instructions: UInt64 = 0, error: inout Error? ) -> String
+    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, instructions: UInt = 0, error: inout Error? ) -> String
     {
         let disassembler = Disassembler( memory: memory, offset: address )
         var count        = instructions
-        var disassembly  = [ ( address: UInt64, bytes: [ UInt8 ], disassembly: String ) ]()
+        var disassembly  = [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String ) ]()
 
         while count > 0
         {
@@ -60,12 +60,12 @@ open class Disassembler
         return disassembler.format( instructions: disassembly )
     }
 
-    public class func disassemble( at address: UInt64, from memory: Memory, size: UInt64, error: inout Error? ) -> String
+    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, size: UInt16, error: inout Error? ) -> String
     {
         let disassembler = Disassembler( memory: memory, offset: address )
-        var disassembly  = [ ( address: UInt64, bytes: [ UInt8 ], disassembly: String ) ]()
+        var disassembly  = [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String ) ]()
 
-        while disassembler.offset < address + size
+        while disassembler.offset < UInt64( address ) + UInt64( size )
         {
             do
             {
@@ -82,7 +82,7 @@ open class Disassembler
         return disassembler.format( instructions: disassembly )
     }
 
-    open func format( instructions: [ ( address: UInt64, bytes: [ UInt8 ], disassembly: String ) ] ) -> String
+    open func format( instructions: [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String ) ] ) -> String
     {
         let maxBytes = instructions.reduce( 0 )
         {
@@ -102,9 +102,14 @@ open class Disassembler
         .joined( separator: "\n" )
     }
 
-    open func disassembleNextInstruction() throws -> ( address: UInt64, bytes: [ UInt8 ], disassembly: String )
+    open func disassembleNextInstruction() throws -> ( address: UInt16, bytes: [ UInt8 ], disassembly: String )
     {
-        let start       = self.offset
+        if self.offset > UInt16.max
+        {
+            throw RuntimeError( message: "Cannot disassemble further: offset out of range" )
+        }
+
+        let start       = UInt16( self.offset )
         let opcode      = try self.readUInt8()
         var bytes       = [ opcode ]
         var disassembly = [ String ]()
@@ -221,7 +226,12 @@ open class Disassembler
 
     open func readUInt8() throws -> UInt8
     {
-        let u        = try self.memory.readUInt8( at: self.offset )
+        if self.offset > UInt16.max
+        {
+            throw RuntimeError( message: "Offset out of range" )
+        }
+
+        let u        = try self.memory.readUInt8( at: UInt16( self.offset ) )
         self.offset += 1
 
         return u
@@ -229,7 +239,12 @@ open class Disassembler
 
     open func readUInt16() throws -> UInt16
     {
-        let u        = try self.memory.readUInt16( at: self.offset )
+        if self.offset > UInt16.max
+        {
+            throw RuntimeError( message: "Offset out of range" )
+        }
+
+        let u        = try self.memory.readUInt16( at: UInt16( self.offset ) )
         self.offset += 2
 
         return u

@@ -57,6 +57,6 @@ public class STY
     {
         let address = try cpu.readUInt16FromMemoryAtPC()
 
-        try cpu.writeUInt8ToMemory( cpu.registers.Y, at: UInt64( address ) )
+        try cpu.writeUInt8ToMemory( cpu.registers.Y, at: address )
     }
 }

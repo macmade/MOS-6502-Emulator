@@ -57,6 +57,6 @@ public class STX
     {
         let address = try cpu.readUInt16FromMemoryAtPC()
 
-        try cpu.writeUInt8ToMemory( cpu.registers.X, at: UInt64( address ) )
+        try cpu.writeUInt8ToMemory( cpu.registers.X, at: address )
     }
 }

@@ -29,23 +29,23 @@ open class CPU: CustomStringConvertible
     public private( set ) var registers      = Registers()
     public private( set ) var cycles: UInt64 = 0
 
-    private var memory: Memory
+    private var memory: Memory< UInt16 >
 
-    public static let zeroPageStart: UInt64 = 0x0000
-    public static let zeroPageEnd:   UInt64 = 0x00FF
-    public static let zeroPageSize:  UInt64 = 0x00FF
-    public static let stackStart:    UInt64 = 0x0100
-    public static let stackEnd:      UInt64 = 0x01FF
-    public static let stackSize:     UInt64 = 0x00FF
-    public static let resetVector:   UInt64 = 0xFFFC
-    public static let totalMemory:   UInt64 = 0xFFFF
+    public static let zeroPageStart: UInt16 = 0x0000
+    public static let zeroPageEnd:   UInt16 = 0x00FF
+    public static let zeroPageSize:  UInt16 = 0x00FF
+    public static let stackStart:    UInt16 = 0x0100
+    public static let stackEnd:      UInt16 = 0x01FF
+    public static let stackSize:     UInt16 = 0x00FF
+    public static let resetVector:   UInt16 = 0xFFFC
+    public static let totalMemory:   UInt16 = 0xFFFF
 
     public convenience init() throws
     {
         try self.init( memory: try Memory( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 ) )
     }
 
-    public init( memory: Memory ) throws
+    public init( memory: Memory< UInt16 > ) throws
     {
         if memory.size < CPU.totalMemory
         {
@@ -96,7 +96,7 @@ open class CPU: CustomStringConvertible
     open func decodeAndExecuteNextInstruction() throws
     {
         var error:        Error?
-        let disassembly = Disassembler.disassemble( at: UInt64( self.registers.PC ), from: self.memory, instructions: 1, error: &error )
+        let disassembly = Disassembler.disassemble( at: self.registers.PC, from: self.memory, instructions: 1, error: &error )
 
         if error == nil, disassembly.isEmpty == false
         {
@@ -124,7 +124,7 @@ open class CPU: CustomStringConvertible
 
     open func readUInt8FromMemoryAtPC() throws -> UInt8
     {
-        let value          = try self.readUInt8FromMemory( at: UInt64( self.registers.PC ) )
+        let value          = try self.readUInt8FromMemory( at: self.registers.PC )
         self.registers.PC += 1
 
         return value
@@ -132,34 +132,34 @@ open class CPU: CustomStringConvertible
 
     open func readUInt16FromMemoryAtPC() throws -> UInt16
     {
-        let value          = try self.readUInt16FromMemory( at: UInt64( self.registers.PC ) )
+        let value          = try self.readUInt16FromMemory( at: self.registers.PC )
         self.registers.PC += 2
 
         return value
     }
 
-    open func readUInt8FromMemory( at address: UInt64 ) throws -> UInt8
+    open func readUInt8FromMemory( at address: UInt16 ) throws -> UInt8
     {
         self.cycles += 1
 
         return try self.memory.readUInt8( at: address )
     }
 
-    open func readUInt16FromMemory( at address: UInt64 ) throws -> UInt16
+    open func readUInt16FromMemory( at address: UInt16 ) throws -> UInt16
     {
         self.cycles += 2
 
         return try self.memory.readUInt16( at: address )
     }
 
-    open func writeUInt8ToMemory( _ value: UInt8, at address: UInt64 ) throws
+    open func writeUInt8ToMemory( _ value: UInt8, at address: UInt16 ) throws
     {
         self.cycles += 1
 
         try self.memory.writeUInt8( value, at: address )
     }
 
-    open func writeUInt16ToMemory( _ value: UInt16, at address: UInt64 ) throws
+    open func writeUInt16ToMemory( _ value: UInt16, at address: UInt16 ) throws
     {
         self.cycles += 2
 

@@ -53,7 +53,7 @@ public class LDX
     public class func zeroPage( cpu: CPU ) throws
     {
         let address     = try cpu.readUInt8FromMemoryAtPC()
-        cpu.registers.X = try cpu.readUInt8FromMemory( at: UInt64( address ) )
+        cpu.registers.X = try cpu.readUInt8FromMemory( at: UInt16( address ) )
 
         LD.setStatus( for: cpu.registers.A, cpu: cpu )
     }

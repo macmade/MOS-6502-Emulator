@@ -27,7 +27,7 @@ import Foundation
 open class Computer
 {
     private var cpu:    CPU
-    private var memory: Memory
+    private var memory: Memory< UInt16 >
 
     public init() throws
     {
@@ -45,9 +45,15 @@ open class Computer
             throw RuntimeError( message: "Cannot load empty ROM" )
         }
 
+        guard data.count <= UInt16.max
+        else
+        {
+            throw RuntimeError( message: "ROM is too large" )
+        }
+
         try data.enumerated().forEach
         {
-            try memory.writeUInt8( $0.element, at: UInt64( rom.origin ) + UInt64( $0.offset ) )
+            try memory.writeUInt8( $0.element, at: rom.origin + UInt16( $0.offset ) )
         }
 
         try self.memory.writeUInt16( rom.origin, at: CPU.resetVector )
@@ -55,7 +61,7 @@ open class Computer
         print( "Loaded ROM at \( rom.origin.asHex ): \( data.count ) bytes" )
 
         var error:            Error?
-        let disassembly     = Disassembler.disassemble( at: UInt64( rom.origin ), from: self.memory, size: UInt64( data.count ), error: &error )
+        let disassembly     = Disassembler.disassemble( at: rom.origin, from: self.memory, size: UInt16( data.count ), error: &error )
         let disassemblyText = disassembly.components( separatedBy: "\n" ).map { "    \( $0 )" }.joined( separator: "\n" )
 
         if disassemblyText.trimmingCharacters( in: .whitespaces ).isEmpty == false
