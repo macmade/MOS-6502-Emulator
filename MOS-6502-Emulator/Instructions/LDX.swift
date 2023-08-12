@@ -25,50 +25,45 @@
 import Foundation
 
 /*
- * LDX - Load X Register
+ * LDX - ...
  *
- * Loads a byte of memory into the X register setting the zero and negative flags as appropriate.
+ * ...
  *
  * Flags:
  *     - Carry Flag:           N/A
- *     - Zero Flag:            Set if X = 0
+ *     - Zero Flag:            N/A
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        Set if bit 7 of X is set
+ *     - Negative Flag:        N/A
  */
 public class LDX
 {
     private init()
     {}
-
-    public class func immediate( cpu: CPU ) throws
-    {
-        cpu.registers.X = try cpu.readUInt8FromMemoryAtPC()
-
-        LD.setStatus( for: cpu.registers.X, cpu: cpu )
-    }
-
-    public class func zeroPage( cpu: CPU ) throws
-    {
-        let address     = try cpu.readUInt8FromMemoryAtPC()
-        cpu.registers.X = try cpu.readUInt8FromMemory( at: UInt16( address ) )
-
-        LD.setStatus( for: cpu.registers.A, cpu: cpu )
-    }
-
-    public class func zeroPageY( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Not implemented" )
-    }
-
+    
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func absoluteY( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
+    public class func immediate( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
+    public class func zeroPage( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
+    public class func zeroPageY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }

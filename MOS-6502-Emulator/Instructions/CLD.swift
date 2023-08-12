@@ -25,15 +25,15 @@
 import Foundation
 
 /*
- * CLD - Clear Decimal Mode
+ * CLD - ...
  *
- * Sets the decimal mode flag to zero.
+ * ...
  *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
  *     - Interrupt Disable:    N/A
- *     - Decimal Mode:         Set to 0
+ *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
@@ -42,9 +42,9 @@ public class CLD
 {
     private init()
     {}
-
+    
     public class func implicit( cpu: CPU ) throws
     {
-        cpu.clearFlag( .decimalMode )
+        throw RuntimeError( message: "Not implemented" )
     }
 }

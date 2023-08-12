@@ -22,30 +22,44 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import MOS_6502_Emulator
-import XCTest
+import Foundation
 
-final class Test_Instruction_LDA: Test_Instruction
+/*
+ * DEC - ...
+ *
+ * ...
+ *
+ * Flags:
+ *     - Carry Flag:           N/A
+ *     - Zero Flag:            N/A
+ *     - Interrupt Disable:    N/A
+ *     - Decimal Mode:         N/A
+ *     - Break Command:        N/A
+ *     - Overflow Flag:        N/A
+ *     - Negative Flag:        N/A
+ */
+public class DEC
 {
-    func testImmediate0x42() throws
+    private init()
+    {}
+    
+    public class func absolute( cpu: CPU ) throws
     {
-        let cpu    = try self.setup( bytes: [ 0xA9, 0x42 ] )
-        let cycles = cpu.cycles
-
-        try cpu.run( instructions: 1 )
-
-        XCTAssertEqual( cpu.registers.A, 0x42 )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.LDA_Immediate.cycles ) )
+        throw RuntimeError( message: "Not implemented" )
     }
-
-    func testImmediate0xFF() throws
+    
+    public class func absoluteX( cpu: CPU ) throws
     {
-        let cpu    = try self.setup( bytes: [ 0xA9, 0xFF ] )
-        let cycles = cpu.cycles
-
-        try cpu.run( instructions: 1 )
-
-        XCTAssertEqual( cpu.registers.A, 0xFF )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.LDA_Immediate.cycles ) )
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
+    public class func zeroPage( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
+    public class func zeroPageX( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
     }
 }

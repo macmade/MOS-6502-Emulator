@@ -22,36 +22,29 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import MOS_6502_Emulator
-import XCTest
+import Foundation
 
-final class Test_Instruction_CLI: Test_Instruction
+/*
+ * INX - ...
+ *
+ * ...
+ *
+ * Flags:
+ *     - Carry Flag:           N/A
+ *     - Zero Flag:            N/A
+ *     - Interrupt Disable:    N/A
+ *     - Decimal Mode:         N/A
+ *     - Break Command:        N/A
+ *     - Overflow Flag:        N/A
+ *     - Negative Flag:        N/A
+ */
+public class INX
 {
-    func test0() throws
+    private init()
+    {}
+    
+    public class func implicit( cpu: CPU ) throws
     {
-        let cpu    = try self.setup( bytes: [ 0x58 ] )
-        let cycles = cpu.cycles
-
-        cpu.registers.PS.remove( .interruptDisable )
-        XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
-
-        try cpu.run( instructions: 1 )
-
-        XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLI_Implicit.cycles ) )
-    }
-
-    func test1() throws
-    {
-        let cpu    = try self.setup( bytes: [ 0x58 ] )
-        let cycles = cpu.cycles
-
-        cpu.registers.PS.insert( .interruptDisable )
-        XCTAssertTrue( cpu.registers.PS.contains( .interruptDisable ) )
-
-        try cpu.run( instructions: 1 )
-
-        XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLI_Implicit.cycles ) )
+        throw RuntimeError( message: "Not implemented" )
     }
 }

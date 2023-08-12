@@ -22,23 +22,32 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Foundation
+import MOS_6502_Emulator
+import XCTest
 
-public class LD
+class Test_Instruction_LDA: Test_Instruction
 {
-    private init()
+    func testAbsolute() throws
     {}
-
-    public class func setStatus( for byte: UInt8, cpu: CPU )
-    {
-        if byte == 0
-        {
-            cpu.registers.PS.insert( .zeroFlag )
-        }
-
-        if byte.bits[ 7 ]
-        {
-            cpu.registers.PS.insert( .negativeFlag )
-        }
-    }
+    
+    func testAbsoluteX() throws
+    {}
+    
+    func testAbsoluteY() throws
+    {}
+    
+    func testImmediate() throws
+    {}
+    
+    func testIndirectX() throws
+    {}
+    
+    func testIndirectY() throws
+    {}
+    
+    func testZeroPage() throws
+    {}
+    
+    func testZeroPageX() throws
+    {}
 }

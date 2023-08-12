@@ -25,9 +25,9 @@
 import Foundation
 
 /*
- * STA - Store Accumulator
+ * STA - ...
  *
- * Stores the contents of the accumulator into memory.
+ * ...
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,40 +42,38 @@ public class STA
 {
     private init()
     {}
-
-    public class func zeroPage( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Not implemented" )
-    }
-
-    public class func zeroPageY( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Not implemented" )
-    }
-
+    
     public class func absolute( cpu: CPU ) throws
     {
-        let address = try cpu.readUInt16FromMemoryAtPC()
-
-        try cpu.writeUInt8ToMemory( cpu.registers.A, at: address )
+        throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func absoluteX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func absoluteY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func indirectX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func indirectY( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
+    public class func zeroPage( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
+    public class func zeroPageY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }

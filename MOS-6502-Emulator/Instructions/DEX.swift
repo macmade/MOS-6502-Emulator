@@ -22,36 +22,29 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import MOS_6502_Emulator
-import XCTest
+import Foundation
 
-final class Test_Instruction_CLD: Test_Instruction
+/*
+ * DEX - ...
+ *
+ * ...
+ *
+ * Flags:
+ *     - Carry Flag:           N/A
+ *     - Zero Flag:            N/A
+ *     - Interrupt Disable:    N/A
+ *     - Decimal Mode:         N/A
+ *     - Break Command:        N/A
+ *     - Overflow Flag:        N/A
+ *     - Negative Flag:        N/A
+ */
+public class DEX
 {
-    func test0() throws
+    private init()
+    {}
+    
+    public class func implicit( cpu: CPU ) throws
     {
-        let cpu    = try self.setup( bytes: [ 0xD8 ] )
-        let cycles = cpu.cycles
-
-        cpu.registers.PS.remove( .decimalMode )
-        XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
-
-        try cpu.run( instructions: 1 )
-
-        XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLD_Implicit.cycles ) )
-    }
-
-    func test1() throws
-    {
-        let cpu    = try self.setup( bytes: [ 0xD8 ] )
-        let cycles = cpu.cycles
-
-        cpu.registers.PS.insert( .decimalMode )
-        XCTAssertTrue( cpu.registers.PS.contains( .decimalMode ) )
-
-        try cpu.run( instructions: 1 )
-
-        XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLD_Implicit.cycles ) )
+        throw RuntimeError( message: "Not implemented" )
     }
 }

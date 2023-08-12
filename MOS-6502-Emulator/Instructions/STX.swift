@@ -25,9 +25,9 @@
 import Foundation
 
 /*
- * STY - Store X Register
+ * STX - ...
  *
- * Stores the contents of the X register into memory.
+ * ...
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,21 +42,19 @@ public class STX
 {
     private init()
     {}
-
+    
+    public class func absolute( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func zeroPageY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
-    }
-
-    public class func absolute( cpu: CPU ) throws
-    {
-        let address = try cpu.readUInt16FromMemoryAtPC()
-
-        try cpu.writeUInt8ToMemory( cpu.registers.X, at: address )
     }
 }

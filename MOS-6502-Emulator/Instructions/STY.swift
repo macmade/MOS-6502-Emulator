@@ -25,9 +25,9 @@
 import Foundation
 
 /*
- * STY - Store Y Register
+ * STY - ...
  *
- * Stores the contents of the Y register into memory.
+ * ...
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,21 +42,19 @@ public class STY
 {
     private init()
     {}
-
+    
+    public class func absolute( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func zeroPageX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
-    }
-
-    public class func absolute( cpu: CPU ) throws
-    {
-        let address = try cpu.readUInt16FromMemoryAtPC()
-
-        try cpu.writeUInt8ToMemory( cpu.registers.Y, at: address )
     }
 }

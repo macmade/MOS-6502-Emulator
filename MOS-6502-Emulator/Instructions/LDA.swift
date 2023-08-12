@@ -25,65 +25,60 @@
 import Foundation
 
 /*
- * LDA - Load Accumulator
+ * LDA - ...
  *
- * Loads a byte of memory into the accumulator setting the zero and negative flags as appropriate.
+ * ...
  *
  * Flags:
  *     - Carry Flag:           N/A
- *     - Zero Flag:            Set if A = 0
+ *     - Zero Flag:            N/A
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        Set if bit 7 of A is set
+ *     - Negative Flag:        N/A
  */
 public class LDA
 {
     private init()
     {}
-
-    public class func immediate( cpu: CPU ) throws
-    {
-        cpu.registers.A = try cpu.readUInt8FromMemoryAtPC()
-
-        LD.setStatus( for: cpu.registers.A, cpu: cpu )
-    }
-
-    public class func zeroPage( cpu: CPU ) throws
-    {
-        let address     = try cpu.readUInt8FromMemoryAtPC()
-        cpu.registers.A = try cpu.readUInt8FromMemory( at: UInt16( address ) )
-
-        LD.setStatus( for: cpu.registers.A, cpu: cpu )
-    }
-
-    public class func zeroPageX( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Not implemented" )
-    }
-
+    
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func absoluteX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func absoluteY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
+    public class func immediate( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
     public class func indirectX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
+    
     public class func indirectY( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
+    public class func zeroPage( cpu: CPU ) throws
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
+    
+    public class func zeroPageX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
