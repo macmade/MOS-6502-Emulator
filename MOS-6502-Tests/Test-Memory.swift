@@ -29,7 +29,7 @@ final class Test_Memory: XCTestCase
 {
     func testInitSizeZero() throws
     {
-        XCTAssertThrowsError( _ = try Memory( size: 0, options: [], initializeTo: 0 ) )
+        XCTAssertThrowsError( _ = try Memory< UInt64 >( size: 0, options: [], initializeTo: 0 ) )
     }
 
     func testInitBufferZero() throws
@@ -41,18 +41,18 @@ final class Test_Memory: XCTestCase
             buffer.deallocate()
         }
 
-        XCTAssertThrowsError( _ = try Memory( buffer: buffer, options: [] ) )
+        XCTAssertThrowsError( _ = try Memory< UInt64 >( buffer: buffer, options: [] ) )
     }
 
     func testInitSizeTooLarge() throws
     {
-        XCTAssertThrowsError( _ = try Memory( size: UInt64( Int.max ) + 1, options: [], initializeTo: 0 ) )
+        XCTAssertThrowsError( _ = try Memory< UInt64 >( size: UInt64( Int.max ) + 1, options: [], initializeTo: 0 ) )
     }
 
     func testInitSize() throws
     {
-        let memory1 = try Memory( size: 1024, options: [], initializeTo: 0 )
-        let memory2 = try Memory( size: 2048, options: [ .wrapAround ], initializeTo: 42 )
+        let memory1 = try Memory< UInt64 >( size: 1024, options: [], initializeTo: 0 )
+        let memory2 = try Memory< UInt64 >( size: 2048, options: [ .wrapAround ], initializeTo: 42 )
 
         XCTAssertEqual( memory1.size, 1024 )
         XCTAssertEqual( memory2.size, 2048 )
@@ -78,8 +78,8 @@ final class Test_Memory: XCTestCase
         buffer1[ 0 ] = 0x01
         buffer2[ 0 ] = 0x42
 
-        let memory1 = try Memory( buffer: buffer1, options: [] )
-        let memory2 = try Memory( buffer: buffer2, options: [ .wrapAround ] )
+        let memory1 = try Memory< UInt64 >( buffer: buffer1, options: [] )
+        let memory2 = try Memory< UInt64 >( buffer: buffer2, options: [ .wrapAround ] )
 
         XCTAssertEqual( memory1.size, 1024 )
         XCTAssertEqual( memory2.size, 2048 )
@@ -104,7 +104,7 @@ final class Test_Memory: XCTestCase
         buffer[ 1 ] = 0x02
         buffer[ 2 ] = 0x03
 
-        let memory = try Memory( buffer: buffer, options: [] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [] )
 
         XCTAssertEqual( try memory.readUInt8( at: 0 ), 0x01 )
         XCTAssertEqual( try memory.readUInt8( at: 1 ), 0x02 )
@@ -122,7 +122,7 @@ final class Test_Memory: XCTestCase
 
         buffer[ 0 ] = 0x01
 
-        let memory = try Memory( buffer: buffer, options: [] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [] )
 
         XCTAssertEqual(       try memory.readUInt8( at: 0 ), 0x01 )
         XCTAssertThrowsError( try memory.readUInt8( at: UInt64( buffer.count ) ) )
@@ -141,7 +141,7 @@ final class Test_Memory: XCTestCase
         buffer[ 1 ] = 0x02
         buffer[ 2 ] = 0x03
 
-        let memory = try Memory( buffer: buffer, options: [ .wrapAround ] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [ .wrapAround ] )
 
         XCTAssertEqual( try memory.readUInt8( at: 0 ), 0x01 )
         XCTAssertEqual( try memory.readUInt8( at: 1 ), 0x02 )
@@ -172,7 +172,7 @@ final class Test_Memory: XCTestCase
         buffer[ 4 ] = 0x03
         buffer[ 5 ] = 0x42
 
-        let memory = try Memory( buffer: buffer, options: [] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [] )
 
         XCTAssertEqual( try memory.readUInt16( at: 0 * 2 ), UInt16( 0x4201 ) )
         XCTAssertEqual( try memory.readUInt16( at: 1 * 2 ), UInt16( 0x4202 ) )
@@ -191,7 +191,7 @@ final class Test_Memory: XCTestCase
         buffer[ 0 ] = 0x001
         buffer[ 1 ] = 0x042
 
-        let memory = try Memory( buffer: buffer, options: [] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [] )
 
         XCTAssertEqual(       try memory.readUInt16( at: 0 * 2 ), UInt16( 0x4201 ) )
         XCTAssertThrowsError( try memory.readUInt16( at: UInt64( buffer.count ) - 1 ) )
@@ -214,7 +214,7 @@ final class Test_Memory: XCTestCase
         buffer[ 4 ] = 0x03
         buffer[ 5 ] = 0x42
 
-        let memory = try Memory( buffer: buffer, options: [ .wrapAround ] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [ .wrapAround ] )
 
         XCTAssertEqual( try memory.readUInt16( at: 0 * 2 ), UInt16( 0x4201 ) )
         XCTAssertEqual( try memory.readUInt16( at: 1 * 2 ), UInt16( 0x4202 ) )
@@ -251,7 +251,7 @@ final class Test_Memory: XCTestCase
         buffer[ 10 ] = 0x43
         buffer[ 11 ] = 0x44
 
-        let memory = try Memory( buffer: buffer, options: [] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [] )
 
         XCTAssertEqual( try memory.readUInt32( at: 0 * 4 ), UInt32( 0x44434201 ) )
         XCTAssertEqual( try memory.readUInt32( at: 1 * 4 ), UInt32( 0x44434202 ) )
@@ -272,7 +272,7 @@ final class Test_Memory: XCTestCase
         buffer[ 2 ] = 0x43
         buffer[ 3 ] = 0x44
 
-        let memory = try Memory( buffer: buffer, options: [] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [] )
 
         XCTAssertEqual(       try memory.readUInt32( at: 0 * 4 ), UInt32( 0x44434201 ) )
         XCTAssertThrowsError( try memory.readUInt32( at: UInt64( buffer.count ) - 1 ) )
@@ -303,7 +303,7 @@ final class Test_Memory: XCTestCase
         buffer[ 10 ] = 0x43
         buffer[ 11 ] = 0x44
 
-        let memory = try Memory( buffer: buffer, options: [ .wrapAround ] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [ .wrapAround ] )
 
         XCTAssertEqual( try memory.readUInt32( at: 0 * 4 ), UInt32( 0x44434201 ) )
         XCTAssertEqual( try memory.readUInt32( at: 1 * 4 ), UInt32( 0x44434202 ) )
@@ -352,7 +352,7 @@ final class Test_Memory: XCTestCase
         buffer[ 22 ] = 0x47
         buffer[ 23 ] = 0x48
 
-        let memory = try Memory( buffer: buffer, options: [] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [] )
 
         XCTAssertEqual( try memory.readUInt64( at: 0 * 8 ), UInt64( 0x4847464544434201 ) )
         XCTAssertEqual( try memory.readUInt64( at: 1 * 8 ), UInt64( 0x4847464544434202 ) )
@@ -377,7 +377,7 @@ final class Test_Memory: XCTestCase
         buffer[ 6 ] = 0x47
         buffer[ 7 ] = 0x48
 
-        let memory = try Memory( buffer: buffer, options: [] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [] )
 
         XCTAssertEqual(       try memory.readUInt64( at: 0 * 8 ), UInt64( 0x4847464544434201 ) )
         XCTAssertThrowsError( try memory.readUInt64( at: UInt64( buffer.count ) - 1 ) )
@@ -424,7 +424,7 @@ final class Test_Memory: XCTestCase
         buffer[ 22 ] = 0x47
         buffer[ 23 ] = 0x48
 
-        let memory = try Memory( buffer: buffer, options: [ .wrapAround ] )
+        let memory = try Memory< UInt64 >( buffer: buffer, options: [ .wrapAround ] )
 
         XCTAssertEqual( try memory.readUInt64( at: 0 * 8 ), UInt64( 0x4847464544434201 ) )
         XCTAssertEqual( try memory.readUInt64( at: 1 * 8 ), UInt64( 0x4847464544434202 ) )
@@ -441,7 +441,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt8() throws
     {
-        let memory = try Memory( size: 3, options: [], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 3, options: [], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt8( at: 0 ), 0 )
         XCTAssertEqual( try memory.readUInt8( at: 1 ), 0 )
@@ -458,7 +458,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt8Overflow() throws
     {
-        let memory = try Memory( size: 1, options: [], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 1, options: [], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt8( at: 0 ), 0 )
 
@@ -470,7 +470,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt8OverflowWrap() throws
     {
-        let memory = try Memory( size: 3, options: [ .wrapAround ], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 3, options: [ .wrapAround ], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt8( at: 0 ), 0 )
         XCTAssertEqual( try memory.readUInt8( at: 1 ), 0 )
@@ -503,7 +503,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt16() throws
     {
-        let memory = try Memory( size: 3 * 2, options: [], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 3 * 2, options: [], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt16( at: 0 * 2 ), 0 )
         XCTAssertEqual( try memory.readUInt16( at: 1 * 2 ), 0 )
@@ -520,7 +520,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt16Overflow() throws
     {
-        let memory = try Memory( size: 1 * 2, options: [], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 1 * 2, options: [], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt16( at: 0 ), 0 )
 
@@ -532,7 +532,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt16OverflowWrap() throws
     {
-        let memory = try Memory( size: 3 * 2, options: [ .wrapAround ], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 3 * 2, options: [ .wrapAround ], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt16( at: 0 * 2 ), 0 )
         XCTAssertEqual( try memory.readUInt16( at: 1 * 2 ), 0 )
@@ -565,7 +565,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt32() throws
     {
-        let memory = try Memory( size: 3 * 4, options: [], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 3 * 4, options: [], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt32( at: 0 * 4 ), 0 )
         XCTAssertEqual( try memory.readUInt32( at: 1 * 4 ), 0 )
@@ -582,7 +582,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt32Overflow() throws
     {
-        let memory = try Memory( size: 1 * 4, options: [], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 1 * 4, options: [], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt32( at: 0 ), 0 )
 
@@ -594,7 +594,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt32OverflowWrap() throws
     {
-        let memory = try Memory( size: 3 * 4, options: [ .wrapAround ], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 3 * 4, options: [ .wrapAround ], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt32( at: 0 * 4 ), 0 )
         XCTAssertEqual( try memory.readUInt32( at: 1 * 4 ), 0 )
@@ -627,7 +627,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt64() throws
     {
-        let memory = try Memory( size: 3 * 8, options: [], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 3 * 8, options: [], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt64( at: 0 * 8 ), 0 )
         XCTAssertEqual( try memory.readUInt64( at: 1 * 8 ), 0 )
@@ -644,7 +644,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt64Overflow() throws
     {
-        let memory = try Memory( size: 1 * 8, options: [], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 1 * 8, options: [], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt64( at: 0 ), 0 )
 
@@ -656,7 +656,7 @@ final class Test_Memory: XCTestCase
 
     func testWriteUInt64OverflowWrap() throws
     {
-        let memory = try Memory( size: 3 * 8, options: [ .wrapAround ], initializeTo: 0 )
+        let memory = try Memory< UInt64 >( size: 3 * 8, options: [ .wrapAround ], initializeTo: 0 )
 
         XCTAssertEqual( try memory.readUInt64( at: 0 * 8 ), 0 )
         XCTAssertEqual( try memory.readUInt64( at: 1 * 8 ), 0 )

@@ -29,12 +29,12 @@ class Test_Instruction: XCTestCase
 {
     func setup( bytes: [ UInt8 ] ) throws -> CPU
     {
-        let memory = try Memory( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 )
+        let memory = try Memory< UInt16 >( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 )
         let origin = UInt16( 0xFF00 )
 
         try bytes.enumerated().forEach
         {
-            try memory.writeUInt8( $0.element, at: UInt64( origin ) + UInt64( $0.offset ) )
+            try memory.writeUInt8( $0.element, at: origin + UInt16( $0.offset ) )
         }
 
         try memory.writeUInt16( origin, at: CPU.resetVector )
