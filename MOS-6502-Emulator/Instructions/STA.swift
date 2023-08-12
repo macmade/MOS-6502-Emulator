@@ -24,16 +24,34 @@
 
 import Foundation
 
+/*
+ * STA - Store Accumulator
+ *
+ * Stores the contents of the accumulator into memory.
+ *
+ * Flags:
+ *     - Carry Flag:           N/A
+ *     - Zero Flag:            N/A
+ *     - Interrupt Disable:    N/A
+ *     - Decimal Mode:         N/A
+ *     - Break Command:        N/A
+ *     - Overflow Flag:        N/A
+ *     - Negative Flag:        N/A
+ */
 public class STA
 {
     private init()
     {}
 
     public class func zeroPage( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func zeroPageY( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func absolute( cpu: CPU ) throws
     {
@@ -43,14 +61,22 @@ public class STA
     }
 
     public class func absoluteX( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func absoluteY( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func indirectX( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func indirectY( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 }

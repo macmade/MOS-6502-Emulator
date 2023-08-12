@@ -24,16 +24,34 @@
 
 import Foundation
 
+/*
+ * STY - Store X Register
+ *
+ * Stores the contents of the X register into memory.
+ *
+ * Flags:
+ *     - Carry Flag:           N/A
+ *     - Zero Flag:            N/A
+ *     - Interrupt Disable:    N/A
+ *     - Decimal Mode:         N/A
+ *     - Break Command:        N/A
+ *     - Overflow Flag:        N/A
+ *     - Negative Flag:        N/A
+ */
 public class STX
 {
     private init()
     {}
 
     public class func zeroPage( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func zeroPageY( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func absolute( cpu: CPU ) throws
     {

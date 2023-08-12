@@ -24,7 +24,27 @@
 
 import Foundation
 
-public func CLI( cpu: CPU ) throws
+/*
+ * CLI - Clear Interrupt Disable
+ *
+ * Clears the interrupt disable flag allowing normal interrupt requests to be serviced.
+ *
+ * Flags:
+ *     - Carry Flag:           N/A
+ *     - Zero Flag:            N/A
+ *     - Interrupt Disable:    Set to 0
+ *     - Decimal Mode:         N/A
+ *     - Break Command:        N/A
+ *     - Overflow Flag:        N/A
+ *     - Negative Flag:        N/A
+ */
+public class CLI
 {
-    cpu.clearFlag( .interruptDisable )
+    private init()
+    {}
+
+    public class func implicit( cpu: CPU ) throws
+    {
+        cpu.clearFlag( .interruptDisable )
+    }
 }

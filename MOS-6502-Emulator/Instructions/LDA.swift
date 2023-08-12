@@ -24,6 +24,20 @@
 
 import Foundation
 
+/*
+ * LDA - Load Accumulator
+ *
+ * Loads a byte of memory into the accumulator setting the zero and negative flags as appropriate.
+ *
+ * Flags:
+ *     - Carry Flag:           N/A
+ *     - Zero Flag:            Set if A = 0
+ *     - Interrupt Disable:    N/A
+ *     - Decimal Mode:         N/A
+ *     - Break Command:        N/A
+ *     - Overflow Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of A is set
+ */
 public class LDA
 {
     private init()
@@ -45,20 +59,32 @@ public class LDA
     }
 
     public class func zeroPageX( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func absolute( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func absoluteX( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func absoluteY( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func indirectX( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func indirectY( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 }

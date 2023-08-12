@@ -103,51 +103,15 @@ open class CPU: CustomStringConvertible
             print( "    \( disassembly )" )
         }
 
-        let instruction = try self.readUInt8FromMemoryAtPC()
+        let opcode = try self.readUInt8FromMemoryAtPC()
 
-        switch instruction
+        if let instruction = Instructions.all.first( where: { $0.opcode == opcode } )
         {
-            case Instructions.CLD.opcode: try CLD( cpu: self )
-            case Instructions.CLI.opcode: try CLI( cpu: self )
-
-            case Instructions.LDA_Immediate.opcode: try LDA.immediate( cpu: self )
-            case Instructions.LDA_ZeroPage.opcode:  try LDA.zeroPage(  cpu: self )
-            case Instructions.LDA_ZeroPageX.opcode: try LDA.zeroPageX( cpu: self )
-            case Instructions.LDA_Absolute.opcode:  try LDA.absolute(  cpu: self )
-            case Instructions.LDA_AbsoluteX.opcode: try LDA.absoluteX( cpu: self )
-            case Instructions.LDA_AbsoluteY.opcode: try LDA.absoluteY( cpu: self )
-            case Instructions.LDA_IndirectX.opcode: try LDA.indirectX( cpu: self )
-            case Instructions.LDA_IndirectY.opcode: try LDA.indirectY( cpu: self )
-
-            case Instructions.LDX_Immediate.opcode: try LDX.immediate( cpu: self )
-            case Instructions.LDX_ZeroPage.opcode:  try LDX.zeroPage(  cpu: self )
-            case Instructions.LDX_ZeroPageY.opcode: try LDX.zeroPageY( cpu: self )
-            case Instructions.LDX_Absolute.opcode:  try LDX.absolute(  cpu: self )
-            case Instructions.LDX_AbsoluteY.opcode: try LDX.absoluteY( cpu: self )
-
-            case Instructions.LDY_Immediate.opcode: try LDY.immediate( cpu: self )
-            case Instructions.LDY_ZeroPage.opcode:  try LDY.zeroPage(  cpu: self )
-            case Instructions.LDY_ZeroPageX.opcode: try LDY.zeroPageX( cpu: self )
-            case Instructions.LDY_Absolute.opcode:  try LDY.absolute(  cpu: self )
-            case Instructions.LDY_AbsoluteX.opcode: try LDY.absoluteX( cpu: self )
-
-            case Instructions.STA_ZeroPage.opcode:  try STA.zeroPage(  cpu: self )
-            case Instructions.STA_ZeroPageY.opcode: try STA.zeroPageY( cpu: self )
-            case Instructions.STA_Absolute.opcode:  try STA.absolute(  cpu: self )
-            case Instructions.STA_AbsoluteX.opcode: try STA.absoluteX( cpu: self )
-            case Instructions.STA_AbsoluteY.opcode: try STA.absoluteY( cpu: self )
-            case Instructions.STA_IndirectX.opcode: try STA.indirectX( cpu: self )
-            case Instructions.STA_IndirectY.opcode: try STA.indirectY( cpu: self )
-
-            case Instructions.STX_ZeroPage.opcode:  try STX.zeroPage(  cpu: self )
-            case Instructions.STX_ZeroPageY.opcode: try STX.zeroPageY( cpu: self )
-            case Instructions.STX_Absolute.opcode:  try STX.absolute(  cpu: self )
-
-            case Instructions.STY_ZeroPage.opcode:  try STY.zeroPage(  cpu: self )
-            case Instructions.STY_ZeroPageX.opcode: try STY.zeroPageX( cpu: self )
-            case Instructions.STY_Absolute.opcode:  try STY.absolute(  cpu: self )
-
-            default: throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
+            try instruction.execute( self )
+        }
+        else
+        {
+            throw RuntimeError( message: "Unhandled instruction: \( opcode.asHex )" )
         }
     }
 

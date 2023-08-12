@@ -105,137 +105,117 @@ open class Disassembler
     open func disassembleNextInstruction() throws -> ( address: UInt64, bytes: [ UInt8 ], disassembly: String )
     {
         let start       = self.offset
-        let instruction = try self.readUInt8()
-        var bytes       = [ instruction ]
+        let opcode      = try self.readUInt8()
+        var bytes       = [ opcode ]
         var disassembly = [ String ]()
 
-        switch instruction
+        guard let instruction = Instructions.all.first( where: { $0.opcode == opcode } )
+        else
         {
-            case Instructions.CLD.opcode:
+            throw RuntimeError( message: "Unhandled instruction: \( opcode.asHex )" )
+        }
 
-                try self.cld( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+        switch instruction.addressingMode
+        {
+            case .implicit:
 
-            case Instructions.CLI.opcode:
+                disassembly.append( instruction.mnemonic )
 
-                try self.cli( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+            case .accumulator:
 
-            case Instructions.LDA_Immediate.opcode,
-                 Instructions.LDA_ZeroPage.opcode,
-                 Instructions.LDA_ZeroPageX.opcode,
-                 Instructions.LDA_Absolute.opcode,
-                 Instructions.LDA_AbsoluteX.opcode,
-                 Instructions.LDA_AbsoluteY.opcode,
-                 Instructions.LDA_IndirectX.opcode,
-                 Instructions.LDA_IndirectY.opcode:
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( "A" )
 
-                try self.lda( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+            case .immediate:
 
-            case Instructions.LDX_Immediate.opcode,
-                 Instructions.LDX_ZeroPage.opcode,
-                 Instructions.LDX_ZeroPageY.opcode,
-                 Instructions.LDX_Absolute.opcode,
-                 Instructions.LDX_AbsoluteY.opcode:
+                let value = try self.readUInt8()
 
-                try self.ldx( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "#$%02X", value ) )
+                bytes.append( value )
 
-            case Instructions.LDY_Immediate.opcode,
-                 Instructions.LDY_ZeroPage.opcode,
-                 Instructions.LDY_ZeroPageX.opcode,
-                 Instructions.LDY_Absolute.opcode,
-                 Instructions.LDY_AbsoluteX.opcode:
+            case .zeroPage:
 
-                try self.ldy( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+                let value = try self.readUInt8()
 
-            case Instructions.STA_ZeroPage.opcode,
-                 Instructions.STA_ZeroPageY.opcode,
-                 Instructions.STA_Absolute.opcode,
-                 Instructions.STA_AbsoluteX.opcode,
-                 Instructions.STA_AbsoluteY.opcode,
-                 Instructions.STA_IndirectX.opcode,
-                 Instructions.STA_IndirectY.opcode:
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "$%02X", value ) )
+                bytes.append( value )
 
-                try self.sta( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+            case .zeroPageX:
 
-            case Instructions.STX_ZeroPage.opcode,
-                 Instructions.STX_ZeroPageY.opcode,
-                 Instructions.STX_Absolute.opcode:
+                let value = try self.readUInt8()
 
-                try self.stx( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "$%02X,X", value ) )
+                bytes.append( value )
 
-            case Instructions.STY_ZeroPage.opcode,
-                 Instructions.STY_ZeroPageX.opcode,
-                 Instructions.STY_Absolute.opcode:
+            case .zeroPageY:
 
-                try self.sty( instruction: instruction, bytes: &bytes, disassembly: &disassembly )
+                let value = try self.readUInt8()
 
-            default:
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "$%02X,Y", value ) )
+                bytes.append( value )
 
-                throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
+            case .relative:
+
+                let value = try self.readUInt8()
+
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "$%02X", value ) )
+                bytes.append( value )
+
+            case .absolute:
+
+                let value = try self.readUInt16()
+
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "$%04X", value ) )
+                bytes.append( contentsOf: value.bytes )
+
+            case .absoluteX:
+
+                let value = try self.readUInt16()
+
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "$%04X,X", value ) )
+                bytes.append( contentsOf: value.bytes )
+
+            case .absoluteY:
+
+                let value = try self.readUInt16()
+
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "$%04X,Y", value ) )
+                bytes.append( contentsOf: value.bytes )
+
+            case .indirect:
+
+                let value = try self.readUInt16()
+
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "($%04X)", value ) )
+                bytes.append( contentsOf: value.bytes )
+
+            case .indirectX:
+
+                let value = try self.readUInt16()
+
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "($%04X,X)", value ) )
+                bytes.append( contentsOf: value.bytes )
+
+            case .indirectY:
+
+                let value = try self.readUInt16()
+
+                disassembly.append( instruction.mnemonic )
+                disassembly.append( String( format: "($%04X),Y", value ) )
+                bytes.append( contentsOf: value.bytes )
         }
 
         return ( start, bytes, disassembly.joined( separator: " " ) )
-    }
-
-    open func cld( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
-    {
-        disassembly.append( "CLD" )
-    }
-
-    open func cli( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
-    {
-        disassembly.append( "CLI" )
-    }
-
-    open func lda( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
-    {
-        throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
-    }
-
-    open func ldx( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
-    {
-        throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
-    }
-
-    open func ldy( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
-    {
-        if instruction == Instructions.LDY_Immediate.opcode
-        {
-            let n = try self.readUInt8()
-
-            bytes.append( n )
-            disassembly.append( "LDY" )
-            disassembly.append( n.asHex )
-        }
-        else
-        {
-            throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
-        }
-    }
-
-    open func sta( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
-    {
-        throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
-    }
-
-    open func stx( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
-    {
-        throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
-    }
-
-    open func sty( instruction: UInt8, bytes: inout [ UInt8 ], disassembly: inout [ String ] ) throws
-    {
-        if instruction == Instructions.STY_Absolute.opcode
-        {
-            let n = try self.readUInt16()
-
-            bytes.append( contentsOf: n.bytes )
-            disassembly.append( "STY" )
-            disassembly.append( n.asHex )
-        }
-        else
-        {
-            throw RuntimeError( message: "Unhandled instruction: \( instruction.asHex )" )
-        }
     }
 
     open func readUInt8() throws -> UInt8

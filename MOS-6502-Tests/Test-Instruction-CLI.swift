@@ -38,7 +38,7 @@ final class Test_Instruction_CLI: Test_Instruction
         try cpu.run( instructions: 1 )
 
         XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLI.cycles ) )
+        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLI_Implicit.cycles ) )
     }
 
     func test1() throws
@@ -52,6 +52,6 @@ final class Test_Instruction_CLI: Test_Instruction
         try cpu.run( instructions: 1 )
 
         XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLI.cycles ) )
+        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLI_Implicit.cycles ) )
     }
 }

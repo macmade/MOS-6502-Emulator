@@ -24,6 +24,20 @@
 
 import Foundation
 
+/*
+ * LDX - Load Y Register
+ *
+ * Loads a byte of memory into the Y register setting the zero and negative flags as appropriate.
+ *
+ * Flags:
+ *     - Carry Flag:           N/A
+ *     - Zero Flag:            Set if Y = 0
+ *     - Interrupt Disable:    N/A
+ *     - Decimal Mode:         N/A
+ *     - Break Command:        N/A
+ *     - Overflow Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of Y is set
+ */
 public class LDY
 {
     private init()
@@ -45,11 +59,17 @@ public class LDY
     }
 
     public class func zeroPageX( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func absolute( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 
     public class func absoluteX( cpu: CPU ) throws
-    {}
+    {
+        throw RuntimeError( message: "Not implemented" )
+    }
 }

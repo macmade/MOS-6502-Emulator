@@ -38,7 +38,7 @@ final class Test_Instruction_CLD: Test_Instruction
         try cpu.run( instructions: 1 )
 
         XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLD.cycles ) )
+        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLD_Implicit.cycles ) )
     }
 
     func test1() throws
@@ -52,6 +52,6 @@ final class Test_Instruction_CLD: Test_Instruction
         try cpu.run( instructions: 1 )
 
         XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLD.cycles ) )
+        XCTAssertEqual( cpu.cycles, cycles + UInt64( Instructions.CLD_Implicit.cycles ) )
     }
 }

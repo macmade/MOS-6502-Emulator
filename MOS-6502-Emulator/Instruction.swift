@@ -24,52 +24,39 @@
 
 import Foundation
 
-/*
- * LDX - Load X Register
- *
- * Loads a byte of memory into the X register setting the zero and negative flags as appropriate.
- *
- * Flags:
- *     - Carry Flag:           N/A
- *     - Zero Flag:            Set if X = 0
- *     - Interrupt Disable:    N/A
- *     - Decimal Mode:         N/A
- *     - Break Command:        N/A
- *     - Overflow Flag:        N/A
- *     - Negative Flag:        Set if bit 7 of X is set
- */
-public class LDX
+open class Instruction
 {
-    private init()
-    {}
-
-    public class func immediate( cpu: CPU ) throws
+    public enum AddressingMode
     {
-        cpu.registers.X = try cpu.readUInt8FromMemoryAtPC()
-
-        LD.setStatus( for: cpu.registers.X, cpu: cpu )
+        case implicit
+        case accumulator
+        case immediate
+        case zeroPage
+        case zeroPageX
+        case zeroPageY
+        case relative
+        case absolute
+        case absoluteX
+        case absoluteY
+        case indirect
+        case indirectX
+        case indirectY
     }
 
-    public class func zeroPage( cpu: CPU ) throws
-    {
-        let address     = try cpu.readUInt8FromMemoryAtPC()
-        cpu.registers.X = try cpu.readUInt8FromMemory( at: UInt64( address ) )
+    public var mnemonic:       String
+    public var opcode:         UInt8
+    public var size:           UInt
+    public var cycles:         UInt
+    public var addressingMode: AddressingMode
+    public var execute:        ( CPU ) throws -> Void
 
-        LD.setStatus( for: cpu.registers.A, cpu: cpu )
-    }
-
-    public class func zeroPageY( cpu: CPU ) throws
+    public init( mnemonic: String, opcode: UInt8, size: UInt, cycles: UInt, addressingMode: AddressingMode, execute: @escaping ( CPU ) throws -> Void )
     {
-        throw RuntimeError( message: "Not implemented" )
-    }
-
-    public class func absolute( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Not implemented" )
-    }
-
-    public class func absoluteY( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Not implemented" )
+        self.mnemonic       = mnemonic
+        self.opcode         = opcode
+        self.size           = size
+        self.cycles         = cycles
+        self.addressingMode = addressingMode
+        self.execute        = execute
     }
 }
