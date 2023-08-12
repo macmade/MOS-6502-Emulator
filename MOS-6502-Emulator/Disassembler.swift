@@ -125,7 +125,6 @@ open class Disassembler
                 case .accumulator:
 
                     disassembly.append( instruction.mnemonic )
-                    disassembly.append( "A" )
 
                 case .immediate:
 
