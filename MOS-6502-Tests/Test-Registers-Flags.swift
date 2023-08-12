@@ -38,14 +38,14 @@ final class Test_Registers_Flags: XCTestCase
     {
         let flags = Registers.Flags( rawValue: 0xFF )
 
-        XCTAssertEqual( flags.description, "CZIDBON" )
+        XCTAssertEqual( flags.description, "CZIDBVN" )
     }
 
     func testDescriptionSome() throws
     {
         let flags = Registers.Flags( [ .carryFlag, .interruptDisable, .overflowFlag, .negativeFlag ] )
 
-        XCTAssertEqual( flags.description, "CION" )
+        XCTAssertEqual( flags.description, "CIVN" )
     }
 
     func testDescriptionCarryFlag() throws
@@ -87,7 +87,7 @@ final class Test_Registers_Flags: XCTestCase
     {
         let flags = Registers.Flags( [ .overflowFlag ] )
 
-        XCTAssertEqual( flags.description, "O" )
+        XCTAssertEqual( flags.description, "V" )
     }
 
     func testDescriptionNegativeFlag() throws

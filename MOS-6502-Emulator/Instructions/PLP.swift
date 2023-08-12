@@ -25,24 +25,27 @@
 import Foundation
 
 /*
- * PLP - ...
+ * PLP - Pull Processor Status
  *
- * ...
+ * Pulls an 8 bit value from the stack and into the processor flags.
+ * The flags will take on new states as determined by the value pulled.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#PLP
  *
  * Flags:
- *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
- *     - Interrupt Disable:    N/A
- *     - Decimal Mode:         N/A
- *     - Break Command:        N/A
- *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Carry Flag:           Set from stack
+ *     - Zero Flag:            Set from stack
+ *     - Interrupt Disable:    Set from stack
+ *     - Decimal Mode:         Set from stack
+ *     - Break Command:        Set from stack
+ *     - Overflow Flag:        Set from stack
+ *     - Negative Flag:        Set from stack
  */
 public class PLP
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

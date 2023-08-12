@@ -25,9 +25,11 @@
 import Foundation
 
 /*
- * STX - ...
+ * STX - Store X Register
  *
- * ...
+ * Stores the contents of the X register into memory.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#STX
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,17 +44,17 @@ public class STX
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPageY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

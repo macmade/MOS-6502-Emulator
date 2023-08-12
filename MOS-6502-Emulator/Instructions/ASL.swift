@@ -25,44 +25,50 @@
 import Foundation
 
 /*
- * ASL - ...
+ * ASL - Arithmetic Shift Left
  *
- * ...
+ * This operation shifts all the bits of the accumulator or memory contents
+ * one bit left. Bit 0 is set to 0 and bit 7 is placed in the carry flag.
+ * The effect of this operation is to multiply the memory contents by 2
+ * (ignoring 2's complement considerations), setting the carry if the result
+ * will not fit in 8 bits.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#ASL
  *
  * Flags:
- *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Carry Flag:           Set to contents of old bit 7
+ *     - Zero Flag:            Set if A = 0
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of the result is set
  */
 public class ASL
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func absoluteX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func accumulator( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPageX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

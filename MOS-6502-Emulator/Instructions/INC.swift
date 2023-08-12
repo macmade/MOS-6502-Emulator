@@ -25,39 +25,42 @@
 import Foundation
 
 /*
- * INC - ...
+ * INC - Increment Memory
  *
- * ...
+ * Adds one to the value held at a specified memory location setting the zero
+ * and negative flags as appropriate.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#INC
  *
  * Flags:
  *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Zero Flag:            Set if result is zero
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of the result is set
  */
 public class INC
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func absoluteX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPageX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

@@ -64,7 +64,7 @@ open class Registers
             if self.contains( .interruptDisable ) { s += "I" }
             if self.contains( .decimalMode      ) { s += "D" }
             if self.contains( .breakCommand     ) { s += "B" }
-            if self.contains( .overflowFlag     ) { s += "O" }
+            if self.contains( .overflowFlag     ) { s += "V" }
             if self.contains( .negativeFlag     ) { s += "N" }
 
             return s

@@ -25,9 +25,11 @@
 import Foundation
 
 /*
- * TXS - ...
+ * TXS - Transfer X to Stack Pointer
  *
- * ...
+ * Copies the current contents of the X register into the stack register.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#TXS
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,7 +44,7 @@ public class TXS
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

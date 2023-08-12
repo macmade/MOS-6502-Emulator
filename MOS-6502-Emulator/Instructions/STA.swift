@@ -25,9 +25,11 @@
 import Foundation
 
 /*
- * STA - ...
+ * STA - Store Accumulator
  *
- * ...
+ * Stores the contents of the accumulator into memory.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#STA
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,37 +44,37 @@ public class STA
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func absoluteX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func absoluteY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func indirectX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func indirectY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPageY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

@@ -25,9 +25,11 @@
 import Foundation
 
 /*
- * PHP - ...
+ * PHP - Push Processor Status
  *
- * ...
+ * Pushes a copy of the status flags on to the stack.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#PHP
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,7 +44,7 @@ public class PHP
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

@@ -25,16 +25,21 @@
 import Foundation
 
 /*
- * BRK - ...
+ * BRK - Force Interrupt
  *
- * ...
+ * The BRK instruction forces the generation of an interrupt request.
+ * The program counter and processor status are pushed on the stack
+ * then the IRQ interrupt vector at $FFFE/F is loaded into the PC and the break
+ * flag in the status set to one.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#BRK
  *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
- *     - Break Command:        N/A
+ *     - Break Command:        Set to 1
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
  */
@@ -42,7 +47,7 @@ public class BRK
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

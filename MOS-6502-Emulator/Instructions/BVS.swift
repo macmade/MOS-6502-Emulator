@@ -25,9 +25,12 @@
 import Foundation
 
 /*
- * BVS - ...
+ * BVS - Branch if Overflow Set
  *
- * ...
+ * If the overflow flag is set then add the relative displacement to the program
+ * counter to cause a branch to a new location.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#BVS
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,10 +45,9 @@ public class BVS
 {
     private init()
     {}
-    
+
     public class func relative( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
 }

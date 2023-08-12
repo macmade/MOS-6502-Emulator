@@ -25,9 +25,11 @@
 import Foundation
 
 /*
- * CLV - ...
+ * CLV - Clear Overflow Flag
  *
- * ...
+ * Clears the overflow flag.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#CLV
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -35,14 +37,14 @@ import Foundation
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
- *     - Overflow Flag:        N/A
+ *     - Overflow Flag:        Set to 0
  *     - Negative Flag:        N/A
  */
 public class CLV
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

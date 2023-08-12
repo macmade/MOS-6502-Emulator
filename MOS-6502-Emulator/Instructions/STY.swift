@@ -25,9 +25,11 @@
 import Foundation
 
 /*
- * STY - ...
+ * STY - Store Y Register
  *
- * ...
+ * Stores the contents of the Y register into memory.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#STY
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,17 +44,17 @@ public class STY
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPageX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

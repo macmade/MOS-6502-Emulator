@@ -25,15 +25,17 @@
 import Foundation
 
 /*
- * SED - ...
+ * SED - Set Decimal Flag
  *
- * ...
+ * Set the decimal mode flag to one.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#SED
  *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
  *     - Interrupt Disable:    N/A
- *     - Decimal Mode:         N/A
+ *     - Decimal Mode:         Set to 1
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
@@ -42,7 +44,7 @@ public class SED
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

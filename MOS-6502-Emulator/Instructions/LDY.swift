@@ -25,44 +25,47 @@
 import Foundation
 
 /*
- * LDY - ...
+ * LDY - Load Y Register
  *
- * ...
+ * Loads a byte of memory into the Y register setting the zero and negative
+ * flags as appropriate.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#LDY
  *
  * Flags:
  *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Zero Flag:            Set if Y = 0
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of Y is set
  */
 public class LDY
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func absoluteX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func immediate( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPageX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

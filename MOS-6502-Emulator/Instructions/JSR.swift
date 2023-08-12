@@ -25,9 +25,12 @@
 import Foundation
 
 /*
- * JSR - ...
+ * JSR - Jump to Subroutine
  *
- * ...
+ * The JSR instruction pushes the address (minus one) of the return point on
+ * to the stack and then sets the program counter to the target memory address.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#JSR
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,7 +45,7 @@ public class JSR
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

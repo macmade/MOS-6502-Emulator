@@ -25,9 +25,12 @@
 import Foundation
 
 /*
- * RTS - ...
+ * RTS - Return from Subroutine
  *
- * ...
+ * The RTS instruction is used at the end of a subroutine to return to the
+ * calling routine. It pulls the program counter (minus one) from the stack.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#RTS
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,7 +45,7 @@ public class RTS
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

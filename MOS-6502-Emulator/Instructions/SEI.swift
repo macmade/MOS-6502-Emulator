@@ -25,14 +25,16 @@
 import Foundation
 
 /*
- * SEI - ...
+ * SEI - Set Interrupt Disable
  *
- * ...
+ * Set the interrupt disable flag to one.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#SEI
  *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
- *     - Interrupt Disable:    N/A
+ *     - Interrupt Disable:    Set to 1
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
@@ -42,7 +44,7 @@ public class SEI
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

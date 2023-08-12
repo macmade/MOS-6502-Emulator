@@ -25,9 +25,11 @@
 import Foundation
 
 /*
- * PHA - ...
+ * PHA - Push Accumulator
  *
- * ...
+ * Pushes a copy of the accumulator on to the stack.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#PHA
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,7 +44,7 @@ public class PHA
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

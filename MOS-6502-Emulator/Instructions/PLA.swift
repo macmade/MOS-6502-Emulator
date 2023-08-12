@@ -25,24 +25,27 @@
 import Foundation
 
 /*
- * PLA - ...
+ * PLA - Pull Accumulator
  *
- * ...
+ * Pulls an 8 bit value from the stack and into the accumulator.
+ * The zero and negative flags are set as appropriate.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#PLA
  *
  * Flags:
  *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Zero Flag:            Set if A = 0
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of A is set
  */
 public class PLA
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

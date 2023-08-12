@@ -25,9 +25,12 @@
 import Foundation
 
 /*
- * NOP - ...
+ * NOP - No Operation
  *
- * ...
+ * The NOP instruction causes no changes to the processor other than the normal
+ * incrementing of the program counter to the next instruction.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#NOP
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,7 +45,7 @@ public class NOP
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

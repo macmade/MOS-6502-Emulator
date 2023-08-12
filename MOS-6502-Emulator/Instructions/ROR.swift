@@ -25,44 +25,48 @@
 import Foundation
 
 /*
- * ROR - ...
+ * ROR - Rotate Right
  *
- * ...
+ * Move each of the bits in either A or M one place to the right.
+ * Bit 7 is filled with the current value of the carry flag whilst the old
+ * bit 0 becomes the new carry flag value.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#ROR
  *
  * Flags:
- *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Carry Flag:           Set to contents of old bit 0
+ *     - Zero Flag:            Set if A = 0
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of the result is set
  */
 public class ROR
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func absoluteX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func accumulator( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPageX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

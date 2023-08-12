@@ -25,34 +25,36 @@
 import Foundation
 
 /*
- * CPY - ...
+ * CPY - Compare Y Register
  *
- * ...
+ * This instruction compares the contents of the Y register with another memory held value and sets the zero and carry flags as appropriate.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#CPY
  *
  * Flags:
- *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Carry Flag:           Set if Y >= M
+ *     - Zero Flag:            Set if Y = M
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of the result is set
  */
 public class CPY
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func immediate( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

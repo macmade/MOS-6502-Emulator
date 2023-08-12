@@ -25,32 +25,36 @@
 import Foundation
 
 /*
- * BIT - ...
+ * BIT - Bit Test
  *
- * ...
+ * This instructions is used to test if one or more bits are set in a target
+ * memory location. The mask pattern in A is ANDed with the value in memory
+ * to set or clear the zero flag, but the result is not kept.
+ * Bits 7 and 6 of the value from memory are copied into the N and V flags.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#BIT
  *
  * Flags:
  *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Zero Flag:            Set if the result if the AND is zero
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
- *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Overflow Flag:        Set to bit 6 of the memory value
+ *     - Negative Flag:        Set to bit 7 of the memory value
  */
 public class BIT
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-
 }

@@ -25,59 +25,64 @@
 import Foundation
 
 /*
- * ADC - ...
+ * ADC - Add with Carry
  *
- * ...
+ * This instruction adds the contents of a memory location to the accumulator
+ * together with the carry bit.
+ * If overflow occurs the carry bit is set, this enables multiple byte addition
+ * to be performed.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#ADC
  *
  * Flags:
- *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Carry Flag:           Set if overflow in bit 7
+ *     - Zero Flag:            Set if A = 0
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
- *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Overflow Flag:        Set if sign bit is incorrect
+ *     - Negative Flag:        Set if bit 7 set
  */
 public class ADC
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func absoluteX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func absoluteY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func immediate( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func indirectX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func indirectY( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPageX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

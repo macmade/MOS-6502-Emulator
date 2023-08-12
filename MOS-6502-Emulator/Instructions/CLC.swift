@@ -25,12 +25,14 @@
 import Foundation
 
 /*
- * CLC - ...
+ * CLC - Clear Carry Flag
  *
- * ...
+ * Set the carry flag to zero.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#CLC
  *
  * Flags:
- *     - Carry Flag:           N/A
+ *     - Carry Flag:           Set to 0
  *     - Zero Flag:            N/A
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
@@ -42,7 +44,7 @@ public class CLC
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

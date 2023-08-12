@@ -25,9 +25,11 @@
 import Foundation
 
 /*
- * JMP - ...
+ * JMP - Jump
  *
- * ...
+ * Sets the program counter to the address specified by the operand.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#JMP
  *
  * Flags:
  *     - Carry Flag:           N/A
@@ -42,12 +44,12 @@ public class JMP
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func indirect( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

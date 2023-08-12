@@ -25,24 +25,27 @@
 import Foundation
 
 /*
- * TAX - ...
+ * TAX -  Transfer Accumulator to X
  *
- * ...
+ * Copies the current contents of the accumulator into the X register and sets
+ * the zero and negative flags as appropriate.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#TAX
  *
  * Flags:
  *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Zero Flag:            Set if X = 0
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of X is set
  */
 public class TAX
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

@@ -25,24 +25,27 @@
 import Foundation
 
 /*
- * RTI - ...
+ * RTI - Return from Interrupt
  *
- * ...
+ * The RTI instruction is used at the end of an interrupt processing routine.
+ * It pulls the processor flags from the stack followed by the program counter.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#RTI
  *
  * Flags:
- *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
- *     - Interrupt Disable:    N/A
- *     - Decimal Mode:         N/A
- *     - Break Command:        N/A
- *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Carry Flag:           Set from stack
+ *     - Zero Flag:            Set from stack
+ *     - Interrupt Disable:    Set from stack
+ *     - Decimal Mode:         Set from stack
+ *     - Break Command:        Set from stack
+ *     - Overflow Flag:        Set from stack
+ *     - Negative Flag:        Set from stack
  */
 public class RTI
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

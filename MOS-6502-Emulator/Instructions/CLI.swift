@@ -25,14 +25,17 @@
 import Foundation
 
 /*
- * CLI - ...
+ * CLI - Clear Interrupt Disable
  *
- * ...
+ * Clears the interrupt disable flag allowing normal interrupt requests
+ * to be serviced.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#CLI
  *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
- *     - Interrupt Disable:    N/A
+ *     - Interrupt Disable:    Set to 0
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A

@@ -25,44 +25,48 @@
 import Foundation
 
 /*
- * LSR - ...
+ * LSR - Logical Shift Right
  *
- * ...
+ * Each of the bits in A or M is shift one place to the right.
+ * The bit that was in bit 0 is shifted into the carry flag.
+ * Bit 7 is set to zero.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#LSR
  *
  * Flags:
- *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Carry Flag:           Set to contents of old bit 0
+ *     - Zero Flag:            Set if result = 0
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of the result is set
  */
 public class LSR
 {
     private init()
     {}
-    
+
     public class func absolute( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func absoluteX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func accumulator( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPage( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
     }
-    
+
     public class func zeroPageX( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

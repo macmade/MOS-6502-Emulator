@@ -25,24 +25,26 @@
 import Foundation
 
 /*
- * INY - ...
+ * INY - Increment Y Register
  *
- * ...
+ * Adds one to the Y register setting the zero and negative flags as appropriate.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#INY
  *
  * Flags:
  *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Zero Flag:            Set if Y is zero
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of Y is set
  */
 public class INY
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

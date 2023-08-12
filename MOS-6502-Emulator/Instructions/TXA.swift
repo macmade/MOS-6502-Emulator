@@ -25,24 +25,27 @@
 import Foundation
 
 /*
- * TXA - ...
+ * TXA - Transfer X to Accumulator
  *
- * ...
+ * Copies the current contents of the X register into the accumulator and sets
+ * the zero and negative flags as appropriate.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#TXA
  *
  * Flags:
  *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
+ *     - Zero Flag:            Set if A = 0
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
+ *     - Negative Flag:        Set if bit 7 of A is set
  */
 public class TXA
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )

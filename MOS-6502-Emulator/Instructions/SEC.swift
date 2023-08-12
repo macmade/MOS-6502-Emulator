@@ -25,12 +25,14 @@
 import Foundation
 
 /*
- * SEC - ...
+ * SEC - Set Carry Flag
  *
- * ...
+ * Set the carry flag to one.
+ *
+ * https://www.nesdev.org/obelisk-6502-guide/reference.html#SEC
  *
  * Flags:
- *     - Carry Flag:           N/A
+ *     - Carry Flag:           Set to 1
  *     - Zero Flag:            N/A
  *     - Interrupt Disable:    N/A
  *     - Decimal Mode:         N/A
@@ -42,7 +44,7 @@ public class SEC
 {
     private init()
     {}
-    
+
     public class func implicit( cpu: CPU ) throws
     {
         throw RuntimeError( message: "Not implemented" )
