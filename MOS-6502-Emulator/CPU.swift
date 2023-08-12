@@ -37,7 +37,9 @@ open class CPU: CustomStringConvertible
     public static let stackStart:    UInt16 = 0x0100
     public static let stackEnd:      UInt16 = 0x01FF
     public static let stackSize:     UInt16 = 0x00FF
+    public static let nmi:           UInt16 = 0xFFFA
     public static let resetVector:   UInt16 = 0xFFFC
+    public static let irq:           UInt16 = 0xFFFE
     public static let totalMemory:   UInt16 = 0xFFFF
 
     public convenience init() throws
