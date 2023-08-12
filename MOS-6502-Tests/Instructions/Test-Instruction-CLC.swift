@@ -27,6 +27,23 @@ import XCTest
 
 class Test_Instruction_CLC: Test_Instruction
 {
-    func testImplicit() throws
-    {}
+    func testImplicit0() throws
+    {
+        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLC_Implicit, operands: [] )
+        {
+            $0.registers.PS.remove( .carryFlag )
+        }
+
+        XCTAssertFalse( cpu.registers.PS.contains( .carryFlag ) )
+    }
+
+    func testImplicit1() throws
+    {
+        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLC_Implicit, operands: [] )
+        {
+            $0.registers.PS.insert( .carryFlag )
+        }
+
+        XCTAssertFalse( cpu.registers.PS.contains( .carryFlag ) )
+    }
 }

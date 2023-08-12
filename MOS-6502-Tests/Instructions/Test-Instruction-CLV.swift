@@ -27,6 +27,23 @@ import XCTest
 
 class Test_Instruction_CLV: Test_Instruction
 {
-    func testImplicit() throws
-    {}
+    func testImplicit0() throws
+    {
+        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLV_Implicit, operands: [] )
+        {
+            $0.registers.PS.remove( .overflowFlag )
+        }
+
+        XCTAssertFalse( cpu.registers.PS.contains( .overflowFlag ) )
+    }
+
+    func testImplicit1() throws
+    {
+        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLV_Implicit, operands: [] )
+        {
+            $0.registers.PS.insert( .overflowFlag )
+        }
+
+        XCTAssertFalse( cpu.registers.PS.contains( .overflowFlag ) )
+    }
 }

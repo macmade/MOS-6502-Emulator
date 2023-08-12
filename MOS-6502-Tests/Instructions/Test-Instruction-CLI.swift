@@ -25,25 +25,25 @@
 import MOS_6502_Emulator
 import XCTest
 
-/*
- * CLI - ...
- *
- * ...
- *
- * Flags:
- *     - Carry Flag:           N/A
- *     - Zero Flag:            N/A
- *     - Interrupt Disable:    N/A
- *     - Decimal Mode:         N/A
- *     - Break Command:        N/A
- *     - Overflow Flag:        N/A
- *     - Negative Flag:        N/A
- */
-public class CLI
+class Test_Instruction_CLI: Test_Instruction
 {
-    private init()
-    {}
+    func testImplicit0() throws
+    {
+        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLI_Implicit, operands: [] )
+        {
+            $0.registers.PS.remove( .interruptDisable )
+        }
 
-    func testImplicit() throws
-    {}
+        XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
+    }
+
+    func testImplicit1() throws
+    {
+        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLI_Implicit, operands: [] )
+        {
+            $0.registers.PS.insert( .interruptDisable )
+        }
+
+        XCTAssertFalse( cpu.registers.PS.contains( .interruptDisable ) )
+    }
 }

@@ -47,6 +47,6 @@ public class CLC
 
     public class func implicit( cpu: CPU ) throws
     {
-        throw RuntimeError( message: "Instruction not implemented" )
+        cpu.clearFlag( .carryFlag )
     }
 }

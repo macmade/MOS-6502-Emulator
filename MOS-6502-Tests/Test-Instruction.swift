@@ -27,21 +27,30 @@ import XCTest
 
 class Test_Instruction: XCTestCase
 {
-    func setup( bytes: [ UInt8 ] ) throws -> CPU
+    func executeSingleInstruction( instruction: Instruction, operands: [ UInt8 ], setup: ( CPU ) throws -> Void ) throws -> CPU
     {
         let memory = try Memory< UInt16 >( size: CPU.requiredMemory, options: [ .wrapAround ], initializeTo: 0 )
         let origin = UInt16( 0xFF00 )
 
-        try bytes.enumerated().forEach
+        XCTAssertNoThrow( try memory.writeUInt8( instruction.opcode, at: origin ) )
+
+        try operands.enumerated().forEach
         {
-            try memory.writeUInt8( $0.element, at: origin + UInt16( $0.offset ) )
+            XCTAssertNoThrow( try memory.writeUInt8( $0.element, at: origin + UInt16( $0.offset ) + 1 ) )
         }
 
-        try memory.writeUInt16( origin, at: CPU.resetVector )
+        XCTAssertNoThrow( try memory.writeUInt16( origin, at: CPU.resetVector ) )
 
         let cpu = try CPU( memory: memory )
 
-        try cpu.reset()
+        XCTAssertNoThrow( try cpu.reset() )
+
+        XCTAssertNoThrow( try setup( cpu ) )
+
+        let cycles = cpu.cycles
+
+        XCTAssertNoThrow( try cpu.run( instructions: 1 ) )
+        XCTAssertEqual( cpu.cycles, cycles + UInt64( instruction.cycles ), "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
 
         return cpu
     }

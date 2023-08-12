@@ -27,6 +27,23 @@ import XCTest
 
 class Test_Instruction_CLD: Test_Instruction
 {
-    func testImplicit() throws
-    {}
+    func testImplicit0() throws
+    {
+        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLD_Implicit, operands: [] )
+        {
+            $0.registers.PS.remove( .decimalMode )
+        }
+
+        XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
+    }
+
+    func testImplicit1() throws
+    {
+        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLD_Implicit, operands: [] )
+        {
+            $0.registers.PS.insert( .decimalMode )
+        }
+
+        XCTAssertFalse( cpu.registers.PS.contains( .decimalMode ) )
+    }
 }
