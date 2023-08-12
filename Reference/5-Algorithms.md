@@ -205,3 +205,117 @@ and is most easily calculated by exclusively ORing against an all ones value.
 The macro library contains reference code for 16 and 32 bit `AND`, `ORA`, `EOR`
 and `NOT` operations although there is very little use for them outside of
 interpreters.
+
+### Shifts & Rotates
+
+The shift and rotate instructions allow the bits within either the accumulator
+or a memory location to be moved by one place either up (left) or down (right).
+When the bits are moved a new value will be needed to fill the vacant position
+created at one end of the value, and similarly the bit displaced at the opposite
+end will need to be caught and stored.
+
+Both shifts and rotates catch the displaced bit in the carry flag but they
+differ in how they fill the vacant position; shifts will always fill the vacant
+bit with a zero whilst a rotate will fill it with the value of the carry flag
+as it was at the start of the instruction.
+
+For example the following diagram shows the result of applying an 'Arithmetic
+Shift Left' (`ASL`) to the value `$4D` to give `$9`A.
+
+                   +---+---+---+---+---+---+---+---+
+    Initial:       | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 1 |
+                   +---+---+---+---+---+---+---+---+
+                     |   |   |   |   |   |   |   |
+                    /   /   /   /   /   /   /   /
+                   /   /   /   /   /   /   /   /    0
+                  /   /   /   /   /   /   /   /   /
+                 /   |   |   |   |   |   |   |   |
+                /    v   v   v   v   v   v   v   v
+                   +---+---+---+---+---+---+---+---+
+    Result:   C=0  | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 0 |
+                   +---+---+---+---+---+---+---+---+
+
+Whist the following shows the result of applying a 'Rotate Left' (`ROL`) to the
+same value, but assuming that the carry contained the value one.
+
+                   +---+---+---+---+---+---+---+---+
+    Initial:       | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | C=1
+                   +---+---+---+---+---+---+---+---+
+                     |   |   |   |   |   |   |   |   /
+                    /   /   /   /   /   /   /   /   /
+                   /   /   /   /   /   /   /   /   /
+                  /   /   /   /   /   /   /   /   /
+                 /   |   |   |   |   |   |   |   |
+                /    v   v   v   v   v   v   v   v
+                   +---+---+---+---+---+---+---+---+
+    Result:   C=0  | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 1 |
+                   +---+---+---+---+---+---+---+---+
+
+Shifting the bits within a value (and introducing a zero as the least
+significant bit) has the effect of multiplying its value by two. In order to
+apply this multiplication to a value larger than a single byte we use `ASL` to
+shift the first byte and then `ROL` all the subsequent bytes as necessary using
+the carry flag to temporarily hold the displaced bits as they are moved from
+one byte to the next.
+
+    ; Shift a 16bit value by one place left (e.g. multiply by two)
+    _ASL16  ASL MEM+0       ; Shift the LSB
+            ROL MEM+1       ; Rotate the MSB
+
+The behavior of the right shift as rotates follows the same pattern. For example
+we can apply a 'Logical Shift Right' (`LSR`) to the value `$4D` to give `$26`.
+
+                   +---+---+---+---+---+---+---+---+
+    Initial:       | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 1 |
+                   +---+---+---+---+---+---+---+---+
+                     |   |   |   |   |   |   |   |
+                      \   \   \   \   \   \   \   \
+                  0    \   \   \   \   \   \   \   \
+                    \   \   \   \   \   \   \   \   \
+                     |   |   |   |   |   |   |   |   \
+                     v   v   v   v   v   v   v   v    \
+                   +---+---+---+---+---+---+---+---+
+    Result:        | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 0 |  C=1
+                   +---+---+---+---+---+---+---+---+
+
+Or a 'Rotate Right' (`ROR`) of the same value, but assuming that the carry
+contained the value one to give `$A6`.
+
+                   +---+---+---+---+---+---+---+---+
+    Initial:   C=1 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 1 |
+                   +---+---+---+---+---+---+---+---+
+                 \   |   |   |   |   |   |   |   |
+                  \   \   \   \   \   \   \   \   \
+                   \   \   \   \   \   \   \   \   \
+                    \   \   \   \   \   \   \   \   \
+                     |   |   |   |   |   |   |   |   \
+                     v   v   v   v   v   v   v   v    \
+                   +---+---+---+---+---+---+---+---+
+    Result:        | 1 | 0 | 1 | 0 | 0 | 1 | 1 | 0 |  C=1
+                   +---+---+---+---+---+---+---+---+
+
+Not surprisingly if left shifts multiply a value by two then right shifts do an
+unsigned division by two. Again if we are applying the division to a multi-byte
+value we will typically use `LSR` on the first byte (the MSB this time) and
+`ROR` on all subsequent bytes.
+
+    ; Shift a 16 bit value by one place right (e.g. divide by two)
+    _LSR16  LSR MEM+1       ; Shift the MSB
+            ROR MEM+0       ; Rotate the LSB
+
+There are a number of applications for shifts and rotates, not least the coding
+of generic multiply and divide algorithms which are discussed later.
+
+As was pointed out earlier right shifting a value two divide it by two only
+works on unsigned values. This is because the `LSR` is will always place a zero
+in the most significant bit of the MSB. To make this algorithm work for all two
+complement coded values we need to ensure that value of this bit is copied back
+into itself to keep the value the same sign. We can use another shift to
+achieve this.
+
+    ; Divide a signed 16 bit value by two
+    _DIV2   LDA MEM+1       ; Load the MSB
+            ASL A           ; Copy the sign bit into C
+            ROR MEM+1       ; And back into the MSB
+            ROR MEM+0       ; Rotate the LSB as normal
+
