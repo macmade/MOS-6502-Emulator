@@ -75,7 +75,7 @@ open class CPU: CustomStringConvertible
         try self.run( instructions: 0 )
     }
 
-    open func run( instructions: UInt ) throws
+    open func run( instructions: Int ) throws
     {
         var n = instructions
 
@@ -83,7 +83,10 @@ open class CPU: CustomStringConvertible
         {
             try self.decodeAndExecuteNextInstruction()
 
-            n -= 1
+            if instructions != 0
+            {
+                n -= 1
+            }
         }
     }
 
