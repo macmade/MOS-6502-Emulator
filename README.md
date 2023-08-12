@@ -20,6 +20,19 @@ A MOS 6502 emulator written in Swift.
   4. [Addressing](https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/4-Addressing.md)
   5. [Algorithms](https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/5-Algorithms.md)
   6. [Reference](https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/6-Reference.md)
+  
+### Useful Links
+
+  - http://www.6502.org/
+  - https://www.c64-wiki.com/
+  - https://www.nesdev.org/obelisk-6502-guide/
+  - https://en.wikibooks.org/wiki/6502_Assembly
+  - http://skilldrick.github.io/easy6502/
+  
+### ROMS
+
+  - http://www.zimmers.net/anonftp/pub/cbm/firmware/computers/c64/
+  - https://mirrors.apple2.org.za/Apple%20II%20Documentation%20Project/Computers/
 
 License
 -------
