@@ -43,3 +43,44 @@ To be safe the algorithms usually start by setting processor flags and registers
 to safe initial values. If you need to squeeze a few extra bytes or cycles out
 of the routine you might be able to remove some of these initializations
 depending on the preceding instructions.
+
+### Simple Memory Operations
+
+Probably the most fundamental memory operation is clearing an area of memory to
+an initial value, such as zero. As the 6502 cannot directly move values to
+memory clearing even a small region of memory requires the use of a register.
+Any of A, X or Y could be used to hold the initial value, but in practice A i
+normally used because it can be quickly saved and restored (with `PHA` and
+`PLA`) leaving X and Y free for application use.
+
+    ; Clearing 16 bits of memory
+    _CLR16  LDA #0          ; Load constant zero into A
+            STA MEM+0       ; Then clear the least significant byte
+            STA MEM+1       ; ... followed by the most significant
+    
+    ; Clearing 32 bits of memory
+    _CLR32  LDA #0          ; Load constant zero into A
+            STA MEM+0       ; Clear from the least significant byte
+            STA MEM+1       ; ... up
+            STA MEM+2       ; ... to
+            STA MEM+3       ; ... the most significant
+
+Moving a small quantity of data requires a register to act as a temporary
+container during the transfer. Again any of A, X, or Y may be used, but as
+before using A as the temporary register is often the most practical.
+
+    ; Moving 16 bits of memory
+    _XFR16  LDA SRC+0       ; Move the least significant byte
+            STA DST+0
+            LDA SRC+1       ; Then the most significant
+            STA DST+1
+    
+    ; Moving 32 bits of memory
+    _XFR32  LDA SRC+0       ; Move from least significant byte
+            STA DST+0
+            LDA SRC+1       ; ... up
+            STA DST+1
+            LDA SRC+2       ; ... to
+            STA DST+2
+            LDA SRC+3       ; ... the most significant
+            STA DST+3
