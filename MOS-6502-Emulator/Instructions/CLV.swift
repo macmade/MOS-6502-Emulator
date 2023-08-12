@@ -29,8 +29,6 @@ import Foundation
  *
  * Clears the overflow flag.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#CLV
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -39,6 +37,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        Set to 0
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#CLV
  */
 public class CLV
 {

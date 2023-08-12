@@ -30,8 +30,6 @@ import Foundation
  * Copies the current contents of the accumulator into the X register and sets
  * the zero and negative flags as appropriate.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#TAX
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            Set if X = 0
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of X is set
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#TAX
  */
 public class TAX
 {

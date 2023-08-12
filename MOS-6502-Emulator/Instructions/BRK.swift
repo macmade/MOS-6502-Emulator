@@ -32,8 +32,6 @@ import Foundation
  * then the IRQ interrupt vector at $FFFE/F is loaded into the PC and the break
  * flag in the status set to one.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#BRK
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -42,6 +40,8 @@ import Foundation
  *     - Break Command:        Set to 1
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#BRK
  */
 public class BRK
 {

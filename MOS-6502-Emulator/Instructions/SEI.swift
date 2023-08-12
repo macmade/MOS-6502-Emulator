@@ -29,8 +29,6 @@ import Foundation
  *
  * Set the interrupt disable flag to one.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#SEI
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -39,6 +37,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#SEI
  */
 public class SEI
 {

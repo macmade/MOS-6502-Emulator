@@ -31,8 +31,6 @@ import Foundation
  * Bit 7 is filled with the current value of the carry flag whilst the old
  * bit 0 becomes the new carry flag value.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#ROR
- *
  * Flags:
  *     - Carry Flag:           Set to contents of old bit 0
  *     - Zero Flag:            Set if A = 0
@@ -41,6 +39,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of the result is set
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#ROR
  */
 public class ROR
 {

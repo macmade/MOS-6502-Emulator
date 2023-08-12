@@ -29,8 +29,6 @@ import Foundation
  *
  * Set the carry flag to one.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#SEC
- *
  * Flags:
  *     - Carry Flag:           Set to 1
  *     - Zero Flag:            N/A
@@ -39,6 +37,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#SEC
  */
 public class SEC
 {

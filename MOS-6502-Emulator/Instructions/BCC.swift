@@ -30,8 +30,6 @@ import Foundation
  * If the carry flag is clear then add the relative displacement to the program
  * counter to cause a branch to a new location.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#BCC
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#BCC
  */
 public class BCC
 {

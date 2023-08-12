@@ -30,8 +30,6 @@ import Foundation
  * The RTS instruction is used at the end of a subroutine to return to the
  * calling routine. It pulls the program counter (minus one) from the stack.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#RTS
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#RTS
  */
 public class RTS
 {

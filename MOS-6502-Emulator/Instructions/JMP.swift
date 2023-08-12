@@ -29,8 +29,6 @@ import Foundation
  *
  * Sets the program counter to the address specified by the operand.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#JMP
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -39,6 +37,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#JMP
  */
 public class JMP
 {

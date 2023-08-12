@@ -30,8 +30,6 @@ import Foundation
  * The NOP instruction causes no changes to the processor other than the normal
  * incrementing of the program counter to the next instruction.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#NOP
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#NOP
  */
 public class NOP
 {

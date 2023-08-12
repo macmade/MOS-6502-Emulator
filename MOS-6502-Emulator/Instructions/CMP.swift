@@ -30,8 +30,6 @@ import Foundation
  * This instruction compares the contents of the accumulator with another
  * memory held value and sets the zero and carry flags as appropriate.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#CMP
- *
  * Flags:
  *     - Carry Flag:           Set if A >= M
  *     - Zero Flag:            Set if A = M
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of the result is set
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#CMP
  */
 public class CMP
 {

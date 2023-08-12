@@ -29,8 +29,6 @@ import Foundation
  *
  * Adds one to the X register setting the zero and negative flags as appropriate.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#INX
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            Set if X is zero
@@ -39,6 +37,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of X is set
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#INX
  */
 public class INX
 {

@@ -32,8 +32,6 @@ import Foundation
  * to set or clear the zero flag, but the result is not kept.
  * Bits 7 and 6 of the value from memory are copied into the N and V flags.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#BIT
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            Set if the result if the AND is zero
@@ -42,6 +40,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        Set to bit 6 of the memory value
  *     - Negative Flag:        Set to bit 7 of the memory value
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#BIT
  */
 public class BIT
 {

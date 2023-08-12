@@ -29,8 +29,6 @@ import Foundation
  *
  * Stores the contents of the X register into memory.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#STX
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -39,6 +37,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#STX
  */
 public class STX
 {

@@ -30,8 +30,6 @@ import Foundation
  * Subtracts one from the value held at a specified memory location setting
  * the zero and negative flags as appropriate.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#DEC
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            Set if result is zero
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of the result is set
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#DEC
  */
 public class DEC
 {

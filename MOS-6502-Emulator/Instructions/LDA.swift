@@ -30,8 +30,6 @@ import Foundation
  * Loads a byte of memory into the accumulator setting the zero and negative
  * flags as appropriate.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#LDA
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            Set if A = 0
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of A is set
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#LDA
  */
 public class LDA
 {

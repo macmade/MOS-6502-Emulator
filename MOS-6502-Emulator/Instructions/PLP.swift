@@ -30,8 +30,6 @@ import Foundation
  * Pulls an 8 bit value from the stack and into the processor flags.
  * The flags will take on new states as determined by the value pulled.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#PLP
- *
  * Flags:
  *     - Carry Flag:           Set from stack
  *     - Zero Flag:            Set from stack
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        Set from stack
  *     - Overflow Flag:        Set from stack
  *     - Negative Flag:        Set from stack
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#PLP
  */
 public class PLP
 {

@@ -29,8 +29,6 @@ import Foundation
  *
  * Pushes a copy of the accumulator on to the stack.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#PHA
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -39,6 +37,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#PHA
  */
 public class PHA
 {

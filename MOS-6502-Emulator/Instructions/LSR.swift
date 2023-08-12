@@ -31,8 +31,6 @@ import Foundation
  * The bit that was in bit 0 is shifted into the carry flag.
  * Bit 7 is set to zero.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#LSR
- *
  * Flags:
  *     - Carry Flag:           Set to contents of old bit 0
  *     - Zero Flag:            Set if result = 0
@@ -41,6 +39,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of the result is set
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#LSR
  */
 public class LSR
 {

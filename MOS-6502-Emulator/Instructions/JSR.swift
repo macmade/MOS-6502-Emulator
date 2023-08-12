@@ -30,8 +30,6 @@ import Foundation
  * The JSR instruction pushes the address (minus one) of the return point on
  * to the stack and then sets the program counter to the target memory address.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#JSR
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            N/A
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#JSR
  */
 public class JSR
 {

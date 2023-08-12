@@ -30,8 +30,6 @@ import Foundation
  * The RTI instruction is used at the end of an interrupt processing routine.
  * It pulls the processor flags from the stack followed by the program counter.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#RTI
- *
  * Flags:
  *     - Carry Flag:           Set from stack
  *     - Zero Flag:            Set from stack
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        Set from stack
  *     - Overflow Flag:        Set from stack
  *     - Negative Flag:        Set from stack
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#RTI
  */
 public class RTI
 {

@@ -33,8 +33,6 @@ import Foundation
  * (ignoring 2's complement considerations), setting the carry if the result
  * will not fit in 8 bits.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#ASL
- *
  * Flags:
  *     - Carry Flag:           Set to contents of old bit 7
  *     - Zero Flag:            Set if A = 0
@@ -43,6 +41,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of the result is set
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#ASL
  */
 public class ASL
 {

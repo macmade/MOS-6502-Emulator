@@ -30,8 +30,6 @@ import Foundation
  * An inclusive OR is performed, bit by bit, on the accumulator contents using
  * the contents of a byte of memory.
  *
- * https://www.nesdev.org/obelisk-6502-guide/reference.html#ORA
- *
  * Flags:
  *     - Carry Flag:           N/A
  *     - Zero Flag:            Set if A = 0
@@ -40,6 +38,8 @@ import Foundation
  *     - Break Command:        N/A
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 set
+ *
+ * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#ORA
  */
 public class ORA
 {
