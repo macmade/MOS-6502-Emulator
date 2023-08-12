@@ -29,7 +29,7 @@ class Test_Instruction_CLV: Test_Instruction
 {
     func testImplicit0() throws
     {
-        _ = try self.executeSingleInstruction(
+        try self.executeSingleInstruction(
             instruction:     Instructions.CLV_Implicit,
             operands:        [],
             inputRegisters:  Registers( A: 0, X: 0, Y: 0, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) ),
@@ -39,7 +39,7 @@ class Test_Instruction_CLV: Test_Instruction
 
     func testImplicit1() throws
     {
-        _ = try self.executeSingleInstruction(
+        try self.executeSingleInstruction(
             instruction:     Instructions.CLV_Implicit,
             operands:        [],
             inputRegisters:  Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 1, N: 1 ) ),
@@ -49,7 +49,7 @@ class Test_Instruction_CLV: Test_Instruction
 
     func testImplicit2() throws
     {
-        _ = try self.executeSingleInstruction(
+        try self.executeSingleInstruction(
             instruction:     Instructions.CLV_Implicit,
             operands:        [],
             inputRegisters:  Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 0, N: 1 ) ),

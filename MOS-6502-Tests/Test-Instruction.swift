@@ -46,6 +46,7 @@ class Test_Instruction: XCTestCase
         var PS: Flags
     }
 
+    @discardableResult
     func executeSingleInstruction( instruction: Instruction, operands: [ UInt8 ], inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU ) throws -> Void )? = nil ) throws -> CPU
     {
         let memory = try Memory< UInt16 >( size: CPU.requiredMemory, options: [ .wrapAround ], initializeTo: 0 )
