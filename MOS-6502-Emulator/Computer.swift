@@ -31,7 +31,7 @@ open class Computer
 
     public init() throws
     {
-        self.memory = try Memory( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 )
+        self.memory = try Memory( size: CPU.requiredMemory, options: [ .wrapAround ], initializeTo: 0 )
         self.cpu    = try CPU( memory: self.memory )
     }
 

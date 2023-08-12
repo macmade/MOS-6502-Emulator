@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class Memory< SizeType > where SizeType: UnsignedInteger
+open class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWidthInteger
 {
     public struct Options: OptionSet
     {
@@ -38,14 +38,21 @@ open class Memory< SizeType > where SizeType: UnsignedInteger
         }
     }
 
-    public private( set ) var size:    SizeType
+    public static var max: UInt64
+    {
+        let max = UInt64( SizeType.max )
+
+        return max < UInt64.max ? max + 1 : max
+    }
+
+    public private( set ) var size:    UInt64
     public private( set ) var options: Options
 
     private var data: UnsafeMutableBufferPointer< UInt8 >
 
-    public init( size: SizeType, options: Options, initializeTo defaultValue: UInt8 ) throws
+    public init( size: UInt64, options: Options, initializeTo defaultValue: UInt8 ) throws
     {
-        if size == 0 || size > Int.max
+        if size == 0 || size > Int.max || ( size > Memory< SizeType >.max )
         {
             throw RuntimeError( message: "Invalid memory size: \( size )" )
         }
@@ -65,7 +72,7 @@ open class Memory< SizeType > where SizeType: UnsignedInteger
         }
 
         self.data    = .allocate( capacity: buffer.count )
-        self.size    = SizeType( buffer.count )
+        self.size    = UInt64( buffer.count )
         self.options = options
 
         _ = self.data.initialize( from: buffer )
@@ -88,7 +95,7 @@ open class Memory< SizeType > where SizeType: UnsignedInteger
         }
         else
         {
-            var offset = address
+            var offset = UInt64( address )
 
             while offset >= self.size
             {

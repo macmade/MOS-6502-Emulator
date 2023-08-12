@@ -31,22 +31,22 @@ open class CPU: CustomStringConvertible
 
     private var memory: Memory< UInt16 >
 
-    public static let zeroPageStart: UInt16 = 0x0000
-    public static let zeroPageEnd:   UInt16 = 0x00FF
-    public static let zeroPageSize:  UInt16 = 0x00FF
-    public static let stackStart:    UInt16 = 0x0100
-    public static let stackEnd:      UInt16 = 0x01FF
-    public static let stackSize:     UInt16 = 0x00FF
-    public static let nmi:           UInt16 = 0xFFFA
-    public static let resetVector:   UInt16 = 0xFFFC
-    public static let irq:           UInt16 = 0xFFFE
-    public static let totalMemory:   UInt16 = 0xFFFF
+    public static let zeroPageStart:  UInt16 = 0x0000
+    public static let zeroPageEnd:    UInt16 = 0x00FF
+    public static let zeroPageSize:   UInt16 = 0x00FF
+    public static let stackStart:     UInt16 = 0x0100
+    public static let stackEnd:       UInt16 = 0x01FF
+    public static let stackSize:      UInt16 = 0x00FF
+    public static let nmi:            UInt16 = 0xFFFA
+    public static let resetVector:    UInt16 = 0xFFFC
+    public static let irq:            UInt16 = 0xFFFE
+    public static let requiredMemory: UInt64 = .init( UInt16.max ) + 1
 
     public init( memory: Memory< UInt16 > ) throws
     {
-        if memory.size < CPU.totalMemory
+        if memory.size < CPU.requiredMemory
         {
-            throw RuntimeError( message: "Invalid memory size: must be at least 64KB" )
+            throw RuntimeError( message: "Invalid memory size: must be \( CPU.requiredMemory ) bytes" )
         }
 
         if memory.options.contains( .wrapAround ) == false

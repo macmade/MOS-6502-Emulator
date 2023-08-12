@@ -46,7 +46,9 @@ final class Test_Memory: XCTestCase
 
     func testInitSizeTooLarge() throws
     {
-        XCTAssertThrowsError( _ = try Memory< UInt64 >( size: UInt64( Int.max ) + 1, options: [], initializeTo: 0 ) )
+        XCTAssertThrowsError( _ = try Memory< UInt64 >( size: UInt64( Int.max    ) + 1, options: [], initializeTo: 0 ) )
+        XCTAssertThrowsError( _ = try Memory< UInt16 >( size: UInt64( UInt16.max ) + 2, options: [], initializeTo: 0 ) )
+        XCTAssertNoThrow(     _ = try Memory< UInt16 >( size: UInt64( UInt16.max ) + 1, options: [], initializeTo: 0 ) )
     }
 
     func testInitSize() throws

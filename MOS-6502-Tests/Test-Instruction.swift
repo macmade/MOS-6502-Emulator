@@ -29,7 +29,7 @@ class Test_Instruction: XCTestCase
 {
     func setup( bytes: [ UInt8 ] ) throws -> CPU
     {
-        let memory = try Memory< UInt16 >( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 )
+        let memory = try Memory< UInt16 >( size: CPU.requiredMemory, options: [ .wrapAround ], initializeTo: 0 )
         let origin = UInt16( 0xFF00 )
 
         try bytes.enumerated().forEach
