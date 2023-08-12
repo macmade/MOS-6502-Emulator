@@ -109,110 +109,111 @@ open class Disassembler
         var bytes       = [ opcode ]
         var disassembly = [ String ]()
 
-        guard let instruction = Instructions.all.first( where: { $0.opcode == opcode } )
+        if let instruction = Instructions.all.first( where: { $0.opcode == opcode } )
+        {
+            switch instruction.addressingMode
+            {
+                case .implicit:
+
+                    disassembly.append( instruction.mnemonic )
+
+                case .accumulator:
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( "A" )
+
+                case .immediate:
+
+                    let value = try self.readUInt8()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "#$%02X", value ) )
+                    bytes.append( value )
+
+                case .zeroPage:
+
+                    let value = try self.readUInt8()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "$%02X", value ) )
+                    bytes.append( value )
+
+                case .zeroPageX:
+
+                    let value = try self.readUInt8()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "$%02X,X", value ) )
+                    bytes.append( value )
+
+                case .zeroPageY:
+
+                    let value = try self.readUInt8()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "$%02X,Y", value ) )
+                    bytes.append( value )
+
+                case .relative:
+
+                    let value = try self.readUInt8()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "$%02X", value ) )
+                    bytes.append( value )
+
+                case .absolute:
+
+                    let value = try self.readUInt16()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "$%04X", value ) )
+                    bytes.append( contentsOf: value.bytes )
+
+                case .absoluteX:
+
+                    let value = try self.readUInt16()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "$%04X,X", value ) )
+                    bytes.append( contentsOf: value.bytes )
+
+                case .absoluteY:
+
+                    let value = try self.readUInt16()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "$%04X,Y", value ) )
+                    bytes.append( contentsOf: value.bytes )
+
+                case .indirect:
+
+                    let value = try self.readUInt16()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "($%04X)", value ) )
+                    bytes.append( contentsOf: value.bytes )
+
+                case .indirectX:
+
+                    let value = try self.readUInt8()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "($%02X,X)", value ) )
+                    bytes.append( value )
+
+                case .indirectY:
+
+                    let value = try self.readUInt16()
+
+                    disassembly.append( instruction.mnemonic )
+                    disassembly.append( String( format: "($%04X),Y", value ) )
+                    bytes.append( contentsOf: value.bytes )
+            }
+        }
         else
         {
-            throw RuntimeError( message: "Unhandled instruction: \( opcode.asHex )" )
-        }
-
-        switch instruction.addressingMode
-        {
-            case .implicit:
-
-                disassembly.append( instruction.mnemonic )
-
-            case .accumulator:
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( "A" )
-
-            case .immediate:
-
-                let value = try self.readUInt8()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "#$%02X", value ) )
-                bytes.append( value )
-
-            case .zeroPage:
-
-                let value = try self.readUInt8()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "$%02X", value ) )
-                bytes.append( value )
-
-            case .zeroPageX:
-
-                let value = try self.readUInt8()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "$%02X,X", value ) )
-                bytes.append( value )
-
-            case .zeroPageY:
-
-                let value = try self.readUInt8()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "$%02X,Y", value ) )
-                bytes.append( value )
-
-            case .relative:
-
-                let value = try self.readUInt8()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "$%02X", value ) )
-                bytes.append( value )
-
-            case .absolute:
-
-                let value = try self.readUInt16()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "$%04X", value ) )
-                bytes.append( contentsOf: value.bytes )
-
-            case .absoluteX:
-
-                let value = try self.readUInt16()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "$%04X,X", value ) )
-                bytes.append( contentsOf: value.bytes )
-
-            case .absoluteY:
-
-                let value = try self.readUInt16()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "$%04X,Y", value ) )
-                bytes.append( contentsOf: value.bytes )
-
-            case .indirect:
-
-                let value = try self.readUInt16()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "($%04X)", value ) )
-                bytes.append( contentsOf: value.bytes )
-
-            case .indirectX:
-
-                let value = try self.readUInt16()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "($%04X,X)", value ) )
-                bytes.append( contentsOf: value.bytes )
-
-            case .indirectY:
-
-                let value = try self.readUInt16()
-
-                disassembly.append( instruction.mnemonic )
-                disassembly.append( String( format: "($%04X),Y", value ) )
-                bytes.append( contentsOf: value.bytes )
+            disassembly.append( "???" )
         }
 
         return ( start, bytes, disassembly.joined( separator: " " ) )
