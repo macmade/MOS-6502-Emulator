@@ -561,3 +561,353 @@ of 256 bytes followed by any remaining fragments of smaller size.
             INY             ; Bump the index and repeat
             BNE _FRAG\?
     _DONE   EQU *           ; All done
+
+### Character Classification
+
+The standard C library provides a set of functions for classifying (e.g. is
+letter, is digit, is ASCII, is upper case, etc.) and modifying (e.g. to upper
+case and to lower case) characters defined in a header called `<ctype.h>`.
+This section describes how a similar set of functions can be coded in 6502
+assembler. There are two techniques that can be applied to solve this problem,
+namely, comparisons or look up tables.
+
+> Note: These functions will be restricted to just the normal ASCII character
+> range `$00-$7F`.
+
+The look up table required to implement character classification needs a byte
+per character. Bits within the look up table indicate how the character is to be
+classified (e.g. control character, printable character, white space, decimal
+digit, hexadecimal digit, punctuation, upper case latter or lower case letter).
+To test a character for a specific classification you load its description byte
+from the table and test for the presence of certain bits (e.g. with `AND`).
+
+    ; Constants describing the role of each classification bit
+    _CTL    EQU $80
+    _PRN    EQU $40
+    _WSP    EQU $20
+    _PCT    EQU $10
+    _UPR    EQU $08
+    _LWR    EQU $04
+    _DGT    EQU $02
+    _HEX    EQU $01
+    
+    ; Test if the character in A is a control character
+    ISCNTRL TAX
+            LDA #_CTL
+            BNE TEST
+    
+    ; Test if the character in A is printable
+    ISPRINT TAX
+            LDA #_PRN
+            BNE TEST
+    
+    ; Test if the character in A is punctation
+    ISPUNCT TAX
+            LDA #_PCT
+            BNE TEST
+    
+    ; Test if the character in A is upper case
+    ISUPPER TAX
+            LDA #_UPR
+            BNE TEST
+    
+    ; Test if the character in A is lower case
+    ISLOWER TAX
+            LDA #_LWR
+            BNE TEST
+    
+    ; Test if the character in A is a letter
+    ISALPHA TAX
+            LDA #_UPR|_LWR
+            BNE TEST
+    
+    ; Test if the character in A is a decimal digit
+    ISDIGIT TAX
+            LDA #_DGT
+            BNE TEST
+    
+    ; Test if the character in A is a hexadecimal digit
+    ISXDIGIT TAX
+             LDA #_HEX
+             BNE TEST
+    
+    ; Test if the character in A is letter or a digit
+    ISALNUM TAX
+            LDA #_DGT|_UPR|_LWR
+    
+    ; Tests for the required bits in the look up table value
+    TEST    AND CTYPE,X
+            BEQ FAIL
+    
+    ; Set the carry flag if any target bits were found
+    PASS    TXA
+            SEC
+            RTS
+    
+    ; Test if the character in A is in the ASCII range $00-$7F
+    ISASCII TAX
+            BPL PASS
+    
+    ; Clear the carry flag if no target bits were found
+    FAIL    TXA
+            CLC
+            RTS
+    
+    ; If A contains a lower case letter convert it to upper case
+    TOUPPER JSR ISLOWER
+            BCC *+4
+            AND #$DF
+            RTS
+    
+    ; If A contains an upper case letter convert it to lower case
+    TOLOWER JSR ISUPPER
+            BCC *+4
+            ORA #$20
+            RTS
+    
+    ; The lookup table of character descriptions
+    CTYPE   DB  _CTL            ; NUL
+            DB  _CTL            ; SOH
+            DB  _CTL            ; STX
+            DB  _CTL            ; ETX
+            DB  _CTL            ; EOT
+            DB  _CTL            ; ENQ
+            DB  _CTL            ; ACK
+            DB  _CTL            ; BEL
+            DB  _CTL            ; BS
+            DB  _CTL|_WSP       ; TAB
+            DB  _CTL|_WSP       ; LF
+            DB  _CTL|_WSP       ; VT
+            DB  _CTL|_WSP       ; FF
+            DB  _CTL|_WSP       ; CR
+            DB  _CTL            ; SO
+            DB  _CTL            ; SI
+            DB  _CTL            ; DLE
+            DB  _CTL            ; DC1
+            DB  _CTL            ; DC2
+            DB  _CTL            ; DC3
+            DB  _CTL            ; DC4
+            DB  _CTL            ; NAK
+            DB  _CTL            ; SYN
+            DB  _CTL            ; ETB
+            DB  _CTL            ; CAN
+            DB  _CTL            ; EM
+            DB  _CTL            ; SUB
+            DB  _CTL            ; ESC
+            DB  _CTL            ; FS
+            DB  _CTL            ; GS
+            DB  _CTL            ; RS
+            DB  _CTL            ; US
+            DB  _PRN|_WSP       ; SPACE
+            DB  _PRN|_PCT       ; !
+            DB  _PRN|_PCT       ; "
+            DB  _PRN|_PCT       ; #
+            DB  _PRN|_PCT       ; $
+            DB  _PRN|_PCT       ; %
+            DB  _PRN|_PCT       ; &
+            DB  _PRN|_PCT       ; '
+            DB  _PRN|_PCT       ; (
+            DB  _PRN|_PCT       ; )
+            DB  _PRN|_PCT       ; *
+            DB  _PRN|_PCT       ; +
+            DB  _PRN|_PCT       ; ,
+            DB  _PRN|_PCT       ; -
+            DB  _PRN|_PCT       ; .
+            DB  _PRN|_PCT       ; /
+            DB  _PRN|_DGT|_HEX  ; 0
+            DB  _PRN|_DGT|_HEX  ; 1
+            DB  _PRN|_DGT|_HEX  ; 2
+            DB  _PRN|_DGT|_HEX  ; 3
+            DB  _PRN|_DGT|_HEX  ; 4
+            DB  _PRN|_DGT|_HEX  ; 5
+            DB  _PRN|_DGT|_HEX  ; 6
+            DB  _PRN|_DGT|_HEX  ; 7
+            DB  _PRN|_DGT|_HEX  ; 8
+            DB  _PRN|_DGT|_HEX  ; 9
+            DB  _PRN|_PCT       ; :
+            DB  _PRN|_PCT       ; ;
+            DB  _PRN|_PCT       ; <
+            DB  _PRN|_PCT       ; =
+            DB  _PRN|_PCT       ; >
+            DB  _PRN|_PCT       ; ?
+            DB  _PRN|_PCT       ; @
+            DB  _PRN|_UPR|_HEX  ; A
+            DB  _PRN|_UPR|_HEX  ; B
+            DB  _PRN|_UPR|_HEX  ; C
+            DB  _PRN|_UPR|_HEX  ; D
+            DB  _PRN|_UPR|_HEX  ; E
+            DB  _PRN|_UPR|_HEX  ; F
+            DB  _PRN|_UPR       ; G
+            DB  _PRN|_UPR       ; H
+            DB  _PRN|_UPR       ; I
+            DB  _PRN|_UPR       ; J
+            DB  _PRN|_UPR       ; K
+            DB  _PRN|_UPR       ; L
+            DB  _PRN|_UPR       ; M
+            DB  _PRN|_UPR       ; N
+            DB  _PRN|_UPR       ; O
+            DB  _PRN|_UPR       ; P
+            DB  _PRN|_UPR       ; Q
+            DB  _PRN|_UPR       ; R
+            DB  _PRN|_UPR       ; S
+            DB  _PRN|_UPR       ; T
+            DB  _PRN|_UPR       ; U
+            DB  _PRN|_UPR       ; V
+            DB  _PRN|_UPR       ; W
+            DB  _PRN|_UPR       ; X
+            DB  _PRN|_UPR       ; Y
+            DB  _PRN|_UPR       ; Z
+            DB  _PRN|_PCT       ; [
+            DB  _PRN|_PCT       ; \
+            DB  _PRN|_PCT       ; ]
+            DB  _PRN|_PCT       ; ^
+            DB  _PRN|_PCT       ; _
+            DB  _PRN|_PCT       ; `
+            DB  _PRN|_LWR|_HEX  ; a
+            DB  _PRN|_LWR|_HEX  ; b
+            DB  _PRN|_LWR|_HEX  ; c
+            DB  _PRN|_LWR|_HEX  ; d
+            DB  _PRN|_LWR|_HEX  ; e
+            DB  _PRN|_LWR|_HEX  ; f
+            DB  _PRN|_LWR       ; g
+            DB  _PRN|_LWR       ; h
+            DB  _PRN|_LWR       ; i
+            DB  _PRN|_LWR       ; j
+            DB  _PRN|_LWR       ; k
+            DB  _PRN|_LWR       ; l
+            DB  _PRN|_LWR       ; m
+            DB  _PRN|_LWR       ; n
+            DB  _PRN|_LWR       ; o
+            DB  _PRN|_LWR       ; p
+            DB  _PRN|_LWR       ; q
+            DB  _PRN|_LWR       ; r
+            DB  _PRN|_LWR       ; s
+            DB  _PRN|_LWR       ; t
+            DB  _PRN|_LWR       ; u
+            DB  _PRN|_LWR       ; v
+            DB  _PRN|_LWR       ; w
+            DB  _PRN|_LWR       ; x
+            DB  _PRN|_LWR       ; y
+            DB  _PRN|_LWR       ; z
+            DB  _PRN|_PCT       ; {
+            DB  _PRN|_PCT       ; |
+            DB  _PRN|_PCT       ; }
+            DB  _PRN|_PCT       ; ~
+            DB  _CTL            ; DEL
+
+If we use comparisons then each function will consist of a number of comparison
+stages to determine if a provided character has an appropriate value. In most
+cases these functions are quite small but one or two of them may involve many
+stages (e.g. is punctuation). The execution time will vary according to the
+number of the tests a character is subjected to. 
+
+    ISUPPER CMP #'A'
+            BCC FAIL
+            CMP #'Z'+1
+            BCS FAIL
+            ; Drop thru here on success
+    
+    ISLOWER CMP #'a'
+            BCC FAIL
+            CMP #'z'+1
+            BCS FAIL
+            ; Drop thru here on success
+    
+    ISALPHA CMP #'A'
+            BCC FAIL
+            CMP #'Z'+1
+            BCC PASS
+            CMP #'a'
+            BCC FAIL
+            CMP #'z'+1
+            BCS FAIL
+    PASS    EQU *
+            ; Drop thru here on success
+
+Which solution is best? As in so many cases it depends on your program. If you
+only need one or two tests and memory size is an issue then the comparison
+approach will generate less code but may be slightly slower (for the complex
+tests), otherwise the look up table is simple and fast.
+
+### Some notes on my macro library
+
+As I said in the introduction to this section all of the algorithms presented
+here are taken from my macro library. Coding simple algorithms like these as
+macros has several advantages over subroutine libraries on the 6502 processor,
+namely:
+
+The assembler adjusts them automatically to zero page or absolute addressing
+depending on the parameters.
+They can be used either inline (for speed) or expanded into subroutines (to save
+space) as needed.
+The same macro can be used several times but customized in each case to suit
+its use at that time.
+The macros can optimize the code they generate under some circumstances
+(e.g. `_XFR16` detects when the source and target addresses are the same and
+does nothing).
+Another feature of the macros is that they will generate code for the 65SC02
+processor using the additional instructions on that processor if the assembler
+defines the correct symbol. (This processor was used in the BBC Microcomputers
+6502 second processor that's why I decided to support it).
+
+The routines in the currently library are:
+
+| Macro Name | Description                                                                     |
+|------------|---------------------------------------------------------------------------------|
+| `_CLR16`   | Clears 16 bits of memory to zero                                                |
+| `_CLR32`   | Clears 32 bits of memory to zero                                                |
+| `_CLR32C`  | Clears 32 bits of memory to zero iteratively                                    |
+| `_XFR16`   | Moves 16 bits of memory                                                         |
+| `_XFR32`   | Moves 32 bits of memory                                                         |
+| `_XFR32C`  | Moves 32 bits of memory iteratively                                             |
+| `_SET16I`  | Load a 16 bit constant into memory                                              |
+| `_NOT16`   | Compute the NOT of a 16 bit value                                               |
+| `_NOT32`   | Compute the NOT of a 32 bit value                                               |
+| `_NOT32C`  | Compute the NOT of a 32 bit value iteratively                                   |
+| `_ORA16`   | Compute the OR of two 16 bit values                                             |
+| `_ORA32`   | Compute the OR of two 32 bit values                                             |
+| `_ORA32C`  | Compute the OR of two 32 bit values iteratively                                 |
+| `_AND16`   | Compute the AND of two 16 bit values                                            |
+| `_AND32`   | Compute the AND of two 32 bit values                                            |
+| `_AND32C`  | Compute the AND of two 32 bit values iteratively                                |
+| `_EOR16`   | Compute the EOR of two 16 bit values                                            |
+| `_EOR32`   | Compute the EOR of two 32 bit values                                            |
+| `_EOR32C`  | Compute the EOR of two 32 bit values iteratively                                |
+| `_ASL16`   | Compute the arithmetic left shift of a 16 bit value                             |
+| `_ASL32`   | Compute the arithmetic left shift of a 32 bit value                             |
+| `_ROL16`   | Compute the left rotation of a 16 bit value                                     |
+| `_ROL32`   | Compute the left rotation of a 32 bit value                                     |
+| `_LSR16`   | Compute the logical right shift of a 16 bit value                               |
+| `_LSR32`   | Compute the logical right shift of a 32 bit value                               |
+| `_ROR16`   | Compute the right rotation of a 16 bit value                                    |
+| `_ROR32`   | Compute the right rotation of a 32 bit value                                    |
+| `_INC16`   | Increment a 16 bit value                                                        |
+| `_INC32`   | Increment a 32 bit value                                                        |
+| `_DEC16`   | Decrement a 16 bit value                                                        |
+| `_DEC32`   | Decrement a 32 bit value                                                        |
+| `_ADD16`   | Add two 16 bit values                                                           |
+| `_ADD32`   | Add two 32 bit values                                                           |
+| `_SUB16`   | Subtract two 16 bit values                                                      |
+| `_SUB32`   | Subtract two 32 bit values                                                      |
+| `_NEG16`   | Negate a 16 bit value                                                           |
+| `_NEG32`   | Negate a 32 bit value                                                           |
+| `_ABS16`   | Compute the absolute value of a 16 bit value                                    |
+| `_ABS32`   | Compute the absolute value of a 32 bit value                                    |
+| `_MUL16`   | Calculate the 16 bit product of two 16 bit values                               |
+| `_MUL16X`  | Calculate the 32 bit product of two 16 bit values                               |
+| `_MUL32`   | Calculate the 32 bit product of two 32 bit values                               |
+| `_MUL16I`  | Generate the code for a 16 bit constant multiply                                |
+| `_DIV16`   | Calculate the 16 bit quotient & remainder of a 16 bit value and 16 bit dividend |
+| `_DIV16X`  | Calculate the 16 bit quotient & remainder of a 32 bit value and 16 bit dividend |
+| `_DIV32`   | Calculate the 32 bit quotient & remainder of a 32 bit value and 32 bit dividend |
+| `_CMP16`   | Compare two 16 bit values                                                       |
+| `_CMP32`   | Compare two 32 bit values                                                       |
+| `_MEMFWD`  | Move a block for memory a forward direction                                     |
+| `_MEMREV`  | Not Implemented                                                                 |
+| `_MEMCPY`  | Not Implemented                                                                 |
+| `_STRLEN`  | Compute the length of a 'C' style string                                        |
+| `_STRCPY`  | Copy a 'C' style string                                                         |
+| `_STRCMP`  | Compare two 'C' style strings                                                   |
+| `_STRNCMP` | Not implemented                                                                 |
+
+Examine the code for more details on the macro parameters and usage.
