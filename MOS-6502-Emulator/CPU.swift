@@ -109,6 +109,13 @@ open class CPU: CustomStringConvertible
         }
     }
 
+    open func setFlag( _ flag: Registers.Flags )
+    {
+        self.registers.PS.insert( flag )
+
+        self.cycles += 1
+    }
+
     open func clearFlag( _ flag: Registers.Flags )
     {
         self.registers.PS.remove( flag )
