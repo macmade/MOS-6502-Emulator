@@ -23,11 +23,17 @@
  ******************************************************************************/
 
 import Foundation
+import MOS_6502_Emulator
 
-open class Apple1BasicROM: ROM
+open class Apple1Basic: ROM
 {
     public init()
     {}
+
+    public var name: String
+    {
+        "Apple 1 BASIC ROM"
+    }
 
     public var origin: UInt16
     {

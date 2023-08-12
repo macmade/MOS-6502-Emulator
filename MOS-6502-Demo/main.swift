@@ -29,7 +29,7 @@ do
 {
     let computer = try Computer()
 
-    try computer.loadROM( Apple1ROM() )
+    try computer.loadROM( Apple1WozMonitor() )
     try computer.start()
 }
 catch

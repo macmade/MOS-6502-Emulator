@@ -23,11 +23,17 @@
  ******************************************************************************/
 
 import Foundation
+import MOS_6502_Emulator
 
-open class Apple1ROM: ROM
+open class Apple1WozMonitor: ROM
 {
     public init()
     {}
+
+    public var name: String
+    {
+        "Apple 1 Woz Monitor ROM"
+    }
 
     public var origin: UInt16
     {

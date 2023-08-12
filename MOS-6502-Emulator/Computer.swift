@@ -58,7 +58,7 @@ open class Computer
 
         try self.memory.writeUInt16( rom.origin, at: CPU.resetVector )
 
-        print( "Loaded ROM at \( rom.origin.asHex ): \( data.count ) bytes" )
+        print( "Loaded \( data.count ) bytes ROM at \( rom.origin.asHex ): \( rom.name )" )
 
         var error:            Error?
         let disassembly     = Disassembler.disassemble( at: rom.origin, from: self.memory, size: UInt16( data.count ), error: &error )

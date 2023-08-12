@@ -26,6 +26,11 @@ import Foundation
 
 public protocol ROM
 {
+    var name: String
+    {
+        get
+    }
+
     var origin: UInt16
     {
         get

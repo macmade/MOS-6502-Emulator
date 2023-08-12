@@ -27,12 +27,10 @@
 		05C3C1F32A86572F00436F6D /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F22A86572F00436F6D /* CLI.swift */; };
 		05C3C1F72A865D5300436F6D /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F62A865D5300436F6D /* Computer.swift */; };
 		05C3C1F92A865D5900436F6D /* ROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F82A865D5900436F6D /* ROM.swift */; };
-		05C3C1FB2A865D6D00436F6D /* Apple1ROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* Apple1ROM.swift */; };
 		05C3C1FF2A8661E800436F6D /* Disassembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FE2A8661E800436F6D /* Disassembler.swift */; };
 		05C3C2012A86798200436F6D /* STA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2002A86798200436F6D /* STA.swift */; };
 		05C3C2032A86798800436F6D /* STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2022A86798800436F6D /* STX.swift */; };
 		05C3C2052A86798D00436F6D /* STY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2042A86798D00436F6D /* STY.swift */; };
-		05C3C2082A867F4600436F6D /* Apple1BasicROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2072A867F4600436F6D /* Apple1BasicROM.swift */; };
 		05C3C20C2A868A6300436F6D /* Test-Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C20B2A868A6300436F6D /* Test-Instruction.swift */; };
 		05C3C2122A87A11D00436F6D /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2112A87A11D00436F6D /* Instruction.swift */; };
 		05C3C2162A87D1B800436F6D /* ADC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2152A87D1B800436F6D /* ADC.swift */; };
@@ -139,6 +137,11 @@
 		05C3C3542A87FADB00436F6D /* Test-Instruction-TAY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C31C2A87FADB00436F6D /* Test-Instruction-TAY.swift */; };
 		05C3C3552A87FADB00436F6D /* Test-Instruction-TSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C31D2A87FADB00436F6D /* Test-Instruction-TSX.swift */; };
 		05C3C3562A87FADB00436F6D /* Test-Instruction-LSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C31E2A87FADB00436F6D /* Test-Instruction-LSR.swift */; };
+		05C3C35F2A88204F00436F6D /* Apple1Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2072A867F4600436F6D /* Apple1Basic.swift */; };
+		05C3C3602A88204F00436F6D /* C64KernalRev1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3592A881FC000436F6D /* C64KernalRev1.swift */; };
+		05C3C3612A88204F00436F6D /* C64KernalRev3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C35D2A88203C00436F6D /* C64KernalRev3.swift */; };
+		05C3C3622A88204F00436F6D /* C64KernalRev2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C35B2A88203500436F6D /* C64KernalRev2.swift */; };
+		05C3C3632A88204F00436F6D /* Apple1WozMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* Apple1WozMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,12 +248,12 @@
 		05C3C1F22A86572F00436F6D /* CLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLI.swift; sourceTree = "<group>"; };
 		05C3C1F62A865D5300436F6D /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 		05C3C1F82A865D5900436F6D /* ROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROM.swift; sourceTree = "<group>"; };
-		05C3C1FA2A865D6D00436F6D /* Apple1ROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1ROM.swift; sourceTree = "<group>"; };
+		05C3C1FA2A865D6D00436F6D /* Apple1WozMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1WozMonitor.swift; sourceTree = "<group>"; };
 		05C3C1FE2A8661E800436F6D /* Disassembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disassembler.swift; sourceTree = "<group>"; };
 		05C3C2002A86798200436F6D /* STA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STA.swift; sourceTree = "<group>"; };
 		05C3C2022A86798800436F6D /* STX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STX.swift; sourceTree = "<group>"; };
 		05C3C2042A86798D00436F6D /* STY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STY.swift; sourceTree = "<group>"; };
-		05C3C2072A867F4600436F6D /* Apple1BasicROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1BasicROM.swift; sourceTree = "<group>"; };
+		05C3C2072A867F4600436F6D /* Apple1Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1Basic.swift; sourceTree = "<group>"; };
 		05C3C20B2A868A6300436F6D /* Test-Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Instruction.swift"; sourceTree = "<group>"; };
 		05C3C2112A87A11D00436F6D /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		05C3C2152A87D1B800436F6D /* ADC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADC.swift; sourceTree = "<group>"; };
@@ -357,6 +360,9 @@
 		05C3C31C2A87FADB00436F6D /* Test-Instruction-TAY.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-TAY.swift"; sourceTree = "<group>"; };
 		05C3C31D2A87FADB00436F6D /* Test-Instruction-TSX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-TSX.swift"; sourceTree = "<group>"; };
 		05C3C31E2A87FADB00436F6D /* Test-Instruction-LSR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-LSR.swift"; sourceTree = "<group>"; };
+		05C3C3592A881FC000436F6D /* C64KernalRev1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C64KernalRev1.swift; sourceTree = "<group>"; };
+		05C3C35B2A88203500436F6D /* C64KernalRev2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C64KernalRev2.swift; sourceTree = "<group>"; };
+		05C3C35D2A88203C00436F6D /* C64KernalRev3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C64KernalRev3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,7 +434,6 @@
 				05C3C1D42A85948500436F6D /* Registers.swift */,
 				05C3C1F82A865D5900436F6D /* ROM.swift */,
 				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
-				05C3C2062A867F2400436F6D /* ROMS */,
 			);
 			path = "MOS-6502-Emulator";
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				05C3C1B22A85708C00436F6D /* main.swift */,
+				05C3C2062A867F2400436F6D /* ROMS */,
 			);
 			path = "MOS-6502-Demo";
 			sourceTree = "<group>";
@@ -670,8 +676,11 @@
 		05C3C2062A867F2400436F6D /* ROMS */ = {
 			isa = PBXGroup;
 			children = (
-				05C3C1FA2A865D6D00436F6D /* Apple1ROM.swift */,
-				05C3C2072A867F4600436F6D /* Apple1BasicROM.swift */,
+				05C3C1FA2A865D6D00436F6D /* Apple1WozMonitor.swift */,
+				05C3C2072A867F4600436F6D /* Apple1Basic.swift */,
+				05C3C3592A881FC000436F6D /* C64KernalRev1.swift */,
+				05C3C35B2A88203500436F6D /* C64KernalRev2.swift */,
+				05C3C35D2A88203C00436F6D /* C64KernalRev3.swift */,
 			);
 			path = ROMS;
 			sourceTree = "<group>";
@@ -862,7 +871,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05C3C1FB2A865D6D00436F6D /* Apple1ROM.swift in Sources */,
 				05C3C2582A87D3C200436F6D /* PLP.swift in Sources */,
 				05C3C2542A87D3AD00436F6D /* PHP.swift in Sources */,
 				05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */,
@@ -924,7 +932,6 @@
 				05C3C2302A87D2A600436F6D /* BVC.swift in Sources */,
 				05C3C26C2A87D45500436F6D /* TAY.swift in Sources */,
 				05C3C2202A87D22600436F6D /* BEQ.swift in Sources */,
-				05C3C2082A867F4600436F6D /* Apple1BasicROM.swift in Sources */,
 				05C3C2722A87D47600436F6D /* TXS.swift in Sources */,
 				05C3C25C2A87D3DD00436F6D /* ROR.swift in Sources */,
 				05C3C2362A87D2D900436F6D /* CPX.swift in Sources */,
@@ -1005,7 +1012,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05C3C3612A88204F00436F6D /* C64KernalRev3.swift in Sources */,
 				05C3C1B32A85708C00436F6D /* main.swift in Sources */,
+				05C3C3622A88204F00436F6D /* C64KernalRev2.swift in Sources */,
+				05C3C35F2A88204F00436F6D /* Apple1Basic.swift in Sources */,
+				05C3C3632A88204F00436F6D /* Apple1WozMonitor.swift in Sources */,
+				05C3C3602A88204F00436F6D /* C64KernalRev1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
