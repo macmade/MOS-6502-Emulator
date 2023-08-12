@@ -363,6 +363,12 @@
 		05C3C3592A881FC000436F6D /* C64KernalRev1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C64KernalRev1.swift; sourceTree = "<group>"; };
 		05C3C35B2A88203500436F6D /* C64KernalRev2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C64KernalRev2.swift; sourceTree = "<group>"; };
 		05C3C35D2A88203C00436F6D /* C64KernalRev3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C64KernalRev3.swift; sourceTree = "<group>"; };
+		05C6D0DB2A883FBE00A984EB /* 5-Algorithms.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "5-Algorithms.md"; sourceTree = "<group>"; };
+		05C6D0DC2A883FBE00A984EB /* 2-Registers.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "2-Registers.md"; sourceTree = "<group>"; };
+		05C6D0DD2A883FBE00A984EB /* 1-Architecture.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "1-Architecture.md"; sourceTree = "<group>"; };
+		05C6D0DE2A883FBE00A984EB /* 3-Instructions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "3-Instructions.md"; sourceTree = "<group>"; };
+		05C6D0DF2A883FBE00A984EB /* 4-Addressing.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "4-Addressing.md"; sourceTree = "<group>"; };
+		05C6D0E02A883FBE00A984EB /* 6-Reference.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "6-Reference.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +404,7 @@
 				05C3C1472A85698100436F6D /* README.md */,
 				05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */,
 				05C3C1492A85698100436F6D /* LICENSE */,
+				05C6D0DA2A883F6600A984EB /* Reference */,
 				05C3C1972A856EA000436F6D /* MOS-6502-Emulator.xctestplan */,
 				05C3C1BB2A85710800436F6D /* MOS-6502-Demo.xctestplan */,
 				05C3C14A2A856AA400436F6D /* .github */,
@@ -746,6 +753,19 @@
 				05C3C3112A87FADB00436F6D /* Test-Instruction-TYA.swift */,
 			);
 			path = Instructions;
+			sourceTree = "<group>";
+		};
+		05C6D0DA2A883F6600A984EB /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				05C6D0DD2A883FBE00A984EB /* 1-Architecture.md */,
+				05C6D0DC2A883FBE00A984EB /* 2-Registers.md */,
+				05C6D0DE2A883FBE00A984EB /* 3-Instructions.md */,
+				05C6D0DF2A883FBE00A984EB /* 4-Addressing.md */,
+				05C6D0DB2A883FBE00A984EB /* 5-Algorithms.md */,
+				05C6D0E02A883FBE00A984EB /* 6-Reference.md */,
+			);
+			path = Reference;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
