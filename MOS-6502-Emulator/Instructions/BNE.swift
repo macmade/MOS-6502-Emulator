@@ -48,6 +48,6 @@ public class BNE
 
     public class func relative( cpu: CPU ) throws
     {
-        throw RuntimeError( message: "Not implemented" )
+        throw RuntimeError( message: "Instruction not implemented" )
     }
 }

@@ -47,11 +47,11 @@ public class JMP
 
     public class func absolute( cpu: CPU ) throws
     {
-        throw RuntimeError( message: "Not implemented" )
+        throw RuntimeError( message: "Instruction not implemented" )
     }
 
     public class func indirect( cpu: CPU ) throws
     {
-        throw RuntimeError( message: "Not implemented" )
+        throw RuntimeError( message: "Instruction not implemented" )
     }
 }

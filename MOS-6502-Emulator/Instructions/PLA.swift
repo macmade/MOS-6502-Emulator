@@ -48,6 +48,6 @@ public class PLA
 
     public class func implicit( cpu: CPU ) throws
     {
-        throw RuntimeError( message: "Not implemented" )
+        throw RuntimeError( message: "Instruction not implemented" )
     }
 }

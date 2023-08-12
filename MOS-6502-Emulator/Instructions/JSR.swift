@@ -48,6 +48,6 @@ public class JSR
 
     public class func absolute( cpu: CPU ) throws
     {
-        throw RuntimeError( message: "Not implemented" )
+        throw RuntimeError( message: "Instruction not implemented" )
     }
 }

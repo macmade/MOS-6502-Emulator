@@ -50,11 +50,11 @@ public class BIT
 
     public class func absolute( cpu: CPU ) throws
     {
-        throw RuntimeError( message: "Not implemented" )
+        throw RuntimeError( message: "Instruction not implemented" )
     }
 
     public class func zeroPage( cpu: CPU ) throws
     {
-        throw RuntimeError( message: "Not implemented" )
+        throw RuntimeError( message: "Instruction not implemented" )
     }
 }
