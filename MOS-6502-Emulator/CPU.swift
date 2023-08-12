@@ -77,13 +77,10 @@ open class CPU: CustomStringConvertible
 
     open func run() throws
     {
-        while true
-        {
-            try self.decodeAndExecuteNextInstruction()
-        }
+        try self.run( instructions: 0 )
     }
 
-    open func run( instructions: UInt = 0 ) throws
+    open func run( instructions: UInt ) throws
     {
         var n = instructions
 
@@ -142,30 +139,32 @@ open class CPU: CustomStringConvertible
 
     open func readUInt8FromMemory( at address: UInt16 ) throws -> UInt8
     {
+        let value    = try self.memory.readUInt8( at: address )
         self.cycles += 1
 
-        return try self.memory.readUInt8( at: address )
+        return value
     }
 
     open func readUInt16FromMemory( at address: UInt16 ) throws -> UInt16
     {
+        let value    = try self.memory.readUInt16( at: address )
         self.cycles += 2
 
-        return try self.memory.readUInt16( at: address )
+        return value
     }
 
     open func writeUInt8ToMemory( _ value: UInt8, at address: UInt16 ) throws
     {
-        self.cycles += 1
-
         try self.memory.writeUInt8( value, at: address )
+
+        self.cycles += 1
     }
 
     open func writeUInt16ToMemory( _ value: UInt16, at address: UInt16 ) throws
     {
-        self.cycles += 2
-
         try self.memory.writeUInt16( value, at: address )
+
+        self.cycles += 2
     }
 
     open var description: String

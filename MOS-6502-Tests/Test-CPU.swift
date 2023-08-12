@@ -27,6 +27,6 @@ import XCTest
 
 final class Test_CPU: XCTestCase
 {
-    func test1() throws
+    func testInit() throws
     {}
 }
