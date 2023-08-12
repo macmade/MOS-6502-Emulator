@@ -42,11 +42,6 @@ open class CPU: CustomStringConvertible
     public static let irq:           UInt16 = 0xFFFE
     public static let totalMemory:   UInt16 = 0xFFFF
 
-    public convenience init() throws
-    {
-        try self.init( memory: try Memory( size: CPU.totalMemory, options: [ .wrapAround ], initializeTo: 0 ) )
-    }
-
     public init( memory: Memory< UInt16 > ) throws
     {
         if memory.size < CPU.totalMemory
