@@ -29,21 +29,31 @@ class Test_Instruction_CLV: Test_Instruction
 {
     func testImplicit0() throws
     {
-        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLV_Implicit, operands: [] )
-        {
-            $0.registers.PS.remove( .overflowFlag )
-        }
-
-        XCTAssertFalse( cpu.registers.PS.contains( .overflowFlag ) )
+        _ = try self.executeSingleInstruction(
+            instruction:     Instructions.CLV_Implicit,
+            operands:        [],
+            inputRegisters:  Registers( A: 0, X: 0, Y: 0, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) ),
+            outputRegisters: Registers( A: 0, X: 0, Y: 0, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) )
+        )
     }
 
     func testImplicit1() throws
     {
-        let cpu = try self.executeSingleInstruction( instruction: Instructions.CLV_Implicit, operands: [] )
-        {
-            $0.registers.PS.insert( .overflowFlag )
-        }
+        _ = try self.executeSingleInstruction(
+            instruction:     Instructions.CLV_Implicit,
+            operands:        [],
+            inputRegisters:  Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 1, N: 1 ) ),
+            outputRegisters: Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 0, N: 1 ) )
+        )
+    }
 
-        XCTAssertFalse( cpu.registers.PS.contains( .overflowFlag ) )
+    func testImplicit2() throws
+    {
+        _ = try self.executeSingleInstruction(
+            instruction:     Instructions.CLV_Implicit,
+            operands:        [],
+            inputRegisters:  Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 0, N: 1 ) ),
+            outputRegisters: Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 0, N: 1 ) )
+        )
     }
 }
