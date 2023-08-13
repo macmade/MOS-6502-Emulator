@@ -24,12 +24,18 @@
 
 import Foundation
 
-public protocol MemoryDevice
+extension Memory: MemoryDevice where SizeType == UInt16
 {
-    func read( at address: UInt16 ) throws -> UInt8
+    public func read( at address: UInt16 ) throws -> UInt8
+    {
+        try self.readUInt8( at: address )
+    }
 }
 
-public protocol WriteableMemoryDevice: MemoryDevice
+extension Memory: WriteableMemoryDevice where SizeType == UInt16
 {
-    func write( _ value: UInt8, at address: UInt16 ) throws
+    public func write( _ value: UInt8, at address: UInt16 ) throws
+    {
+        try self.writeUInt8( value, at: address )
+    }
 }

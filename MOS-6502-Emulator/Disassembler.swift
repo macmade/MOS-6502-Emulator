@@ -26,16 +26,16 @@ import Foundation
 
 open class Disassembler
 {
-    private var source: Either< Memory< UInt16 >, MemoryDevice >
+    private var source: MemoryDevice
     private var offset: UInt64
 
-    private init( source: Either< Memory< UInt16 >, MemoryDevice >, offset: UInt16 )
+    private init( source: MemoryDevice, offset: UInt16 )
     {
         self.source = source
         self.offset = UInt64( offset )
     }
 
-    public class func disassemble( at address: UInt16, from source: Either< Memory< UInt16 >, MemoryDevice >, offset: UInt16, instructions: UInt = 0, comments: [ UInt16: String ] ) throws -> String
+    public class func disassemble( at address: UInt16, from source: MemoryDevice, offset: UInt16, instructions: UInt = 0, comments: [ UInt16: String ] ) throws -> String
     {
         let disassembler = Disassembler( source: source, offset: address )
         var count        = instructions
@@ -51,7 +51,7 @@ open class Disassembler
         return disassembler.format( instructions: disassembly )
     }
 
-    public class func disassemble( at address: UInt16, from source: Either< Memory< UInt16 >, MemoryDevice >, offset: UInt16, size: UInt16, comments: [ UInt16: String ] ) throws -> String
+    public class func disassemble( at address: UInt16, from source: MemoryDevice, offset: UInt16, size: UInt16, comments: [ UInt16: String ] ) throws -> String
     {
         let disassembler = Disassembler( source: source, offset: address )
         var disassembly  = [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String ) ]()
@@ -241,14 +241,7 @@ open class Disassembler
             throw RuntimeError( message: "Offset out of range" )
         }
 
-        let u: UInt8
-
-        switch self.source
-        {
-            case .left(  let memory ): u = try memory.readUInt8( at: UInt16( self.offset ) )
-            case .right( let device ): u = try device.readUInt8( at: UInt16( self.offset ) )
-        }
-
+        let u        = try self.source.read( at: UInt16( self.offset ) )
         self.offset += 1
 
         return u
@@ -261,22 +254,16 @@ open class Disassembler
             throw RuntimeError( message: "Offset out of range" )
         }
 
-        let u: UInt16
-
-        switch self.source
-        {
-            case .left(  let memory ): u = try memory.readUInt16( at: UInt16( self.offset ) )
-            case .right( let device ): u = try device.readUInt16( at: UInt16( self.offset ) )
-        }
-
+        let u1      = UInt16( try self.source.read( at: UInt16( self.offset ) ) )
+        let u2      = UInt16( try self.source.read( at: UInt16( self.offset + 1 ) ) )
         self.offset += 2
 
-        return u
+        return ( u2 << 8 ) | u1
     }
 
     public class func disassembleROM( _ rom: ROM ) throws -> String
     {
-        let disassembly = try Disassembler.disassemble( at: 0, from: .right( rom ), offset: rom.origin, size: UInt16( rom.data.count ), comments: rom.comments )
+        let disassembly = try Disassembler.disassemble( at: 0, from: rom, offset: rom.origin, size: UInt16( rom.data.count ), comments: rom.comments )
 
         return disassembly.components( separatedBy: "\n" ).map { "    \( $0 )" }.joined( separator: "\n" )
     }
