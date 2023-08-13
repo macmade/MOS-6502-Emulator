@@ -70,69 +70,37 @@ Processor Status after use:
 
 See also: [SBC](#SBC)
 
-AND - Logical AND
+### AND - Logical AND
 
-A,Z,N = A&M
+    A,Z,N = A&M
 
-A logical AND is performed, bit by bit, on the accumulator contents using the contents of a byte of memory.
+A logical `AND` is performed, bit by bit, on the accumulator contents using the
+contents of a byte of memory.
 
 Processor Status after use:
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 set
+|   |                   |                              |
+|---|-------------------|------------------------------|
+| C | Carry Flag        | Not affected                 |
+| Z | Zero Flag         | Set if A = 0                 |
+| I | Interrupt Disable | Not affected                 |
+| D | Decimal Mode Flag | Not affected                 |
+| B | Break Command     | Not affected                 |
+| V | Overflow Flag     | Not affected                 |
+| N | Negative Flag     | Set if bit 7 set             |
 
-Addressing Mode
+| Addressing Mode | Opcode | Bytes | Cycles                 |
+|-----------------|--------|-------|------------------------|
+| Immediate       | `$29`  | 2     | 2                      |
+| Zero Page       | `$25`  | 2     | 3                      |
+| Zero Page,X     | `$35`  | 2     | 4                      |
+| Absolute        | `$2D`  | 3     | 4                      |
+| Absolute,X      | `$3D`  | 3     | 4 (+1 if page crossed) |
+| Absolute,Y      | `$39`  | 3     | 4 (+1 if page crossed) |
+| (Indirect,X)    | `$21`  | 2     | 6                      |
+| (Indirect),Y    | `$31`  | 2     | 5 (+1 if page crossed) |
 
-Opcode
-Bytes
-Cycles
-Immediate
-
-$29
-2
-2
-Zero Page
-
-$25
-2
-3
-Zero Page,X
-
-$35
-2
-4
-Absolute
-
-$2D
-3
-4
-Absolute,X
-
-$3D
-3
-4 (+1 if page crossed)
-Absolute,Y
-
-$39
-3
-4 (+1 if page crossed)
-(Indirect,X)
-
-$21
-2
-6
-(Indirect),Y
-
-$31
-2
-5 (+1 if page crossed)
-
-See also: EOR, ORA
+See also: [EOR](#EOR), [ORA](#ORA)
 
 ASL - Arithmetic Shift Left
 
