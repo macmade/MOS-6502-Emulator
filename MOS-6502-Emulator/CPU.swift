@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class CPU
+public class CPU
 {
     public private( set ) var registers      = Registers()
     public private( set ) var cycles: UInt64 = 0
@@ -58,7 +58,7 @@ open class CPU
         try self.mapDevice( memory, at: 0x00, size: UInt16( memory.size ) )
     }
 
-    open func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws
+    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws
     {
         try self.devices.forEach
         {
@@ -74,7 +74,7 @@ open class CPU
         self.devices.append( ( address: address, size: size, device: device ) )
     }
 
-    open func targetForAddress( _ address: UInt16 ) throws -> ( origin: UInt16, address: UInt16, device: MemoryDevice )
+    public func targetForAddress( _ address: UInt16 ) throws -> ( origin: UInt16, address: UInt16, device: MemoryDevice )
     {
         for mapped in self.devices
         {
@@ -87,7 +87,7 @@ open class CPU
         throw RuntimeError( message: "No mapped device for address \( address.asHex )" )
     }
 
-    open func writeableTargetForAddress( _ address: UInt16 ) throws -> ( origin: UInt16, address: UInt16, device: WriteableMemoryDevice )
+    public func writeableTargetForAddress( _ address: UInt16 ) throws -> ( origin: UInt16, address: UInt16, device: WriteableMemoryDevice )
     {
         let mapped = try self.targetForAddress( address )
 
@@ -100,7 +100,7 @@ open class CPU
         return ( origin: mapped.origin, address: mapped.address, device: device )
     }
 
-    open func reset() throws
+    public func reset() throws
     {
         let mapped = try self.targetForAddress( CPU.resetVector )
         let u1     = UInt16( try mapped.device.read( at: mapped.address ) )
@@ -115,12 +115,12 @@ open class CPU
         self.cycles       = 0
     }
 
-    open func run() throws
+    public func run() throws
     {
         try self.run( instructions: 0 )
     }
 
-    open func run( instructions: Int ) throws
+    public func run( instructions: Int ) throws
     {
         var n = instructions
 
@@ -135,7 +135,7 @@ open class CPU
         }
     }
 
-    open func decodeAndExecuteNextInstruction() throws
+    public func decodeAndExecuteNextInstruction() throws
     {
         if let mapped      = try? self.targetForAddress( self.registers.PC ),
            let disassembly = try? Disassembler.disassemble( at: mapped.address, from: mapped.device, offset: mapped.origin, instructions: 1, comments: [ : ] ),
@@ -156,21 +156,21 @@ open class CPU
         }
     }
 
-    open func setFlag( _ flag: Registers.Flags )
+    public func setFlag( _ flag: Registers.Flags )
     {
         self.registers.PS.insert( flag )
 
         self.cycles += 1
     }
 
-    open func clearFlag( _ flag: Registers.Flags )
+    public func clearFlag( _ flag: Registers.Flags )
     {
         self.registers.PS.remove( flag )
 
         self.cycles += 1
     }
 
-    open func readUInt8FromMemoryAtPC() throws -> UInt8
+    public func readUInt8FromMemoryAtPC() throws -> UInt8
     {
         let value          = try self.readUInt8FromMemory( at: self.registers.PC )
         self.registers.PC += 1
@@ -178,7 +178,7 @@ open class CPU
         return value
     }
 
-    open func readUInt16FromMemoryAtPC() throws -> UInt16
+    public func readUInt16FromMemoryAtPC() throws -> UInt16
     {
         let value          = try self.readUInt16FromMemory( at: self.registers.PC )
         self.registers.PC += 2
@@ -186,7 +186,7 @@ open class CPU
         return value
     }
 
-    open func readUInt8FromMemory( at address: UInt16 ) throws -> UInt8
+    public func readUInt8FromMemory( at address: UInt16 ) throws -> UInt8
     {
         let mapped  = try self.targetForAddress( address )
         let value   = try mapped.device.read( at: mapped.address )
@@ -195,7 +195,7 @@ open class CPU
         return value
     }
 
-    open func readUInt16FromMemory( at address: UInt16 ) throws -> UInt16
+    public func readUInt16FromMemory( at address: UInt16 ) throws -> UInt16
     {
         let mapped = try self.targetForAddress( address )
         let u1     = UInt16( try mapped.device.read( at: mapped.address ) )
@@ -206,7 +206,7 @@ open class CPU
         return ( u2 << 8 ) | u1
     }
 
-    open func writeUInt8ToMemory( _ value: UInt8, at address: UInt16 ) throws
+    public func writeUInt8ToMemory( _ value: UInt8, at address: UInt16 ) throws
     {
         let mapped = try self.writeableTargetForAddress( address )
 
@@ -215,7 +215,7 @@ open class CPU
         self.cycles += 1
     }
 
-    open func writeUInt16ToMemory( _ value: UInt16, at address: UInt16 ) throws
+    public func writeUInt16ToMemory( _ value: UInt16, at address: UInt16 ) throws
     {
         let mapped = try self.writeableTargetForAddress( address )
         let u1     = UInt8( value & 0xFF )

@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class Disassembler
+public class Disassembler
 {
     private var source: MemoryDevice
     private var offset: UInt64
@@ -64,7 +64,7 @@ open class Disassembler
         return disassembler.format( instructions: disassembly )
     }
 
-    open func format( instructions: [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String ) ] ) -> String
+    public func format( instructions: [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String ) ] ) -> String
     {
         let maxBytes = instructions.reduce( 0 )
         {
@@ -92,7 +92,7 @@ open class Disassembler
         .joined( separator: "\n" )
     }
 
-    open func disassembleNextInstruction( offset: UInt16, comments: [ UInt16: String ] ) throws -> ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String )
+    public func disassembleNextInstruction( offset: UInt16, comments: [ UInt16: String ] ) throws -> ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String )
     {
         if self.offset > UInt16.max
         {
@@ -234,7 +234,7 @@ open class Disassembler
         return ( start, bytes, disassembly.joined( separator: " " ), comments[ start ] ?? "" )
     }
 
-    open func readUInt8() throws -> UInt8
+    public func readUInt8() throws -> UInt8
     {
         if self.offset > UInt16.max
         {
@@ -247,7 +247,7 @@ open class Disassembler
         return u
     }
 
-    open func readUInt16() throws -> UInt16
+    public func readUInt16() throws -> UInt16
     {
         if self.offset > UInt16.max
         {

@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWidthInteger
+public class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWidthInteger
 {
     public struct Options: OptionSet
     {
@@ -83,7 +83,7 @@ open class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWi
         self.data.deallocate()
     }
 
-    open func offset( for address: SizeType ) throws -> Int
+    public func offset( for address: SizeType ) throws -> Int
     {
         if address < self.size
         {
@@ -106,14 +106,14 @@ open class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWi
         }
     }
 
-    open func readUInt8( at address: SizeType ) throws -> UInt8
+    public func readUInt8( at address: SizeType ) throws -> UInt8
     {
         let offset = try self.offset( for: address )
 
         return self.data[ offset ]
     }
 
-    open func readUInt16( at address: SizeType ) throws -> UInt16
+    public func readUInt16( at address: SizeType ) throws -> UInt16
     {
         let n1 = try UInt16( self.readUInt8( at: address ) )
         let n2 = try UInt16( self.readUInt8( at: address + 1 ) )
@@ -121,7 +121,7 @@ open class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWi
         return ( n2 << 8 ) | n1
     }
 
-    open func readUInt32( at address: SizeType ) throws -> UInt32
+    public func readUInt32( at address: SizeType ) throws -> UInt32
     {
         let n1 = try UInt32( self.readUInt16( at: address ) )
         let n2 = try UInt32( self.readUInt16( at: address + 2 ) )
@@ -129,7 +129,7 @@ open class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWi
         return ( n2 << 16 ) | n1
     }
 
-    open func readUInt64( at address: SizeType ) throws -> UInt64
+    public func readUInt64( at address: SizeType ) throws -> UInt64
     {
         let n1 = try UInt64( self.readUInt32( at: address ) )
         let n2 = try UInt64( self.readUInt32( at: address + 4 ) )
@@ -137,14 +137,14 @@ open class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWi
         return ( n2 << 32 ) | n1
     }
 
-    open func writeUInt8( _ value: UInt8, at address: SizeType ) throws
+    public func writeUInt8( _ value: UInt8, at address: SizeType ) throws
     {
         let offset = try self.offset( for: address )
 
         self.data[ offset ] = value
     }
 
-    open func writeUInt16( _ value: UInt16, at address: SizeType ) throws
+    public func writeUInt16( _ value: UInt16, at address: SizeType ) throws
     {
         let n1 = UInt8( value & 0xFF )
         let n2 = UInt8( ( value >> 8 ) & 0xFF )
@@ -153,7 +153,7 @@ open class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWi
         try self.writeUInt8( n2, at: address + 1 )
     }
 
-    open func writeUInt32( _ value: UInt32, at address: SizeType ) throws
+    public func writeUInt32( _ value: UInt32, at address: SizeType ) throws
     {
         let n1 = UInt16( value & 0xFFFF )
         let n2 = UInt16( ( value >> 16 ) & 0xFFFF )
@@ -162,7 +162,7 @@ open class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWi
         try self.writeUInt16( n2, at: address + 2 )
     }
 
-    open func writeUInt64( _ value: UInt64, at address: SizeType ) throws
+    public func writeUInt64( _ value: UInt64, at address: SizeType ) throws
     {
         let n1 = UInt32( value & 0xFFFFFFFF )
         let n2 = UInt32( ( value >> 32 ) & 0xFFFFFFFF )

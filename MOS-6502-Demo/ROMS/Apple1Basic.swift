@@ -25,7 +25,7 @@
 import Foundation
 import MOS_6502_Emulator
 
-open class Apple1Basic: ROM
+public class Apple1Basic: ROM
 {
     public init()
     {}

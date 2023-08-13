@@ -25,7 +25,7 @@
 import Foundation
 import MOS_6502_Emulator
 
-open class Apple1WozMonitor: ROM
+public class Apple1WozMonitor: ROM
 {
     public init()
     {}

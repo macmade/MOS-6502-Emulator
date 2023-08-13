@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class Computer
+public class Computer
 {
     private var cpu:    CPU
     private var memory: Memory< UInt16 >
@@ -35,7 +35,7 @@ open class Computer
         self.cpu    = try CPU( memory: self.memory )
     }
 
-    open func loadROM( _ rom: ROM ) throws
+    public func loadROM( _ rom: ROM ) throws
     {
         let data = rom.data
 
@@ -61,7 +61,7 @@ open class Computer
         }
     }
 
-    open func start() throws
+    public func start() throws
     {
         print( "Resetting CPU and running..." )
 

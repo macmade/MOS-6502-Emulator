@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class Registers: Equatable
+public class Registers: Equatable
 {
     public var PC: UInt16 // Program Counter
     public var SP: UInt8  // Stack Pointer (256 bytes, 0x0100 to 0x01FF)

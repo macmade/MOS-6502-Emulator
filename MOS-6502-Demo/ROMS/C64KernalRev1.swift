@@ -25,7 +25,7 @@
 import Foundation
 import MOS_6502_Emulator
 
-open class C64KernalRev1: ROM
+public class C64KernalRev1: ROM
 {
     public init()
     {}

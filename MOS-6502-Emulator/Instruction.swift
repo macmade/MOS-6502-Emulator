@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class Instruction
+public class Instruction
 {
     public enum AddressingMode
     {
