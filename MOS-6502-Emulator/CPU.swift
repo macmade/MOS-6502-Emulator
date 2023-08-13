@@ -130,7 +130,10 @@ public class CPU
     {
         InstructionContext
         {
-            try self.readUInt16FromMemoryAtPC()
+            let value          = self.registers.PC
+            self.registers.PC += 1
+
+            return value
         }
     }
 
@@ -156,7 +159,10 @@ public class CPU
 
     private func absoluteContext() throws -> InstructionContext
     {
-        InstructionContext()
+        InstructionContext
+        {
+            try self.readUInt16FromMemoryAtPC()
+        }
     }
 
     private func absoluteXContext() throws -> InstructionContext
@@ -201,6 +207,12 @@ public class CPU
     public func clearFlag( _ flag: Registers.Flags )
     {
         self.registers.PS.remove( flag )
+    }
+
+    public func setZeroAndNegativeFlags( for value: UInt8 )
+    {
+        self.setFlag( value == 0,              for: .zeroFlag )
+        self.setFlag( value & ( 1 << 7 ) != 0, for: .negativeFlag )
     }
 
     public func readUInt8FromMemoryAtPC() throws -> UInt8

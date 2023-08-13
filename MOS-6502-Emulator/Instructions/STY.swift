@@ -42,5 +42,5 @@ import Foundation
  */
 public func STY( cpu: CPU, context: InstructionContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    try cpu.writeUInt8ToMemory( cpu.registers.Y, at: try context.address() )
 }

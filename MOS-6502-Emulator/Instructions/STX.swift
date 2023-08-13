@@ -42,5 +42,5 @@ import Foundation
  */
 public func STX( cpu: CPU, context: InstructionContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    try cpu.writeUInt8ToMemory( cpu.registers.X, at: try context.address() )
 }

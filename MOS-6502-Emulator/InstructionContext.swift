@@ -26,43 +26,62 @@ import Foundation
 
 public class InstructionContext
 {
-    public var value: Either< UInt8, () throws -> UInt16 >
+    private var provider:      Either< UInt8, () throws -> UInt16 >
+    private var cachedAddress: UInt16?
 
     public convenience init()
     {
-        self.init( value: .left( 0 ) )
+        self.init( provider: .left( 0 ) )
     }
 
     public convenience init( value: UInt8 )
     {
-        self.init( value: .left( value ) )
+        self.init( provider: .left( value ) )
     }
 
-    public convenience init( value: @escaping () throws -> UInt16 )
+    public convenience init( readAddress: @escaping () throws -> UInt16 )
     {
-        self.init( value: .right( value ) )
+        self.init( provider: .right( readAddress ) )
     }
 
-    public init( value: Either< UInt8, () throws -> UInt16 > )
+    private init( provider: Either< UInt8, () throws -> UInt16 > )
     {
-        self.value = value
+        self.provider = provider
     }
 
-    public func uint8() -> UInt8
+    public func value() throws -> UInt8
     {
-        switch self.value
+        switch self.provider
         {
-            case .left( let value ): return value
-            case .right:             return 0
+            case .left( let value ):
+
+                return value
+
+            case .right:
+
+                throw RuntimeError( message: "Bad adressing mode" )
         }
     }
 
-    public func uint16() throws -> UInt16
+    public func address() throws -> UInt16
     {
-        switch self.value
+        if let address = self.cachedAddress
         {
-            case .left:               return 0
-            case .right( let value ): return try value()
+            return address
+        }
+
+        switch self.provider
+        {
+            case .left:
+
+                throw RuntimeError( message: "Bad adressing mode" )
+
+            case .right( let readAddress ):
+
+                let address        = try readAddress()
+                self.cachedAddress = address
+
+                return address
         }
     }
 }

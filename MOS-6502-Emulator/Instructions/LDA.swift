@@ -43,5 +43,7 @@ import Foundation
  */
 public func LDA( cpu: CPU, context: InstructionContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.A = try cpu.readUInt8FromMemory( at: try context.address() )
+
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.Y )
 }

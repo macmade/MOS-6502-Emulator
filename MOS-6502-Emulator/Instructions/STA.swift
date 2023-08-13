@@ -42,5 +42,5 @@ import Foundation
  */
 public func STA( cpu: CPU, context: InstructionContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    try cpu.writeUInt8ToMemory( cpu.registers.A, at: try context.address() )
 }

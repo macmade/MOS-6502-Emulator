@@ -43,5 +43,7 @@ import Foundation
  */
 public func LDX( cpu: CPU, context: InstructionContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.X = try cpu.readUInt8FromMemory( at: try context.address() )
+
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.Y )
 }
