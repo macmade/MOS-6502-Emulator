@@ -640,45 +640,29 @@ See also: [CMP](#CMP), [CPX](#CPX)
 
     M,Z,N = M-1
 
-Subtracts one from the value held at a specified memory location setting the zero and negative flags as appropriate.
+Subtracts one from the value held at a specified memory location setting the
+zero and negative flags as appropriate.
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if result is zero
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of the result is set
+|   |                   |                                   |
+|---|-------------------|-----------------------------------|
+| C | Carry Flag        | Not affected                      |
+| Z | Zero Flag         | Set if result is zero             |
+| I | Interrupt Disable | Not affected                      |
+| D | Decimal Mode Flag | Not affected                      |
+| B | Break Command     | Not affected                      |
+| V | Overflow Flag     | Not affected                      |
+| N | Negative Flag     | Set if bit 7 of the result is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Zero Page
+| Zero Page       | `$C6`  | 2     | 5      |
+| Zero Page,X     | `$D6`  | 2     | 6      |
+| Absolute        | `$CE`  | 3     | 6      |
+| Absolute,X      | `$DE`  | 3     | 7      |
 
-$C6
-2
-5
-Zero Page,X
-
-$D6
-2
-6
-Absolute
-
-$CE
-3
-6
-Absolute,X
-
-$DE
-3
-7
-
-See also: DEX, DEY
+See also: [DEX](#DEX), [DEY](#DEY)
 
 ---
 
@@ -688,30 +672,26 @@ See also: DEX, DEY
 
     X,Z,N = X-1
 
-Subtracts one from the X register setting the zero and negative flags as appropriate.
+Subtracts one from the X register setting the zero and negative flags as
+appropriate.
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if X is zero
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of X is set
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if X is zero         |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of X is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
+| Implied         | `$CA`  | 1     | 2      |
 
-$CA
-1
-2
-
-See also: DEC, DEY
+See also: [DEC](#DEC), [DEY](#DEY)
 
 ---
 
@@ -721,30 +701,26 @@ See also: DEC, DEY
 
     Y,Z,N = Y-1
 
-Subtracts one from the Y register setting the zero and negative flags as appropriate.
+Subtracts one from the Y register setting the zero and negative flags as
+appropriate.
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if Y is zero
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of Y is set
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if Y is zero         |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of Y is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
+| Implied         | `$88`  | 1     | 2      |
 
-$88
-1
-2
-
-See also: DEC, DEX
+See also: [DEC](#DEC), [DEX](#DEX)
 
 ---
 
