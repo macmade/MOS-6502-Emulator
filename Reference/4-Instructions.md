@@ -3,10 +3,11 @@ MOS 6502 Reference
 
   - Source: https://www.nesdev.org/obelisk-6502-guide/index.html
   - Author: Andrew Jacobs (BitWise)
+  - Date:   27th March 2009
 
 **Disclaimer**
 
-> Andrew Jacobs unfortunately passed away on 8 January 2021.  
+> Andrew Jacobs unfortunately passed away on 8th January 2021.  
 > His 6502 reference has been archived here for convenience and to ensure the
 > content he created remains available.
 
