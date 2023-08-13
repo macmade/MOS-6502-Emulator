@@ -35,7 +35,7 @@ open class Disassembler
         self.offset = UInt64( offset )
     }
 
-    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, instructions: UInt = 0, comments: [ UInt16: String ], error: inout Error? ) -> String
+    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, instructions: UInt = 0, comments: [ UInt16: String ] ) throws -> String
     {
         let disassembler = Disassembler( memory: memory, offset: address )
         var count        = instructions
@@ -45,38 +45,20 @@ open class Disassembler
         {
             count -= 1
 
-            do
-            {
-                disassembly.append( try disassembler.disassembleNextInstruction( comments: comments ) )
-            }
-            catch let e
-            {
-                error = e
-
-                break
-            }
+            disassembly.append( try disassembler.disassembleNextInstruction( comments: comments ) )
         }
 
         return disassembler.format( instructions: disassembly )
     }
 
-    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, size: UInt16, comments: [ UInt16: String ], error: inout Error? ) -> String
+    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, size: UInt16, comments: [ UInt16: String ] ) throws -> String
     {
         let disassembler = Disassembler( memory: memory, offset: address )
         var disassembly  = [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String ) ]()
 
         while disassembler.offset < UInt64( address ) + UInt64( size )
         {
-            do
-            {
-                disassembly.append( try disassembler.disassembleNextInstruction( comments: comments ) )
-            }
-            catch let e
-            {
-                error = e
-
-                break
-            }
+            disassembly.append( try disassembler.disassembleNextInstruction( comments: comments ) )
         }
 
         return disassembler.format( instructions: disassembly )
@@ -276,5 +258,20 @@ open class Disassembler
         self.offset += 2
 
         return u
+    }
+
+    public class func disassembleROM( _ rom: ROM ) throws -> String
+    {
+        let data   = rom.data
+        let memory = try Memory< UInt16 >( size: UInt64( rom.origin ) + UInt64( data.count ), options: [], initializeTo: 0 )
+
+        try data.enumerated().forEach
+        {
+            try memory.writeUInt8( $0.element, at: rom.origin + UInt16( $0.offset ) )
+        }
+
+        let disassembly = try Disassembler.disassemble( at: rom.origin, from: memory, size: UInt16( data.count ), comments: rom.comments )
+
+        return disassembly.components( separatedBy: "\n" ).map { "    \( $0 )" }.joined( separator: "\n" )
     }
 }

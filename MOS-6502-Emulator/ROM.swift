@@ -24,7 +24,7 @@
 
 import Foundation
 
-public protocol ROM
+public protocol ROM: MemoryDevice
 {
     var name: String
     {
@@ -44,5 +44,31 @@ public protocol ROM
     var data: Data
     {
         get
+    }
+}
+
+public extension ROM
+{
+    func readUInt8( at address: UInt16 ) throws -> UInt8
+    {
+        if address >= self.data.count
+        {
+            throw RuntimeError( message: "Address out of bounds: \( address.asHex )" )
+        }
+
+        return self.data[ Int( address ) ]
+    }
+
+    func readUInt16( at address: UInt16 ) throws -> UInt16
+    {
+        if address >= self.data.count
+        {
+            throw RuntimeError( message: "Address out of bounds: \( address.asHex )" )
+        }
+
+        let n1 = UInt16( try self.readUInt8( at: address ) )
+        let n2 = UInt16( try self.readUInt8( at: address + 1 ) )
+
+        return ( n2 << 8 ) | n1
     }
 }

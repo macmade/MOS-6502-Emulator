@@ -142,6 +142,7 @@
 		05C3C3612A88204F00436F6D /* C64KernalRev3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C35D2A88203C00436F6D /* C64KernalRev3.swift */; };
 		05C3C3622A88204F00436F6D /* C64KernalRev2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C35B2A88203500436F6D /* C64KernalRev2.swift */; };
 		05C3C3632A88204F00436F6D /* Apple1WozMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* Apple1WozMonitor.swift */; };
+		05C6D0E52A88DE3400A984EB /* MemoryDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,6 +373,7 @@
 		05C6D0E12A8854EF00A984EB /* 8-Downloads.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "8-Downloads.md"; sourceTree = "<group>"; };
 		05C6D0E22A8854EF00A984EB /* 1-Introduction.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "1-Introduction.md"; sourceTree = "<group>"; };
 		05C6D0E32A8854EF00A984EB /* 9-Links.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "9-Links.md"; sourceTree = "<group>"; };
+		05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDevice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,6 +443,7 @@
 				05C3C1D62A85A43A00436F6D /* Instructions.swift */,
 				05C3C2112A87A11D00436F6D /* Instruction.swift */,
 				05C3C1A62A85700100436F6D /* Memory.swift */,
+				05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */,
 				05C3C1D42A85948500436F6D /* Registers.swift */,
 				05C3C1F82A865D5900436F6D /* ROM.swift */,
 				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
@@ -898,6 +901,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05C3C2582A87D3C200436F6D /* PLP.swift in Sources */,
+				05C6D0E52A88DE3400A984EB /* MemoryDevice.swift in Sources */,
 				05C3C2542A87D3AD00436F6D /* PHP.swift in Sources */,
 				05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */,
 				05C3C2462A87D35500436F6D /* INY.swift in Sources */,

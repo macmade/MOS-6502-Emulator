@@ -29,7 +29,8 @@ open class CPU: CustomStringConvertible
     public private( set ) var registers      = Registers()
     public private( set ) var cycles: UInt64 = 0
 
-    private var memory: Memory< UInt16 >
+    private var memory:  Memory< UInt16 >
+    private var devices: [ ( address: UInt16, size: UInt16, device: MemoryDevice ) ] = []
 
     public static let zeroPageStart:  UInt16 = 0x0000
     public static let zeroPageEnd:    UInt16 = 0x00FF
@@ -40,19 +41,20 @@ open class CPU: CustomStringConvertible
     public static let nmi:            UInt16 = 0xFFFA
     public static let resetVector:    UInt16 = 0xFFFC
     public static let irq:            UInt16 = 0xFFFE
-    public static let requiredMemory: UInt64 = .init( UInt16.max ) + 1
+    public static let requiredMemory: UInt64 = 512
 
     public init( memory: Memory< UInt16 > ) throws
     {
         if memory.size < CPU.requiredMemory
         {
-            throw RuntimeError( message: "Invalid memory size: must be \( CPU.requiredMemory ) bytes" )
+            throw RuntimeError( message: "Invalid memory size: must be at least \( CPU.requiredMemory ) bytes" )
         }
 
         self.memory = memory
-
-        try self.reset()
     }
+
+    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 )
+    {}
 
     open func reset() throws
     {
@@ -87,10 +89,7 @@ open class CPU: CustomStringConvertible
 
     open func decodeAndExecuteNextInstruction() throws
     {
-        var error:        Error?
-        let disassembly = Disassembler.disassemble( at: self.registers.PC, from: self.memory, instructions: 1, comments: [ : ], error: &error )
-
-        if error == nil, disassembly.isEmpty == false
+        if let disassembly = try? Disassembler.disassemble( at: self.registers.PC, from: self.memory, instructions: 1, comments: [ : ] ), disassembly.isEmpty == false
         {
             print( "    \( disassembly )" )
         }

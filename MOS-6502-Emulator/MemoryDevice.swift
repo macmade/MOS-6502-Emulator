@@ -24,47 +24,14 @@
 
 import Foundation
 
-open class Computer
+public protocol MemoryDevice
 {
-    private var cpu:    CPU
-    private var memory: Memory< UInt16 >
+    func readUInt8(  at address: UInt16 ) throws -> UInt8
+    func readUInt16( at address: UInt16 ) throws -> UInt16
+}
 
-    public init( memory: UInt64 ) throws
-    {
-        self.memory = try Memory( size: memory, options: [], initializeTo: 0 )
-        self.cpu    = try CPU( memory: self.memory )
-    }
-
-    open func loadROM( _ rom: ROM ) throws
-    {
-        let data = rom.data
-
-        guard data.isEmpty == false
-        else
-        {
-            throw RuntimeError( message: "Cannot load empty ROM" )
-        }
-
-        guard data.count <= UInt16.max
-        else
-        {
-            throw RuntimeError( message: "ROM is too large: \( data.count ) bytes" )
-        }
-
-        self.cpu.mapDevice( rom, at: rom.origin, size: UInt16( rom.data.count ) )
-        print( "Loaded \( data.count ) bytes ROM at \( rom.origin.asHex ): \( rom.name )" )
-
-        if let disassembly = try? Disassembler.disassembleROM( rom ), disassembly.isEmpty == false
-        {
-            print( disassembly )
-        }
-    }
-
-    open func start() throws
-    {
-        print( "Resetting CPU and running..." )
-
-        try self.cpu.reset()
-        try self.cpu.run()
-    }
+public protocol WriteableMemoryDevice: MemoryDevice
+{
+    func writeUInt8(  _ value: UInt16, at address: UInt16 ) throws
+    func writeUInt16( _ value: UInt16, at address: UInt16 ) throws
 }
