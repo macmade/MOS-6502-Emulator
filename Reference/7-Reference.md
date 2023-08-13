@@ -224,6 +224,9 @@ This instructions is used to test if one or more bits are set in a target memory
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if the result if the AND is zero
 I    Interrupt Disable    Not affected
@@ -232,11 +235,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Set to bit 6 of the memory value
 N    Negative Flag    Set to bit 7 of the memory value
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Zero Page
 
 $24
@@ -254,6 +254,9 @@ If the negative flag is set then add the relative displacement to the program co
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -262,11 +265,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Relative
 
 $30
@@ -284,6 +284,9 @@ If the zero flag is clear then add the relative displacement to the program coun
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -292,11 +295,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Relative
 
 $D0
@@ -314,6 +314,9 @@ If the negative flag is clear then add the relative displacement to the program 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -322,11 +325,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Relative
 
 $10
@@ -350,11 +350,8 @@ B    Break Command    Set to 1
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $00
@@ -371,6 +368,9 @@ If the overflow flag is clear then add the relative displacement to the program 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -379,11 +379,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Relative
 
 $50
@@ -401,6 +398,9 @@ If the overflow flag is set then add the relative displacement to the program co
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -409,11 +409,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Relative
 
 $70
@@ -439,11 +436,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $18
@@ -468,11 +462,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $D8
@@ -500,11 +491,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $58
@@ -529,11 +517,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Set to 0
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $B8
@@ -548,6 +533,9 @@ This instruction compares the contents of the accumulator with another memory he
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Set if A >= M
 Z    Zero Flag    Set if A = M
 I    Interrupt Disable    Not affected
@@ -556,11 +544,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of the result is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Immediate
 
 $C9
@@ -612,6 +597,9 @@ This instruction compares the contents of the X register with another memory hel
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Set if X >= M
 Z    Zero Flag    Set if X = M
 I    Interrupt Disable    Not affected
@@ -620,11 +608,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of the result is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Immediate
 
 $E0
@@ -653,6 +638,9 @@ This instruction compares the contents of the Y register with another memory hel
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Set if Y >= M
 Z    Zero Flag    Set if Y = M
 I    Interrupt Disable    Not affected
@@ -661,11 +649,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of the result is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Immediate
 
 $C0
@@ -694,6 +679,9 @@ Subtracts one from the value held at a specified memory location setting the zer
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if result is zero
 I    Interrupt Disable    Not affected
@@ -702,11 +690,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of the result is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Zero Page
 
 $C6
@@ -740,6 +725,9 @@ Subtracts one from the X register setting the zero and negative flags as appropr
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if X is zero
 I    Interrupt Disable    Not affected
@@ -748,11 +736,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of X is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $CA
@@ -771,6 +756,9 @@ Subtracts one from the Y register setting the zero and negative flags as appropr
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if Y is zero
 I    Interrupt Disable    Not affected
@@ -779,11 +767,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of Y is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $88
@@ -802,6 +787,9 @@ An exclusive OR is performed, bit by bit, on the accumulator contents using the 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if A = 0
 I    Interrupt Disable    Not affected
@@ -810,11 +798,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Immediate
 
 $49
@@ -868,6 +853,9 @@ Adds one to the value held at a specified memory location setting the zero and n
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if result is zero
 I    Interrupt Disable    Not affected
@@ -876,11 +864,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of the result is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Zero Page
 
 $E6
@@ -914,6 +899,9 @@ Adds one to the X register setting the zero and negative flags as appropriate.
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if X is zero
 I    Interrupt Disable    Not affected
@@ -922,11 +910,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of X is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $E8
@@ -945,6 +930,9 @@ Adds one to the Y register setting the zero and negative flags as appropriate.
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if Y is zero
 I    Interrupt Disable    Not affected
@@ -953,11 +941,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of Y is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $C8
@@ -974,6 +959,9 @@ Sets the program counter to the address specified by the operand.
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -982,11 +970,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Absolute
 
 $4C
@@ -1009,6 +994,9 @@ The JSR instruction pushes the address (minus one) of the return point on to the
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -1017,11 +1005,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Absolute
 
 $20
@@ -1046,11 +1031,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of A is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Immediate
 
 $A9
@@ -1110,11 +1092,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of X is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Immediate
 
 $A2
@@ -1159,11 +1138,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of Y is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Immediate
 
 $A0
@@ -1202,6 +1178,9 @@ Each of the bits in A or M is shift one place to the right. The bit that was in 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Set to contents of old bit 0
 Z    Zero Flag    Set if result = 0
 I    Interrupt Disable    Not affected
@@ -1210,11 +1189,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of the result is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Accumulator
 
 $4A
@@ -1251,6 +1227,9 @@ The NOP instruction causes no changes to the processor other than the normal inc
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -1259,11 +1238,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $EA
@@ -1280,6 +1256,9 @@ An inclusive OR is performed, bit by bit, on the accumulator contents using the 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if A = 0
 I    Interrupt Disable    Not affected
@@ -1288,11 +1267,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Immediate
 
 $09
@@ -1345,6 +1321,9 @@ Pushes a copy of the accumulator on to the stack.
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -1353,11 +1332,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $48
@@ -1374,6 +1350,9 @@ Pushes a copy of the status flags on to the stack.
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -1382,11 +1361,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $08
@@ -1409,11 +1385,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of A is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $68
@@ -1430,6 +1403,9 @@ Pulls an 8 bit value from the stack and into the processor flags. The flags will
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Set from stack
 Z    Zero Flag    Set from stack
 I    Interrupt Disable    Set from stack
@@ -1438,11 +1414,8 @@ B    Break Command    Set from stack
 V    Overflow Flag    Set from stack
 N    Negative Flag    Set from stack
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $28
@@ -1459,6 +1432,9 @@ Move each of the bits in either A or M one place to the left. Bit 0 is filled wi
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Set to contents of old bit 7
 Z    Zero Flag    Set if A = 0
 I    Interrupt Disable    Not affected
@@ -1467,11 +1443,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of the result is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Accumulator
 
 $2A
@@ -1508,6 +1481,9 @@ Move each of the bits in either A or M one place to the right. Bit 7 is filled w
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Set to contents of old bit 0
 Z    Zero Flag    Set if A = 0
 I    Interrupt Disable    Not affected
@@ -1516,11 +1492,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of the result is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Accumulator
 
 $6A
@@ -1557,6 +1530,9 @@ The RTI instruction is used at the end of an interrupt processing routine. It pu
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Set from stack
 Z    Zero Flag    Set from stack
 I    Interrupt Disable    Set from stack
@@ -1565,11 +1541,8 @@ B    Break Command    Set from stack
 V    Overflow Flag    Set from stack
 N    Negative Flag    Set from stack
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $40
@@ -1584,6 +1557,9 @@ The RTS instruction is used at the end of a subroutine to return to the calling 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -1592,11 +1568,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $60
@@ -1615,6 +1588,9 @@ This instruction subtracts the contents of a memory location to the accumulator 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Clear if overflow in bit 7
 Z    Zero Flag    Set if A = 0
 I    Interrupt Disable    Not affected
@@ -1623,11 +1599,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Set if sign bit is incorrect
 N    Negative Flag    Set if bit 7 set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Immediate
 
 $E9
@@ -1687,11 +1660,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $38
@@ -1716,11 +1686,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $F8
@@ -1745,11 +1712,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $78
@@ -1768,6 +1732,9 @@ Stores the contents of the accumulator into memory.
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -1776,11 +1743,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Zero Page
 
 $85
@@ -1829,6 +1793,9 @@ Stores the contents of the X register into memory.
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -1837,11 +1804,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Zero Page
 
 $86
@@ -1870,6 +1834,9 @@ Stores the contents of the Y register into memory.
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -1878,11 +1845,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Zero Page
 
 $84
@@ -1911,6 +1875,9 @@ Copies the current contents of the accumulator into the X register and sets the 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if X = 0
 I    Interrupt Disable    Not affected
@@ -1919,11 +1886,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of X is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $AA
@@ -1942,6 +1906,9 @@ Copies the current contents of the accumulator into the Y register and sets the 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if Y = 0
 I    Interrupt Disable    Not affected
@@ -1950,11 +1917,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of Y is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $A8
@@ -1973,6 +1937,9 @@ Copies the current contents of the stack register into the X register and sets t
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if X = 0
 I    Interrupt Disable    Not affected
@@ -1981,11 +1948,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of X is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $BA
@@ -2004,6 +1968,9 @@ Copies the current contents of the X register into the accumulator and sets the 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if A = 0
 I    Interrupt Disable    Not affected
@@ -2012,11 +1979,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of A is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $8A
@@ -2035,6 +1999,9 @@ Copies the current contents of the X register into the stack register.
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Not affected
 I    Interrupt Disable    Not affected
@@ -2043,11 +2010,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Not affected
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $9A
@@ -2066,6 +2030,9 @@ Copies the current contents of the Y register into the accumulator and sets the 
 
 Processor Status after use:
 
+|   |                   |              |
+|---|-------------------|--------------|
+
 C    Carry Flag    Not affected
 Z    Zero Flag    Set if A = 0
 I    Interrupt Disable    Not affected
@@ -2074,11 +2041,8 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of A is set
 
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
 Implied
 
 $98
