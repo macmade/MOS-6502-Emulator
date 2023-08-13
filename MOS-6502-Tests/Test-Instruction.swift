@@ -49,7 +49,7 @@ class Test_Instruction: XCTestCase
     @discardableResult
     func executeSingleInstruction( instruction: Instruction, operands: [ UInt8 ], inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU ) throws -> Void )? = nil ) throws -> CPU
     {
-        let memory = try Memory< UInt16 >( size: CPU.requiredMemory, options: [ .wrapAround ], initializeTo: 0 )
+        let memory = try Memory< UInt16 >( size: CPU.requiredMemory, options: [], initializeTo: 0 )
         let origin = UInt16( 0xFF00 )
 
         XCTAssertNoThrow( try memory.writeUInt8( instruction.opcode, at: origin ) )

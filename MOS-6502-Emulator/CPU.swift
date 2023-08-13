@@ -49,11 +49,6 @@ open class CPU: CustomStringConvertible
             throw RuntimeError( message: "Invalid memory size: must be \( CPU.requiredMemory ) bytes" )
         }
 
-        if memory.options.contains( .wrapAround ) == false
-        {
-            throw RuntimeError( message: "Invalid memory: the .wrapAround flag must be set" )
-        }
-
         self.memory = memory
 
         try self.reset()
