@@ -30,7 +30,7 @@ do
     let computer = try Computer( memory: 4096 )
 
     try computer.loadROM( Apple1WozMonitor() )
-    try computer.start()
+    try computer.reset()
 }
 catch
 {

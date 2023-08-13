@@ -65,7 +65,7 @@ public class Computer
         }
     }
 
-    public func start() throws
+    public func reset() throws
     {
         print( "Resetting CPU and running..." )
 
