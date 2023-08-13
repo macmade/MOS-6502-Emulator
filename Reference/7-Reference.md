@@ -788,7 +788,7 @@ $51
 2
 5 (+1 if page crossed)
 
-See also: AND, ORA
+See also: [AND](#AND), [ORA](#ORA)
 
 ---
 
@@ -836,7 +836,7 @@ $FE
 3
 7
 
-See also: INX, INY
+See also: [INX](#INX), [INY](#INY)
 
 ---
 
@@ -869,7 +869,7 @@ $E8
 1
 2
 
-See also: INC, INY
+See also: [INC](#INC), [INY](#INY)
 
 ---
 
@@ -902,7 +902,7 @@ $C8
 1
 2
 
-See also: INC, INX
+See also: [INC](#INC), [INX](#INX)
 
 ---
 
@@ -968,7 +968,7 @@ $20
 3
 6
 
-See also: RTS
+See also: [RTS](#RTS)
 
 ---
 
@@ -1031,7 +1031,7 @@ $B1
 2
 5 (+1 if page crossed)
 
-See also: LDX, LDY
+See also: [LDX](#LDX), [LDY](#LDY)
 
 ---
 
@@ -1079,7 +1079,7 @@ $BE
 3
 4 (+1 if page crossed)
 
-See also: LDA, LDY
+See also: [LDA](#LDA), [LDY](#LDY)
 
 ---
 
@@ -1127,7 +1127,7 @@ $BC
 3
 4 (+1 if page crossed)
 
-See also: LDA, LDX
+See also: [LDA](#LDA), [LDX](#LDX)
 
 ---
 
@@ -1180,7 +1180,7 @@ $5E
 3
 7
 
-See also: ASL, ROL, ROR
+See also: [ASL](#ASL), [ROL](#ROL), [ROR](#ROR)
 
 ---
 
@@ -1277,7 +1277,7 @@ $11
 2
 5 (+1 if page crossed)
 
-See also: AND, EOR
+See also: [AND](#AND), [EOR](#EOR)
 
 ---
 
@@ -1307,7 +1307,7 @@ $48
 1
 3
 
-See also: PLA
+See also: [PLA](#PLA)
 
 ---
 
@@ -1337,7 +1337,7 @@ $08
 1
 3
 
-See also: PLP
+See also: [PLP](#PLP)
 
 ---
 
@@ -1363,7 +1363,7 @@ $68
 1
 4
 
-See also: PHA
+See also: [PHA](#PHA)
 
 ---
 
@@ -1393,7 +1393,7 @@ $28
 1
 4
 
-See also: PHP
+See also: [PHP](#PHP)
 
 ---
 
@@ -1444,7 +1444,7 @@ $3E
 3
 7
 
-See also: ASL, LSR, ROR
+See also: [ASL](#ASL), [LSR](#LSR), [ROR](#ROR)
 
 ---
 
@@ -1553,7 +1553,7 @@ $60
 1
 6
 
-See also: JSR
+See also: [JSR](#JSR)
 
 ---
 
@@ -1621,7 +1621,7 @@ $F1
 2
 5 (+1 if page crossed)
 
-See also: ADC
+See also: [ADC](#ADC)
 
 ---
 
@@ -1653,7 +1653,7 @@ $38
 1
 2
 
-See also: CLC
+See also: [CLC](#CLC)
 
 ---
 
@@ -1685,7 +1685,7 @@ $F8
 1
 2
 
-See also: CLD
+See also: [CLD](#CLD)
 
 ---
 
@@ -1717,7 +1717,7 @@ $78
 1
 2
 
-See also: CLI
+See also: [CLI](#CLI)
 
 ---
 
@@ -1779,7 +1779,7 @@ $91
 2
 6
 
-See also: STX, STY
+See also: [STX](#STX), [STY](#STY)
 
 ---
 
@@ -1821,7 +1821,7 @@ $8E
 3
 4
 
-See also: STA, STY
+See also: [STA](#STA), [STY](#STY)
 
 ---
 
@@ -1863,7 +1863,7 @@ $8C
 3
 4
 
-See also: STA, STX
+See also: [STA](#STA), [STX](#STX)
 
 ---
 
@@ -1896,7 +1896,7 @@ $AA
 1
 2
 
-See also: TXA
+See also: [TXA](#TXA)
 
 ---
 
@@ -1929,7 +1929,7 @@ $A8
 1
 2
 
-See also: TYA
+See also: [TYA](#TYA)
 
 ---
 
@@ -1962,7 +1962,7 @@ $BA
 1
 2
 
-See also: TXS
+See also: [TXS](#TXS)
 
 ---
 
@@ -1995,7 +1995,7 @@ $8A
 1
 2
 
-See also: TAX
+See also: [TAX](#TAX)
 
 ---
 
@@ -2027,7 +2027,7 @@ $9A
 1
 2
 
-See also: TSX
+See also: [TSX](#TSX)
 
 ---
 
@@ -2060,4 +2060,4 @@ $98
 1
 2
 
-See also: TAY
+See also: [TAY](#TAY)
