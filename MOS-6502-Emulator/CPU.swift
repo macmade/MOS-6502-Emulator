@@ -62,13 +62,10 @@ open class CPU
 
         try self.devices.forEach
         {
-            let existingStart = UInt64( $0.address )
-            let existingEnd   = UInt64( $0.address ) + UInt64( $0.size )
-            let newStart      = UInt64( address )
-            let newEnd        = UInt64( address ) + UInt64( size )
+            let existing = ( UInt64( $0.address ) ..< UInt64( $0.address ) + UInt64( $0.size ) )
+            let new      = ( UInt64( address )    ..< UInt64( address )    + UInt64( size ) )
 
-            if     ( newStart <= existingStart && newEnd   >  existingStart )
-                || ( newStart >= existingStart && newStart <= existingEnd )
+            if new.overlaps( existing )
             {
                 throw RuntimeError( message: "Cannot map device at address: \( address.asHex ): an existing device is already mapped" )
             }
