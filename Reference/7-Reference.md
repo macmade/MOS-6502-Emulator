@@ -38,7 +38,7 @@ Click on any of following links to go straight to the information for that instr
 
 <a name="ADC" />
 
-### ADC -Add with Carry
+### ADC - Add with Carry
 
     A,Z,C,N = A+M+C
 
@@ -73,7 +73,7 @@ See also: [SBC](#SBC)
 
 <a name="AND" />
 
-### AND -Logical AND
+### AND - Logical AND
 
     A,Z,N = A&M
 
@@ -107,7 +107,7 @@ See also: [EOR](#EOR), [ORA](#ORA)
 
 <a name="ASL" />
 
-### ASL -Arithmetic Shift Left
+### ASL - Arithmetic Shift Left
 
     A,Z,C,N = M*2 or M,Z,C,N = M*2
 
@@ -141,7 +141,7 @@ See also: [LSR](#LSR), [ROL](#ROL), [ROR](#ROR)
 
 <a name="BCC" />
 
-### BCC -Branch if Carry Clear
+### BCC - Branch if Carry Clear
 
 If the carry flag is clear then add the relative displacement to the program
 counter to cause a branch to a new location.
@@ -166,7 +166,7 @@ See also: [BCS](#BCS)
 
 <a name="BCS" />
 
-### BCS -Branch if Carry Set
+### BCS - Branch if Carry Set
 
 If the carry flag is set then add the relative displacement to the program
 counter to cause a branch to a new location.
@@ -191,7 +191,7 @@ See also: [BCC](#BCC)
 
 <a name="BEQ" />
 
-### BEQ -Branch if Equal
+### BEQ - Branch if Equal
 
 If the zero flag is set then add the relative displacement to the program
 counter to cause a branch to a new location.
@@ -216,7 +216,7 @@ See also: [BNE](#BNE)
 
 <a name="BIT" />
 
-### BIT -Bit Test
+### BIT - Bit Test
 
     A & M, N = M7, V = M6
 
@@ -224,29 +224,20 @@ This instructions is used to test if one or more bits are set in a target memory
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if the result if the AND is zero
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Set to bit 6 of the memory value
-N    Negative Flag    Set to bit 7 of the memory value
+|   |                   |                                      |
+|---|-------------------|--------------------------------------|
+| C | Carry Flag        | Not affected                         |
+| Z | Zero Flag         | Set if the result if the AND is zero |
+| I | Interrupt Disable | Not affected                         |
+| D | Decimal Mode Flag | Not affected                         |
+| B | Break Command     | Not affected                         |
+| V | Overflow Flag     | Set to bit 6 of the memory value     |
+| N | Negative Flag     | Set to bit 7 of the memory value     |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Zero Page
-
-$24
-2
-3
-Absolute
-
-$2C
-3
-4
+| Zero Page       | `$24`  | 2     | 3      |
+| Absolute        | `$2C`  | 3     | 4      |
 
 ### BMI - Branch if Minus
 
@@ -256,14 +247,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -278,7 +268,7 @@ See also: BPL
 
 <a name="BNE" />
 
-### BNE -Branch if Not Equal
+### BNE - Branch if Not Equal
 
 If the zero flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -286,14 +276,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -308,7 +297,7 @@ See also: BEQ
 
 <a name="BPL" />
 
-### BPL -Branch if Positive
+### BPL - Branch if Positive
 
 If the negative flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -316,14 +305,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -338,17 +326,21 @@ See also: BMI
 
 <a name="BRK" />
 
-### BRK -Force Interrupt
+### BRK - Force Interrupt
 
 The BRK instruction forces the generation of an interrupt request. The program counter and processor status are pushed on the stack then the IRQ interrupt vector at $FFFE/F is loaded into the PC and the break flag in the status set to one.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Set to 1
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -362,7 +354,7 @@ The interpretation of a BRK depends on the operating system. On the BBC Microcom
 
 <a name="BVC" />
 
-### BVC -Branch if Overflow Clear
+### BVC - Branch if Overflow Clear
 
 If the overflow flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -370,14 +362,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -392,7 +383,7 @@ See also: BVS
 
 <a name="BVS" />
 
-### BVS -Branch if Overflow Set
+### BVS - Branch if Overflow Set
 
 If the overflow flag is set then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -400,14 +391,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -422,19 +412,23 @@ See also: BVC
 
 <a name="CLC" />
 
-### CLC -Clear Carry Flag
+### CLC - Clear Carry Flag
 
     C = 0
 
 Set the carry flag to zero.
 
-C    Carry Flag    Set to 0
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Set to 0     |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -448,19 +442,23 @@ See also: SEC
 
 <a name="CLD" />
 
-### CLD -Clear Decimal Mode
+### CLD - Clear Decimal Mode
 
     D = 0
 
 Sets the decimal mode flag to zero.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Set to 0
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Set to 0     |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -477,7 +475,7 @@ See also: SED
 
 <a name="CLI" />
 
-### CLI -Clear Interrupt Disable
+### CLI - Clear Interrupt Disable
 
     I = 0
 
@@ -503,7 +501,7 @@ See also: SEI
 
 <a name="CLV" />
 
-### CLV -Clear Overflow Flag
+### CLV - Clear Overflow Flag
 
     V = 0
 
@@ -630,7 +628,7 @@ See also: CMP, CPY
 
 <a name="CPY" />
 
-### CPY -Compare Y Register
+### CPY - Compare Y Register
 
     Z,C,N = Y-M
 
@@ -671,7 +669,7 @@ See also: CMP, CPX
 
 <a name="DEC" />
 
-### DEC -Decrement Memory
+### DEC - Decrement Memory
 
     M,Z,N = M-1
 
@@ -717,7 +715,7 @@ See also: DEX, DEY
 
 <a name="DEX" />
 
-### DEX -Decrement X Register
+### DEX - Decrement X Register
 
     X,Z,N = X-1
 
@@ -748,7 +746,7 @@ See also: DEC, DEY
 
 <a name="DEY" />
 
-### DEY -Decrement Y Register
+### DEY - Decrement Y Register
 
     Y,Z,N = Y-1
 
@@ -779,7 +777,7 @@ See also: DEC, DEX
 
 <a name="EOR" />
 
-### EOR -Exclusive OR
+### EOR - Exclusive OR
 
     A,Z,N = A^M
 
@@ -845,7 +843,7 @@ See also: AND, ORA
 
 <a name="INC" />
 
-### INC -Increment Memory
+### INC - Increment Memory
 
     M,Z,N = M+1
 
@@ -891,7 +889,7 @@ See also: INX, INY
 
 <a name="INX" />
 
-### INX -Increment X Register
+### INX - Increment X Register
 
     X,Z,N = X+1
 
@@ -922,7 +920,7 @@ See also: INC, INY
 
 <a name="INY" />
 
-### INY -Increment Y Register
+### INY - Increment Y Register
 
     Y,Z,N = Y+1
 
@@ -953,7 +951,7 @@ See also: INC, INX
 
 <a name="JMP" />
 
-### JMP -Jump
+### JMP - Jump
 
 Sets the program counter to the address specified by the operand.
 
@@ -988,7 +986,7 @@ An original 6502 has does not correctly fetch the target address if the indirect
 
 <a name="JSR" />
 
-### JSR -Jump to Subroutine
+### JSR - Jump to Subroutine
 
 The JSR instruction pushes the address (minus one) of the return point on to the stack and then sets the program counter to the target memory address.
 
@@ -1017,7 +1015,7 @@ See also: RTS
 
 <a name="LDA" />
 
-### LDA -Load Accumulator
+### LDA - Load Accumulator
 
     A,Z,N = M
 
@@ -1078,7 +1076,7 @@ See also: LDX, LDY
 
 <a name="LDX" />
 
-### LDX -Load X Register
+### LDX - Load X Register
 
     X,Z,N = M
 
@@ -1124,7 +1122,7 @@ See also: LDA, LDY
 
 <a name="LDY" />
 
-### LDY -Load Y Register
+### LDY - Load Y Register
 
     Y,Z,N = M
 
@@ -1170,7 +1168,7 @@ See also: LDA, LDX
 
 <a name="LSR" />
 
-### LSR -Logical Shift Right
+### LSR - Logical Shift Right
 
     A,C,Z,N = A/2 or M,C,Z,N = M/2
 
@@ -1221,7 +1219,7 @@ See also: ASL, ROL, ROR
 
 <a name="NOP" />
 
-### NOP -No Operation
+### NOP - No Operation
 
 The NOP instruction causes no changes to the processor other than the normal incrementing of the program counter to the next instruction.
 
@@ -1248,7 +1246,7 @@ $EA
 
 <a name="ORA" />
 
-### ORA -Logical Inclusive OR
+### ORA - Logical Inclusive OR
 
     A,Z,N = A|M
 
@@ -1315,7 +1313,7 @@ See also: AND, EOR
 
 <a name="PHA" />
 
-### PHA -Push Accumulator
+### PHA - Push Accumulator
 
 Pushes a copy of the accumulator on to the stack.
 
@@ -1344,7 +1342,7 @@ See also: PLA
 
 <a name="PHP" />
 
-### PHP -Push Processor Status
+### PHP - Push Processor Status
 
 Pushes a copy of the status flags on to the stack.
 
@@ -1373,7 +1371,7 @@ See also: PLP
 
 <a name="PLA" />
 
-### PLA -Pull Accumulator
+### PLA - Pull Accumulator
 
 Pulls an 8 bit value from the stack and into the accumulator. The zero and negative flags are set as appropriate.
 
@@ -1397,7 +1395,7 @@ See also: PHA
 
 <a name="PLP" />
 
-### PLP -Pull Processor Status
+### PLP - Pull Processor Status
 
 Pulls an 8 bit value from the stack and into the processor flags. The flags will take on new states as determined by the value pulled.
 
@@ -1426,7 +1424,7 @@ See also: PHP
 
 <a name="ROL" />
 
-### ROL -Rotate Left
+### ROL - Rotate Left
 
 Move each of the bits in either A or M one place to the left. Bit 0 is filled with the current value of the carry flag whilst the old bit 7 becomes the new carry flag value.
 
@@ -1475,7 +1473,7 @@ See also: ASL, LSR, ROR
 
 <a name="ROR" />
 
-### ROR -Rotate Right
+### ROR - Rotate Right
 
 Move each of the bits in either A or M one place to the right. Bit 7 is filled with the current value of the carry flag whilst the old bit 0 becomes the new carry flag value.
 
@@ -1524,7 +1522,7 @@ See also ASL, LSR, ROL
 
 <a name="RTI" />
 
-### RTI -Return from Interrupt
+### RTI - Return from Interrupt
 
 The RTI instruction is used at the end of an interrupt processing routine. It pulls the processor flags from the stack followed by the program counter.
 
@@ -1551,7 +1549,7 @@ $40
 
 <a name="RTS" />
 
-### RTS -Return from Subroutine
+### RTS - Return from Subroutine
 
 The RTS instruction is used at the end of a subroutine to return to the calling routine. It pulls the program counter (minus one) from the stack.
 
@@ -1646,7 +1644,7 @@ See also: ADC
 
 <a name="SEC" />
 
-### SEC -Set Carry Flag
+### SEC - Set Carry Flag
 
     C = 1
 
@@ -1672,7 +1670,7 @@ See also: CLC
 
 <a name="SED" />
 
-### SED -Set Decimal Flag
+### SED - Set Decimal Flag
 
     D = 1
 
@@ -1698,7 +1696,7 @@ See also: CLD
 
 <a name="SEI" />
 
-### SEI -Set Interrupt Disable
+### SEI - Set Interrupt Disable
 
     I = 1
 
@@ -1724,7 +1722,7 @@ See also: CLI
 
 <a name="STA" />
 
-### STA -Store Accumulator
+### STA - Store Accumulator
 
     M = A
 
@@ -1785,7 +1783,7 @@ See also: STX, STY
 
 <a name="STX" />
 
-### STX -Store X Register
+### STX - Store X Register
 
     M = X
 
@@ -1826,7 +1824,7 @@ See also: STA, STY
 
 <a name="STY" />
 
-### STY -Store Y Register
+### STY - Store Y Register
 
     M = Y
 
@@ -1867,7 +1865,7 @@ See also: STA, STX
 
 <a name="TAX" />
 
-### TAX -Transfer Accumulator to X
+### TAX - Transfer Accumulator to X
 
     X = A
 
@@ -1898,7 +1896,7 @@ See also: TXA
 
 <a name="TAY" />
 
-### TAY -Transfer Accumulator to Y
+### TAY - Transfer Accumulator to Y
 
     Y = A
 
@@ -1929,7 +1927,7 @@ See also: TYA
 
 <a name="TSX" />
 
-### TSX -Transfer Stack Pointer to X
+### TSX - Transfer Stack Pointer to X
 
     X = S
 
@@ -1960,7 +1958,7 @@ See also: TXS
 
 <a name="TXA" />
 
-### TXA -Transfer X to Accumulator
+### TXA - Transfer X to Accumulator
 
     A = X
 
@@ -1991,7 +1989,7 @@ See also: TAX
 
 <a name="TXS" />
 
-### TXS -Transfer X to Stack Pointer
+### TXS - Transfer X to Stack Pointer
 
     S = X
 
@@ -2022,7 +2020,7 @@ See also: TSX
 
 <a name="TYA" />
 
-### TYA -Transfer Y to Accumulator
+### TYA - Transfer Y to Accumulator
 
     A = Y
 
