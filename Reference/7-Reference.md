@@ -745,48 +745,16 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 set
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Immediate
-
-$49
-2
-2
-Zero Page
-
-$45
-2
-3
-Zero Page,X
-
-$55
-2
-4
-Absolute
-
-$4D
-3
-4
-Absolute,X
-
-$5D
-3
-4 (+1 if page crossed)
-Absolute,Y
-
-$59
-3
-4 (+1 if page crossed)
-(Indirect,X)
-
-$41
-2
-6
-(Indirect),Y
-
-$51
-2
-5 (+1 if page crossed)
+| Addressing Mode | Opcode | Bytes | Cycles                 |
+|-----------------|--------|-------|------------------------|
+| Immediate       | `$49`  | 2     | 2                      |
+| Zero Page       | `$45`  | 2     | 3                      |
+| Zero Page,X     | `$55`  | 2     | 4                      |
+| Absolute        | `$4D`  | 3     | 4                      |
+| Absolute,X      | `$5D`  | 3     | 4 (+1 if page crossed) |
+| Absolute,Y      | `$59`  | 3     | 4 (+1 if page crossed) |
+| (Indirect,X)    | `$41`  | 2     | 6                      |
+| (Indirect),Y    | `$51`  | 2     | 5 (+1 if page crossed) |
 
 See also: [AND](#AND), [ORA](#ORA)
 
@@ -815,26 +783,10 @@ N    Negative Flag    Set if bit 7 of the result is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Zero Page
-
-$E6
-2
-5
-Zero Page,X
-
-$F6
-2
-6
-Absolute
-
-$EE
-3
-6
-Absolute,X
-
-$FE
-3
-7
+| Zero Page       | `$E6`  | 2     | 5      |
+| Zero Page,X     | `$F6`  | 2     | 6      |
+| Absolute        | `$EE`  | 3     | 6      |
+| Absolute,X      | `$FE`  | 3     | 7      |
 
 See also: [INX](#INX), [INY](#INY)
 
@@ -863,11 +815,7 @@ N    Negative Flag    Set if bit 7 of X is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$E8
-1
-2
+| Implied         | `$E8`  | 1     | 2      |
 
 See also: [INC](#INC), [INY](#INY)
 
@@ -896,11 +844,7 @@ N    Negative Flag    Set if bit 7 of Y is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$C8
-1
-2
+| Implied         | `$C8`  | 1     | 2      |
 
 See also: [INC](#INC), [INX](#INX)
 
@@ -926,16 +870,8 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Absolute
-
-$4C
-3
-3
-Indirect
-
-$6C
-3
-5
+| Absolute        | `$4C`  | 3     | 3      |
+| Indirect        | `$6C`  | 3     | 5      |
 
 NB:
 An original 6502 has does not correctly fetch the target address if the indirect vector falls on a page boundary (e.g. $xxFF where xx is any value from $00 to $FF). In this case fetches the LSB from $xxFF as expected but takes the MSB from $xx00. This is fixed in some later chips like the 65SC02 so for compatibility always ensure the indirect vector is not at the end of the page.
@@ -962,11 +898,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Absolute
-
-$20
-3
-6
+| Absolute        | `$20`  | 3     | 6      |
 
 See also: [RTS](#RTS)
 
@@ -988,48 +920,16 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of A is set
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Immediate
-
-$A9
-2
-2
-Zero Page
-
-$A5
-2
-3
-Zero Page,X
-
-$B5
-2
-4
-Absolute
-
-$AD
-3
-4
-Absolute,X
-
-$BD
-3
-4 (+1 if page crossed)
-Absolute,Y
-
-$B9
-3
-4 (+1 if page crossed)
-(Indirect,X)
-
-$A1
-2
-6
-(Indirect),Y
-
-$B1
-2
-5 (+1 if page crossed)
+| Addressing Mode | Opcode | Bytes | Cycles                 |
+|-----------------|--------|-------|------------------------|
+| Immediate       | `$A9`  | 2     | 2                      |
+| Zero Page       | `$A5`  | 2     | 3                      |
+| Zero Page,X     | `$B5`  | 2     | 4                      |
+| Absolute        | `$AD`  | 3     | 4                      |
+| Absolute,X      | `$BD`  | 3     | 4 (+1 if page crossed) |
+| Absolute,Y      | `$B9`  | 3     | 4 (+1 if page crossed) |
+| (Indirect,X)    | `$A1`  | 2     | 6                      |
+| (Indirect),Y    | `$B1`  | 2     | 5 (+1 if page crossed) |
 
 See also: [LDX](#LDX), [LDY](#LDY)
 
@@ -1051,33 +951,13 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of X is set
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Immediate
-
-$A2
-2
-2
-Zero Page
-
-$A6
-2
-3
-Zero Page,Y
-
-$B6
-2
-4
-Absolute
-
-$AE
-3
-4
-Absolute,Y
-
-$BE
-3
-4 (+1 if page crossed)
+| Addressing Mode | Opcode | Bytes | Cycles                 |
+|-----------------|--------|-------|------------------------|
+| Immediate       | `$A2`  | 2     | 2                      |
+| Zero Page       | `$A6`  | 2     | 3                      |
+| Zero Page,Y     | `$B6`  | 2     | 4                      |
+| Absolute        | `$AE`  | 3     | 4                      |
+| Absolute,Y      | `$BE`  | 3     | 4 (+1 if page crossed) |
 
 See also: [LDA](#LDA), [LDY](#LDY)
 
@@ -1099,33 +979,13 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 of Y is set
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Immediate
-
-$A0
-2
-2
-Zero Page
-
-$A4
-2
-3
-Zero Page,X
-
-$B4
-2
-4
-Absolute
-
-$AC
-3
-4
-Absolute,X
-
-$BC
-3
-4 (+1 if page crossed)
+| Addressing Mode | Opcode | Bytes | Cycles                 |
+|-----------------|--------|-------|------------------------|
+| Immediate       | `$A0`  | 2     | 2                      |
+| Zero Page       | `$A4`  | 2     | 3                      |
+| Zero Page,X     | `$B4`  | 2     | 4                      |
+| Absolute        | `$AC`  | 3     | 4                      |
+| Absolute,X      | `$BC`  | 3     | 4 (+1 if page crossed) |
 
 See also: [LDA](#LDA), [LDX](#LDX)
 
@@ -1154,31 +1014,11 @@ N    Negative Flag    Set if bit 7 of the result is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Accumulator
-
-$4A
-1
-2
-Zero Page
-
-$46
-2
-5
-Zero Page,X
-
-$56
-2
-6
-Absolute
-
-$4E
-3
-6
-Absolute,X
-
-$5E
-3
-7
+| Accumulator     | `$4A`  | 1     | 2      |
+| Zero Page       | `$46`  | 2     | 5      |
+| Zero Page,X     | `$56`  | 2     | 6      |
+| Absolute        | `$4E`  | 3     | 6      |
+| Absolute,X      | `$5E`  | 3     | 7      |
 
 See also: [ASL](#ASL), [ROL](#ROL), [ROR](#ROR)
 
@@ -1204,11 +1044,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$EA
-1
-2
+| Implied         | `$EA`  | 1     | 2      |
 
 ---
 
@@ -1233,49 +1069,16 @@ B    Break Command    Not affected
 V    Overflow Flag    Not affected
 N    Negative Flag    Set if bit 7 set
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Immediate
-
-$09
-2
-2
-Zero Page
-
-$05
-2
-3
-Zero Page,X
-
-$15
-2
-4
-Absolute
-
-$0D
-3
-
-4
-Absolute,X
-
-$1D
-3
-4 (+1 if page crossed)
-Absolute,Y
-
-$19
-3
-4 (+1 if page crossed)
-(Indirect,X)
-
-$01
-2
-6
-(Indirect),Y
-
-$11
-2
-5 (+1 if page crossed)
+| Addressing Mode | Opcode | Bytes | Cycles                 |
+|-----------------|--------|-------|------------------------|
+| Immediate       | `$09`  | 2     | 2                      |
+| Zero Page       | `$05`  | 2     | 3                      |
+| Zero Page,X     | `$15`  | 2     | 4                      |
+| Absolute        | `$0D`  | 3     | 4                      |
+| Absolute,X      | `$1D`  | 3     | 4 (+1 if page crossed) |
+| Absolute,Y      | `$19`  | 3     | 4 (+1 if page crossed) |
+| (Indirect,X)    | `$01`  | 2     | 6                      |
+| (Indirect),Y    | `$11`  | 2     | 5 (+1 if page crossed) |
 
 See also: [AND](#AND), [EOR](#EOR)
 
@@ -1301,11 +1104,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$48
-1
-3
+| Implied         | `$48`  | 1     | 3      |
 
 See also: [PLA](#PLA)
 
@@ -1331,11 +1130,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$08
-1
-3
+| Implied         | `$08`  | 1     | 3      |
 
 See also: [PLP](#PLP)
 
@@ -1357,11 +1152,7 @@ N    Negative Flag    Set if bit 7 of A is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$68
-1
-4
+| Implied         | `$68`  | 1     | 4      |
 
 See also: [PHA](#PHA)
 
@@ -1387,11 +1178,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$28
-1
-4
+| Implied         | `$28`  | 1     | 4      |
 
 See also: [PHP](#PHP)
 
@@ -1418,31 +1205,11 @@ N    Negative Flag    Set if bit 7 of the result is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Accumulator
-
-$2A
-1
-2
-Zero Page
-
-$26
-2
-5
-Zero Page,X
-
-$36
-2
-6
-Absolute
-
-$2E
-3
-6
-Absolute,X
-
-$3E
-3
-7
+| Accumulator     | `$2A`  | 1     | 2      |
+| Zero Page       | `$26`  | 2     | 5      |
+| Zero Page,X     | `$36`  | 2     | 6      |
+| Absolute        | `$2E`  | 3     | 6      |
+| Absolute,X      | `$3E`  | 3     | 7      |
 
 See also: [ASL](#ASL), [LSR](#LSR), [ROR](#ROR)
 
@@ -1469,31 +1236,11 @@ N    Negative Flag    Set if bit 7 of the result is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Accumulator
-
-$6A
-1
-2
-Zero Page
-
-$66
-2
-5
-Zero Page,X
-
-$76
-2
-6
-Absolute
-
-$6E
-3
-6
-Absolute,X
-
-$7E
-3
-7
+| Accumulator     | `$6A`  | 1     | 2      |
+| Zero Page       | `$66`  | 2     | 5      |
+| Zero Page,X     | `$76`  | 2     | 6      |
+| Absolute        | `$6E`  | 3     | 6      |
+| Absolute,X      | `$7E`  | 3     | 7      |
 
 See also ASL, LSR, ROL
 
@@ -1519,11 +1266,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$40
-1
-6
+| Implied         | `$40`  | 1     | 6      |
 
 ---
 
@@ -1547,11 +1290,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$60
-1
-6
+| Implied         | `$60`  | 1     | 6      |
 
 See also: [JSR](#JSR)
 
@@ -1578,48 +1317,16 @@ B    Break Command    Not affected
 V    Overflow Flag    Set if sign bit is incorrect
 N    Negative Flag    Set if bit 7 set
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Immediate
-
-$E9
-2
-2
-Zero Page
-
-$E5
-2
-3
-Zero Page,X
-
-$F5
-2
-4
-Absolute
-
-$ED
-3
-4
-Absolute,X
-
-$FD
-3
-4 (+1 if page crossed)
-Absolute,Y
-
-$F9
-3
-4 (+1 if page crossed)
-(Indirect,X)
-
-$E1
-2
-6
-(Indirect),Y
-
-$F1
-2
-5 (+1 if page crossed)
+| Addressing Mode | Opcode | Bytes | Cycles                 |
+|-----------------|--------|-------|------------------------|
+| Immediate       | `$E9`  | 2     | 2                      |
+| Zero Page       | `$E5`  | 2     | 3                      |
+| Zero Page,X     | `$F5`  | 2     | 4                      |
+| Absolute        | `$ED`  | 3     | 4                      |
+| Absolute,X      | `$FD`  | 3     | 4 (+1 if page crossed) |
+| Absolute,Y      | `$F9`  | 3     | 4 (+1 if page crossed) |
+| (Indirect,X)    | `$E1`  | 2     | 6                      |
+| (Indirect),Y    | `$F1`  | 2     | 5 (+1 if page crossed) |
 
 See also: [ADC](#ADC)
 
@@ -1647,11 +1354,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$38
-1
-2
+| Implied         | `$38`  | 1     | 2      |
 
 See also: [CLC](#CLC)
 
@@ -1679,11 +1382,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$F8
-1
-2
+| Implied         | `$F8`  | 1     | 2      |
 
 See also: [CLD](#CLD)
 
@@ -1711,11 +1410,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$78
-1
-2
+| Implied         | `$78`  | 1     | 2      |
 
 See also: [CLI](#CLI)
 
@@ -1743,41 +1438,13 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Zero Page
-
-$85
-2
-3
-Zero Page,X
-
-$95
-2
-4
-Absolute
-
-$8D
-3
-4
-Absolute,X
-
-$9D
-3
-5
-Absolute,Y
-
-$99
-3
-5
-(Indirect,X)
-
-$81
-2
-6
-(Indirect),Y
-
-$91
-2
-6
+| Zero Page       | `$85`  | 2     | 3      |
+| Zero Page,X     | `$95`  | 2     | 4      |
+| Absolute        | `$8D`  | 3     | 4      |
+| Absolute,X      | `$9D`  | 3     | 5      |
+| Absolute,Y      | `$99`  | 3     | 5      |
+| (Indirect,X)    | `$81`  | 2     | 6      |
+| (Indirect),Y    | `$91`  | 2     | 6      |
 
 See also: [STX](#STX), [STY](#STY)
 
@@ -1805,21 +1472,9 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Zero Page
-
-$86
-2
-3
-Zero Page,Y
-
-$96
-2
-4
-Absolute
-
-$8E
-3
-4
+| Zero Page       | `$86`  | 2     | 3      |
+| Zero Page,Y     | `$96`  | 2     | 4      |
+| Absolute        | `$8E`  | 3     | 4      |
 
 See also: [STA](#STA), [STY](#STY)
 
@@ -1847,21 +1502,9 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Zero Page
-
-$84
-2
-3
-Zero Page,X
-
-$94
-2
-4
-Absolute
-
-$8C
-3
-4
+| Zero Page       | `$84`  | 2     | 3      |
+| Zero Page,X     | `$94`  | 2     | 4      |
+| Absolute        | `$8C`  | 3     | 4      |
 
 See also: [STA](#STA), [STX](#STX)
 
@@ -1890,11 +1533,7 @@ N    Negative Flag    Set if bit 7 of X is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$AA
-1
-2
+| Implied         | `$AA`  | 1     | 2      |
 
 See also: [TXA](#TXA)
 
@@ -1923,11 +1562,7 @@ N    Negative Flag    Set if bit 7 of Y is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$A8
-1
-2
+| Implied         | `$A8`  | 1     | 2      |
 
 See also: [TYA](#TYA)
 
@@ -1956,11 +1591,7 @@ N    Negative Flag    Set if bit 7 of X is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$BA
-1
-2
+| Implied         | `$BA`  | 1     | 2      |
 
 See also: [TXS](#TXS)
 
@@ -1989,11 +1620,7 @@ N    Negative Flag    Set if bit 7 of A is set
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$8A
-1
-2
+| Implied         | `$8A`  | 1     | 2      |
 
 See also: [TAX](#TAX)
 
