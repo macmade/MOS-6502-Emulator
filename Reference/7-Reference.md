@@ -38,7 +38,7 @@ Click on any of following links to go straight to the information for that instr
 
 <a name="ADC" />
 
-### ADC - Add with Carry
+### ADC -Add with Carry
 
     A,Z,C,N = A+M+C
 
@@ -71,7 +71,9 @@ Processor Status after use:
 
 See also: [SBC](#SBC)
 
-### AND - Logical AND
+<a name="AND" />
+
+### AND -Logical AND
 
     A,Z,N = A&M
 
@@ -103,7 +105,9 @@ Processor Status after use:
 
 See also: [EOR](#EOR), [ORA](#ORA)
 
-### ASL - Arithmetic Shift Left
+<a name="ASL" />
+
+### ASL -Arithmetic Shift Left
 
     A,Z,C,N = M*2 or M,Z,C,N = M*2
 
@@ -135,7 +139,9 @@ Processor Status after use:
 
 See also: [LSR](#LSR), [ROL](#ROL), [ROR](#ROR)
 
-### BCC - Branch if Carry Clear
+<a name="BCC" />
+
+### BCC -Branch if Carry Clear
 
 If the carry flag is clear then add the relative displacement to the program
 counter to cause a branch to a new location.
@@ -158,7 +164,9 @@ Processor Status after use:
 
 See also: [BCS](#BCS)
 
-### BCS - Branch if Carry Set
+<a name="BCS" />
+
+### BCS -Branch if Carry Set
 
 If the carry flag is set then add the relative displacement to the program
 counter to cause a branch to a new location.
@@ -181,7 +189,9 @@ Processor Status after use:
 
 See also: [BCC](#BCC)
 
-### BEQ - Branch if Equal
+<a name="BEQ" />
+
+### BEQ -Branch if Equal
 
 If the zero flag is set then add the relative displacement to the program
 counter to cause a branch to a new location.
@@ -204,9 +214,11 @@ Processor Status after use:
 
 See also: [BNE](#BNE)
 
-BIT - Bit Test
+<a name="BIT" />
 
-A & M, N = M7, V = M6
+### BIT -Bit Test
+
+    A & M, N = M7, V = M6
 
 This instructions is used to test if one or more bits are set in a target memory location. The mask pattern in A is ANDed with the value in memory to set or clear the zero flag, but the result is not kept. Bits 7 and 6 of the value from memory are copied into the N and V flags.
 
@@ -236,7 +248,7 @@ $2C
 3
 4
 
-BMI - Branch if Minus
+### BMI - Branch if Minus
 
 If the negative flag is set then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -264,7 +276,9 @@ $30
 
 See also: BPL
 
-BNE - Branch if Not Equal
+<a name="BNE" />
+
+### BNE -Branch if Not Equal
 
 If the zero flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -292,7 +306,9 @@ $D0
 
 See also: BEQ
 
-BPL - Branch if Positive
+<a name="BPL" />
+
+### BPL -Branch if Positive
 
 If the negative flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -320,7 +336,9 @@ $10
 
 See also: BMI
 
-BRK - Force Interrupt
+<a name="BRK" />
+
+### BRK -Force Interrupt
 
 The BRK instruction forces the generation of an interrupt request. The program counter and processor status are pushed on the stack then the IRQ interrupt vector at $FFFE/F is loaded into the PC and the break flag in the status set to one.
 
@@ -345,7 +363,9 @@ $00
 
 The interpretation of a BRK depends on the operating system. On the BBC Microcomputer it is used by language ROMs to signal run time errors but it could be used for other purposes (e.g. calling operating system functions, etc.).
 
-BVC - Branch if Overflow Clear
+<a name="BVC" />
+
+### BVC -Branch if Overflow Clear
 
 If the overflow flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -373,7 +393,9 @@ $50
 
 See also: BVS
 
-BVS - Branch if Overflow Set
+<a name="BVS" />
+
+### BVS -Branch if Overflow Set
 
 If the overflow flag is set then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -401,9 +423,11 @@ $70
 
 See also: BVC
 
-CLC - Clear Carry Flag
+<a name="CLC" />
 
-C = 0
+### CLC -Clear Carry Flag
+
+    C = 0
 
 Set the carry flag to zero.
 
@@ -428,9 +452,11 @@ $18
 
 See also: SEC
 
-CLD - Clear Decimal Mode
+<a name="CLD" />
 
-D = 0
+### CLD -Clear Decimal Mode
+
+    D = 0
 
 Sets the decimal mode flag to zero.
 
@@ -458,9 +484,11 @@ The state of the decimal flag is uncertain when the CPU is powered up and it is 
 
 See also: SED
 
-CLI - Clear Interrupt Disable
+<a name="CLI" />
 
-I = 0
+### CLI -Clear Interrupt Disable
+
+    I = 0
 
 Clears the interrupt disable flag allowing normal interrupt requests to be serviced.
 
@@ -485,9 +513,11 @@ $58
 
 See also: SEI
 
-CLV - Clear Overflow Flag
+<a name="CLV" />
 
-V = 0
+### CLV -Clear Overflow Flag
+
+    V = 0
 
 Clears the overflow flag.
 
@@ -510,9 +540,9 @@ $B8
 1
 2
 
-CMP - Compare
+### CMP - Compare
 
-Z,C,N = A-M
+    Z,C,N = A-M
 
 This instruction compares the contents of the accumulator with another memory held value and sets the zero and carry flags as appropriate.
 
@@ -574,9 +604,9 @@ $D1
 
 See also: CPX, CPY
 
-CPX - Compare X Register
+### CPX - Compare X Register
 
-Z,C,N = X-M
+    Z,C,N = X-M
 
 This instruction compares the contents of the X register with another memory held value and sets the zero and carry flags as appropriate.
 
@@ -613,9 +643,11 @@ $EC
 
 See also: CMP, CPY
 
-CPY - Compare Y Register
+<a name="CPY" />
 
-Z,C,N = Y-M
+### CPY -Compare Y Register
+
+    Z,C,N = Y-M
 
 This instruction compares the contents of the Y register with another memory held value and sets the zero and carry flags as appropriate.
 
@@ -652,9 +684,11 @@ $CC
 
 See also: CMP, CPX
 
-DEC - Decrement Memory
+<a name="DEC" />
 
-M,Z,N = M-1
+### DEC -Decrement Memory
+
+    M,Z,N = M-1
 
 Subtracts one from the value held at a specified memory location setting the zero and negative flags as appropriate.
 
@@ -696,9 +730,11 @@ $DE
 
 See also: DEX, DEY
 
-DEX - Decrement X Register
+<a name="DEX" />
 
-X,Z,N = X-1
+### DEX -Decrement X Register
+
+    X,Z,N = X-1
 
 Subtracts one from the X register setting the zero and negative flags as appropriate.
 
@@ -725,9 +761,11 @@ $CA
 
 See also: DEC, DEY
 
-DEY - Decrement Y Register
+<a name="DEY" />
 
-Y,Z,N = Y-1
+### DEY -Decrement Y Register
+
+    Y,Z,N = Y-1
 
 Subtracts one from the Y register setting the zero and negative flags as appropriate.
 
@@ -754,9 +792,11 @@ $88
 
 See also: DEC, DEX
 
-EOR - Exclusive OR
+<a name="EOR" />
 
-A,Z,N = A^M
+### EOR -Exclusive OR
+
+    A,Z,N = A^M
 
 An exclusive OR is performed, bit by bit, on the accumulator contents using the contents of a byte of memory.
 
@@ -818,9 +858,11 @@ $51
 
 See also: AND, ORA
 
-INC - Increment Memory
+<a name="INC" />
 
-M,Z,N = M+1
+### INC -Increment Memory
+
+    M,Z,N = M+1
 
 Adds one to the value held at a specified memory location setting the zero and negative flags as appropriate.
 
@@ -862,9 +904,11 @@ $FE
 
 See also: INX, INY
 
-INX - Increment X Register
+<a name="INX" />
 
-X,Z,N = X+1
+### INX -Increment X Register
+
+    X,Z,N = X+1
 
 Adds one to the X register setting the zero and negative flags as appropriate.
 
@@ -891,9 +935,11 @@ $E8
 
 See also: INC, INY
 
-INY - Increment Y Register
+<a name="INY" />
 
-Y,Z,N = Y+1
+### INY -Increment Y Register
+
+    Y,Z,N = Y+1
 
 Adds one to the Y register setting the zero and negative flags as appropriate.
 
@@ -920,7 +966,9 @@ $C8
 
 See also: INC, INX
 
-JMP - Jump
+<a name="JMP" />
+
+### JMP -Jump
 
 Sets the program counter to the address specified by the operand.
 
@@ -953,7 +1001,9 @@ $6C
 NB:
 An original 6502 has does not correctly fetch the target address if the indirect vector falls on a page boundary (e.g. $xxFF where xx is any value from $00 to $FF). In this case fetches the LSB from $xxFF as expected but takes the MSB from $xx00. This is fixed in some later chips like the 65SC02 so for compatibility always ensure the indirect vector is not at the end of the page.
 
-JSR - Jump to Subroutine
+<a name="JSR" />
+
+### JSR -Jump to Subroutine
 
 The JSR instruction pushes the address (minus one) of the return point on to the stack and then sets the program counter to the target memory address.
 
@@ -980,9 +1030,11 @@ $20
 
 See also: RTS
 
-LDA - Load Accumulator
+<a name="LDA" />
 
-A,Z,N = M
+### LDA -Load Accumulator
+
+    A,Z,N = M
 
 Loads a byte of memory into the accumulator setting the zero and negative flags as appropriate.
 
@@ -1042,9 +1094,11 @@ $B1
 
 See also: LDX, LDY
 
-LDX - Load X Register
+<a name="LDX" />
 
-X,Z,N = M
+### LDX -Load X Register
+
+    X,Z,N = M
 
 Loads a byte of memory into the X register setting the zero and negative flags as appropriate.
 
@@ -1089,9 +1143,11 @@ $BE
 
 See also: LDA, LDY
 
-LDY - Load Y Register
+<a name="LDY" />
 
-Y,Z,N = M
+### LDY -Load Y Register
+
+    Y,Z,N = M
 
 Loads a byte of memory into the Y register setting the zero and negative flags as appropriate.
 
@@ -1136,9 +1192,11 @@ $BC
 
 See also: LDA, LDX
 
-LSR - Logical Shift Right
+<a name="LSR" />
 
-A,C,Z,N = A/2 or M,C,Z,N = M/2
+### LSR -Logical Shift Right
+
+    A,C,Z,N = A/2 or M,C,Z,N = M/2
 
 Each of the bits in A or M is shift one place to the right. The bit that was in bit 0 is shifted into the carry flag. Bit 7 is set to zero.
 
@@ -1185,7 +1243,9 @@ $5E
 
 See also: ASL, ROL, ROR
 
-NOP - No Operation
+<a name="NOP" />
+
+### NOP -No Operation
 
 The NOP instruction causes no changes to the processor other than the normal incrementing of the program counter to the next instruction.
 
@@ -1210,9 +1270,11 @@ $EA
 1
 2
 
-ORA - Logical Inclusive OR
+<a name="ORA" />
 
-A,Z,N = A|M
+### ORA -Logical Inclusive OR
+
+    A,Z,N = A|M
 
 An inclusive OR is performed, bit by bit, on the accumulator contents using the contents of a byte of memory.
 
@@ -1275,7 +1337,9 @@ $11
 
 See also: AND, EOR
 
-PHA - Push Accumulator
+<a name="PHA" />
+
+### PHA -Push Accumulator
 
 Pushes a copy of the accumulator on to the stack.
 
@@ -1302,7 +1366,9 @@ $48
 
 See also: PLA
 
-PHP - Push Processor Status
+<a name="PHP" />
+
+### PHP -Push Processor Status
 
 Pushes a copy of the status flags on to the stack.
 
@@ -1329,7 +1395,9 @@ $08
 
 See also: PLP
 
-PLA - Pull Accumulator
+<a name="PLA" />
+
+### PLA -Pull Accumulator
 
 Pulls an 8 bit value from the stack and into the accumulator. The zero and negative flags are set as appropriate.
 
@@ -1354,7 +1422,9 @@ $68
 
 See also: PHA
 
-PLP - Pull Processor Status
+<a name="PLP" />
+
+### PLP -Pull Processor Status
 
 Pulls an 8 bit value from the stack and into the processor flags. The flags will take on new states as determined by the value pulled.
 
@@ -1381,7 +1451,9 @@ $28
 
 See also: PHP
 
-ROL - Rotate Left
+<a name="ROL" />
+
+### ROL -Rotate Left
 
 Move each of the bits in either A or M one place to the left. Bit 0 is filled with the current value of the carry flag whilst the old bit 7 becomes the new carry flag value.
 
@@ -1428,7 +1500,9 @@ $3E
 
 See also: ASL, LSR, ROR
 
-ROR - Rotate Right
+<a name="ROR" />
+
+### ROR -Rotate Right
 
 Move each of the bits in either A or M one place to the right. Bit 7 is filled with the current value of the carry flag whilst the old bit 0 becomes the new carry flag value.
 
@@ -1475,7 +1549,9 @@ $7E
 
 See also ASL, LSR, ROL
 
-RTI - Return from Interrupt
+<a name="RTI" />
+
+### RTI -Return from Interrupt
 
 The RTI instruction is used at the end of an interrupt processing routine. It pulls the processor flags from the stack followed by the program counter.
 
@@ -1500,7 +1576,9 @@ $40
 1
 6
 
-RTS - Return from Subroutine
+<a name="RTS" />
+
+### RTS -Return from Subroutine
 
 The RTS instruction is used at the end of a subroutine to return to the calling routine. It pulls the program counter (minus one) from the stack.
 
@@ -1527,9 +1605,9 @@ $60
 
 See also: JSR
 
-SBC - Subtract with Carry
+###SBC - Subtract with Carry
 
-A,Z,C,N = A-M-(1-C)
+    A,Z,C,N = A-M-(1-C)
 
 This instruction subtracts the contents of a memory location to the accumulator together with the not of the carry bit. If overflow occurs the carry bit is clear, this enables multiple byte subtraction to be performed.
 
@@ -1591,9 +1669,11 @@ $F1
 
 See also: ADC
 
-SEC - Set Carry Flag
+<a name="SEC" />
 
-C = 1
+### SEC -Set Carry Flag
+
+    C = 1
 
 Set the carry flag to one.
 
@@ -1618,9 +1698,11 @@ $38
 
 See also: CLC
 
-SED - Set Decimal Flag
+<a name="SED" />
 
-D = 1
+### SED -Set Decimal Flag
+
+    D = 1
 
 Set the decimal mode flag to one.
 
@@ -1645,9 +1727,11 @@ $F8
 
 See also: CLD
 
-SEI - Set Interrupt Disable
+<a name="SEI" />
 
-I = 1
+### SEI -Set Interrupt Disable
+
+    I = 1
 
 Set the interrupt disable flag to one.
 
@@ -1672,9 +1756,11 @@ $78
 
 See also: CLI
 
-STA - Store Accumulator
+<a name="STA" />
 
-M = A
+### STA -Store Accumulator
+
+    M = A
 
 Stores the contents of the accumulator into memory.
 
@@ -1731,9 +1817,11 @@ $91
 
 See also: STX, STY
 
-STX - Store X Register
+<a name="STX" />
 
-M = X
+### STX -Store X Register
+
+    M = X
 
 Stores the contents of the X register into memory.
 
@@ -1770,9 +1858,11 @@ $8E
 
 See also: STA, STY
 
-STY - Store Y Register
+<a name="STY" />
 
-M = Y
+### STY -Store Y Register
+
+    M = Y
 
 Stores the contents of the Y register into memory.
 
@@ -1809,9 +1899,11 @@ $8C
 
 See also: STA, STX
 
-TAX - Transfer Accumulator to X
+<a name="TAX" />
 
-X = A
+### TAX -Transfer Accumulator to X
+
+    X = A
 
 Copies the current contents of the accumulator into the X register and sets the zero and negative flags as appropriate.
 
@@ -1838,9 +1930,11 @@ $AA
 
 See also: TXA
 
-TAY - Transfer Accumulator to Y
+<a name="TAY" />
 
-Y = A
+### TAY -Transfer Accumulator to Y
+
+    Y = A
 
 Copies the current contents of the accumulator into the Y register and sets the zero and negative flags as appropriate.
 
@@ -1867,9 +1961,11 @@ $A8
 
 See also: TYA
 
-TSX - Transfer Stack Pointer to X
+<a name="TSX" />
 
-X = S
+### TSX -Transfer Stack Pointer to X
+
+    X = S
 
 Copies the current contents of the stack register into the X register and sets the zero and negative flags as appropriate.
 
@@ -1896,9 +1992,11 @@ $BA
 
 See also: TXS
 
-TXA - Transfer X to Accumulator
+<a name="TXA" />
 
-A = X
+### TXA -Transfer X to Accumulator
+
+    A = X
 
 Copies the current contents of the X register into the accumulator and sets the zero and negative flags as appropriate.
 
@@ -1925,9 +2023,11 @@ $8A
 
 See also: TAX
 
-TXS - Transfer X to Stack Pointer
+<a name="TXS" />
 
-S = X
+### TXS -Transfer X to Stack Pointer
+
+    S = X
 
 Copies the current contents of the X register into the stack register.
 
@@ -1954,9 +2054,11 @@ $9A
 
 See also: TSX
 
-TYA - Transfer Y to Accumulator
+<a name="TYA" />
 
-A = Y
+### TYA -Transfer Y to Accumulator
+
+    A = Y
 
 Copies the current contents of the Y register into the accumulator and sets the zero and negative flags as appropriate.
 
