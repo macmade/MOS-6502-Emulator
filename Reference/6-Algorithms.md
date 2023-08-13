@@ -34,6 +34,8 @@ algorithms and is based on code taken from my macro library.
 If you find any bugs in the code, have routines to donate to the library,
 or can suggest improvements then please mail me.
 
+---
+
 ### Standard Conventions
 
 The 6502 processor expects addresses to be stored in 'little endian' order,
@@ -54,6 +56,8 @@ To be safe the algorithms usually start by setting processor flags and registers
 to safe initial values. If you need to squeeze a few extra bytes or cycles out
 of the routine you might be able to remove some of these initializations
 depending on the preceding instructions.
+
+---
 
 ### Simple Memory Operations
 
@@ -134,6 +138,8 @@ a time and store them.
             STA MEM+0
             LDA #HI NUM     ; ... then the most significant byte
             STA MEM+1
+
+---
 
 ### Logical Operations
 
@@ -216,6 +222,8 @@ and is most easily calculated by exclusively ORing against an all ones value.
 The macro library contains reference code for 16 and 32 bit `AND`, `ORA`, `EOR`
 and `NOT` operations although there is very little use for them outside of
 interpreters.
+
+---
 
 ### Shifts & Rotates
 
@@ -330,6 +338,8 @@ achieve this.
             ROR MEM+1       ; And back into the MSB
             ROR MEM+0       ; Rotate the LSB as normal
 
+---
+
 ### Addition & Subtraction
 
 The 6502 processor provides 8 bit addition and subtraction instructions and a
@@ -365,6 +375,8 @@ Both the addition and subtraction algorithm can be extended to 32 bits by
 repeating the `LDA/ADC/STA` or `LDA/SBC/STA` pattern for two further bytes
 worth of data.
 
+---
+
 ### Negation
 
 The traditional approach to negating a twos complement number is to reverse all
@@ -387,6 +399,8 @@ from zero.
             LDA #0          ; Load constant zero again
             SBC SRC+1       ; ... subtract the most significant byte
             STA DST+1       ; ... and store the result
+
+---
 
 ### Decimal Arithmetic
 
@@ -482,6 +496,8 @@ following code.
             ADC #$40        ; Produce $30-$39 or $41-$46
             CLD             ; Leave BCD mode
 
+---
+
 ### Increments & Decrements
 
 Assembly programs frequently use memory based counters that occasionally need
@@ -509,6 +525,8 @@ test it first by loading it into the accumulator to set the processor flags.
             BNE _SKIP       ; If it isn't we can skip the next instruction
             DEC MEM+1       ; Decrement the MSB when the LSB will underflow
     _SKIP   DEC MEM+0       ; Decrement the LSB
+
+---
 
 ### Complex Memory Transfers
 
@@ -572,6 +590,8 @@ of 256 bytes followed by any remaining fragments of smaller size.
             INY             ; Bump the index and repeat
             BNE _FRAG\?
     _DONE   EQU *           ; All done
+
+---
 
 ### Character Classification
 
@@ -839,6 +859,8 @@ Which solution is best? As in so many cases it depends on your program. If you
 only need one or two tests and memory size is an issue then the comparison
 approach will generate less code but may be slightly slower (for the complex
 tests), otherwise the look up table is simple and fast.
+
+---
 
 ### Some notes on my macro library
 

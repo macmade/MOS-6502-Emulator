@@ -29,6 +29,8 @@ The 6502 has a relatively basic set of instructions, many having similar
 functions (e.g. memory access, arithmetic, etc.). The following sections list
 the complete set of 56 instructions in functional groups.
 
+---
+
 ### Load/Store Operations
 
 These instructions transfer a single byte between memory and one of the
@@ -44,6 +46,8 @@ on the value of transferred. Store operations do not affect the flag settings.
 | `STX`       | Store X Register  |       | 
 | `STY`       | Store Y Register  |       |
 
+---
+
 ### Register Transfers
 
 The contents of the X and Y registers can be moved to or from the accumulator,
@@ -55,6 +59,8 @@ setting the negative (`N`) and zero (`Z`) flags as appropriate.
 | `TAY`       | Transfer accumulator to Y | N,Z   |
 | `TXA`       | Transfer X to accumulator | N,Z   |
 | `TYA`       | Transfer Y to accumulator | N,Z   |
+
+---
 
 ### Stack Operations
 
@@ -77,6 +83,8 @@ subroutine calls and returns, interrupts and returns from interrupts.
 | `PLA`       | Pull accumulator from stack      | N,Z   |
 | `PLP`       | Pull processor status from stack | All   |
 
+---
+
 ### Logical
 
 The following instructions perform logical operations on the contents of the
@@ -90,6 +98,8 @@ but does not keep the result.
 | `EOR`       | Exclusive OR         | N,Z   |
 | `ORA`       | Logical Inclusive OR | N,Z   |
 | `BIT`       | Bit Test             | N,V,Z |
+
+---
 
 ### Arithmetic
 
@@ -105,6 +115,8 @@ and X or Y with memory values.
 | `CPX`       | Compare X register  | N,Z,C   |
 | `CPY`       | Compare Y register  | N,Z,C   |
 
+---
+
 ### Increments & Decrements
 
 Increment or decrement a memory location or one of the X or Y registers by one
@@ -118,6 +130,8 @@ setting the negative (`N`) and zero (`Z`) flags as appropriate.
 | `DEC`       | Decrement a memory location | N,Z   |
 | `DEX`       | Decrement the X register    | N,Z   |
 | `DEY`       | Decrement the Y register    | N,Z   |
+
+---
 
 ### Shifts
 
@@ -135,6 +149,8 @@ carry flag (`C`).
 | `ROL`       | Rotate Left           | N,Z,C |
 | `ROR`       | Rotate Right          | N,Z,C |
 
+---
+
 ### Jumps & Calls
 
 The following instructions modify the program counter causing a break to normal
@@ -147,6 +163,8 @@ execution to the instruction after the call.
 | `JMP`       | Jump to another location |       |
 | `JSR`       | Jump to a subroutine     |       |
 | `RTS`       | Return from subroutine   |       | 
+
+---
 
 ### Branches
 
@@ -170,6 +188,8 @@ they are executed. As relative addresses are stored using a signed 8 bit byte
 the target instruction must be within 126 bytes before the branch or 128 bytes
 after the branch.
 
+---
+
 ### Status Flag Changes
 
 The following instructions change the values of specific status flags.
@@ -183,6 +203,8 @@ The following instructions change the values of specific status flags.
 | `SEC`       | Set carry flag               | C     |
 | `SED`       | Set decimal mode flag        | D     |
 | `SEI`       | Set interrupt disable flag   | I     |
+
+---
 
 ### System Functions
 

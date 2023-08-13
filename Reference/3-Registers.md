@@ -29,6 +29,8 @@ The 6502 has only a small number of registers compared to other processor of the
 same era. This makes it especially challenging to program as algorithms must
 make efficient use of both registers and memory.
 
+---
+
 ### Program Counter
 
 The program counter is a 16 bit register which points to the next instruction
@@ -38,6 +40,8 @@ instructions are executed.
 The value of the program counter can be modified by executing a jump, a relative
 branch or a subroutine call to another memory address or by returning from
 a subroutine or interrupt.
+
+---
 
 ### Stack Pointer
 
@@ -51,6 +55,8 @@ Conversely pulling bytes causes it to be incremented.
 The CPU does not detect if the stack is overflowed by excessive pushing or
 pulling operations and will most likely result in the program crashing.
 
+---
+
 ### Accumulator
 
 The 8 bit accumulator is used all arithmetic and logical operations (with the
@@ -59,6 +65,8 @@ stored and retrieved either from memory or the stack.
 
 Most complex operations will need to use the accumulator for arithmetic and
 efficient optimisation of its use is a key feature of time critical routines.
+
+---
 
 ### Index Register X
 
@@ -69,12 +77,16 @@ compared with values held in memory or incremented and decremented.
 The X register has one special function. It can be used to get a copy of the
 stack pointer or change its value.
 
+---
+
 ### Index Register Y
 
 The Y register is similar to the X register in that it is available for holding
 counter or offsets memory access and supports the same set of memory load, save
 and compare operations as wells as increments and decrements.
 It has no special functions.
+
+---
 
 ### Processor Status
 
