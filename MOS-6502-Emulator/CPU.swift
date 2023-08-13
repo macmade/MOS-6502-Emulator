@@ -93,7 +93,7 @@ open class CPU: CustomStringConvertible
     open func decodeAndExecuteNextInstruction() throws
     {
         var error:        Error?
-        let disassembly = Disassembler.disassemble( at: self.registers.PC, from: self.memory, instructions: 1, error: &error )
+        let disassembly = Disassembler.disassemble( at: self.registers.PC, from: self.memory, instructions: 1, comments: [ : ], error: &error )
 
         if error == nil, disassembly.isEmpty == false
         {

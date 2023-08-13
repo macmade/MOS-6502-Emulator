@@ -33,6 +33,8 @@ open class Apple1Basic: ROM
     public var name   = "Apple 1 BASIC ROM"
     public var origin = UInt16( 0xE000 )
 
+    public var comments: [ UInt16: String ] = [ : ]
+
     public var data = Data(
         [
             0x4C, 0xB0, 0xE2, 0xAD, 0x11, 0xD0, 0x10, 0xFB, 0xAD, 0x10,

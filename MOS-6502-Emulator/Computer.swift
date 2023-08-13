@@ -61,7 +61,7 @@ open class Computer
         print( "Loaded \( data.count ) bytes ROM at \( rom.origin.asHex ): \( rom.name )" )
 
         var error:            Error?
-        let disassembly     = Disassembler.disassemble( at: rom.origin, from: self.memory, size: UInt16( data.count ), error: &error )
+        let disassembly     = Disassembler.disassemble( at: rom.origin, from: self.memory, size: UInt16( data.count ), comments: rom.comments, error: &error )
         let disassemblyText = disassembly.components( separatedBy: "\n" ).map { "    \( $0 )" }.joined( separator: "\n" )
 
         if disassemblyText.trimmingCharacters( in: .whitespaces ).isEmpty == false

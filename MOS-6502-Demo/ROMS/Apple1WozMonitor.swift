@@ -33,6 +33,16 @@ open class Apple1WozMonitor: ROM
     public var name   = "Apple 1 Woz Monitor ROM"
     public var origin = UInt16( 0xFF00 )
 
+    public var comments: [ UInt16: String ] =
+        [
+            0xFF00: "Clear decimal arithmetic mode.",
+            0xFF02: "Mask for DSP data direction register.",
+            0xFF04: "Set it up.",
+            0xFF07: "KBD and DSP control register mask.",
+            0xFF09: "Enable interrupts, set CAI, CB1, for",
+            0xFF0C: " positive edge sense/output mode.",
+        ]
+
     public var data = Data(
         [
             0xD8, 0x58, 0xA0, 0x7F, 0x8C, 0x12, 0xD0, 0xA9, 0xA7, 0x8D,

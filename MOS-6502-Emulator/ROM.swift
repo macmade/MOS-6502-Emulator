@@ -36,6 +36,11 @@ public protocol ROM
         get
     }
 
+    var comments: [ UInt16: String ]
+    {
+        get
+    }
+
     var data: Data
     {
         get

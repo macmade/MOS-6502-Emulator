@@ -35,11 +35,11 @@ open class Disassembler
         self.offset = UInt64( offset )
     }
 
-    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, instructions: UInt = 0, error: inout Error? ) -> String
+    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, instructions: UInt = 0, comments: [ UInt16: String ], error: inout Error? ) -> String
     {
         let disassembler = Disassembler( memory: memory, offset: address )
         var count        = instructions
-        var disassembly  = [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String ) ]()
+        var disassembly  = [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String ) ]()
 
         while count > 0
         {
@@ -47,7 +47,7 @@ open class Disassembler
 
             do
             {
-                disassembly.append( try disassembler.disassembleNextInstruction() )
+                disassembly.append( try disassembler.disassembleNextInstruction( comments: comments ) )
             }
             catch let e
             {
@@ -60,16 +60,16 @@ open class Disassembler
         return disassembler.format( instructions: disassembly )
     }
 
-    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, size: UInt16, error: inout Error? ) -> String
+    public class func disassemble( at address: UInt16, from memory: Memory< UInt16 >, size: UInt16, comments: [ UInt16: String ], error: inout Error? ) -> String
     {
         let disassembler = Disassembler( memory: memory, offset: address )
-        var disassembly  = [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String ) ]()
+        var disassembly  = [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String ) ]()
 
         while disassembler.offset < UInt64( address ) + UInt64( size )
         {
             do
             {
-                disassembly.append( try disassembler.disassembleNextInstruction() )
+                disassembly.append( try disassembler.disassembleNextInstruction( comments: comments ) )
             }
             catch let e
             {
@@ -82,11 +82,16 @@ open class Disassembler
         return disassembler.format( instructions: disassembly )
     }
 
-    open func format( instructions: [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String ) ] ) -> String
+    open func format( instructions: [ ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String ) ] ) -> String
     {
         let maxBytes = instructions.reduce( 0 )
         {
             $0 < $1.bytes.count ? $1.bytes.count : $0
+        }
+
+        let maxDisassembly = instructions.reduce( 0 )
+        {
+            $0 < $1.disassembly.count ? $1.disassembly.count : $0
         }
 
         return instructions.map
@@ -97,12 +102,15 @@ open class Disassembler
             }
             .joined( separator: "" ).padding( toLength: maxBytes * 2, withPad: " ", startingAt: 0 )
 
-            return "\( $0.address.asHex ): \( bytes ) \( $0.disassembly )"
+            let disassembly = $0.comment.isEmpty ? $0.disassembly : $0.disassembly.padding( toLength: maxDisassembly, withPad: " ", startingAt: 0 )
+            let comment     = $0.comment.isEmpty ? "" : " ; \( $0.comment )"
+
+            return "\( $0.address.asHex ): \( bytes ) \( disassembly ) \( comment )"
         }
         .joined( separator: "\n" )
     }
 
-    open func disassembleNextInstruction() throws -> ( address: UInt16, bytes: [ UInt8 ], disassembly: String )
+    open func disassembleNextInstruction( comments: [ UInt16: String ] ) throws -> ( address: UInt16, bytes: [ UInt8 ], disassembly: String, comment: String )
     {
         if self.offset > UInt16.max
         {
@@ -241,7 +249,7 @@ open class Disassembler
             }
         }
 
-        return ( start, bytes, disassembly.joined( separator: " " ) )
+        return ( start, bytes, disassembly.joined( separator: " " ), comments[ start ] ?? "" )
     }
 
     open func readUInt8() throws -> UInt8

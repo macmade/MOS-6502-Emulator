@@ -33,6 +33,8 @@ open class C64KernalRev1: ROM
     public var name   = "Commodore 64 KERNAL rev.1 ROM"
     public var origin = UInt16( 0xE000 )
 
+    public var comments: [ UInt16: String ] = [ : ]
+
     public var data = Data(
         [
             0x85, 0x56, 0x20, 0x0F, 0xBC, 0xA5, 0x61, 0xC9, 0x88, 0x90,
