@@ -257,7 +257,8 @@ Processor Status after use:
 
 ### BMI - Branch if Minus
 
-If the negative flag is set then add the relative displacement to the program counter to cause a branch to a new location.
+If the negative flag is set then add the relative displacement to the program
+counter to cause a branch to a new location.
 
 Processor Status after use:
 
@@ -271,16 +272,11 @@ Processor Status after use:
 | V | Overflow Flag     | Not affected |
 | N | Negative Flag     | Not affected |
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Relative
+| Addressing Mode | Opcode | Bytes | Cycles                                         |
+|-----------------|--------|-------|------------------------------------------------|
+| Relative        | `$30`  | 2     | 2 (+1 if branch succeeds, +2 if to a new page) |
 
-$30
-2
-2 (+1 if branch succeeds
-+2 if to a new page)
-
-See also: BPL
+See also: [BPL](#BPL)
 
 ---
 
@@ -288,7 +284,8 @@ See also: BPL
 
 ### BNE - Branch if Not Equal
 
-If the zero flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
+If the zero flag is clear then add the relative displacement to the program
+counter to cause a branch to a new location.
 
 Processor Status after use:
 
@@ -302,16 +299,11 @@ Processor Status after use:
 | V | Overflow Flag     | Not affected |
 | N | Negative Flag     | Not affected |
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Relative
+| Addressing Mode | Opcode | Bytes | Cycles                                         |
+|-----------------|--------|-------|------------------------------------------------|
+| Relative        | `$D0`  | 2     | 2 (+1 if branch succeeds, +2 if to a new page) |
 
-$D0
-2
-2 (+1 if branch succeeds
-+2 if to a new page)
-
-See also: BEQ
+See also: [BEQ](#BEQ)
 
 ---
 
@@ -319,7 +311,8 @@ See also: BEQ
 
 ### BPL - Branch if Positive
 
-If the negative flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
+If the negative flag is clear then add the relative displacement to the program
+counter to cause a branch to a new location.
 
 Processor Status after use:
 
@@ -333,16 +326,11 @@ Processor Status after use:
 | V | Overflow Flag     | Not affected |
 | N | Negative Flag     | Not affected |
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Relative
+| Addressing Mode | Opcode | Bytes | Cycles                                         |
+|-----------------|--------|-------|------------------------------------------------|
+| Relative        | `$10`  | 2     | 2 (+1 if branch succeeds, +2 if to a new page) |
 
-$10
-2
-2 (+1 if branch succeeds
-+2 if to a new page)
-
-See also: BMI
+See also: [BMI](#BMI)
 
 ---
 
@@ -350,7 +338,10 @@ See also: BMI
 
 ### BRK - Force Interrupt
 
-The BRK instruction forces the generation of an interrupt request. The program counter and processor status are pushed on the stack then the IRQ interrupt vector at $FFFE/F is loaded into the PC and the break flag in the status set to one.
+The BRK instruction forces the generation of an interrupt request. The program
+counter and processor status are pushed on the stack then the IRQ interrupt
+vector at `$FFFE/F` is loaded into the PC and the break flag in the status set
+to one.
 
 Processor Status after use:
 
@@ -366,13 +357,11 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
+| Implied         | `$00`  | 1     | 7      |
 
-$00
-1
-7
-
-The interpretation of a BRK depends on the operating system. On the BBC Microcomputer it is used by language ROMs to signal run time errors but it could be used for other purposes (e.g. calling operating system functions, etc.).
+The interpretation of a BRK depends on the operating system. On the BBC
+Microcomputer it is used by language ROMs to signal run time errors but it could
+be used for other purposes (e.g. calling operating system functions, etc.).
 
 ---
 
@@ -380,7 +369,8 @@ The interpretation of a BRK depends on the operating system. On the BBC Microcom
 
 ### BVC - Branch if Overflow Clear
 
-If the overflow flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
+If the overflow flag is clear then add the relative displacement to the program
+counter to cause a branch to a new location.
 
 Processor Status after use:
 
@@ -394,16 +384,11 @@ Processor Status after use:
 | V | Overflow Flag     | Not affected |
 | N | Negative Flag     | Not affected |
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Relative
+| Addressing Mode | Opcode | Bytes | Cycles                                         |
+|-----------------|--------|-------|------------------------------------------------|
+| Relative        | `$50`  | 2     | 2 (+1 if branch succeeds, +2 if to a new page) |
 
-$50
-2
-2 (+1 if branch succeeds
-+2 if to a new page)
-
-See also: BVS
+See also: [BVS](#BVS)
 
 ---
 
@@ -411,7 +396,8 @@ See also: BVS
 
 ### BVS - Branch if Overflow Set
 
-If the overflow flag is set then add the relative displacement to the program counter to cause a branch to a new location.
+If the overflow flag is set then add the relative displacement to the program
+counter to cause a branch to a new location.
 
 Processor Status after use:
 
@@ -425,16 +411,11 @@ Processor Status after use:
 | V | Overflow Flag     | Not affected |
 | N | Negative Flag     | Not affected |
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Relative
+| Addressing Mode | Opcode | Bytes | Cycles                                         |
+|-----------------|--------|-------|------------------------------------------------|
+| Relative        | `$70`  | 2     | 2 (+1 if branch succeeds, +2 if to a new page) |
 
-$70
-2
-2 (+1 if branch succeeds
-+2 if to a new page)
-
-See also: BVC
+See also: [BVC](#BVC)
 
 ---
 
@@ -460,13 +441,9 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
+| Implied         | `$18`  | 1     | 2      |
 
-$18
-1
-2
-
-See also: SEC
+See also: [SEC](#SEC)
 
 ---
 
@@ -492,16 +469,15 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
+| Implied         | `$D8`  | 1     | 2      |
 
-$D8
-1
-2
+**NB:**  
+The state of the decimal flag is uncertain when the CPU is powered up and it is
+not reset when an interrupt is generated. In both cases you should include an
+explicit `CLD` to ensure that the flag is cleared before performing addition
+or subtraction.
 
-NB:
-The state of the decimal flag is uncertain when the CPU is powered up and it is not reset when an interrupt is generated. In both cases you should include an explicit CLD to ensure that the flag is cleared before performing addition or subtraction.
-
-See also: SED
+See also: [SED](#SED)
 
 ---
 
@@ -511,7 +487,8 @@ See also: SED
 
     I = 0
 
-Clears the interrupt disable flag allowing normal interrupt requests to be serviced.
+Clears the interrupt disable flag allowing normal interrupt requests to be
+serviced.
 
 Processor Status after use:
 
@@ -527,13 +504,9 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
+| Implied         | `$58`  | 1     | 2      |
 
-$58
-1
-2
-
-See also: SEI
+See also: [SEI](#SEI)
 
 ---
 
@@ -559,11 +532,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$B8
-1
-2
+| Implied         | `$B8`  | 1     | 2      |
 
 ---
 
