@@ -147,6 +147,7 @@
 		05C6D0FC2A89118700A984EB /* Memory+MemoryDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */; };
 		05C6D1022A89165A00A984EB /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1012A89165A00A984EB /* Bus.swift */; };
 		05C6D1062A89582F00A984EB /* InstructionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1052A89582F00A984EB /* InstructionContext.swift */; };
+		05C6D1082A896C9900A984EB /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1072A896C9900A984EB /* Clock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -383,6 +384,7 @@
 		05C6D1012A89165A00A984EB /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		05C6D1042A891BE300A984EB /* Rockwell-R650X-R651X.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rockwell-R650X-R651X.pdf"; sourceTree = "<group>"; };
 		05C6D1052A89582F00A984EB /* InstructionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionContext.swift; sourceTree = "<group>"; };
+		05C6D1072A896C9900A984EB /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,6 +450,7 @@
 				05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */,
 				05C6D1012A89165A00A984EB /* Bus.swift */,
 				05C3C1F62A865D5300436F6D /* Computer.swift */,
+				05C6D1072A896C9900A984EB /* Clock.swift */,
 				05C3C1A82A85700700436F6D /* CPU.swift */,
 				05C3C1FE2A8661E800436F6D /* Disassembler.swift */,
 				05C6D0E62A88EFE700A984EB /* Either.swift */,
@@ -988,6 +991,7 @@
 				05C3C2302A87D2A600436F6D /* BVC.swift in Sources */,
 				05C3C26C2A87D45500436F6D /* TAY.swift in Sources */,
 				05C3C2202A87D22600436F6D /* BEQ.swift in Sources */,
+				05C6D1082A896C9900A984EB /* Clock.swift in Sources */,
 				05C3C2722A87D47600436F6D /* TXS.swift in Sources */,
 				05C3C25C2A87D3DD00436F6D /* ROR.swift in Sources */,
 				05C3C2362A87D2D900436F6D /* CPX.swift in Sources */,

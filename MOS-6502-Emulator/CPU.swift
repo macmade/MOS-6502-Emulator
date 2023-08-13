@@ -27,10 +27,10 @@ import Foundation
 public class CPU
 {
     public private( set ) var registers      = Registers()
-    public private( set ) var cycles: UInt64 = 0
+    public private( set ) var clock: UInt64 = 0
 
-    private var bus:     Bus
-    private var devices: [ ( address: UInt16, size: UInt16, device: MemoryDevice ) ] = []
+    private var bus:    Bus
+    private var cycles: UInt = 0
 
     public static let zeroPageStart:  UInt16 = 0x0000
     public static let zeroPageEnd:    UInt16 = 0x00FF
@@ -57,26 +57,20 @@ public class CPU
         self.registers.X  = 0
         self.registers.Y  = 0
         self.registers.PS = []
-        self.cycles       = 0
+        self.clock        = 0
     }
 
-    public func run() throws
+    public func cycle() throws
     {
-        try self.run( instructions: 0 )
-    }
+        self.clock += 1
 
-    public func run( instructions: Int ) throws
-    {
-        var n = instructions
-
-        while instructions == 0 || n > 0
+        if self.cycles == 0
         {
             try self.decodeAndExecuteNextInstruction()
-
-            if instructions != 0
-            {
-                n -= 1
-            }
+        }
+        else
+        {
+            self.cycles -= 1
         }
     }
 
@@ -92,6 +86,8 @@ public class CPU
 
         if let instruction = Instructions.all.first( where: { $0.opcode == opcode } )
         {
+            self.cycles = instruction.cycles
+
             try instruction.execute( self, try self.context( for: instruction.addressingMode ) )
         }
         else
@@ -200,15 +196,11 @@ public class CPU
     public func setFlag( _ flag: Registers.Flags )
     {
         self.registers.PS.insert( flag )
-
-        self.cycles += 1
     }
 
     public func clearFlag( _ flag: Registers.Flags )
     {
         self.registers.PS.remove( flag )
-
-        self.cycles += 1
     }
 
     public func readUInt8FromMemoryAtPC() throws -> UInt8
@@ -229,16 +221,14 @@ public class CPU
 
     public func readUInt8FromMemory( at address: UInt16 ) throws -> UInt8
     {
-        let value   = try self.bus.readUInt8( at: address )
-        self.cycles += 1
+        let value = try self.bus.readUInt8( at: address )
 
         return value
     }
 
     public func readUInt16FromMemory( at address: UInt16 ) throws -> UInt16
     {
-        let value   = try self.bus.readUInt16( at: address )
-        self.cycles += 2
+        let value = try self.bus.readUInt16( at: address )
 
         return value
     }
@@ -246,14 +236,10 @@ public class CPU
     public func writeUInt8ToMemory( _ value: UInt8, at address: UInt16 ) throws
     {
         try self.bus.writeUInt8( value, at: address )
-
-        self.cycles += 1
     }
 
     public func writeUInt16ToMemory( _ value: UInt16, at address: UInt16 ) throws
     {
         try self.bus.writeUInt16( value, at: address )
-
-        self.cycles += 2
     }
 }

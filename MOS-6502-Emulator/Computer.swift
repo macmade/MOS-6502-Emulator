@@ -26,15 +26,21 @@ import Foundation
 
 public class Computer
 {
-    private var cpu:    CPU
+    private var clock:  Clock
     private var bus:    Bus
+    private var cpu:    CPU
     private var memory: Memory< UInt16 >
 
-    public init( memory: UInt64 ) throws
+    public init( frequency: Clock.Frequency, memory: UInt64 ) throws
     {
         self.bus    = Bus()
         self.memory = try Memory( size: memory, options: [], initializeTo: 0 )
-        self.cpu    = CPU( bus: self.bus )
+        let cpu     = CPU( bus: self.bus )
+        self.cpu    = cpu
+        self.clock  = Clock( frequency: frequency )
+        {
+            try cpu.cycle()
+        }
 
         try self.bus.mapDevice( self.memory, at: 0x00, size: UInt16( self.memory.size ) )
     }
@@ -70,6 +76,6 @@ public class Computer
         print( "Resetting CPU and running..." )
 
         try self.cpu.reset()
-        try self.cpu.run()
+        try self.clock.run()
     }
 }
