@@ -145,6 +145,7 @@
 		05C6D0E52A88DE3400A984EB /* MemoryDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */; };
 		05C6D0E72A88EFE700A984EB /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0E62A88EFE700A984EB /* Either.swift */; };
 		05C6D0FC2A89118700A984EB /* Memory+MemoryDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */; };
+		05C6D1022A89165A00A984EB /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1012A89165A00A984EB /* Bus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,6 +379,7 @@
 		05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDevice.swift; sourceTree = "<group>"; };
 		05C6D0E62A88EFE700A984EB /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memory+MemoryDevice.swift"; sourceTree = "<group>"; };
+		05C6D1012A89165A00A984EB /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -440,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */,
+				05C6D1012A89165A00A984EB /* Bus.swift */,
 				05C3C1F62A865D5300436F6D /* Computer.swift */,
 				05C3C1A82A85700700436F6D /* CPU.swift */,
 				05C3C1FE2A8661E800436F6D /* Disassembler.swift */,
@@ -920,6 +923,7 @@
 				05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */,
 				05C3C2602A87D3F300436F6D /* RTS.swift in Sources */,
 				05C3C22E2A87D29500436F6D /* CLC.swift in Sources */,
+				05C6D1022A89165A00A984EB /* Bus.swift in Sources */,
 				05C3C2322A87D2BC00436F6D /* BVS.swift in Sources */,
 				05C3C1DA2A85A96600436F6D /* LDA.swift in Sources */,
 				05C3C2742A87D48300436F6D /* TYA.swift in Sources */,

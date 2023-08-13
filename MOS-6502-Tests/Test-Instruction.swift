@@ -49,9 +49,12 @@ class Test_Instruction: XCTestCase
     @discardableResult
     func executeSingleInstruction( instruction: Instruction, operands: [ UInt8 ], inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU ) throws -> Void )? = nil ) throws -> CPU
     {
-        let memory = try Memory< UInt16 >( size: UInt64( UInt16.max ) + 1, options: [], initializeTo: 0 )
+        let bus    = Bus()
+        let cpu    = CPU( bus: bus )
+        let memory = try Memory< UInt16 >( size: UInt64( UInt16.max ), options: [], initializeTo: 0 )
         let origin = UInt16( 0xFF00 )
 
+        XCTAssertNoThrow( try bus.mapDevice( memory, at: 0x00, size: UInt16( memory.size ) ) )
         XCTAssertNoThrow( try memory.writeUInt8( instruction.opcode, at: origin ) )
 
         try operands.enumerated().forEach
@@ -60,9 +63,6 @@ class Test_Instruction: XCTestCase
         }
 
         XCTAssertNoThrow( try memory.writeUInt16( origin, at: CPU.resetVector ) )
-
-        let cpu = try CPU( memory: memory )
-
         XCTAssertNoThrow( try cpu.reset() )
 
         cpu.registers.A  = inputRegisters.A

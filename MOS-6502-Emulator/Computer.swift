@@ -27,12 +27,16 @@ import Foundation
 public class Computer
 {
     private var cpu:    CPU
+    private var bus:    Bus
     private var memory: Memory< UInt16 >
 
     public init( memory: UInt64 ) throws
     {
+        self.bus    = Bus()
         self.memory = try Memory( size: memory, options: [], initializeTo: 0 )
-        self.cpu    = try CPU( memory: self.memory )
+        self.cpu    = CPU( bus: self.bus )
+
+        try self.bus.mapDevice( self.memory, at: 0x00, size: UInt16( self.memory.size ) )
     }
 
     public func loadROM( _ rom: ROM ) throws
@@ -51,7 +55,7 @@ public class Computer
             throw RuntimeError( message: "ROM is too large: \( data.count ) bytes" )
         }
 
-        try self.cpu.mapDevice( rom, at: rom.origin, size: UInt16( rom.data.count ) )
+        try self.bus.mapDevice( rom, at: rom.origin, size: UInt16( rom.data.count ) )
 
         print( "Loaded \( data.count ) bytes ROM at \( rom.origin.asHex ): \( rom.name )" )
 
