@@ -546,61 +546,28 @@ This instruction compares the contents of the accumulator with another memory he
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
+|   |                   |                                   |
+|---|-------------------|-----------------------------------|
+| C | Carry Flag        | Set if A >= M                     |
+| Z | Zero Flag         | Set if A = M                      |
+| I | Interrupt Disable | Not affected                      |
+| D | Decimal Mode Flag | Not affected                      |
+| B | Break Command     | Not affected                      |
+| V | Overflow Flag     | Not affected                      |
+| N | Negative Flag     | Set if bit 7 of the result is set |
 
-C    Carry Flag    Set if A >= M
-Z    Zero Flag    Set if A = M
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of the result is set
+| Addressing Mode | Opcode | Bytes | Cycles                 |
+|-----------------|--------|-------|------------------------|
+| Immediate       | `$C9`  | 2     | 2                      |
+| Zero Page       | `$C5`  | 2     | 3                      |
+| Zero Page,X     | `$D5`  | 2     | 4                      |
+| Absolute        | `$CD`  | 3     | 4                      |
+| Absolute,X      | `$DD`  | 3     | 4 (+1 if page crossed) |
+| Absolute,Y      | `$D9`  | 3     | 4 (+1 if page crossed) |
+| (Indirect,X)    | `$C1`  | 2     | 6                      |
+| (Indirect),Y    | `$D1`  | 2     | 5 (+1 if page crossed) |
 
-| Addressing Mode | Opcode | Bytes | Cycles |
-|-----------------|--------|-------|--------|
-Immediate
-
-$C9
-2
-2
-Zero Page
-
-$C5
-2
-3
-Zero Page,X
-
-$D5
-2
-4
-Absolute
-
-$CD
-3
-4
-Absolute,X
-
-$DD
-3
-4 (+1 if page crossed)
-Absolute,Y
-
-$D9
-3
-4 (+1 if page crossed)
-(Indirect,X)
-
-$C1
-2
-6
-(Indirect),Y
-
-$D1
-2
-5 (+1 if page crossed)
-
-See also: CPX, CPY
+See also: [CPX](#CPX), [CPY](#CPY)
 
 ---
 
