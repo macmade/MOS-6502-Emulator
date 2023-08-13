@@ -232,7 +232,10 @@ See also: [BNE](#BNE)
 
     A & M, N = M7, V = M6
 
-This instructions is used to test if one or more bits are set in a target memory location. The mask pattern in A is ANDed with the value in memory to set or clear the zero flag, but the result is not kept. Bits 7 and 6 of the value from memory are copied into the N and V flags.
+This instructions is used to test if one or more bits are set in a target
+memory location. The mask pattern in A is ANDed with the value in memory to set
+or clear the zero flag, but the result is not kept. Bits 7 and 6 of the value
+from memory are copied into the N and V flags.
 
 Processor Status after use:
 
@@ -472,10 +475,10 @@ Processor Status after use:
 | Implied         | `$D8`  | 1     | 2      |
 
 **NB:**  
-The state of the decimal flag is uncertain when the CPU is powered up and it is
-not reset when an interrupt is generated. In both cases you should include an
-explicit `CLD` to ensure that the flag is cleared before performing addition
-or subtraction.
+> The state of the decimal flag is uncertain when the CPU is powered up and
+> it is not reset when an interrupt is generated. In both cases you should
+> include an explicit `CLD` to ensure that the flag is cleared before
+> performing addition or subtraction.
 
 See also: [SED](#SED)
 
@@ -730,7 +733,8 @@ See also: [DEC](#DEC), [DEX](#DEX)
 
     A,Z,N = A^M
 
-An exclusive OR is performed, bit by bit, on the accumulator contents using the contents of a byte of memory.
+An exclusive OR is performed, bit by bit, on the accumulator contents using
+the contents of a byte of memory.
 
 Processor Status after use:
 
@@ -765,7 +769,8 @@ See also: [AND](#AND), [ORA](#ORA)
 
     M,Z,N = M+1
 
-Adds one to the value held at a specified memory location setting the zero and negative flags as appropriate.
+Adds one to the value held at a specified memory location setting the zero and
+negative flags as appropriate.
 
 Processor Status after use:
 
@@ -870,7 +875,11 @@ Processor Status after use:
 | Indirect        | `$6C`  | 3     | 5      |
 
 NB:
-An original 6502 has does not correctly fetch the target address if the indirect vector falls on a page boundary (e.g. $xxFF where xx is any value from $00 to $FF). In this case fetches the LSB from $xxFF as expected but takes the MSB from $xx00. This is fixed in some later chips like the 65SC02 so for compatibility always ensure the indirect vector is not at the end of the page.
+An original 6502 has does not correctly fetch the target address if the indirect
+vector falls on a page boundary (e.g. `$xxFF` where xx is any value from `$00`
+to `$FF`). In this case fetches the LSB from `$xxFF` as expected but takes
+the MSB from `$xx00`. This is fixed in some later chips like the 65SC02 so for
+compatibility always ensure the indirect vector is not at the end of the page.
 
 ---
 
@@ -878,7 +887,8 @@ An original 6502 has does not correctly fetch the target address if the indirect
 
 ### JSR - Jump to Subroutine
 
-The JSR instruction pushes the address (minus one) of the return point on to the stack and then sets the program counter to the target memory address.
+The JSR instruction pushes the address (minus one) of the return point on to
+the stack and then sets the program counter to the target memory address.
 
 Processor Status after use:
 
@@ -906,7 +916,8 @@ See also: [RTS](#RTS)
 
     A,Z,N = M
 
-Loads a byte of memory into the accumulator setting the zero and negative flags as appropriate.
+Loads a byte of memory into the accumulator setting the zero and negative flags
+as appropriate.
 
 Processor Status after use:
 
@@ -941,7 +952,8 @@ See also: [LDX](#LDX), [LDY](#LDY)
 
     X,Z,N = M
 
-Loads a byte of memory into the X register setting the zero and negative flags as appropriate.
+Loads a byte of memory into the X register setting the zero and negative flags
+as appropriate.
 
 Processor Status after use:
 
@@ -973,7 +985,8 @@ See also: [LDA](#LDA), [LDY](#LDY)
 
     Y,Z,N = M
 
-Loads a byte of memory into the Y register setting the zero and negative flags as appropriate.
+Loads a byte of memory into the Y register setting the zero and negative flags
+as appropriate.
 
 Processor Status after use:
 
@@ -1005,7 +1018,8 @@ See also: [LDA](#LDA), [LDX](#LDX)
 
     A,C,Z,N = A/2 or M,C,Z,N = M/2
 
-Each of the bits in A or M is shift one place to the right. The bit that was in bit 0 is shifted into the carry flag. Bit 7 is set to zero.
+Each of the bits in A or M is shift one place to the right. The bit that was in
+bit 0 is shifted into the carry flag. Bit 7 is set to zero.
 
 Processor Status after use:
 
@@ -1035,7 +1049,8 @@ See also: [ASL](#ASL), [ROL](#ROL), [ROR](#ROR)
 
 ### NOP - No Operation
 
-The NOP instruction causes no changes to the processor other than the normal incrementing of the program counter to the next instruction.
+The `NOP` instruction causes no changes to the processor other than the normal
+incrementing of the program counter to the next instruction.
 
 Processor Status after use:
 
@@ -1061,7 +1076,8 @@ Processor Status after use:
 
     A,Z,N = A|M
 
-An inclusive OR is performed, bit by bit, on the accumulator contents using the contents of a byte of memory.
+An inclusive `OR` is performed, bit by bit, on the accumulator contents using
+the contents of a byte of memory.
 
 Processor Status after use:
 
@@ -1146,7 +1162,8 @@ See also: [PLP](#PLP)
 
 ### PLA - Pull Accumulator
 
-Pulls an 8 bit value from the stack and into the accumulator. The zero and negative flags are set as appropriate.
+Pulls an 8 bit value from the stack and into the accumulator. The zero and
+negative flags are set as appropriate.
 
 Processor Status after use:
 
@@ -1172,7 +1189,8 @@ See also: [PHA](#PHA)
 
 ### PLP - Pull Processor Status
 
-Pulls an 8 bit value from the stack and into the processor flags. The flags will take on new states as determined by the value pulled.
+Pulls an 8 bit value from the stack and into the processor flags.
+The flags will take on new states as determined by the value pulled.
 
 Processor Status after use:
 
@@ -1198,7 +1216,9 @@ See also: [PHP](#PHP)
 
 ### ROL - Rotate Left
 
-Move each of the bits in either A or M one place to the left. Bit 0 is filled with the current value of the carry flag whilst the old bit 7 becomes the new carry flag value.
+Move each of the bits in either A or M one place to the left. Bit 0 is filled
+with the current value of the carry flag whilst the old bit 7 becomes
+the new carry flag value.
 
 Processor Status after use:
 
@@ -1228,7 +1248,9 @@ See also: [ASL](#ASL), [LSR](#LSR), [ROR](#ROR)
 
 ### ROR - Rotate Right
 
-Move each of the bits in either A or M one place to the right. Bit 7 is filled with the current value of the carry flag whilst the old bit 0 becomes the new carry flag value.
+Move each of the bits in either A or M one place to the right. Bit 7 is filled
+with the current value of the carry flag whilst the old bit 0 becomes
+the new carry flag value.
 
 Processor Status after use:
 
@@ -1258,7 +1280,8 @@ See also ASL, LSR, ROL
 
 ### RTI - Return from Interrupt
 
-The RTI instruction is used at the end of an interrupt processing routine. It pulls the processor flags from the stack followed by the program counter.
+The `RTI` instruction is used at the end of an interrupt processing routine.
+It pulls the processor flags from the stack followed by the program counter.
 
 Processor Status after use:
 
@@ -1282,7 +1305,8 @@ Processor Status after use:
 
 ### RTS - Return from Subroutine
 
-The RTS instruction is used at the end of a subroutine to return to the calling routine. It pulls the program counter (minus one) from the stack.
+The `RTS` instruction is used at the end of a subroutine to return to the
+calling routine. It pulls the program counter (minus one) from the stack.
 
 Processor Status after use:
 
@@ -1310,7 +1334,9 @@ See also: [JSR](#JSR)
 
     A,Z,C,N = A-M-(1-C)
 
-This instruction subtracts the contents of a memory location to the accumulator together with the not of the carry bit. If overflow occurs the carry bit is clear, this enables multiple byte subtraction to be performed.
+This instruction subtracts the contents of a memory location to the accumulator
+together with the not of the carry bit. If overflow occurs the carry bit is
+clear, this enables multiple byte subtraction to be performed.
 
 Processor Status after use:
 
@@ -1523,7 +1549,8 @@ See also: [STA](#STA), [STX](#STX)
 
     X = A
 
-Copies the current contents of the accumulator into the X register and sets the zero and negative flags as appropriate.
+Copies the current contents of the accumulator into the X register and sets the
+zero and negative flags as appropriate.
 
 Processor Status after use:
 
@@ -1551,7 +1578,8 @@ See also: [TXA](#TXA)
 
     Y = A
 
-Copies the current contents of the accumulator into the Y register and sets the zero and negative flags as appropriate.
+Copies the current contents of the accumulator into the Y register and sets the
+zero and negative flags as appropriate.
 
 Processor Status after use:
 
@@ -1579,7 +1607,8 @@ See also: [TYA](#TYA)
 
     X = S
 
-Copies the current contents of the stack register into the X register and sets the zero and negative flags as appropriate.
+Copies the current contents of the stack register into the X register and sets
+the zero and negative flags as appropriate.
 
 Processor Status after use:
 
@@ -1607,7 +1636,8 @@ See also: [TXS](#TXS)
 
     A = X
 
-Copies the current contents of the X register into the accumulator and sets the zero and negative flags as appropriate.
+Copies the current contents of the X register into the accumulator and sets the
+zero and negative flags as appropriate.
 
 Processor Status after use:
 
