@@ -241,7 +241,7 @@ Processor Status after use:
 
 <a name="BMI" />
 
-### BMI - Branch if Minus
+### BMI - Branch if Minus
 
 If the negative flag is set then add the relative displacement to the program counter to cause a branch to a new location.
 
@@ -535,7 +535,7 @@ $B8
 
 <a name="CMP" />
 
-### CMP - Compare
+### CMP - Compare
 
     Z,C,N = A-M
 
@@ -601,7 +601,7 @@ See also: CPX, CPY
 
 <a name="CPX" />
 
-### CPX - Compare X Register
+### CPX - Compare X Register
 
     Z,C,N = X-M
 
