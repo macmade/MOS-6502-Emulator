@@ -51,7 +51,8 @@ open class Computer
             throw RuntimeError( message: "ROM is too large: \( data.count ) bytes" )
         }
 
-        self.cpu.mapDevice( rom, at: rom.origin, size: UInt16( rom.data.count ) )
+        try self.cpu.mapDevice( rom, at: rom.origin, size: UInt16( rom.data.count ) )
+
         print( "Loaded \( data.count ) bytes ROM at \( rom.origin.asHex ): \( rom.name )" )
 
         if let disassembly = try? Disassembler.disassembleROM( rom ), disassembly.isEmpty == false

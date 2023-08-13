@@ -53,8 +53,15 @@ open class CPU: CustomStringConvertible
         self.memory = memory
     }
 
-    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 )
-    {}
+    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws
+    {
+        self.devices.forEach
+        {
+            _ in
+        }
+
+        self.devices.append( ( address: address, size: size, device: device ) )
+    }
 
     open func reset() throws
     {
