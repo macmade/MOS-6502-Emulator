@@ -55,9 +55,23 @@ open class CPU
 
     open func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws
     {
+        if UInt64( address ) < self.memory.size
+        {
+            throw RuntimeError( message: "Cannot map device at address: \( address.asHex ): would overwrite memory" )
+        }
+
         try self.devices.forEach
         {
-            _ in throw RuntimeError( message: "" )
+            let existingStart = UInt64( $0.address )
+            let existingEnd   = UInt64( $0.address ) + UInt64( $0.size )
+            let newStart      = UInt64( address )
+            let newEnd        = UInt64( address ) + UInt64( size )
+
+            if     ( newStart <= existingStart && newEnd   >  existingStart )
+                || ( newStart >= existingStart && newStart <= existingEnd )
+            {
+                throw RuntimeError( message: "Cannot map device at address: \( address.asHex ): an existing device is already mapped" )
+            }
         }
 
         self.devices.append( ( address: address, size: size, device: device ) )
