@@ -481,13 +481,17 @@ See also: SED
 
 Clears the interrupt disable flag allowing normal interrupt requests to be serviced.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Set to 0
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Set to 0     |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -507,13 +511,17 @@ See also: SEI
 
 Clears the overflow flag.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Set to 0
-N    Negative Flag    Not affected
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Set to 0     |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -959,14 +967,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -994,14 +1001,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1227,14 +1233,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1321,14 +1326,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1350,14 +1354,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1401,16 +1404,15 @@ Pulls an 8 bit value from the stack and into the processor flags. The flags will
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Set from stack
-Z    Zero Flag    Set from stack
-I    Interrupt Disable    Set from stack
-D    Decimal Mode Flag    Set from stack
-B    Break Command    Set from stack
-V    Overflow Flag    Set from stack
-N    Negative Flag    Set from stack
+|   |                   |                |
+|---|-------------------|----------------|
+| C | Carry Flag        | Set from stack |
+| Z | Zero Flag         | Set from stack |
+| I | Interrupt Disable | Set from stack |
+| D | Decimal Mode Flag | Set from stack |
+| B | Break Command     | Set from stack |
+| V | Overflow Flag     | Set from stack |
+| N | Negative Flag     | Set from stack |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1528,16 +1530,15 @@ The RTI instruction is used at the end of an interrupt processing routine. It pu
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Set from stack
-Z    Zero Flag    Set from stack
-I    Interrupt Disable    Set from stack
-D    Decimal Mode Flag    Set from stack
-B    Break Command    Set from stack
-V    Overflow Flag    Set from stack
-N    Negative Flag    Set from stack
+|   |                   |                |
+|---|-------------------|----------------|
+| C | Carry Flag        | Set from stack |
+| Z | Zero Flag         | Set from stack |
+| I | Interrupt Disable | Set from stack |
+| D | Decimal Mode Flag | Set from stack |
+| B | Break Command     | Set from stack |
+| V | Overflow Flag     | Set from stack |
+| N | Negative Flag     | Set from stack |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1557,14 +1558,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1650,13 +1650,17 @@ See also: ADC
 
 Set the carry flag to one.
 
-C    Carry Flag    Set to 1
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Set to 1     |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1676,13 +1680,17 @@ See also: CLC
 
 Set the decimal mode flag to one.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Set to 1
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Set to 1     |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1702,13 +1710,17 @@ See also: CLD
 
 Set the interrupt disable flag to one.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Set to 1
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Set to 1     |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1732,14 +1744,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1793,14 +1804,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1834,14 +1844,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1999,14 +2008,13 @@ Processor Status after use:
 
 |   |                   |              |
 |---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
