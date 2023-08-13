@@ -25,13 +25,23 @@
 import Foundation
 import MOS_6502_Emulator
 
-do
+public class Apple1: Computer
 {
-    let computer = try Apple1()
+    public init() throws
+    {
+        try super.init( frequency: .megahertz( 1 ), memory: 4096 )
 
-    try computer.reset()
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+        let keyboard   = try ShiftRegister( size: 1024 )
+        let keyboardCR = try ShiftRegister( size: 1024 )
+        let display    = try ShiftRegister( size: 1024 )
+        let displayCR  = try ShiftRegister( size: 1024 )
+
+        try self.mapDevice( keyboard,   at: 0xD010, size: 1 )
+        try self.mapDevice( keyboardCR, at: 0xD011, size: 1 )
+        try self.mapDevice( display,    at: 0xD012, size: 1 )
+        try self.mapDevice( displayCR,  at: 0xD013, size: 1 )
+
+        try self.loadROM( Apple1WozMonitor() )
+        try self.reset()
+    }
 }

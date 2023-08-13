@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class Computer
+open class Computer
 {
     private var clock:  Clock
     private var bus:    Bus
@@ -43,6 +43,11 @@ public class Computer
         }
 
         try self.bus.mapDevice( self.memory, at: 0x00, size: UInt16( self.memory.size ) )
+    }
+
+    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws
+    {
+        try self.bus.mapDevice( device, at: address, size: size )
     }
 
     public func loadROM( _ rom: ROM ) throws

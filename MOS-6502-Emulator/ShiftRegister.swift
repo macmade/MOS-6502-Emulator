@@ -23,15 +23,26 @@
  ******************************************************************************/
 
 import Foundation
-import MOS_6502_Emulator
 
-do
+public class ShiftRegister: WriteableMemoryDevice
 {
-    let computer = try Apple1()
+    private var memory: Memory< UInt16 >
 
-    try computer.reset()
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+    public private( set ) var size: UInt16
+
+    public init( size: UInt16 ) throws
+    {
+        self.size   = size
+        self.memory = try .init( size: UInt64( size ), options: [], initializeTo: 0 )
+    }
+
+    public func write( _ value: UInt8, at address: UInt16 ) throws
+    {
+        try self.memory.write( value, at: address )
+    }
+
+    public func read( at address: UInt16 ) throws -> UInt8
+    {
+        try self.memory.read( at: address )
+    }
 }
