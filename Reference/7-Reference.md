@@ -542,7 +542,8 @@ Processor Status after use:
 
     Z,C,N = A-M
 
-This instruction compares the contents of the accumulator with another memory held value and sets the zero and carry flags as appropriate.
+This instruction compares the contents of the accumulator with another memory
+held value and sets the zero and carry flags as appropriate.
 
 Processor Status after use:
 
@@ -577,40 +578,28 @@ See also: [CPX](#CPX), [CPY](#CPY)
 
     Z,C,N = X-M
 
-This instruction compares the contents of the X register with another memory held value and sets the zero and carry flags as appropriate.
+This instruction compares the contents of the X register with another memory
+held value and sets the zero and carry flags as appropriate.
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Set if X >= M
-Z    Zero Flag    Set if X = M
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of the result is set
+|   |                   |                                   |
+|---|-------------------|-----------------------------------|
+| C | Carry Flag        | Set if X >= M                     |
+| Z | Zero Flag         | Set if X = M                      |
+| I | Interrupt Disable | Not affected                      |
+| D | Decimal Mode Flag | Not affected                      |
+| B | Break Command     | Not affected                      |
+| V | Overflow Flag     | Not affected                      |
+| N | Negative Flag     | Set if bit 7 of the result is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Immediate
+| Immediate       | `$E0`  | 2     | 2      |
+| Zero Page       | `$E4`  | 2     | 3      |
+| Absolute        | `$EC`  | 3     | 4      |
 
-$E0
-2
-2
-Zero Page
-
-$E4
-2
-3
-Absolute
-
-$EC
-3
-4
-
-See also: CMP, CPY
+See also: [CMP](#CMP), [CPY](#CPY)
 
 ---
 
@@ -620,40 +609,28 @@ See also: CMP, CPY
 
     Z,C,N = Y-M
 
-This instruction compares the contents of the Y register with another memory held value and sets the zero and carry flags as appropriate.
+This instruction compares the contents of the Y register with another memory
+held value and sets the zero and carry flags as appropriate.
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Set if Y >= M
-Z    Zero Flag    Set if Y = M
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of the result is set
+|   |                   |                                   |
+|---|-------------------|-----------------------------------|
+| C | Carry Flag        | Set if Y >= M                     |
+| Z | Zero Flag         | Set if Y = M                      |
+| I | Interrupt Disable | Not affected                      |
+| D | Decimal Mode Flag | Not affected                      |
+| B | Break Command     | Not affected                      |
+| V | Overflow Flag     | Not affected                      |
+| N | Negative Flag     | Set if bit 7 of the result is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Immediate
+| Immediate       | `$C0`  | 2     | 2      |
+| Zero Page       | `$C4`  | 2     | 3      |
+| Absolute        | `$CC`  | 3     | 4      |
 
-$C0
-2
-2
-Zero Page
-
-$C4
-2
-3
-Absolute
-
-$CC
-3
-4
-
-See also: CMP, CPX
+See also: [CMP](#CMP), [CPX](#CPX)
 
 ---
 
