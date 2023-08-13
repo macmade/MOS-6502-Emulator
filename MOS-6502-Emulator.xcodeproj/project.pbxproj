@@ -363,12 +363,12 @@
 		05C3C3592A881FC000436F6D /* C64KernalRev1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C64KernalRev1.swift; sourceTree = "<group>"; };
 		05C3C35B2A88203500436F6D /* C64KernalRev2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C64KernalRev2.swift; sourceTree = "<group>"; };
 		05C3C35D2A88203C00436F6D /* C64KernalRev3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C64KernalRev3.swift; sourceTree = "<group>"; };
-		05C6D0DB2A883FBE00A984EB /* 5-Algorithms.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "5-Algorithms.md"; sourceTree = "<group>"; };
-		05C6D0DC2A883FBE00A984EB /* 2-Registers.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "2-Registers.md"; sourceTree = "<group>"; };
-		05C6D0DD2A883FBE00A984EB /* 1-Architecture.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "1-Architecture.md"; sourceTree = "<group>"; };
-		05C6D0DE2A883FBE00A984EB /* 3-Instructions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "3-Instructions.md"; sourceTree = "<group>"; };
-		05C6D0DF2A883FBE00A984EB /* 4-Addressing.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "4-Addressing.md"; sourceTree = "<group>"; };
-		05C6D0E02A883FBE00A984EB /* 6-Reference.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "6-Reference.md"; sourceTree = "<group>"; };
+		05C6D0DB2A883FBE00A984EB /* 6-Algorithms.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "6-Algorithms.md"; sourceTree = "<group>"; };
+		05C6D0DC2A883FBE00A984EB /* 3-Registers.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "3-Registers.md"; sourceTree = "<group>"; };
+		05C6D0DD2A883FBE00A984EB /* 2-Architecture.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "2-Architecture.md"; sourceTree = "<group>"; };
+		05C6D0DE2A883FBE00A984EB /* 4-Instructions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "4-Instructions.md"; sourceTree = "<group>"; };
+		05C6D0DF2A883FBE00A984EB /* 5-Addressing.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "5-Addressing.md"; sourceTree = "<group>"; };
+		05C6D0E02A883FBE00A984EB /* 7-Reference.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "7-Reference.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -758,12 +758,12 @@
 		05C6D0DA2A883F6600A984EB /* Reference */ = {
 			isa = PBXGroup;
 			children = (
-				05C6D0DD2A883FBE00A984EB /* 1-Architecture.md */,
-				05C6D0DC2A883FBE00A984EB /* 2-Registers.md */,
-				05C6D0DE2A883FBE00A984EB /* 3-Instructions.md */,
-				05C6D0DF2A883FBE00A984EB /* 4-Addressing.md */,
-				05C6D0DB2A883FBE00A984EB /* 5-Algorithms.md */,
-				05C6D0E02A883FBE00A984EB /* 6-Reference.md */,
+				05C6D0DD2A883FBE00A984EB /* 2-Architecture.md */,
+				05C6D0DC2A883FBE00A984EB /* 3-Registers.md */,
+				05C6D0DE2A883FBE00A984EB /* 4-Instructions.md */,
+				05C6D0DF2A883FBE00A984EB /* 5-Addressing.md */,
+				05C6D0DB2A883FBE00A984EB /* 6-Algorithms.md */,
+				05C6D0E02A883FBE00A984EB /* 7-Reference.md */,
 			);
 			path = Reference;
 			sourceTree = "<group>";
