@@ -874,12 +874,13 @@ Processor Status after use:
 | Absolute        | `$4C`  | 3     | 3      |
 | Indirect        | `$6C`  | 3     | 5      |
 
-NB:
-An original 6502 has does not correctly fetch the target address if the indirect
-vector falls on a page boundary (e.g. `$xxFF` where xx is any value from `$00`
-to `$FF`). In this case fetches the LSB from `$xxFF` as expected but takes
-the MSB from `$xx00`. This is fixed in some later chips like the 65SC02 so for
-compatibility always ensure the indirect vector is not at the end of the page.
+**NB:**  
+> An original 6502 has does not correctly fetch the target address if the
+> indirect vector falls on a page boundary (e.g. `$xxFF` where xx is any value
+> from `$00` to `$FF`). In this case fetches the LSB from `$xxFF` as expected
+> but takes the MSB from `$xx00`. This is fixed in some later chips like the
+> 65SC02 so for compatibility always ensure the indirect vector is not at the
+> end of the page.
 
 ---
 
