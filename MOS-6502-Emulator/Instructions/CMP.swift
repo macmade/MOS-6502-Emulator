@@ -43,5 +43,9 @@ import Foundation
  */
 public func CMP( cpu: CPU, context: InstructionContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    let value  = try cpu.readUInt8FromMemory( at: try context.address() )
+    let result = Int16( cpu.registers.A ) - Int16( value )
+
+    cpu.setFlag( cpu.registers.A >= value, for: .carryFlag )
+    cpu.setZeroAndNegativeFlags( for: UInt8( bitPattern: Int8( result & 0x00 ) ) )
 }

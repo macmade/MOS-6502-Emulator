@@ -27,7 +27,8 @@ import Foundation
 /*
  * CPY - Compare Y Register
  *
- * This instruction compares the contents of the Y register with another memory held value and sets the zero and carry flags as appropriate.
+ * This instruction compares the contents of the Y register with another
+ * memory held value and sets the zero and carry flags as appropriate.
  *
  * Flags:
  *     - Carry Flag:           Set if Y >= M
@@ -42,5 +43,9 @@ import Foundation
  */
 public func CPY( cpu: CPU, context: InstructionContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    let value  = try cpu.readUInt8FromMemory( at: try context.address() )
+    let result = Int16( cpu.registers.Y ) - Int16( value )
+
+    cpu.setFlag( cpu.registers.Y >= value, for: .carryFlag )
+    cpu.setZeroAndNegativeFlags( for: UInt8( bitPattern: Int8( result & 0x00 ) ) )
 }
