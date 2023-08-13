@@ -734,16 +734,15 @@ An exclusive OR is performed, bit by bit, on the accumulator contents using the 
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 set
+|   |                   |                  |
+|---|-------------------|------------------|
+| C | Carry Flag        | Not affected     |
+| Z | Zero Flag         | Set if A = 0     |
+| I | Interrupt Disable | Not affected     |
+| D | Decimal Mode Flag | Not affected     |
+| B | Break Command     | Not affected     |
+| V | Overflow Flag     | Not affected     |
+| N | Negative Flag     | Set if bit 7 set |
 
 | Addressing Mode | Opcode | Bytes | Cycles                 |
 |-----------------|--------|-------|------------------------|
@@ -770,16 +769,15 @@ Adds one to the value held at a specified memory location setting the zero and n
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if result is zero
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of the result is set
+|   |                   |                                   |
+|---|-------------------|-----------------------------------|
+| C | Carry Flag        | Not affected                      |
+| Z | Zero Flag         | Set if result is zero             |
+| I | Interrupt Disable | Not affected                      |
+| D | Decimal Mode Flag | Not affected                      |
+| B | Break Command     | Not affected                      |
+| V | Overflow Flag     | Not affected                      |
+| N | Negative Flag     | Set if bit 7 of the result is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -802,16 +800,15 @@ Adds one to the X register setting the zero and negative flags as appropriate.
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if X is zero
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of X is set
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if X is zero         |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of X is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -831,16 +828,15 @@ Adds one to the Y register setting the zero and negative flags as appropriate.
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if Y is zero
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of Y is set
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if Y is zero         |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of Y is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -912,13 +908,17 @@ See also: [RTS](#RTS)
 
 Loads a byte of memory into the accumulator setting the zero and negative flags as appropriate.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of A is set
+Processor Status after use:
+
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if A = 0             |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of A is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles                 |
 |-----------------|--------|-------|------------------------|
@@ -943,13 +943,17 @@ See also: [LDX](#LDX), [LDY](#LDY)
 
 Loads a byte of memory into the X register setting the zero and negative flags as appropriate.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if X = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of X is set
+Processor Status after use:
+
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if X = 0             |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of X is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles                 |
 |-----------------|--------|-------|------------------------|
@@ -971,13 +975,17 @@ See also: [LDA](#LDA), [LDY](#LDY)
 
 Loads a byte of memory into the Y register setting the zero and negative flags as appropriate.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if Y = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of Y is set
+Processor Status after use:
+
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if Y = 0             |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of Y is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles                 |
 |-----------------|--------|-------|------------------------|
@@ -1001,16 +1009,15 @@ Each of the bits in A or M is shift one place to the right. The bit that was in 
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Set to contents of old bit 0
-Z    Zero Flag    Set if result = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of the result is set
+|   |                   |                                   |
+|---|-------------------|-----------------------------------|
+| C | Carry Flag        | Set to contents of old bit 0      |
+| Z | Zero Flag         | Set if result = 0                 |
+| I | Interrupt Disable | Not affected                      |
+| D | Decimal Mode Flag | Not affected                      |
+| B | Break Command     | Not affected                      |
+| V | Overflow Flag     | Not affected                      |
+| N | Negative Flag     | Set if bit 7 of the result is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1058,16 +1065,15 @@ An inclusive OR is performed, bit by bit, on the accumulator contents using the 
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 set
+|   |                   |                  |
+|---|-------------------|------------------|
+| C | Carry Flag        | Not affected     |
+| Z | Zero Flag         | Set if A = 0     |
+| I | Interrupt Disable | Not affected     |
+| D | Decimal Mode Flag | Not affected     |
+| B | Break Command     | Not affected     |
+| V | Overflow Flag     | Not affected     |
+| N | Negative Flag     | Set if bit 7 set |
 
 | Addressing Mode | Opcode | Bytes | Cycles                 |
 |-----------------|--------|-------|------------------------|
@@ -1142,13 +1148,17 @@ See also: [PLP](#PLP)
 
 Pulls an 8 bit value from the stack and into the accumulator. The zero and negative flags are set as appropriate.
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of A is set
+Processor Status after use:
+
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if A = 0             |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of A is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1192,16 +1202,15 @@ Move each of the bits in either A or M one place to the left. Bit 0 is filled wi
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Set to contents of old bit 7
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of the result is set
+|   |                   |                                   |
+|---|-------------------|-----------------------------------|
+| C | Carry Flag        | Set to contents of old bit 7      |
+| Z | Zero Flag         | Set if A = 0                      |
+| I | Interrupt Disable | Not affected                      |
+| D | Decimal Mode Flag | Not affected                      |
+| B | Break Command     | Not affected                      |
+| V | Overflow Flag     | Not affected                      |
+| N | Negative Flag     | Set if bit 7 of the result is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1223,16 +1232,15 @@ Move each of the bits in either A or M one place to the right. Bit 7 is filled w
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Set to contents of old bit 0
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of the result is set
+|   |                   |                                   |
+|---|-------------------|-----------------------------------|
+| C | Carry Flag        | Set to contents of old bit 0      |
+| Z | Zero Flag         | Set if A = 0                      |
+| I | Interrupt Disable | Not affected                      |
+| D | Decimal Mode Flag | Not affected                      |
+| B | Break Command     | Not affected                      |
+| V | Overflow Flag     | Not affected                      |
+| N | Negative Flag     | Set if bit 7 of the result is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1306,16 +1314,15 @@ This instruction subtracts the contents of a memory location to the accumulator 
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Clear if overflow in bit 7
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Set if sign bit is incorrect
-N    Negative Flag    Set if bit 7 set
+|   |                   |                              |
+|---|-------------------|------------------------------|
+| C | Carry Flag        | Clear if overflow in bit 7   |
+| Z | Zero Flag         | Set if A = 0                 |
+| I | Interrupt Disable | Not affected                 |
+| D | Decimal Mode Flag | Not affected                 |
+| B | Break Command     | Not affected                 |
+| V | Overflow Flag     | Set if sign bit is incorrect |
+| N | Negative Flag     | Set if bit 7 set             |
 
 | Addressing Mode | Opcode | Bytes | Cycles                 |
 |-----------------|--------|-------|------------------------|
@@ -1520,16 +1527,15 @@ Copies the current contents of the accumulator into the X register and sets the 
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if X = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of X is set
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if X = 0             |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of X is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1549,16 +1555,15 @@ Copies the current contents of the accumulator into the Y register and sets the 
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if Y = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of Y is set
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if Y = 0             |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of Y is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1578,16 +1583,15 @@ Copies the current contents of the stack register into the X register and sets t
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if X = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of X is set
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if X = 0             |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of X is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
@@ -1607,16 +1611,15 @@ Copies the current contents of the X register into the accumulator and sets the 
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of A is set
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if A = 0             |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of A is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
