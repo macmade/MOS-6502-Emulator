@@ -2021,11 +2021,7 @@ Processor Status after use:
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$9A
-1
-2
+| Implied         | `$9A`  | 1     | 2      |
 
 See also: [TSX](#TSX)
 
@@ -2037,27 +2033,23 @@ See also: [TSX](#TSX)
 
     A = Y
 
-Copies the current contents of the Y register into the accumulator and sets the zero and negative flags as appropriate.
+Copies the current contents of the Y register into the accumulator and sets the
+zero and negative flags as appropriate.
 
 Processor Status after use:
 
-|   |                   |              |
-|---|-------------------|--------------|
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of A is set
+|   |                   |                          |
+|---|-------------------|--------------------------|
+| C | Carry Flag        | Not affected             |
+| Z | Zero Flag         | Set if A = 0             |
+| I | Interrupt Disable | Not affected             |
+| D | Decimal Mode Flag | Not affected             |
+| B | Break Command     | Not affected             |
+| V | Overflow Flag     | Not affected             |
+| N | Negative Flag     | Set if bit 7 of A is set |
 
 | Addressing Mode | Opcode | Bytes | Cycles |
 |-----------------|--------|-------|--------|
-Implied
-
-$98
-1
-2
+| Implied         | `$98`  | 1     | 2      |
 
 See also: [TAY](#TAY)
