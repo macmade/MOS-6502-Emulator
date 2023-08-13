@@ -28,6 +28,7 @@ A MOS 6502 emulator written in Swift.
 
   - http://www.6502.org/
   - https://www.c64-wiki.com/
+  - https://www.nesdev.org/
   - https://www.nesdev.org/obelisk-6502-guide/
   - https://en.wikibooks.org/wiki/6502_Assembly
   - http://skilldrick.github.io/easy6502/
