@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class CPU: CustomStringConvertible
+open class CPU
 {
     public private( set ) var registers      = Registers()
     public private( set ) var cycles: UInt64 = 0
@@ -53,19 +53,59 @@ open class CPU: CustomStringConvertible
         self.memory = memory
     }
 
-    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws
+    open func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws
     {
-        self.devices.forEach
+        try self.devices.forEach
         {
-            _ in
+            _ in throw RuntimeError( message: "" )
         }
 
         self.devices.append( ( address: address, size: size, device: device ) )
     }
 
+    open func targetForAddress( _ address: UInt16 ) throws -> Either< Memory< UInt16 >, ( address: UInt16, device: MemoryDevice ) >
+    {
+        if address < self.memory.size
+        {
+            return .left( self.memory )
+        }
+
+        for mapped in self.devices
+        {
+            if address >= mapped.address, UInt64( address ) < UInt64( mapped.address ) + UInt64( mapped.size )
+            {
+                return .right( ( address: address - mapped.address, device: mapped.device ) )
+            }
+        }
+
+        throw RuntimeError( message: "No mapped device for address \( address.asHex )" )
+    }
+
+    open func writeableTargetForAddress( _ address: UInt16 ) throws -> Either< Memory< UInt16 >, ( address: UInt16, device: WriteableMemoryDevice ) >
+    {
+        switch try self.targetForAddress( address )
+        {
+            case .left(  let memory ): return .left( memory )
+            case .right( let mapped ):
+
+                guard let device = mapped.device as? WriteableMemoryDevice
+                else
+                {
+                    throw RuntimeError( message: "Invalid device for memory address \( address.asHex ): not writeable" )
+                }
+
+                return .right( ( address: mapped.address, device: device ) )
+        }
+    }
+
     open func reset() throws
     {
-        self.registers.PC = try self.memory.readUInt16( at: CPU.resetVector )
+        switch try self.targetForAddress( CPU.resetVector )
+        {
+            case .left(  let memory ): self.registers.PC = try memory.readUInt16(        at: CPU.resetVector )
+            case .right( let mapped ): self.registers.PC = try mapped.device.readUInt16( at: mapped.address )
+        }
+
         self.registers.SP = 0
         self.registers.A  = 0
         self.registers.X  = 0
@@ -145,7 +185,14 @@ open class CPU: CustomStringConvertible
 
     open func readUInt8FromMemory( at address: UInt16 ) throws -> UInt8
     {
-        let value    = try self.memory.readUInt8( at: address )
+        let value: UInt8
+
+        switch try self.targetForAddress( address )
+        {
+            case .left(  let memory ): value = try memory.readUInt8(        at: address )
+            case .right( let mapped ): value = try mapped.device.readUInt8( at: mapped.address )
+        }
+
         self.cycles += 1
 
         return value
@@ -153,7 +200,14 @@ open class CPU: CustomStringConvertible
 
     open func readUInt16FromMemory( at address: UInt16 ) throws -> UInt16
     {
-        let value    = try self.memory.readUInt16( at: address )
+        let value: UInt16
+
+        switch try self.targetForAddress( address )
+        {
+            case .left(  let memory ): value = try memory.readUInt16(        at: address )
+            case .right( let mapped ): value = try mapped.device.readUInt16( at: mapped.address )
+        }
+
         self.cycles += 2
 
         return value
@@ -161,33 +215,23 @@ open class CPU: CustomStringConvertible
 
     open func writeUInt8ToMemory( _ value: UInt8, at address: UInt16 ) throws
     {
-        try self.memory.writeUInt8( value, at: address )
+        switch try self.writeableTargetForAddress( address )
+        {
+            case .left(  let memory ): try memory.writeUInt8(        value, at: address )
+            case .right( let mapped ): try mapped.device.writeUInt8( value, at: mapped.address )
+        }
 
         self.cycles += 1
     }
 
     open func writeUInt16ToMemory( _ value: UInt16, at address: UInt16 ) throws
     {
-        try self.memory.writeUInt16( value, at: address )
+        switch try self.writeableTargetForAddress( address )
+        {
+            case .left(  let memory ): try memory.writeUInt16(        value, at: address )
+            case .right( let mapped ): try mapped.device.writeUInt16( value, at: mapped.address )
+        }
 
         self.cycles += 2
-    }
-
-    open var description: String
-    {
-        """
-        MOS 6502
-        {
-            Cycles: \( self.cycles )
-            {
-                PC: \( self.registers.PC.asHex )
-                SP: \( self.registers.SP.asHex )
-                A:  \( self.registers.A.asHex )
-                X:  \( self.registers.X.asHex )
-                Y:  \( self.registers.Y.asHex )
-                PS: \( self.registers.PS.rawValue.asHex ) (\( self.registers.PS ))
-            }
-        }
-        """
     }
 }

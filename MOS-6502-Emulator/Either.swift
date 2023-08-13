@@ -24,14 +24,8 @@
 
 import Foundation
 
-public protocol MemoryDevice
+public enum Either< Left, Right >
 {
-    func readUInt8(  at address: UInt16 ) throws -> UInt8
-    func readUInt16( at address: UInt16 ) throws -> UInt16
-}
-
-public protocol WriteableMemoryDevice: MemoryDevice
-{
-    func writeUInt8(  _ value: UInt8,  at address: UInt16 ) throws
-    func writeUInt16( _ value: UInt16, at address: UInt16 ) throws
+    case left( Left )
+    case right( Right )
 }
