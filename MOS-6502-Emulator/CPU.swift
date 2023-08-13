@@ -63,7 +63,7 @@ open class CPU
         self.devices.append( ( address: address, size: size, device: device ) )
     }
 
-    open func targetForAddress( _ address: UInt16 ) throws -> Either< Memory< UInt16 >, ( address: UInt16, device: MemoryDevice ) >
+    open func targetForAddress( _ address: UInt16 ) throws -> Either< Memory< UInt16 >, ( origin: UInt16, address: UInt16, device: MemoryDevice ) >
     {
         if address < self.memory.size
         {
@@ -74,14 +74,14 @@ open class CPU
         {
             if address >= mapped.address, UInt64( address ) < UInt64( mapped.address ) + UInt64( mapped.size )
             {
-                return .right( ( address: address - mapped.address, device: mapped.device ) )
+                return .right( ( origin: mapped.address, address: address - mapped.address, device: mapped.device ) )
             }
         }
 
         throw RuntimeError( message: "No mapped device for address \( address.asHex )" )
     }
 
-    open func writeableTargetForAddress( _ address: UInt16 ) throws -> Either< Memory< UInt16 >, ( address: UInt16, device: WriteableMemoryDevice ) >
+    open func writeableTargetForAddress( _ address: UInt16 ) throws -> Either< Memory< UInt16 >, ( origin: UInt16, address: UInt16, device: WriteableMemoryDevice ) >
     {
         switch try self.targetForAddress( address )
         {
@@ -94,7 +94,7 @@ open class CPU
                     throw RuntimeError( message: "Invalid device for memory address \( address.asHex ): not writeable" )
                 }
 
-                return .right( ( address: mapped.address, device: device ) )
+                return .right( ( origin: mapped.origin, address: mapped.address, device: device ) )
         }
     }
 
@@ -136,9 +136,20 @@ open class CPU
 
     open func decodeAndExecuteNextInstruction() throws
     {
-        if let disassembly = try? Disassembler.disassemble( at: self.registers.PC, from: self.memory, instructions: 1, comments: [ : ] ), disassembly.isEmpty == false
+        if let target = try? self.targetForAddress( self.registers.PC )
         {
-            print( "    \( disassembly )" )
+            let disassembly: String?
+
+            switch target
+            {
+                case .left(  let memory ): disassembly = try? Disassembler.disassemble( at: self.registers.PC, from: .left(  memory ),        offset: 0,             instructions: 1, comments: [ : ] )
+                case .right( let mapped ): disassembly = try? Disassembler.disassemble( at: mapped.address,    from: .right( mapped.device ), offset: mapped.origin, instructions: 1, comments: [ : ] )
+            }
+
+            if let disassembly = disassembly, disassembly.isEmpty == false
+            {
+                print( "    \( disassembly )" )
+            }
         }
 
         let opcode = try self.readUInt8FromMemoryAtPC()
