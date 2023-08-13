@@ -23,7 +23,11 @@ A MOS 6502 emulator written in Swift.
   7. [Reference](https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md)
   8. [Downloads](https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/8-Downloads.md)
   9. [Links](https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/9-Links.md)
-  
+
+### Datasheets
+
+  1. [Rockwell R650X / R651X](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/Rockwell-R650X-R651X.pdf)
+
 ### Useful Links
 
   - http://www.6502.org/

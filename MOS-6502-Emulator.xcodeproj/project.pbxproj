@@ -380,6 +380,7 @@
 		05C6D0E62A88EFE700A984EB /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memory+MemoryDevice.swift"; sourceTree = "<group>"; };
 		05C6D1012A89165A00A984EB /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
+		05C6D1042A891BE300A984EB /* Rockwell-R650X-R651X.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rockwell-R650X-R651X.pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,6 +417,7 @@
 				05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */,
 				05C3C1492A85698100436F6D /* LICENSE */,
 				05C6D0DA2A883F6600A984EB /* Reference */,
+				05C6D1032A891BE300A984EB /* Datasheets */,
 				05C3C1972A856EA000436F6D /* MOS-6502-Emulator.xctestplan */,
 				05C3C1BB2A85710800436F6D /* MOS-6502-Demo.xctestplan */,
 				05C3C14A2A856AA400436F6D /* .github */,
@@ -784,6 +786,14 @@
 				05C6D0E32A8854EF00A984EB /* 9-Links.md */,
 			);
 			path = Reference;
+			sourceTree = "<group>";
+		};
+		05C6D1032A891BE300A984EB /* Datasheets */ = {
+			isa = PBXGroup;
+			children = (
+				05C6D1042A891BE300A984EB /* Rockwell-R650X-R651X.pdf */,
+			);
+			path = Datasheets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
