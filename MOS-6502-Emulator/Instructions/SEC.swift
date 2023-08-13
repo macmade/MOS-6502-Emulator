@@ -42,5 +42,5 @@ import Foundation
  */
 public func SEC( cpu: CPU ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.setFlag( .carryFlag )
 }

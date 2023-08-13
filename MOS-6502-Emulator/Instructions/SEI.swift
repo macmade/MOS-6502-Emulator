@@ -42,5 +42,5 @@ import Foundation
  */
 public func SEI( cpu: CPU ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.setFlag( .interruptDisable )
 }

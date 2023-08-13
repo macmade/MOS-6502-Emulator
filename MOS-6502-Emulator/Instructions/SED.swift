@@ -42,5 +42,5 @@ import Foundation
  */
 public func SED( cpu: CPU ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.setFlag( .decimalMode )
 }

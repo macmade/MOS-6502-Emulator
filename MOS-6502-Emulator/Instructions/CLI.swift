@@ -43,5 +43,5 @@ import Foundation
  */
 public func CLI( cpu: CPU ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.clearFlag( .interruptDisable )
 }

@@ -42,5 +42,5 @@ import Foundation
  */
 public func CLC( cpu: CPU ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.clearFlag( .carryFlag )
 }

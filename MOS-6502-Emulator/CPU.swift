@@ -185,6 +185,15 @@ public class CPU
         0
     }
 
+    public func setFlag( _ value: Bool, for flag: Registers.Flags )
+    {
+        switch value
+        {
+            case true:  self.setFlag( flag )
+            case false: self.clearFlag( flag )
+        }
+    }
+
     public func setFlag( _ flag: Registers.Flags )
     {
         self.registers.PS.insert( flag )
