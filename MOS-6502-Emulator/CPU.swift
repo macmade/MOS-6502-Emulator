@@ -67,7 +67,7 @@ open class CPU
 
             if new.overlaps( existing )
             {
-                throw RuntimeError( message: "Cannot map device at address: \( address.asHex ): an existing device is already mapped" )
+                throw RuntimeError( message: "Cannot map device at address: \( address.asHex ): would overlap an existing device" )
             }
         }
 
