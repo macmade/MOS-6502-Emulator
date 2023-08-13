@@ -71,6 +71,8 @@ Processor Status after use:
 
 See also: [SBC](#SBC)
 
+---
+
 <a name="AND" />
 
 ### AND - Logical AND
@@ -104,6 +106,8 @@ Processor Status after use:
 | (Indirect),Y    | `$31`  | 2     | 5 (+1 if page crossed) |
 
 See also: [EOR](#EOR), [ORA](#ORA)
+
+---
 
 <a name="ASL" />
 
@@ -139,6 +143,8 @@ Processor Status after use:
 
 See also: [LSR](#LSR), [ROL](#ROL), [ROR](#ROR)
 
+---
+
 <a name="BCC" />
 
 ### BCC - Branch if Carry Clear
@@ -163,6 +169,8 @@ Processor Status after use:
 | Relative        | `$90`  | 2     | 2 (+1 if branch succeeds, +2 if to a new page) |
 
 See also: [BCS](#BCS)
+
+---
 
 <a name="BCS" />
 
@@ -189,6 +197,8 @@ Processor Status after use:
 
 See also: [BCC](#BCC)
 
+---
+
 <a name="BEQ" />
 
 ### BEQ - Branch if Equal
@@ -214,6 +224,8 @@ Processor Status after use:
 
 See also: [BNE](#BNE)
 
+---
+
 <a name="BIT" />
 
 ### BIT - Bit Test
@@ -238,6 +250,8 @@ Processor Status after use:
 |-----------------|--------|-------|--------|
 | Zero Page       | `$24`  | 2     | 3      |
 | Absolute        | `$2C`  | 3     | 4      |
+
+---
 
 <a name="BMI" />
 
@@ -268,6 +282,8 @@ $30
 
 See also: BPL
 
+---
+
 <a name="BNE" />
 
 ### BNE - Branch if Not Equal
@@ -296,6 +312,8 @@ $D0
 +2 if to a new page)
 
 See also: BEQ
+
+---
 
 <a name="BPL" />
 
@@ -326,6 +344,8 @@ $10
 
 See also: BMI
 
+---
+
 <a name="BRK" />
 
 ### BRK - Force Interrupt
@@ -353,6 +373,8 @@ $00
 7
 
 The interpretation of a BRK depends on the operating system. On the BBC Microcomputer it is used by language ROMs to signal run time errors but it could be used for other purposes (e.g. calling operating system functions, etc.).
+
+---
 
 <a name="BVC" />
 
@@ -383,6 +405,8 @@ $50
 
 See also: BVS
 
+---
+
 <a name="BVS" />
 
 ### BVS - Branch if Overflow Set
@@ -411,6 +435,8 @@ $70
 +2 if to a new page)
 
 See also: BVC
+
+---
 
 <a name="CLC" />
 
@@ -441,6 +467,8 @@ $18
 2
 
 See also: SEC
+
+---
 
 <a name="CLD" />
 
@@ -475,6 +503,8 @@ The state of the decimal flag is uncertain when the CPU is powered up and it is 
 
 See also: SED
 
+---
+
 <a name="CLI" />
 
 ### CLI - Clear Interrupt Disable
@@ -505,6 +535,8 @@ $58
 
 See also: SEI
 
+---
+
 <a name="CLV" />
 
 ### CLV - Clear Overflow Flag
@@ -532,6 +564,8 @@ Implied
 $B8
 1
 2
+
+---
 
 <a name="CMP" />
 
@@ -599,6 +633,8 @@ $D1
 
 See also: CPX, CPY
 
+---
+
 <a name="CPX" />
 
 ### CPX - Compare X Register
@@ -640,6 +676,8 @@ $EC
 
 See also: CMP, CPY
 
+---
+
 <a name="CPY" />
 
 ### CPY - Compare Y Register
@@ -680,6 +718,8 @@ $CC
 4
 
 See also: CMP, CPX
+
+---
 
 <a name="DEC" />
 
@@ -727,6 +767,8 @@ $DE
 
 See also: DEX, DEY
 
+---
+
 <a name="DEX" />
 
 ### DEX - Decrement X Register
@@ -758,6 +800,8 @@ $CA
 
 See also: DEC, DEY
 
+---
+
 <a name="DEY" />
 
 ### DEY - Decrement Y Register
@@ -788,6 +832,8 @@ $88
 2
 
 See also: DEC, DEX
+
+---
 
 <a name="EOR" />
 
@@ -855,6 +901,8 @@ $51
 
 See also: AND, ORA
 
+---
+
 <a name="INC" />
 
 ### INC - Increment Memory
@@ -901,6 +949,8 @@ $FE
 
 See also: INX, INY
 
+---
+
 <a name="INX" />
 
 ### INX - Increment X Register
@@ -932,6 +982,8 @@ $E8
 
 See also: INC, INY
 
+---
+
 <a name="INY" />
 
 ### INY - Increment Y Register
@@ -962,6 +1014,8 @@ $C8
 2
 
 See also: INC, INX
+
+---
 
 <a name="JMP" />
 
@@ -997,6 +1051,8 @@ $6C
 NB:
 An original 6502 has does not correctly fetch the target address if the indirect vector falls on a page boundary (e.g. $xxFF where xx is any value from $00 to $FF). In this case fetches the LSB from $xxFF as expected but takes the MSB from $xx00. This is fixed in some later chips like the 65SC02 so for compatibility always ensure the indirect vector is not at the end of the page.
 
+---
+
 <a name="JSR" />
 
 ### JSR - Jump to Subroutine
@@ -1024,6 +1080,8 @@ $20
 6
 
 See also: RTS
+
+---
 
 <a name="LDA" />
 
@@ -1086,6 +1144,8 @@ $B1
 
 See also: LDX, LDY
 
+---
+
 <a name="LDX" />
 
 ### LDX - Load X Register
@@ -1132,6 +1192,8 @@ $BE
 
 See also: LDA, LDY
 
+---
+
 <a name="LDY" />
 
 ### LDY - Load Y Register
@@ -1177,6 +1239,8 @@ $BC
 4 (+1 if page crossed)
 
 See also: LDA, LDX
+
+---
 
 <a name="LSR" />
 
@@ -1229,6 +1293,8 @@ $5E
 
 See also: ASL, ROL, ROR
 
+---
+
 <a name="NOP" />
 
 ### NOP - No Operation
@@ -1254,6 +1320,8 @@ Implied
 $EA
 1
 2
+
+---
 
 <a name="ORA" />
 
@@ -1322,6 +1390,8 @@ $11
 
 See also: AND, EOR
 
+---
+
 <a name="PHA" />
 
 ### PHA - Push Accumulator
@@ -1349,6 +1419,8 @@ $48
 3
 
 See also: PLA
+
+---
 
 <a name="PHP" />
 
@@ -1378,6 +1450,8 @@ $08
 
 See also: PLP
 
+---
+
 <a name="PLA" />
 
 ### PLA - Pull Accumulator
@@ -1401,6 +1475,8 @@ $68
 4
 
 See also: PHA
+
+---
 
 <a name="PLP" />
 
@@ -1429,6 +1505,8 @@ $28
 4
 
 See also: PHP
+
+---
 
 <a name="ROL" />
 
@@ -1479,6 +1557,8 @@ $3E
 
 See also: ASL, LSR, ROR
 
+---
+
 <a name="ROR" />
 
 ### ROR - Rotate Right
@@ -1528,6 +1608,8 @@ $7E
 
 See also ASL, LSR, ROL
 
+---
+
 <a name="RTI" />
 
 ### RTI - Return from Interrupt
@@ -1553,6 +1635,8 @@ Implied
 $40
 1
 6
+
+---
 
 <a name="RTS" />
 
@@ -1581,6 +1665,8 @@ $60
 6
 
 See also: JSR
+
+---
 
 <a name="SBC" />
 
@@ -1648,6 +1734,8 @@ $F1
 
 See also: ADC
 
+---
+
 <a name="SEC" />
 
 ### SEC - Set Carry Flag
@@ -1677,6 +1765,8 @@ $38
 2
 
 See also: CLC
+
+---
 
 <a name="SED" />
 
@@ -1708,6 +1798,8 @@ $F8
 
 See also: CLD
 
+---
+
 <a name="SEI" />
 
 ### SEI - Set Interrupt Disable
@@ -1737,6 +1829,8 @@ $78
 2
 
 See also: CLI
+
+---
 
 <a name="STA" />
 
@@ -1798,6 +1892,8 @@ $91
 
 See also: STX, STY
 
+---
+
 <a name="STX" />
 
 ### STX - Store X Register
@@ -1837,6 +1933,8 @@ $8E
 4
 
 See also: STA, STY
+
+---
 
 <a name="STY" />
 
@@ -1878,6 +1976,8 @@ $8C
 
 See also: STA, STX
 
+---
+
 <a name="TAX" />
 
 ### TAX - Transfer Accumulator to X
@@ -1908,6 +2008,8 @@ $AA
 2
 
 See also: TXA
+
+---
 
 <a name="TAY" />
 
@@ -1940,6 +2042,8 @@ $A8
 
 See also: TYA
 
+---
+
 <a name="TSX" />
 
 ### TSX - Transfer Stack Pointer to X
@@ -1970,6 +2074,8 @@ $BA
 2
 
 See also: TXS
+
+---
 
 <a name="TXA" />
 
@@ -2002,6 +2108,8 @@ $8A
 
 See also: TAX
 
+---
+
 <a name="TXS" />
 
 ### TXS - Transfer X to Stack Pointer
@@ -2031,6 +2139,8 @@ $9A
 2
 
 See also: TSX
+
+---
 
 <a name="TYA" />
 
