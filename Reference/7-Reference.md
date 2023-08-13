@@ -103,138 +103,106 @@ Processor Status after use:
 
 See also: [EOR](#EOR), [ORA](#ORA)
 
-ASL - Arithmetic Shift Left
+### ASL - Arithmetic Shift Left
 
-A,Z,C,N = M*2 or M,Z,C,N = M*2
+    A,Z,C,N = M*2 or M,Z,C,N = M*2
 
-This operation shifts all the bits of the accumulator or memory contents one bit left. Bit 0 is set to 0 and bit 7 is placed in the carry flag. The effect of this operation is to multiply the memory contents by 2 (ignoring 2's complement considerations), setting the carry if the result will not fit in 8 bits.
-
-Processor Status after use:
-
-C    Carry Flag    Set to contents of old bit 7
-Z    Zero Flag    Set if A = 0
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Set if bit 7 of the result is set
-
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
-Accumulator
-
-$0A
-1
-2
-Zero Page
-
-$06
-2
-5
-Zero Page,X
-
-$16
-2
-6
-Absolute
-
-$0E
-3
-6
-Absolute,X
-
-$1E
-3
-7
-
-See also: LSR, ROL, ROR
-
-BCC - Branch if Carry Clear
-
-If the carry flag is clear then add the relative displacement to the program counter to cause a branch to a new location.
+This operation shifts all the bits of the accumulator or memory contents one
+bit left. Bit 0 is set to 0 and bit 7 is placed in the carry flag. The effect
+of this operation is to multiply the memory contents by 2 (ignoring 2's
+complement considerations), setting the carry if the result will not fit in
+8 bits.
 
 Processor Status after use:
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+|   |                   |                              |
+|---|-------------------|------------------------------|
+| C | Carry Flag        | Set to contents of old bit 7 |
+| Z | Zero Flag         | Set if A = 0                 |
+| I | Interrupt Disable | Not affected                 |
+| D | Decimal Mode Flag | Not affected                 |
+| B | Break Command     | Not affected                 |
+| V | Overflow Flag     | Not affected                 |
+| N | Negative Flag     | Set if bit 7 set             |
 
-Addressing Mode
+| Addressing Mode | Opcode | Bytes | Cycles |
+|-----------------|--------|-------|--------|
+| Accumulator     | `$0A`  | 1     | 2      |
+| Zero Page       | `$06`  | 2     | 5      |
+| Zero Page,X     | `$16`  | 2     | 6      |
+| Absolute        | `$0E`  | 3     | 6      |
+| Absolute,X      | `$1E`  | 3     | 7      |
 
-Opcode
-Bytes
-Cycles
-Relative
+See also: [LSR](#LSR), [ROL](#ROL), [ROR](#ROR)
 
-$90
-2
-2 (+1 if branch succeeds
-+2 if to a new page)
+### BCC - Branch if Carry Clear
 
-See also: BCS
-
-BCS - Branch if Carry Set
-
-If the carry flag is set then add the relative displacement to the program counter to cause a branch to a new location.
-
-Processor Status after use:
-
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
-
-Addressing Mode
-
-Opcode
-Bytes
-Cycles
-Relative
-
-$B0
-2
-2 (+1 if branch succeeds
-+2 if to a new page)
-
-See also: BCC
-
-BEQ - Branch if Equal
-
-If the zero flag is set then add the relative displacement to the program counter to cause a branch to a new location.
+If the carry flag is clear then add the relative displacement to the program
+counter to cause a branch to a new location.
 
 Processor Status after use:
 
-C    Carry Flag    Not affected
-Z    Zero Flag    Not affected
-I    Interrupt Disable    Not affected
-D    Decimal Mode Flag    Not affected
-B    Break Command    Not affected
-V    Overflow Flag    Not affected
-N    Negative Flag    Not affected
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
 
-Addressing Mode
+| Addressing Mode | Opcode | Bytes | Cycles                                         |
+|-----------------|--------|-------|------------------------------------------------|
+| Relative        | `$90`  | 2     | 2 (+1 if branch succeeds, +2 if to a new page) |
 
-Opcode
-Bytes
-Cycles
-Relative
+See also: [BCS](#BCS)
 
-$F0
-2
-2 (+1 if branch succeeds
-+2 if to a new page)
+### BCS - Branch if Carry Set
 
-See also: BNE
+If the carry flag is set then add the relative displacement to the program
+counter to cause a branch to a new location.
+
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
+
+| Addressing Mode | Opcode | Bytes | Cycles                                         |
+|-----------------|--------|-------|------------------------------------------------|
+| Relative        | `$B0`  | 2     | 2 (+1 if branch succeeds, +2 if to a new page) |
+
+See also: [BCC](#BCC)
+
+### BEQ - Branch if Equal
+
+If the zero flag is set then add the relative displacement to the program
+counter to cause a branch to a new location.
+
+Processor Status after use:
+
+|   |                   |              |
+|---|-------------------|--------------|
+| C | Carry Flag        | Not affected |
+| Z | Zero Flag         | Not affected |
+| I | Interrupt Disable | Not affected |
+| D | Decimal Mode Flag | Not affected |
+| B | Break Command     | Not affected |
+| V | Overflow Flag     | Not affected |
+| N | Negative Flag     | Not affected |
+
+| Addressing Mode | Opcode | Bytes | Cycles                                         |
+|-----------------|--------|-------|------------------------------------------------|
+| Relative        | `$F0`  | 2     | 2 (+1 if branch succeeds, +2 if to a new page) |
+
+See also: [BNE](#BNE)
 
 BIT - Bit Test
 
