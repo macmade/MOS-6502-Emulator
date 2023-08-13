@@ -80,7 +80,7 @@ public class CPU
         }
     }
 
-    public func decodeAndExecuteNextInstruction() throws
+    private func decodeAndExecuteNextInstruction() throws
     {
         if let disassembly = try? Disassembler.disassemble( at: self.registers.PC, from: self.bus, offset: 0, instructions: 1, comments: [ : ] ),
            disassembly.isEmpty == false
@@ -92,12 +92,97 @@ public class CPU
 
         if let instruction = Instructions.all.first( where: { $0.opcode == opcode } )
         {
-            try instruction.execute( self )
+            try instruction.execute( try self.fetchValue( for: instruction.addressingMode ), self )
         }
         else
         {
             throw RuntimeError( message: "Unhandled instruction: \( opcode.asHex )" )
         }
+    }
+
+    private func fetchValue( for addressingMode: Instruction.AddressingMode ) throws -> UInt8
+    {
+        switch addressingMode
+        {
+            case .implied:     return try self.fetchImplied()
+            case .accumulator: return try self.fetchAccumulator()
+            case .immediate:   return try self.fetchImmediate()
+            case .zeroPage:    return try self.fetchZeroPage()
+            case .zeroPageX:   return try self.fetchZeroPageX()
+            case .zeroPageY:   return try self.fetchZeroPageY()
+            case .relative:    return try self.fetchRelative()
+            case .absolute:    return try self.fetchAbsolute()
+            case .absoluteX:   return try self.fetchAbsoluteX()
+            case .absoluteY:   return try self.fetchAbsoluteY()
+            case .indirect:    return try self.fetchIndirect()
+            case .indirectX:   return try self.fetchIndirectX()
+            case .indirectY:   return try self.fetchIndirectY()
+        }
+    }
+
+    private func fetchImplied() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchAccumulator() throws -> UInt8
+    {
+        self.registers.A
+    }
+
+    private func fetchImmediate() throws -> UInt8
+    {
+        try self.readUInt8FromMemoryAtPC()
+    }
+
+    private func fetchZeroPage() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchZeroPageX() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchZeroPageY() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchRelative() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchAbsolute() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchAbsoluteX() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchAbsoluteY() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchIndirect() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchIndirectX() throws -> UInt8
+    {
+        0
+    }
+
+    private func fetchIndirectY() throws -> UInt8
+    {
+        0
     }
 
     public func setFlag( _ flag: Registers.Flags )

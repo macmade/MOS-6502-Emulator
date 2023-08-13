@@ -40,13 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CLV
  */
-public class CLV
+public func CLV( cpu: CPU ) throws
 {
-    private init()
-    {}
-
-    public class func implicit( cpu: CPU ) throws
-    {
-        cpu.clearFlag( .overflowFlag )
-    }
+    throw RuntimeError( message: "Instruction not implemented" )
 }

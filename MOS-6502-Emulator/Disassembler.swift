@@ -128,7 +128,7 @@ public class Disassembler
             {
                 switch instruction.addressingMode
                 {
-                    case .implicit:
+                    case .implied:
 
                         disassembly.append( instruction.mnemonic )
 

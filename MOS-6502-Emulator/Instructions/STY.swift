@@ -40,23 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#STY
  */
-public class STY
+public func STY( value: UInt8, cpu: CPU ) throws
 {
-    private init()
-    {}
-
-    public class func absolute( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Instruction not implemented" )
-    }
-
-    public class func zeroPage( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Instruction not implemented" )
-    }
-
-    public class func zeroPageX( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Instruction not implemented" )
-    }
+    throw RuntimeError( message: "Instruction not implemented" )
 }

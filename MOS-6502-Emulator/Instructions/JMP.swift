@@ -40,18 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#JMP
  */
-public class JMP
+public func JMP( value: UInt8, cpu: CPU ) throws
 {
-    private init()
-    {}
-
-    public class func absolute( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Instruction not implemented" )
-    }
-
-    public class func indirect( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Instruction not implemented" )
-    }
+    throw RuntimeError( message: "Instruction not implemented" )
 }

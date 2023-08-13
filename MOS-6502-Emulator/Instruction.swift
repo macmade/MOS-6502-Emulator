@@ -28,7 +28,7 @@ public class Instruction
 {
     public enum AddressingMode
     {
-        case implicit
+        case implied
         case accumulator
         case immediate
         case zeroPage
@@ -48,9 +48,9 @@ public class Instruction
     public var size:           UInt
     public var cycles:         UInt
     public var addressingMode: AddressingMode
-    public var execute:        ( CPU ) throws -> Void
+    public var execute:        ( UInt8, CPU ) throws -> Void
 
-    public init( mnemonic: String, opcode: UInt8, size: UInt, cycles: UInt, addressingMode: AddressingMode, execute: @escaping ( CPU ) throws -> Void )
+    public init( mnemonic: String, opcode: UInt8, size: UInt, cycles: UInt, addressingMode: AddressingMode, execute: @escaping ( UInt8, CPU ) throws -> Void )
     {
         self.mnemonic       = mnemonic
         self.opcode         = opcode

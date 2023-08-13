@@ -41,13 +41,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CLI
  */
-public class CLI
+public func CLI( cpu: CPU ) throws
 {
-    private init()
-    {}
-
-    public class func implicit( cpu: CPU ) throws
-    {
-        cpu.clearFlag( .interruptDisable )
-    }
+    throw RuntimeError( message: "Instruction not implemented" )
 }

@@ -40,13 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CLD
  */
-public class CLD
+public func CLD( cpu: CPU ) throws
 {
-    private init()
-    {}
-
-    public class func implicit( cpu: CPU ) throws
-    {
-        cpu.clearFlag( .decimalMode )
-    }
+    throw RuntimeError( message: "Instruction not implemented" )
 }

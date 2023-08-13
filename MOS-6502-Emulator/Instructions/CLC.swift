@@ -40,13 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CLC
  */
-public class CLC
+public func CLC( cpu: CPU ) throws
 {
-    private init()
-    {}
-
-    public class func implicit( cpu: CPU ) throws
-    {
-        cpu.clearFlag( .carryFlag )
-    }
+    throw RuntimeError( message: "Instruction not implemented" )
 }

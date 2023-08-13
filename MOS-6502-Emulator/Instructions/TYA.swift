@@ -41,13 +41,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#TYA
  */
-public class TYA
+public func TYA( cpu: CPU ) throws
 {
-    private init()
-    {}
-
-    public class func implicit( cpu: CPU ) throws
-    {
-        throw RuntimeError( message: "Instruction not implemented" )
-    }
+    throw RuntimeError( message: "Instruction not implemented" )
 }
