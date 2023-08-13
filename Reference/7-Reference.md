@@ -239,6 +239,8 @@ Processor Status after use:
 | Zero Page       | `$24`  | 2     | 3      |
 | Absolute        | `$2C`  | 3     | 4      |
 
+<a name="BMI" />
+
 ### BMI - Branch if Minus
 
 If the negative flag is set then add the relative displacement to the program counter to cause a branch to a new location.
@@ -531,6 +533,8 @@ $B8
 1
 2
 
+<a name="CMP" />
+
 ### CMP - Compare
 
     Z,C,N = A-M
@@ -594,6 +598,8 @@ $D1
 5 (+1 if page crossed)
 
 See also: CPX, CPY
+
+<a name="CPX" />
 
 ### CPX - Compare X Register
 

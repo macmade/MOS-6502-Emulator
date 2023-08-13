@@ -38,7 +38,7 @@ import Foundation
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of Y is set
  *
- * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#DEY
+ * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#DEY
  */
 public class DEY
 {

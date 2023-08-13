@@ -41,7 +41,7 @@ import Foundation
  *     - Overflow Flag:        Set to bit 6 of the memory value
  *     - Negative Flag:        Set to bit 7 of the memory value
  *
- * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#BIT
+ * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#BIT
  */
 public class BIT
 {

@@ -38,7 +38,7 @@ import Foundation
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
  *
- * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#STX
+ * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#STX
  */
 public class STX
 {

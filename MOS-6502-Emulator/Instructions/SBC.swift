@@ -41,7 +41,7 @@ import Foundation
  *     - Overflow Flag:        Set if sign bit is incorrect
  *     - Negative Flag:        Set if bit 7 set
  *
- * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#SBC
+ * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#SBC
  */
 public class SBC
 {

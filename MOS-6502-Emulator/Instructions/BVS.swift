@@ -39,7 +39,7 @@ import Foundation
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        N/A
  *
- * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#BVS
+ * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#BVS
  */
 public class BVS
 {

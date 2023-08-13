@@ -38,7 +38,7 @@ import Foundation
  *     - Overflow Flag:        Set to 0
  *     - Negative Flag:        N/A
  *
- * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#CLV
+ * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CLV
  */
 public class CLV
 {

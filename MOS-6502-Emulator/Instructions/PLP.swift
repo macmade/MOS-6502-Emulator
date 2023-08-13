@@ -39,7 +39,7 @@ import Foundation
  *     - Overflow Flag:        Set from stack
  *     - Negative Flag:        Set from stack
  *
- * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#PLP
+ * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#PLP
  */
 public class PLP
 {

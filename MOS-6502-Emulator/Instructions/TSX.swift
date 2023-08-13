@@ -39,7 +39,7 @@ import Foundation
  *     - Overflow Flag:        N/A
  *     - Negative Flag:        Set if bit 7 of X is set
  *
- * Source: https://www.nesdev.org/obelisk-6502-guide/reference.html#TSX
+ * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#TSX
  */
 public class TSX
 {
