@@ -48,9 +48,9 @@ public class Instruction
     public var size:           UInt
     public var cycles:         UInt
     public var addressingMode: AddressingMode
-    public var execute:        ( UInt8, CPU ) throws -> Void
+    public var execute:        ( CPU, InstructionContext ) throws -> Void
 
-    public init( mnemonic: String, opcode: UInt8, size: UInt, cycles: UInt, addressingMode: AddressingMode, execute: @escaping ( UInt8, CPU ) throws -> Void )
+    public init( mnemonic: String, opcode: UInt8, size: UInt, cycles: UInt, addressingMode: AddressingMode, execute: @escaping ( CPU, InstructionContext ) throws -> Void )
     {
         self.mnemonic       = mnemonic
         self.opcode         = opcode

@@ -24,25 +24,45 @@
 
 import Foundation
 
-/*
- * ROL - Rotate Left
- *
- * Move each of the bits in either A or M one place to the left.
- * Bit 0 is filled with the current value of the carry flag whilst the old$
- * bit 7 becomes the new carry flag value.
- *
- * Flags:
- *     - Carry Flag:           Set to contents of old bit 7
- *     - Zero Flag:            Set if A = 0
- *     - Interrupt Disable:    N/A
- *     - Decimal Mode:         N/A
- *     - Break Command:        N/A
- *     - Overflow Flag:        N/A
- *     - Negative Flag:        Set if bit 7 of the result is set
- *
- * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#ROL
- */
-public func ROL( cpu: CPU, context: InstructionContext ) throws
+public class InstructionContext
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    public var value: Either< UInt8, () throws -> UInt16 >
+
+    public convenience init()
+    {
+        self.init( value: .left( 0 ) )
+    }
+
+    public convenience init( value: UInt8 )
+    {
+        self.init( value: .left( value ) )
+    }
+
+    public convenience init( value: @escaping () throws -> UInt16 )
+    {
+        self.init( value: .right( value ) )
+    }
+
+    public init( value: Either< UInt8, () throws -> UInt16 > )
+    {
+        self.value = value
+    }
+
+    public func uint8() -> UInt8
+    {
+        switch self.value
+        {
+            case .left( let value ): return value
+            case .right:             return 0
+        }
+    }
+
+    public func uint16() throws -> UInt16
+    {
+        switch self.value
+        {
+            case .left:               return 0
+            case .right( let value ): return try value()
+        }
+    }
 }

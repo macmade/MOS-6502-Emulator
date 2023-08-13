@@ -41,7 +41,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#RTI
  */
-public func RTI( cpu: CPU ) throws
+public func RTI( cpu: CPU, context: InstructionContext ) throws
 {
     throw RuntimeError( message: "Instruction not implemented" )
 }

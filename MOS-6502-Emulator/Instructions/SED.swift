@@ -40,7 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#SED
  */
-public func SED( cpu: CPU ) throws
+public func SED( cpu: CPU, context: InstructionContext ) throws
 {
     cpu.setFlag( .decimalMode )
 }

@@ -40,7 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CLV
  */
-public func CLV( cpu: CPU ) throws
+public func CLV( cpu: CPU, context: InstructionContext ) throws
 {
     cpu.clearFlag( .overflowFlag )
 }

@@ -43,7 +43,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#SBC
  */
-public func SBC( value: UInt8, cpu: CPU ) throws
+public func SBC( cpu: CPU, context: InstructionContext ) throws
 {
     throw RuntimeError( message: "Instruction not implemented" )
 }

@@ -40,7 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CLD
  */
-public func CLD( cpu: CPU ) throws
+public func CLD( cpu: CPU, context: InstructionContext ) throws
 {
     cpu.clearFlag( .decimalMode )
 }

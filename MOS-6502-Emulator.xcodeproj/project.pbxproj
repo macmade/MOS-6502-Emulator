@@ -146,6 +146,7 @@
 		05C6D0E72A88EFE700A984EB /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0E62A88EFE700A984EB /* Either.swift */; };
 		05C6D0FC2A89118700A984EB /* Memory+MemoryDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */; };
 		05C6D1022A89165A00A984EB /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1012A89165A00A984EB /* Bus.swift */; };
+		05C6D1062A89582F00A984EB /* InstructionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1052A89582F00A984EB /* InstructionContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -381,6 +382,7 @@
 		05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memory+MemoryDevice.swift"; sourceTree = "<group>"; };
 		05C6D1012A89165A00A984EB /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		05C6D1042A891BE300A984EB /* Rockwell-R650X-R651X.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rockwell-R650X-R651X.pdf"; sourceTree = "<group>"; };
+		05C6D1052A89582F00A984EB /* InstructionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,9 +451,10 @@
 				05C3C1A82A85700700436F6D /* CPU.swift */,
 				05C3C1FE2A8661E800436F6D /* Disassembler.swift */,
 				05C6D0E62A88EFE700A984EB /* Either.swift */,
+				05C3C2112A87A11D00436F6D /* Instruction.swift */,
+				05C6D1052A89582F00A984EB /* InstructionContext.swift */,
 				05C3C1D82A85A95A00436F6D /* Instructions */,
 				05C3C1D62A85A43A00436F6D /* Instructions.swift */,
-				05C3C2112A87A11D00436F6D /* Instruction.swift */,
 				05C3C1A62A85700100436F6D /* Memory.swift */,
 				05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */,
 				05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */,
@@ -970,6 +973,7 @@
 				05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */,
 				05C3C2562A87D3B800436F6D /* PLA.swift in Sources */,
 				05C3C2032A86798800436F6D /* STX.swift in Sources */,
+				05C6D1062A89582F00A984EB /* InstructionContext.swift in Sources */,
 				05C3C2522A87D3A500436F6D /* PHA.swift in Sources */,
 				05C3C24A2A87D37000436F6D /* JSR.swift in Sources */,
 				05C3C2282A87D26700436F6D /* BPL.swift in Sources */,

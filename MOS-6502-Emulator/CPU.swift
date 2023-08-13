@@ -92,7 +92,7 @@ public class CPU
 
         if let instruction = Instructions.all.first( where: { $0.opcode == opcode } )
         {
-            try instruction.execute( try self.fetchValue( for: instruction.addressingMode ), self )
+            try instruction.execute( self, try self.context( for: instruction.addressingMode ) )
         }
         else
         {
@@ -100,89 +100,92 @@ public class CPU
         }
     }
 
-    private func fetchValue( for addressingMode: Instruction.AddressingMode ) throws -> UInt8
+    private func context( for addressingMode: Instruction.AddressingMode ) throws -> InstructionContext
     {
         switch addressingMode
         {
-            case .implied:     return try self.fetchImplied()
-            case .accumulator: return try self.fetchAccumulator()
-            case .immediate:   return try self.fetchImmediate()
-            case .zeroPage:    return try self.fetchZeroPage()
-            case .zeroPageX:   return try self.fetchZeroPageX()
-            case .zeroPageY:   return try self.fetchZeroPageY()
-            case .relative:    return try self.fetchRelative()
-            case .absolute:    return try self.fetchAbsolute()
-            case .absoluteX:   return try self.fetchAbsoluteX()
-            case .absoluteY:   return try self.fetchAbsoluteY()
-            case .indirect:    return try self.fetchIndirect()
-            case .indirectX:   return try self.fetchIndirectX()
-            case .indirectY:   return try self.fetchIndirectY()
+            case .implied:     return try self.impliedContext()
+            case .accumulator: return try self.accumulatorContext()
+            case .immediate:   return try self.immediateContext()
+            case .zeroPage:    return try self.zeroPageContext()
+            case .zeroPageX:   return try self.zeroPageXContext()
+            case .zeroPageY:   return try self.zeroPageYContext()
+            case .relative:    return try self.relativeContext()
+            case .absolute:    return try self.absoluteContext()
+            case .absoluteX:   return try self.absoluteXContext()
+            case .absoluteY:   return try self.absoluteYContext()
+            case .indirect:    return try self.indirectContext()
+            case .indirectX:   return try self.indirectXContext()
+            case .indirectY:   return try self.indirectYContext()
         }
     }
 
-    private func fetchImplied() throws -> UInt8
+    private func impliedContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchAccumulator() throws -> UInt8
+    private func accumulatorContext() throws -> InstructionContext
     {
-        self.registers.A
+        InstructionContext( value: self.registers.A )
     }
 
-    private func fetchImmediate() throws -> UInt8
+    private func immediateContext() throws -> InstructionContext
     {
-        try self.readUInt8FromMemoryAtPC()
+        InstructionContext
+        {
+            try self.readUInt16FromMemoryAtPC()
+        }
     }
 
-    private func fetchZeroPage() throws -> UInt8
+    private func zeroPageContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchZeroPageX() throws -> UInt8
+    private func zeroPageXContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchZeroPageY() throws -> UInt8
+    private func zeroPageYContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchRelative() throws -> UInt8
+    private func relativeContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchAbsolute() throws -> UInt8
+    private func absoluteContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchAbsoluteX() throws -> UInt8
+    private func absoluteXContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchAbsoluteY() throws -> UInt8
+    private func absoluteYContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchIndirect() throws -> UInt8
+    private func indirectContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchIndirectX() throws -> UInt8
+    private func indirectXContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
-    private func fetchIndirectY() throws -> UInt8
+    private func indirectYContext() throws -> InstructionContext
     {
-        0
+        InstructionContext()
     }
 
     public func setFlag( _ value: Bool, for flag: Registers.Flags )

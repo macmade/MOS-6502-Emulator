@@ -41,7 +41,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#LDX
  */
-public func LDX( value: UInt8, cpu: CPU ) throws
+public func LDX( cpu: CPU, context: InstructionContext ) throws
 {
     throw RuntimeError( message: "Instruction not implemented" )
 }
