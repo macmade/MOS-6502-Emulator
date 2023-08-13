@@ -1605,7 +1605,9 @@ $60
 
 See also: JSR
 
-###SBC - Subtract with Carry
+<a name="SBC" />
+
+### SBC - Subtract with Carry
 
     A,Z,C,N = A-M-(1-C)
 
