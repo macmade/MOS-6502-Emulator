@@ -30,17 +30,7 @@ public class Apple1: Computer
     public init() throws
     {
         try super.init( frequency: .mhz( 1 ), memory: .kb( 4 ) )
-
-        let keyboard   = try ShiftRegister( size: 1024 )
-        let keyboardCR = try ShiftRegister( size: 1024 )
-        let display    = try ShiftRegister( size: 1024 )
-        let displayCR  = try ShiftRegister( size: 1024 )
-
-        try self.mapDevice( keyboard,   at: 0xD010, size: 1 )
-        try self.mapDevice( keyboardCR, at: 0xD011, size: 1 )
-        try self.mapDevice( display,    at: 0xD012, size: 1 )
-        try self.mapDevice( displayCR,  at: 0xD013, size: 1 )
-
+        try self.mapDevice( PIA(), at: 0xD010, size: 4 )
         try self.loadROM( Apple1WozMonitor() )
         try self.reset()
     }

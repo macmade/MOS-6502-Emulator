@@ -24,25 +24,39 @@
 
 import Foundation
 
-public class ShiftRegister: WriteableMemoryDevice
+public class PIA: WriteableMemoryDevice
 {
-    private var memory: Memory< UInt16 >
+    public var data0:    UInt8 = 0
+    public var control0: UInt8 = 0
+    public var data1:    UInt8 = 0
+    public var control1: UInt8 = 0
 
-    public private( set ) var size: UInt16
-
-    public init( size: UInt16 ) throws
-    {
-        self.size   = size
-        self.memory = try .init( size: UInt64( size ), options: [], initializeTo: 0 )
-    }
+    public init()
+    {}
 
     public func write( _ value: UInt8, at address: UInt16 ) throws
     {
-        try self.memory.writeUInt8( value, at: address )
+        switch address
+        {
+            case 0: self.data0    = value
+            case 1: self.control0 = value
+            case 2: self.data1    = value
+            case 3: self.control1 = value
+
+            default: throw RuntimeError( message: "Invalid PIA address: \( address.asHex )" )
+        }
     }
 
     public func read( at address: UInt16 ) throws -> UInt8
     {
-        try self.memory.readUInt8( at: address )
+        switch address
+        {
+            case 0: return self.data0
+            case 1: return self.control0
+            case 2: return self.data1
+            case 3: return self.control1
+
+            default: throw RuntimeError( message: "Invalid PIA address: \( address.asHex )" )
+        }
     }
 }
