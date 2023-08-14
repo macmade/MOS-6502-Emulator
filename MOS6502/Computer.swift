@@ -42,10 +42,10 @@ open class Computer
             try cpu.cycle()
         }
 
-        try self.bus.mapDevice( self.ram, at: 0x00, size: UInt16( self.ram.capacity.bytes ) )
+        try self.bus.mapDevice( self.ram, at: 0x00, size: self.ram.capacity.bytes )
     }
 
-    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws
+    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt64 ) throws
     {
         try self.bus.mapDevice( device, at: address, size: size )
     }
@@ -66,7 +66,7 @@ open class Computer
             throw RuntimeError( message: "ROM is too large: \( data.count ) bytes" )
         }
 
-        try self.bus.mapDevice( rom, at: rom.origin, size: UInt16( rom.data.count ) )
+        try self.bus.mapDevice( rom, at: rom.origin, size: UInt64( rom.data.count ) )
 
         print( "Loaded \( data.count ) bytes ROM at \( rom.origin.asHex ): \( rom.name )" )
 

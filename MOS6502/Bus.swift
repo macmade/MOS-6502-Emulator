@@ -26,17 +26,17 @@ import Foundation
 
 public class Bus: WriteableMemoryDevice
 {
-    private var devices: [ ( address: UInt16, size: UInt16, device: MemoryDevice ) ] = []
+    private var devices: [ ( address: UInt16, size: UInt64, device: MemoryDevice ) ] = []
 
     public init()
     {}
 
-    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws
+    public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt64 ) throws
     {
         try self.devices.forEach
         {
-            let existing = ( UInt64( $0.address ) ..< UInt64( $0.address ) + UInt64( $0.size ) )
-            let new      = ( UInt64( address )    ..< UInt64( address )    + UInt64( size ) )
+            let existing = ( UInt64( $0.address ) ..< UInt64( $0.address ) + $0.size )
+            let new      = ( UInt64( address )    ..< UInt64( address )    + size )
 
             if new.overlaps( existing )
             {
@@ -94,7 +94,7 @@ public class Bus: WriteableMemoryDevice
     {
         for mapped in self.devices
         {
-            if address >= mapped.address, UInt64( address ) < UInt64( mapped.address ) + UInt64( mapped.size )
+            if address >= mapped.address, UInt64( address ) < UInt64( mapped.address ) + mapped.size
             {
                 return ( address: address - mapped.address, device: mapped.device )
             }
