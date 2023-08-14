@@ -186,13 +186,15 @@ public class AddressingContext
 
     public class func indirectY( cpu: CPU ) throws -> AddressingContext
     {
-        AddressingContext
+        let zp     = try cpu.readUInt8FromMemoryAtPC()
+        let base   = try cpu.readUInt16FromMemory( at: UInt16( zp ) )
+        let offset = cpu.registers.Y
+
+        if UInt64( base ) + UInt64( offset ) > UInt16.max
         {
-            throw RuntimeError( message: "Not implemented" )
+            throw RuntimeError( message: "Invalid (Indirect),Y memory address: (\( zp.asHex )),\( offset.asHex ) = \( base.asHex ) + \( offset.asHex )" )
         }
-        write:
-        {
-            _ in throw RuntimeError( message: "Not implemented" )
-        }
+
+        return AddressingContext( address: base + UInt16( offset ), cpu: cpu )
     }
 }
