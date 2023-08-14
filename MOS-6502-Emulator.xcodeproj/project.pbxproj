@@ -144,12 +144,12 @@
 		05C3C3632A88204F00436F6D /* Apple1WozMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* Apple1WozMonitor.swift */; };
 		05C6D0E52A88DE3400A984EB /* MemoryDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */; };
 		05C6D0E72A88EFE700A984EB /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0E62A88EFE700A984EB /* Either.swift */; };
-		05C6D0FC2A89118700A984EB /* Memory+MemoryDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */; };
 		05C6D1022A89165A00A984EB /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1012A89165A00A984EB /* Bus.swift */; };
 		05C6D1062A89582F00A984EB /* InstructionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1052A89582F00A984EB /* InstructionContext.swift */; };
 		05C6D1082A896C9900A984EB /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1072A896C9900A984EB /* Clock.swift */; };
 		05C6D10A2A897EB700A984EB /* ShiftRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1092A897EB600A984EB /* ShiftRegister.swift */; };
 		05C6D10C2A89814900A984EB /* Apple1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D10B2A89814900A984EB /* Apple1.swift */; };
+		05DED74A2A8AA41E00DA42F9 /* RAM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED7492A8AA41D00DA42F9 /* RAM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -382,13 +382,13 @@
 		05C6D0E32A8854EF00A984EB /* 9-Links.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "9-Links.md"; sourceTree = "<group>"; };
 		05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDevice.swift; sourceTree = "<group>"; };
 		05C6D0E62A88EFE700A984EB /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
-		05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memory+MemoryDevice.swift"; sourceTree = "<group>"; };
 		05C6D1012A89165A00A984EB /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		05C6D1042A891BE300A984EB /* Rockwell-R650X-R651X.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rockwell-R650X-R651X.pdf"; sourceTree = "<group>"; };
 		05C6D1052A89582F00A984EB /* InstructionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionContext.swift; sourceTree = "<group>"; };
 		05C6D1072A896C9900A984EB /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		05C6D1092A897EB600A984EB /* ShiftRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftRegister.swift; sourceTree = "<group>"; };
 		05C6D10B2A89814900A984EB /* Apple1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1.swift; sourceTree = "<group>"; };
+		05DED7492A8AA41D00DA42F9 /* RAM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,8 +463,8 @@
 				05C3C1D82A85A95A00436F6D /* Instructions */,
 				05C3C1D62A85A43A00436F6D /* Instructions.swift */,
 				05C3C1A62A85700100436F6D /* Memory.swift */,
-				05C6D0FB2A89118700A984EB /* Memory+MemoryDevice.swift */,
 				05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */,
+				05DED7492A8AA41D00DA42F9 /* RAM.swift */,
 				05C3C1D42A85948500436F6D /* Registers.swift */,
 				05C3C1F82A865D5900436F6D /* ROM.swift */,
 				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
@@ -935,6 +935,7 @@
 				05C6D0E52A88DE3400A984EB /* MemoryDevice.swift in Sources */,
 				05C3C2542A87D3AD00436F6D /* PHP.swift in Sources */,
 				05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */,
+				05DED74A2A8AA41E00DA42F9 /* RAM.swift in Sources */,
 				05C3C2462A87D35500436F6D /* INY.swift in Sources */,
 				05C3C24E2A87D38E00436F6D /* LSR.swift in Sources */,
 				05C3C1F72A865D5300436F6D /* Computer.swift in Sources */,
@@ -958,7 +959,6 @@
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
 				05C3C2702A87D46A00436F6D /* TXA.swift in Sources */,
 				05C3C2422A87D33D00436F6D /* INC.swift in Sources */,
-				05C6D0FC2A89118700A984EB /* Memory+MemoryDevice.swift in Sources */,
 				05C3C21C2A87D20D00436F6D /* BCC.swift in Sources */,
 				05C3C2012A86798200436F6D /* STA.swift in Sources */,
 				05C3C21A2A87D1FD00436F6D /* ASL.swift in Sources */,

@@ -26,15 +26,15 @@ import Foundation
 
 open class Computer
 {
-    private var clock:  Clock
-    private var bus:    Bus
-    private var cpu:    CPU
-    private var memory: Memory< UInt16 >
+    private var clock: Clock
+    private var bus:   Bus
+    private var cpu:   CPU
+    private var ram:   RAM
 
-    public init( frequency: Clock.Frequency, memory: UInt64 ) throws
+    public init( frequency: Clock.Frequency, memory: RAM.Capacity, memoryOptions: Memory< UInt16 >.Options = [] ) throws
     {
         self.bus    = Bus()
-        self.memory = try Memory( size: memory, options: [], initializeTo: 0 )
+        self.ram    = try RAM( capacity: memory, options: memoryOptions )
         let cpu     = CPU( bus: self.bus )
         self.cpu    = cpu
         self.clock  = Clock( frequency: frequency )
@@ -42,7 +42,7 @@ open class Computer
             try cpu.cycle()
         }
 
-        try self.bus.mapDevice( self.memory, at: 0x00, size: UInt16( self.memory.size ) )
+        try self.bus.mapDevice( self.ram, at: 0x00, size: UInt16( self.ram.capacity.bytes ) )
     }
 
     public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt16 ) throws

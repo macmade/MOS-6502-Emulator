@@ -24,18 +24,42 @@
 
 import Foundation
 
-extension Memory: MemoryDevice where SizeType == UInt16
+public class RAM: WriteableMemoryDevice
 {
+    public enum Capacity
+    {
+        case b( UInt64 )
+        case kb( UInt64 )
+        case mb( UInt64 )
+
+        public var bytes: UInt64
+        {
+            switch self
+            {
+                case .b( let b ):   return b
+                case .kb( let kb ): return kb * 1024
+                case .mb( let mb ): return mb * 1024 * 1024
+            }
+        }
+    }
+
+    public private( set ) var capacity: Capacity
+
+    private var memory: Memory< UInt16 >
+
+    public init( capacity: Capacity, options: Memory< UInt16 >.Options ) throws
+    {
+        self.capacity = capacity
+        self.memory   = try .init( size: capacity.bytes, options: options, initializeTo: 0 )
+    }
+
     public func read( at address: UInt16 ) throws -> UInt8
     {
-        try self.readUInt8( at: address )
+        try self.memory.readUInt8( at: address )
     }
-}
 
-extension Memory: WriteableMemoryDevice where SizeType == UInt16
-{
     public func write( _ value: UInt8, at address: UInt16 ) throws
     {
-        try self.writeUInt8( value, at: address )
+        try self.memory.writeUInt8( value, at: address )
     }
 }

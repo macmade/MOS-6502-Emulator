@@ -38,11 +38,11 @@ public class ShiftRegister: WriteableMemoryDevice
 
     public func write( _ value: UInt8, at address: UInt16 ) throws
     {
-        try self.memory.write( value, at: address )
+        try self.memory.writeUInt8( value, at: address )
     }
 
     public func read( at address: UInt16 ) throws -> UInt8
     {
-        try self.memory.read( at: address )
+        try self.memory.readUInt8( at: address )
     }
 }
