@@ -452,23 +452,17 @@
 			isa = PBXGroup;
 			children = (
 				05DED74B2A8AA67A00DA42F9 /* AddressingContext.swift */,
-				05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */,
 				05C6D1012A89165A00A984EB /* Bus.swift */,
 				05C6D1072A896C9900A984EB /* Clock.swift */,
 				05C3C1F62A865D5300436F6D /* Computer.swift */,
 				05C3C1A82A85700700436F6D /* CPU.swift */,
+				05DED74D2A8AA6BF00DA42F9 /* Devices */,
 				05C3C1FE2A8661E800436F6D /* Disassembler.swift */,
-				05C6D0E62A88EFE700A984EB /* Either.swift */,
 				05C3C2112A87A11D00436F6D /* Instruction.swift */,
 				05C3C1D82A85A95A00436F6D /* Instructions */,
 				05C3C1D62A85A43A00436F6D /* Instructions.swift */,
-				05C3C1A62A85700100436F6D /* Memory.swift */,
-				05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */,
-				05C6D1092A897EB600A984EB /* PIA.swift */,
-				05DED7492A8AA41D00DA42F9 /* RAM.swift */,
 				05C3C1D42A85948500436F6D /* Registers.swift */,
-				05C3C1F82A865D5900436F6D /* ROM.swift */,
-				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
+				05DED74E2A8AA6C600DA42F9 /* Utility */,
 			);
 			path = MOS6502;
 			sourceTree = "<group>";
@@ -806,6 +800,28 @@
 				05C6D1042A891BE300A984EB /* Rockwell-R650X-R651X.pdf */,
 			);
 			path = Datasheets;
+			sourceTree = "<group>";
+		};
+		05DED74D2A8AA6BF00DA42F9 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */,
+				05C6D1092A897EB600A984EB /* PIA.swift */,
+				05DED7492A8AA41D00DA42F9 /* RAM.swift */,
+				05C3C1F82A865D5900436F6D /* ROM.swift */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		05DED74E2A8AA6C600DA42F9 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */,
+				05C6D0E62A88EFE700A984EB /* Either.swift */,
+				05C3C1A62A85700100436F6D /* Memory.swift */,
+				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
