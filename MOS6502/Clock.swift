@@ -28,15 +28,15 @@ public class Clock
 {
     public enum Frequency
     {
-        case hertz( UInt )
-        case megahertz( UInt )
+        case hz( UInt )
+        case mhz( UInt )
 
         public var nanoseconds: Int
         {
             switch self
             {
-                case .hertz( let hz ):      return Int( ( 1.0 / Double( hz         ) ) * 1000000000 )
-                case .megahertz( let mhz ): return Int( ( 1.0 / Double( mhz * 1000 ) ) * 1000000000 )
+                case .hz(  let hz ):  return Int( ( 1.0 / Double( hz         ) ) * 1000000000 )
+                case .mhz( let mhz ): return Int( ( 1.0 / Double( mhz * 1000 ) ) * 1000000000 )
             }
         }
     }

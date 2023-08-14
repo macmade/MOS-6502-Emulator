@@ -29,7 +29,7 @@ public class Apple1: Computer
 {
     public init() throws
     {
-        try super.init( frequency: .megahertz( 1 ), memory: 4096 )
+        try super.init( frequency: .mhz( 1 ), memory: 4096 )
 
         let keyboard   = try ShiftRegister( size: 1024 )
         let keyboardCR = try ShiftRegister( size: 1024 )
