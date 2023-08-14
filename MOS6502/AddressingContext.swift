@@ -169,14 +169,7 @@ public class AddressingContext
 
     public class func indirect( cpu: CPU ) throws -> AddressingContext
     {
-        AddressingContext
-        {
-            throw RuntimeError( message: "Not implemented" )
-        }
-        write:
-        {
-            _ in throw RuntimeError( message: "Not implemented" )
-        }
+        AddressingContext( address: try cpu.readUInt16FromMemory( at: try cpu.readUInt16FromMemoryAtPC() ), cpu: cpu )
     }
 
     public class func indirectX( cpu: CPU ) throws -> AddressingContext
