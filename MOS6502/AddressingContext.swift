@@ -156,14 +156,15 @@ public class AddressingContext
 
     public class func absoluteY( cpu: CPU ) throws -> AddressingContext
     {
-        AddressingContext
+        let base   = try cpu.readUInt16FromMemoryAtPC()
+        let offset = cpu.registers.Y
+
+        if UInt64( base ) + UInt64( offset ) > UInt16.max
         {
-            throw RuntimeError( message: "Not implemented" )
+            throw RuntimeError( message: "Invalid Absolute,Y memory address: \( base.asHex ),\( offset.asHex )" )
         }
-        write:
-        {
-            _ in throw RuntimeError( message: "Not implemented" )
-        }
+
+        return AddressingContext( address: base + UInt16( offset ), cpu: cpu )
     }
 
     public class func indirect( cpu: CPU ) throws -> AddressingContext
