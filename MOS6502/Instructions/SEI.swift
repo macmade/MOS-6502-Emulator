@@ -40,7 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#SEI
  */
-public func SEI( cpu: CPU, context: InstructionContext ) throws
+public func SEI( cpu: CPU, context: AddressingContext ) throws
 {
     cpu.setFlag( .interruptDisable )
 }

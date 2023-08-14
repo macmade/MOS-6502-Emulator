@@ -41,9 +41,9 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CMP
  */
-public func CMP( cpu: CPU, context: InstructionContext ) throws
+public func CMP( cpu: CPU, context: AddressingContext ) throws
 {
-    let value  = try cpu.readUInt8FromMemory( at: try context.address() )
+    let value  = try context.read()
     let result = Int16( cpu.registers.A ) - Int16( value )
 
     cpu.setFlag( cpu.registers.A >= value, for: .carryFlag )

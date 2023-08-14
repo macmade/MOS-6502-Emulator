@@ -40,7 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CLC
  */
-public func CLC( cpu: CPU, context: InstructionContext ) throws
+public func CLC( cpu: CPU, context: AddressingContext ) throws
 {
     cpu.clearFlag( .carryFlag )
 }

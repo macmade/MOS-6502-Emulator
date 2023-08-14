@@ -41,9 +41,9 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#LDA
  */
-public func LDA( cpu: CPU, context: InstructionContext ) throws
+public func LDA( cpu: CPU, context: AddressingContext ) throws
 {
-    cpu.registers.A = try cpu.readUInt8FromMemory( at: try context.address() )
+    cpu.registers.A = try context.read()
 
     cpu.setZeroAndNegativeFlags( for: cpu.registers.Y )
 }

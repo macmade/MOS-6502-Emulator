@@ -43,7 +43,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#ADC
  */
-public func ADC( cpu: CPU, context: InstructionContext ) throws
+public func ADC( cpu: CPU, context: AddressingContext ) throws
 {
     throw RuntimeError( message: "Instruction not implemented" )
 }

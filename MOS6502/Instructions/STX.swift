@@ -40,7 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#STX
  */
-public func STX( cpu: CPU, context: InstructionContext ) throws
+public func STX( cpu: CPU, context: AddressingContext ) throws
 {
-    try cpu.writeUInt8ToMemory( cpu.registers.X, at: try context.address() )
+    try context.write( cpu.registers.X )
 }

@@ -40,7 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#STY
  */
-public func STY( cpu: CPU, context: InstructionContext ) throws
+public func STY( cpu: CPU, context: AddressingContext ) throws
 {
-    try cpu.writeUInt8ToMemory( cpu.registers.Y, at: try context.address() )
+    try context.write( cpu.registers.Y )
 }

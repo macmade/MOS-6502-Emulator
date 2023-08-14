@@ -96,98 +96,24 @@ public class CPU
         }
     }
 
-    private func context( for addressingMode: Instruction.AddressingMode ) throws -> InstructionContext
+    private func context( for addressingMode: Instruction.AddressingMode ) throws -> AddressingContext
     {
         switch addressingMode
         {
-            case .implied:     return try self.impliedContext()
-            case .accumulator: return try self.accumulatorContext()
-            case .immediate:   return try self.immediateContext()
-            case .zeroPage:    return try self.zeroPageContext()
-            case .zeroPageX:   return try self.zeroPageXContext()
-            case .zeroPageY:   return try self.zeroPageYContext()
-            case .relative:    return try self.relativeContext()
-            case .absolute:    return try self.absoluteContext()
-            case .absoluteX:   return try self.absoluteXContext()
-            case .absoluteY:   return try self.absoluteYContext()
-            case .indirect:    return try self.indirectContext()
-            case .indirectX:   return try self.indirectXContext()
-            case .indirectY:   return try self.indirectYContext()
+            case .implied:     return try AddressingContext.implied(     cpu: self )
+            case .accumulator: return try AddressingContext.accumulator( cpu: self )
+            case .immediate:   return try AddressingContext.immediate(   cpu: self )
+            case .zeroPage:    return try AddressingContext.zeroPage(    cpu: self )
+            case .zeroPageX:   return try AddressingContext.zeroPageX(   cpu: self )
+            case .zeroPageY:   return try AddressingContext.zeroPageY(   cpu: self )
+            case .relative:    return try AddressingContext.relative(    cpu: self )
+            case .absolute:    return try AddressingContext.absolute(    cpu: self )
+            case .absoluteX:   return try AddressingContext.absoluteX(   cpu: self )
+            case .absoluteY:   return try AddressingContext.absoluteY(   cpu: self )
+            case .indirect:    return try AddressingContext.indirect(    cpu: self )
+            case .indirectX:   return try AddressingContext.indirectX(   cpu: self )
+            case .indirectY:   return try AddressingContext.indirectY(   cpu: self )
         }
-    }
-
-    private func impliedContext() throws -> InstructionContext
-    {
-        InstructionContext()
-    }
-
-    private func accumulatorContext() throws -> InstructionContext
-    {
-        InstructionContext( value: self.registers.A )
-    }
-
-    private func immediateContext() throws -> InstructionContext
-    {
-        InstructionContext
-        {
-            let value          = self.registers.PC
-            self.registers.PC += 1
-
-            return value
-        }
-    }
-
-    private func zeroPageContext() throws -> InstructionContext
-    {
-        InstructionContext()
-    }
-
-    private func zeroPageXContext() throws -> InstructionContext
-    {
-        InstructionContext()
-    }
-
-    private func zeroPageYContext() throws -> InstructionContext
-    {
-        InstructionContext()
-    }
-
-    private func relativeContext() throws -> InstructionContext
-    {
-        InstructionContext()
-    }
-
-    private func absoluteContext() throws -> InstructionContext
-    {
-        InstructionContext
-        {
-            try self.readUInt16FromMemoryAtPC()
-        }
-    }
-
-    private func absoluteXContext() throws -> InstructionContext
-    {
-        InstructionContext()
-    }
-
-    private func absoluteYContext() throws -> InstructionContext
-    {
-        InstructionContext()
-    }
-
-    private func indirectContext() throws -> InstructionContext
-    {
-        InstructionContext()
-    }
-
-    private func indirectXContext() throws -> InstructionContext
-    {
-        InstructionContext()
-    }
-
-    private func indirectYContext() throws -> InstructionContext
-    {
-        InstructionContext()
     }
 
     public func setFlag( _ value: Bool, for flag: Registers.Flags )

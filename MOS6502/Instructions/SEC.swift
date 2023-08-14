@@ -40,7 +40,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#SEC
  */
-public func SEC( cpu: CPU, context: InstructionContext ) throws
+public func SEC( cpu: CPU, context: AddressingContext ) throws
 {
     cpu.setFlag( .carryFlag )
 }

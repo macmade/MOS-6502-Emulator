@@ -41,7 +41,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#DEX
  */
-public func DEX( cpu: CPU, context: InstructionContext ) throws
+public func DEX( cpu: CPU, context: AddressingContext ) throws
 {
     throw RuntimeError( message: "Instruction not implemented" )
 }

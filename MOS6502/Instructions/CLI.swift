@@ -41,7 +41,7 @@ import Foundation
  *
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#CLI
  */
-public func CLI( cpu: CPU, context: InstructionContext ) throws
+public func CLI( cpu: CPU, context: AddressingContext ) throws
 {
     cpu.clearFlag( .interruptDisable )
 }
