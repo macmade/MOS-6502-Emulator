@@ -26,9 +26,20 @@ import Foundation
 
 public class AddressingContext
 {
-    private var readValue:   ()        throws -> UInt8
-    private var writeValue:  ( UInt8 ) throws -> Void
-    private var cachedValue: UInt8?
+    private var readValue:  ()        throws -> UInt8
+    private var writeValue: ( UInt8 ) throws -> Void
+
+    public convenience init( address: UInt16, cpu: CPU )
+    {
+        self.init
+        {
+            try cpu.readUInt8FromMemory( at: address )
+        }
+        write:
+        {
+            try cpu.writeUInt8ToMemory( $0, at: address )
+        }
+    }
 
     public init( read: @escaping () throws -> UInt8, write: @escaping ( UInt8 ) throws -> Void )
     {
@@ -38,15 +49,7 @@ public class AddressingContext
 
     public func read() throws -> UInt8
     {
-        if let value = self.cachedValue
-        {
-            return value
-        }
-
-        let value        = try self.readValue()
-        self.cachedValue = value
-
-        return value
+        try self.readValue()
     }
 
     public func write( _ value: UInt8 ) throws
@@ -94,16 +97,7 @@ public class AddressingContext
 
     public class func zeroPage( cpu: CPU ) throws -> AddressingContext
     {
-        let address = UInt16( try cpu.readUInt8FromMemoryAtPC() )
-
-        return AddressingContext
-        {
-            try cpu.readUInt8FromMemory( at: address )
-        }
-        write:
-        {
-            try cpu.writeUInt8ToMemory( $0, at: address )
-        }
+        AddressingContext( address: UInt16( try cpu.readUInt8FromMemoryAtPC() ), cpu: cpu )
     }
 
     public class func zeroPageX( cpu: CPU ) throws -> AddressingContext
@@ -144,16 +138,7 @@ public class AddressingContext
 
     public class func absolute( cpu: CPU ) throws -> AddressingContext
     {
-        let address = try cpu.readUInt16FromMemoryAtPC()
-
-        return AddressingContext
-        {
-            try cpu.readUInt8FromMemory( at: address )
-        }
-        write:
-        {
-            try cpu.writeUInt8ToMemory( $0, at: address )
-        }
+        AddressingContext( address: try cpu.readUInt16FromMemoryAtPC(), cpu: cpu )
     }
 
     public class func absoluteX( cpu: CPU ) throws -> AddressingContext
@@ -166,16 +151,7 @@ public class AddressingContext
             throw RuntimeError( message: "Invalid Absolute,X memory address: \( base.asHex ),\( offset.asHex )" )
         }
 
-        let address = base + UInt16( offset )
-
-        return AddressingContext
-        {
-            try cpu.readUInt8FromMemory( at: address )
-        }
-        write:
-        {
-            try cpu.writeUInt8ToMemory( $0, at: address )
-        }
+        return AddressingContext( address: base + UInt16( offset ), cpu: cpu )
     }
 
     public class func absoluteY( cpu: CPU ) throws -> AddressingContext
