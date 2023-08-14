@@ -152,19 +152,29 @@ public class AddressingContext
         }
         write:
         {
-            try cpu.writeUInt8ToMemory( $0,  at: address )
+            try cpu.writeUInt8ToMemory( $0, at: address )
         }
     }
 
     public class func absoluteX( cpu: CPU ) throws -> AddressingContext
     {
-        AddressingContext
+        let base   = try cpu.readUInt16FromMemoryAtPC()
+        let offset = cpu.registers.X
+
+        if UInt64( base ) + UInt64( offset ) > UInt16.max
         {
-            throw RuntimeError( message: "Not implemented" )
+            throw RuntimeError( message: "Invalid Absolute,X memory address: \( base.asHex ),\( offset.asHex )" )
+        }
+
+        let address = base + UInt16( offset )
+
+        return AddressingContext
+        {
+            try cpu.readUInt8FromMemory( at: address )
         }
         write:
         {
-            _ in throw RuntimeError( message: "Not implemented" )
+            try cpu.writeUInt8ToMemory( $0, at: address )
         }
     }
 
