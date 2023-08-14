@@ -94,13 +94,15 @@ public class AddressingContext
 
     public class func zeroPage( cpu: CPU ) throws -> AddressingContext
     {
-        AddressingContext
+        let address = UInt16( try cpu.readUInt8FromMemoryAtPC() )
+
+        return AddressingContext
         {
-            throw RuntimeError( message: "Not implemented" )
+            try cpu.readUInt8FromMemory( at: address )
         }
         write:
         {
-            _ in throw RuntimeError( message: "Not implemented" )
+            try cpu.writeUInt8ToMemory( $0, at: address )
         }
     }
 
