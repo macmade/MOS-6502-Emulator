@@ -124,7 +124,7 @@ public class Disassembler
 
             bytes.append( opcode )
 
-            if let instruction = Instructions.all.first( where: { $0.opcode == opcode } )
+            if let instruction = Instruction.all.first( where: { $0.opcode == opcode } )
             {
                 switch instruction.addressingMode
                 {

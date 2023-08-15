@@ -84,7 +84,7 @@ public class CPU
 
         let opcode = try self.readUInt8FromMemoryAtPC()
 
-        if let instruction = Instructions.all.first( where: { $0.opcode == opcode } )
+        if let instruction = Instruction.all.first( where: { $0.opcode == opcode } )
         {
             self.cycles = instruction.cycles
 

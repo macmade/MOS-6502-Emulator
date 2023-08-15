@@ -18,7 +18,6 @@
 		05C3C1BA2A8570A900436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1BC2A8572B100436F6D /* RuntimeError.swift */; };
 		05C3C1D52A85948500436F6D /* Registers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1D42A85948500436F6D /* Registers.swift */; };
-		05C3C1D72A85A43A00436F6D /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1D62A85A43A00436F6D /* Instructions.swift */; };
 		05C3C1DA2A85A96600436F6D /* LDA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1D92A85A96600436F6D /* LDA.swift */; };
 		05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */; };
 		05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1DD2A85B1A400436F6D /* LDX.swift */; };
@@ -290,7 +289,6 @@
 		05C3C1BB2A85710800436F6D /* MOS6502-Demo.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MOS6502-Demo.xctestplan"; sourceTree = "<group>"; };
 		05C3C1BC2A8572B100436F6D /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 		05C3C1D42A85948500436F6D /* Registers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registers.swift; sourceTree = "<group>"; };
-		05C3C1D62A85A43A00436F6D /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
 		05C3C1D92A85A96600436F6D /* LDA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDA.swift; sourceTree = "<group>"; };
 		05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryInteger.swift; sourceTree = "<group>"; };
 		05C3C1DD2A85B1A400436F6D /* LDX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDX.swift; sourceTree = "<group>"; };
@@ -518,7 +516,6 @@
 				05C3C1FE2A8661E800436F6D /* Disassembler.swift */,
 				05C3C2112A87A11D00436F6D /* Instruction.swift */,
 				05C3C1D82A85A95A00436F6D /* Instructions */,
-				05C3C1D62A85A43A00436F6D /* Instructions.swift */,
 				05C3C1D42A85948500436F6D /* Registers.swift */,
 				05DED74E2A8AA6C600DA42F9 /* Utility */,
 			);
@@ -1060,7 +1057,6 @@
 				05C3C1F12A8655B100436F6D /* CLD.swift in Sources */,
 				05C3C26A2A87D43800436F6D /* TAX.swift in Sources */,
 				05C3C2502A87D39900436F6D /* ORA.swift in Sources */,
-				05C3C1D72A85A43A00436F6D /* Instructions.swift in Sources */,
 				05C3C2182A87D1F200436F6D /* AND.swift in Sources */,
 				05C3C2442A87D34C00436F6D /* INX.swift in Sources */,
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
