@@ -34,6 +34,7 @@ public class C64KernalRev1: ROM
     public var origin = UInt16( 0xE000 )
 
     public var comments: [ UInt16: String ] = [ : ]
+    public var labels:   [ UInt16: String ] = [ : ]
 
     public var data = Data(
         [

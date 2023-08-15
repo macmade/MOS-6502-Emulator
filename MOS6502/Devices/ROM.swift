@@ -36,12 +36,17 @@ public protocol ROM: MemoryDevice
         get
     }
 
+    var data: Data
+    {
+        get
+    }
+
     var comments: [ UInt16: String ]
     {
         get
     }
 
-    var data: Data
+    var labels: [ UInt16: String ]
     {
         get
     }
