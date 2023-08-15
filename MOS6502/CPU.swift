@@ -111,7 +111,13 @@ public class CPU
 
         if let instruction = Instruction.all.first( where: { $0.opcode == opcode } )
         {
-            self.cycles = instruction.cycles
+            guard instruction.cycles > 0
+            else
+            {
+                throw RuntimeError( message: "Invalid cycle count for instruction \( opcode.asHex ): \( instruction.mnemonic ) \( instruction.addressingMode.description )" )
+            }
+
+            self.cycles = instruction.cycles - 1
 
             try instruction.execute( self, try self.context( for: instruction.addressingMode ) )
         }
