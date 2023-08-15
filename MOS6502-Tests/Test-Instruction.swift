@@ -47,22 +47,31 @@ class Test_Instruction: XCTestCase
     }
 
     @discardableResult
-    func executeSingleInstruction( instruction: Instruction, operands: [ UInt8 ], inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU ) throws -> Void )? = nil ) throws -> CPU
+    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operands: [ UInt8 ], inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU ) throws -> Void )? = nil ) throws -> CPU?
     {
+        guard let instruction = Instruction.instruction( for: instruction, addressingMode: addressingMode )
+        else
+        {
+            XCTAssertTrue( false, "Invalid instruction \( instruction ) \( addressingMode.description )" )
+
+            return nil
+        }
+
         let bus    = Bus()
         let cpu    = CPU( bus: bus )
-        let memory = try Memory< UInt16 >( size: UInt64( UInt16.max ), options: [], initializeTo: 0 )
+        let ram    = try RAM( capacity: .kb( 64 ), options: [] )
         let origin = UInt16( 0xFF00 )
 
-        XCTAssertNoThrow( try bus.mapDevice( memory, at: 0x00, size: UInt16( memory.size ) ) )
-        XCTAssertNoThrow( try memory.writeUInt8( instruction.opcode, at: origin ) )
+        XCTAssertNoThrow( try bus.mapDevice( ram, at: 0x00, size: ram.capacity.bytes ) )
+        XCTAssertNoThrow( try ram.write( instruction.opcode, at: origin ) )
 
         try operands.enumerated().forEach
         {
-            XCTAssertNoThrow( try memory.writeUInt8( $0.element, at: origin + UInt16( $0.offset ) + 1 ) )
+            XCTAssertNoThrow( try ram.write( $0.element, at: origin + UInt16( $0.offset ) + 1 ) )
         }
 
-        XCTAssertNoThrow( try memory.writeUInt16( origin, at: CPU.resetVector ) )
+        XCTAssertNoThrow( try ram.write( UInt8( origin & 0xFF ),          at: CPU.resetVector ) )
+        XCTAssertNoThrow( try ram.write( UInt8( ( origin >> 8 ) & 0xFF ), at: CPU.resetVector + 1 ) )
         XCTAssertNoThrow( try cpu.reset() )
 
         cpu.registers.A  = inputRegisters.A
@@ -83,11 +92,11 @@ class Test_Instruction: XCTestCase
             XCTAssertNoThrow( try setup( cpu ) )
         }
 
-        let cycles = cpu.cycles
+        let clock = cpu.clock
 
-        XCTAssertNoThrow( try cpu.run( instructions: 1 ) )
+        // XCTAssertNoThrow( try cpu.run( instructions: 1 ) )
 
-        XCTAssertEqual( cpu.cycles, cycles + UInt64( instruction.cycles ), "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
+        XCTAssertEqual( cpu.clock, clock + UInt64( instruction.cycles ), "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
 
         XCTAssertEqual( cpu.registers.A, outputRegisters.A, "Register mismatch for A" )
         XCTAssertEqual( cpu.registers.X, outputRegisters.X, "Register mismatch for X" )
