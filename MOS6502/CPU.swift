@@ -77,9 +77,9 @@ public class CPU
 
     public func run( instructions: UInt ) throws
     {
-        var instructions = instructions
+        var executed = 0
 
-        while instructions > 0
+        while executed < instructions
         {
             try self.cycle()
 
@@ -88,7 +88,7 @@ public class CPU
                 try self.cycle()
             }
 
-            instructions -= 1
+            executed += 1
         }
     }
 
