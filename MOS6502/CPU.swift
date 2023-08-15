@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Foundation
+import xasm65lib
 
 public class CPU
 {
@@ -76,10 +77,17 @@ public class CPU
 
     private func decodeAndExecuteNextInstruction() throws
     {
-        if let disassembly = try? Disassembler.disassemble( at: self.registers.PC, from: self.bus, offset: 0, instructions: 1, comments: [ : ] ),
-           disassembly.isEmpty == false
+        let disassembly = try? Disassembler.disassemble(
+            stream:       MemoryDeviceStream( device: self.bus, offset: self.registers.PC ),
+            origin:       self.registers.PC,
+            instructions: 1,
+            options:      [ .address, .disassembly ],
+            separator:    " "
+        )
+
+        if let disassembly = disassembly, disassembly.isEmpty == false
         {
-            print( "    \( disassembly )" )
+            print( disassembly )
         }
 
         let opcode = try self.readUInt8FromMemoryAtPC()

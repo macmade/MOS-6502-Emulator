@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Foundation
+import xasm65lib
 
 open class Computer
 {
@@ -70,7 +71,16 @@ open class Computer
 
         print( "Loaded \( data.count ) bytes ROM at \( rom.origin.asHex ): \( rom.name )" )
 
-        if let disassembly = try? Disassembler.disassembleROM( rom ), disassembly.isEmpty == false
+        let disassembly = try? Disassembler.disassemble(
+            stream:    MemoryDeviceStream( device: rom ),
+            origin:    rom.origin,
+            size:      UInt64( rom.data.count ),
+            options:  [],
+            comments: rom.comments,
+            labels:   rom.labels
+        )
+
+        if let disassembly = disassembly, disassembly.isEmpty == false
         {
             print( disassembly )
         }

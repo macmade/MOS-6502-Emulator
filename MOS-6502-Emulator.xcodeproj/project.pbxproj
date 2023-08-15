@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
+		0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -28,7 +29,6 @@
 		05C3C1F32A86572F00436F6D /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F22A86572F00436F6D /* CLI.swift */; };
 		05C3C1F72A865D5300436F6D /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F62A865D5300436F6D /* Computer.swift */; };
 		05C3C1F92A865D5900436F6D /* ROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1F82A865D5900436F6D /* ROM.swift */; };
-		05C3C1FF2A8661E800436F6D /* Disassembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FE2A8661E800436F6D /* Disassembler.swift */; };
 		05C3C2012A86798200436F6D /* STA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2002A86798200436F6D /* STA.swift */; };
 		05C3C2032A86798800436F6D /* STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2022A86798800436F6D /* STX.swift */; };
 		05C3C2052A86798D00436F6D /* STY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2042A86798D00436F6D /* STY.swift */; };
@@ -226,6 +226,7 @@
 
 /* Begin PBXFileReference section */
 		0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xasm65.xcodeproj; path = Submodules/xasm65/xasm65.xcodeproj; sourceTree = "<group>"; };
+		0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceStream.swift; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -300,7 +301,6 @@
 		05C3C1F62A865D5300436F6D /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 		05C3C1F82A865D5900436F6D /* ROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROM.swift; sourceTree = "<group>"; };
 		05C3C1FA2A865D6D00436F6D /* Apple1WozMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1WozMonitor.swift; sourceTree = "<group>"; };
-		05C3C1FE2A8661E800436F6D /* Disassembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disassembler.swift; sourceTree = "<group>"; };
 		05C3C2002A86798200436F6D /* STA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STA.swift; sourceTree = "<group>"; };
 		05C3C2022A86798800436F6D /* STX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STX.swift; sourceTree = "<group>"; };
 		05C3C2042A86798D00436F6D /* STY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STY.swift; sourceTree = "<group>"; };
@@ -513,7 +513,6 @@
 				05C3C1F62A865D5300436F6D /* Computer.swift */,
 				05C3C1A82A85700700436F6D /* CPU.swift */,
 				05DED74D2A8AA6BF00DA42F9 /* Devices */,
-				05C3C1FE2A8661E800436F6D /* Disassembler.swift */,
 				05C3C2112A87A11D00436F6D /* Instruction.swift */,
 				05C3C1D82A85A95A00436F6D /* Instructions */,
 				05C3C1D42A85948500436F6D /* Registers.swift */,
@@ -861,6 +860,7 @@
 			isa = PBXGroup;
 			children = (
 				05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */,
+				0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */,
 				05C6D1092A897EB600A984EB /* PIA.swift */,
 				05DED7492A8AA41D00DA42F9 /* RAM.swift */,
 				05C3C1F82A865D5900436F6D /* ROM.swift */,
@@ -1070,10 +1070,10 @@
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
 				05C3C1F32A86572F00436F6D /* CLI.swift in Sources */,
 				05C3C2402A87D32D00436F6D /* EOR.swift in Sources */,
+				0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */,
 				05C3C21E2A87D21A00436F6D /* BCS.swift in Sources */,
 				05C3C2052A86798D00436F6D /* STY.swift in Sources */,
 				05C3C2682A87D43000436F6D /* SEI.swift in Sources */,
-				05C3C1FF2A8661E800436F6D /* Disassembler.swift in Sources */,
 				05C3C2482A87D36700436F6D /* JMP.swift in Sources */,
 				05C3C2642A87D40F00436F6D /* SEC.swift in Sources */,
 				05C3C1D52A85948500436F6D /* Registers.swift in Sources */,
