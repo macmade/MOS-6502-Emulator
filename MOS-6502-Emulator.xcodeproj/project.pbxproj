@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
+		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -153,6 +155,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0564ABEC2A8C081A00EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 05DED7582A8AAC4900DA42F9;
+			remoteInfo = xasm65;
+		};
+		0564ABEE2A8C081A00EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 05DED7A52A8AAF0300DA42F9;
+			remoteInfo = xasm65lib;
+		};
+		0564ABF02A8C081A00EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 05DED7CA2A8AB02700DA42F9;
+			remoteInfo = "xasm65-tests";
+		};
+		0564ABF22A8C082D00EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05DED7A42A8AAF0300DA42F9;
+			remoteInfo = xasm65lib;
+		};
+		0564ABF62A8C084C00EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05DED7A42A8AAF0300DA42F9;
+			remoteInfo = xasm65lib;
+		};
+		0564ABF82A8C085200EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05DED7A42A8AAF0300DA42F9;
+			remoteInfo = xasm65lib;
+		};
 		05C3C1A12A856EC400436F6D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05C3C1332A8568D500436F6D /* Project object */;
@@ -182,6 +226,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xasm65.xcodeproj; path = Submodules/xasm65/xasm65.xcodeproj; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -403,6 +448,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */,
 				05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +457,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */,
 				05C3C1BA2A8570A900436F6D /* libMOS6502.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +465,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0564ABE72A8C081A00EF1950 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0564ABED2A8C081A00EF1950 /* xasm65 */,
+				0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */,
+				0564ABF12A8C081A00EF1950 /* xasm65-tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		05C3C1322A8568D500436F6D = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +487,7 @@
 				05C3C1BB2A85710800436F6D /* MOS6502-Demo.xctestplan */,
 				05C3C14A2A856AA400436F6D /* .github */,
 				05C3C14E2A856B6F00436F6D /* xcconfig */,
+				0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */,
 				05C3C13D2A8568D500436F6D /* MOS6502 */,
 				05C3C1B12A85708C00436F6D /* MOS6502-Demo */,
 				05C3C19D2A856EC400436F6D /* MOS6502-Tests */,
@@ -848,6 +906,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0564ABF32A8C082D00EF1950 /* PBXTargetDependency */,
 			);
 			name = MOS6502;
 			productName = "MOS-6502-Emulator";
@@ -865,6 +924,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0564ABF72A8C084C00EF1950 /* PBXTargetDependency */,
 				05C3C1A22A856EC400436F6D /* PBXTargetDependency */,
 			);
 			name = "MOS6502-Tests";
@@ -883,6 +943,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0564ABF92A8C085200EF1950 /* PBXTargetDependency */,
 				05C3C1B82A8570A500436F6D /* PBXTargetDependency */,
 			);
 			name = "MOS6502-Demo";
@@ -923,6 +984,12 @@
 			mainGroup = 05C3C1322A8568D500436F6D;
 			productRefGroup = 05C3C13C2A8568D500436F6D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0564ABE72A8C081A00EF1950 /* Products */;
+					ProjectRef = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				05C3C13A2A8568D500436F6D /* MOS6502 */,
@@ -931,6 +998,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0564ABED2A8C081A00EF1950 /* xasm65 */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = xasm65;
+			remoteRef = 0564ABEC2A8C081A00EF1950 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libxasm65lib.a;
+			remoteRef = 0564ABEE2A8C081A00EF1950 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0564ABF12A8C081A00EF1950 /* xasm65-tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "xasm65-tests.xctest";
+			remoteRef = 0564ABF02A8C081A00EF1950 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		05C3C19A2A856EC400436F6D /* Resources */ = {
@@ -1108,6 +1199,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0564ABF32A8C082D00EF1950 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = xasm65lib;
+			targetProxy = 0564ABF22A8C082D00EF1950 /* PBXContainerItemProxy */;
+		};
+		0564ABF72A8C084C00EF1950 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = xasm65lib;
+			targetProxy = 0564ABF62A8C084C00EF1950 /* PBXContainerItemProxy */;
+		};
+		0564ABF92A8C085200EF1950 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = xasm65lib;
+			targetProxy = 0564ABF82A8C085200EF1950 /* PBXContainerItemProxy */;
+		};
 		05C3C1A22A856EC400436F6D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 05C3C13A2A8568D500436F6D /* MOS6502 */;
