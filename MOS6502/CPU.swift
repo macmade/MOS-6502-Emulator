@@ -75,6 +75,23 @@ public class CPU
         }
     }
 
+    public func run( instructions: UInt ) throws
+    {
+        var instructions = instructions
+
+        while instructions > 0
+        {
+            try self.cycle()
+
+            while self.cycles > 0
+            {
+                try self.cycle()
+            }
+
+            instructions -= 1
+        }
+    }
+
     private func decodeAndExecuteNextInstruction() throws
     {
         let disassembly = try? Disassembler.disassemble(

@@ -94,7 +94,7 @@ class Test_Instruction: XCTestCase
 
         let clock = cpu.clock
 
-        // XCTAssertNoThrow( try cpu.run( instructions: 1 ) )
+        XCTAssertNoThrow( try cpu.run( instructions: 1 ) )
 
         XCTAssertEqual( cpu.clock, clock + UInt64( instruction.cycles ), "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
 
