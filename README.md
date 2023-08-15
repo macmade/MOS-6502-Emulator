@@ -13,8 +13,7 @@ MOS-6502-Emulator
 A MOS 6502 emulator written in Swift.
 
 **Cloning:**  
-This repository uses submodules.  
-Please clone with:
+This repository uses submodules. Please clone with:
 
     git clone --recursive https://github.com/macmade/MOS-6502-Emulator.git
 
