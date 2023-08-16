@@ -45,6 +45,9 @@ public class CPU
     public static let requiredMemory: UInt64 = 512
     public static let maximumMemory:  UInt64 = 0xFFFF
 
+    public var disassemblerLabels:   [ UInt16: String ] = [ : ]
+    public var disassemblerComments: [ UInt16: String ] = [ : ]
+
     public init( bus: Bus )
     {
         self.bus = bus
@@ -104,6 +107,25 @@ public class CPU
 
         if let disassembly = disassembly, disassembly.isEmpty == false
         {
+            let label   = self.disassemblerLabels[ self.registers.PC ]
+            let comment = self.disassemblerComments[ self.registers.PC ]
+
+            if let label = label, let comment = comment
+            {
+                print( "" )
+                print( "; \( label ): \( comment )" )
+            }
+            else if let label = label
+            {
+                print( "" )
+                print( "; \( label ):" )
+            }
+            else if let comment = comment
+            {
+                print( "" )
+                print( "; \( comment )" )
+            }
+
             print( disassembly )
         }
 

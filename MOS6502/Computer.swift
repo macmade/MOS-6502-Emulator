@@ -84,6 +84,9 @@ open class Computer
         {
             print( disassembly )
         }
+
+        rom.labels.forEach   { self.cpu.disassemblerLabels[   $0.key ] = $0.value }
+        rom.comments.forEach { self.cpu.disassemblerComments[ $0.key ] = $0.value }
     }
 
     public func reset() throws
