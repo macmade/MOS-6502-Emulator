@@ -28,5 +28,61 @@ import XCTest
 class Test_Instruction_DEY: Test_Instruction
 {
     func testImplicit() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "DEY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0, X: 0, Y: 42, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) ),
+            outputRegisters: Registers( A: 0, X: 0, Y: 41, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 42, X: 42, Y: 42, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 1, N: 1 ) ),
+            outputRegisters: Registers( A: 42, X: 42, Y: 41, PS: Flags( C: 1, Z: 0, I: 1, D: 1, B: 1, V: 1, N: 0 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0, X: 0, Y: 1, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) ),
+            outputRegisters: Registers( A: 0, X: 0, Y: 0, PS: Flags( C: 0, Z: 1, I: 0, D: 0, B: 0, V: 0, N: 0 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0, X: 0, Y: 0x00, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) ),
+            outputRegisters: Registers( A: 0, X: 0, Y: 0xFF, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 1 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0, X: 0, Y: 0xFF, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) ),
+            outputRegisters: Registers( A: 0, X: 0, Y: 0xFE, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 1 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0, X: 0, Y: 0x81, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) ),
+            outputRegisters: Registers( A: 0, X: 0, Y: 0x80, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 1 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0, X: 0, Y: 0x80, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) ),
+            outputRegisters: Registers( A: 0, X: 0, Y: 0x7F, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) )
+        )
+    }
 }
