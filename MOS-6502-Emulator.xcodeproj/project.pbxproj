@@ -231,6 +231,7 @@
 		0564AC052A8D2CD900EF1950 /* Rockwell-R650X-R651X.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rockwell-R650X-R651X.pdf"; sourceTree = "<group>"; };
 		0564AC062A8D2CD900EF1950 /* MOS-Microcomputers-Hardware-Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MOS-Microcomputers-Hardware-Manual.pdf"; sourceTree = "<group>"; };
 		0564AC072A8D2CD900EF1950 /* MOS-Microcomputers-Programming-Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MOS-Microcomputers-Programming-Manual.pdf"; sourceTree = "<group>"; };
+		0564AC1B2A8D41C200EF1950 /* Apple-1-Operation-Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Apple-1-Operation-Manual.pdf"; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -854,6 +855,7 @@
 		05C6D1032A891BE300A984EB /* Datasheets */ = {
 			isa = PBXGroup;
 			children = (
+				0564AC1B2A8D41C200EF1950 /* Apple-1-Operation-Manual.pdf */,
 				0564AC062A8D2CD900EF1950 /* MOS-Microcomputers-Hardware-Manual.pdf */,
 				0564AC072A8D2CD900EF1950 /* MOS-Microcomputers-Programming-Manual.pdf */,
 				0564AC052A8D2CD900EF1950 /* Rockwell-R650X-R651X.pdf */,
