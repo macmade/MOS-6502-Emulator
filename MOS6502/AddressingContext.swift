@@ -112,14 +112,15 @@ public class AddressingContext
 
     public class func relative( cpu: CPU ) throws -> AddressingContext
     {
-        AddressingContext
+        let offset = Int8( bitPattern: try cpu.readUInt8FromMemoryAtPC() )
+        let pc     = Int64( cpu.registers.PC )
+
+        if pc + Int64( offset ) < 0 || pc + Int64( offset ) > UInt16.max
         {
-            throw RuntimeError( message: "Not implemented" )
+            throw RuntimeError( message: "Invalid Relative memory address: \( cpu.registers.PC.asHex ) \( offset < 0 ? "-" : "+" ) \( offset ) = \( pc + Int64( offset ) )" )
         }
-        write:
-        {
-            _ in throw RuntimeError( message: "Not implemented" )
-        }
+
+        return AddressingContext( address: UInt16( pc + Int64( offset ) ), cpu: cpu )
     }
 
     public class func absolute( cpu: CPU ) throws -> AddressingContext
