@@ -43,5 +43,11 @@ import Foundation
  */
 public func BEQ( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    guard cpu.registers.PS.contains( .zeroFlag )
+    else
+    {
+        return
+    }
+    
+    cpu.registers.PC = try cpu.relativeAddressFromPC( signedOffset: context.read() )
 }
