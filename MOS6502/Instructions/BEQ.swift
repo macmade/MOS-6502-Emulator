@@ -43,11 +43,8 @@ import Foundation
  */
 public func BEQ( cpu: CPU, context: AddressingContext ) throws
 {
-    guard cpu.registers.PS.contains( .zeroFlag )
-    else
+    if cpu.registers.PS.contains( .zeroFlag )
     {
-        return
+        cpu.registers.PC = try cpu.relativeAddressFromPC( signedOffset: context.read() )
     }
-    
-    cpu.registers.PC = try cpu.relativeAddressFromPC( signedOffset: context.read() )
 }
