@@ -211,4 +211,17 @@ public class CPU
     {
         try self.bus.writeUInt16( value, at: address )
     }
+
+    public func relativeAddressFromPC( signedOffset: UInt8 ) throws -> UInt16
+    {
+        let offset = Int8( bitPattern: signedOffset )
+        let pc     = Int64( self.registers.PC )
+
+        if pc + Int64( offset ) < 0 || pc + Int64( offset ) > UInt16.max
+        {
+            throw RuntimeError( message: "Invalid PC relative address: \( self.registers.PC.asHex ) \( offset < 0 ? "-" : "+" ) \( offset ) = \( pc + Int64( offset ) )" )
+        }
+
+        return UInt16( pc + Int64( offset ) )
+    }
 }
