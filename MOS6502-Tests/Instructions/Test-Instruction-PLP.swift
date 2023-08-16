@@ -27,6 +27,6 @@ import XCTest
 
 class Test_Instruction_PLP: Test_Instruction
 {
-    func testImplicit() throws
+    func testImplied() throws
     {}
 }

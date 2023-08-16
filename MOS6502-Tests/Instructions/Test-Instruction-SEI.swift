@@ -27,7 +27,7 @@ import XCTest
 
 class Test_Instruction_SEI: Test_Instruction
 {
-    func testImplicit() throws
+    func testImplied() throws
     {
         try self.executeSingleInstruction(
             instruction:     "SEI",

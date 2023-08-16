@@ -27,6 +27,6 @@ import XCTest
 
 class Test_Instruction_RTI: Test_Instruction
 {
-    func testImplicit() throws
+    func testImplied() throws
     {}
 }
