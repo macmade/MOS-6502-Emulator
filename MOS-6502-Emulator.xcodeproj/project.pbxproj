@@ -227,6 +227,10 @@
 /* Begin PBXFileReference section */
 		0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xasm65.xcodeproj; path = Submodules/xasm65/xasm65.xcodeproj; sourceTree = "<group>"; };
 		0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceStream.swift; sourceTree = "<group>"; };
+		0564AC042A8D2CD900EF1950 /* Synertek-SY6500.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Synertek-SY6500.pdf"; sourceTree = "<group>"; };
+		0564AC052A8D2CD900EF1950 /* Rockwell-R650X-R651X.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rockwell-R650X-R651X.pdf"; sourceTree = "<group>"; };
+		0564AC062A8D2CD900EF1950 /* MOS-Microcomputers-Hardware-Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MOS-Microcomputers-Hardware-Manual.pdf"; sourceTree = "<group>"; };
+		0564AC072A8D2CD900EF1950 /* MOS-Microcomputers-Programming-Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MOS-Microcomputers-Programming-Manual.pdf"; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -426,7 +430,6 @@
 		05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDevice.swift; sourceTree = "<group>"; };
 		05C6D0E62A88EFE700A984EB /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		05C6D1012A89165A00A984EB /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
-		05C6D1042A891BE300A984EB /* Rockwell-R650X-R651X.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rockwell-R650X-R651X.pdf"; sourceTree = "<group>"; };
 		05C6D1072A896C9900A984EB /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		05C6D1092A897EB600A984EB /* PIA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIA.swift; sourceTree = "<group>"; };
 		05C6D10B2A89814900A984EB /* Apple1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1.swift; sourceTree = "<group>"; };
@@ -851,7 +854,10 @@
 		05C6D1032A891BE300A984EB /* Datasheets */ = {
 			isa = PBXGroup;
 			children = (
-				05C6D1042A891BE300A984EB /* Rockwell-R650X-R651X.pdf */,
+				0564AC062A8D2CD900EF1950 /* MOS-Microcomputers-Hardware-Manual.pdf */,
+				0564AC072A8D2CD900EF1950 /* MOS-Microcomputers-Programming-Manual.pdf */,
+				0564AC052A8D2CD900EF1950 /* Rockwell-R650X-R651X.pdf */,
+				0564AC042A8D2CD900EF1950 /* Synertek-SY6500.pdf */,
 			);
 			path = Datasheets;
 			sourceTree = "<group>";

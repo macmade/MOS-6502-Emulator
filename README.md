@@ -31,8 +31,11 @@ This repository uses submodules. Please clone with:
 
 ### Datasheets
 
-  1. [Rockwell R650X / R651X](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/Rockwell-R650X-R651X.pdf)
-
+  1. [MOS Microcomputers Hardware Manual](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/MOS-Microcomputers-Hardware-Manual.pdf)
+  2. [MOS Microcomputers Programming Manual](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/MOS-Microcomputers-Programming-Manual.pdf)
+  3. [Rockwell R650X / R651X](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/Rockwell-R650X-R651X.pdf)
+  4. [Synertek SY6500](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/Synertek-SY6500.pdf)
+  
 ### Useful Links
 
   - http://www.6502.org/
