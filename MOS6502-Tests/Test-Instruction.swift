@@ -49,6 +49,12 @@ class Test_Instruction: XCTestCase
     @discardableResult
     func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operands: [ UInt8 ], inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU ) throws -> Void )? = nil ) throws -> CPU?
     {
+        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operands: operands, origin: 0xFF00, inputRegisters: inputRegisters, outputRegisters: outputRegisters )
+    }
+
+    @discardableResult
+    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operands: [ UInt8 ], origin: UInt16, inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU ) throws -> Void )? = nil ) throws -> CPU?
+    {
         guard let instruction = Instruction.instruction( for: instruction, addressingMode: addressingMode )
         else
         {
@@ -60,7 +66,6 @@ class Test_Instruction: XCTestCase
         let bus    = Bus()
         let cpu    = CPU( bus: bus )
         let ram    = try RAM( capacity: .kb( 64 ), options: [] )
-        let origin = UInt16( 0xFF00 )
 
         XCTAssertNoThrow( try bus.mapDevice( ram, at: 0x00, size: ram.capacity.bytes ) )
         XCTAssertNoThrow( try ram.write( instruction.opcode, at: origin ) )
@@ -111,5 +116,58 @@ class Test_Instruction: XCTestCase
         XCTAssertEqual( outputRegisters.PS.N != 0, cpu.registers.PS.contains( .negativeFlag     ), "Register mismatch for PS: negative flag" )
 
         return cpu
+    }
+
+    func executeInvalidSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operands: [ UInt8 ], inputRegisters: Registers, setup: ( ( CPU ) throws -> Void )? = nil ) throws
+    {
+        try self.executeInvalidSingleInstruction( instruction: instruction, addressingMode: addressingMode, operands: operands, origin: 0xFF00, inputRegisters: inputRegisters )
+    }
+
+    func executeInvalidSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operands: [ UInt8 ], origin: UInt16, inputRegisters: Registers, setup: ( ( CPU ) throws -> Void )? = nil ) throws
+    {
+        guard let instruction = Instruction.instruction( for: instruction, addressingMode: addressingMode )
+        else
+        {
+            XCTAssertTrue( false, "Invalid instruction \( instruction ) \( addressingMode.description )" )
+
+            return
+        }
+
+        let bus    = Bus()
+        let cpu    = CPU( bus: bus )
+        let ram    = try RAM( capacity: .kb( 64 ), options: [] )
+        let origin = UInt16( 0xFF00 )
+
+        XCTAssertNoThrow( try bus.mapDevice( ram, at: 0x00, size: ram.capacity.bytes ) )
+        XCTAssertNoThrow( try ram.write( instruction.opcode, at: origin ) )
+
+        try operands.enumerated().forEach
+        {
+            XCTAssertNoThrow( try ram.write( $0.element, at: origin + UInt16( $0.offset ) + 1 ) )
+        }
+
+        XCTAssertNoThrow( try ram.write( UInt8( origin & 0xFF ),          at: CPU.resetVector ) )
+        XCTAssertNoThrow( try ram.write( UInt8( ( origin >> 8 ) & 0xFF ), at: CPU.resetVector + 1 ) )
+        XCTAssertNoThrow( try cpu.reset() )
+
+        cpu.registers.A  = inputRegisters.A
+        cpu.registers.X  = inputRegisters.X
+        cpu.registers.Y  = inputRegisters.Y
+        cpu.registers.PS = []
+
+        if inputRegisters.PS.C != 0 { cpu.registers.PS.insert( .carryFlag ) }
+        if inputRegisters.PS.Z != 0 { cpu.registers.PS.insert( .zeroFlag ) }
+        if inputRegisters.PS.I != 0 { cpu.registers.PS.insert( .interruptDisable ) }
+        if inputRegisters.PS.D != 0 { cpu.registers.PS.insert( .decimalMode ) }
+        if inputRegisters.PS.B != 0 { cpu.registers.PS.insert( .breakCommand ) }
+        if inputRegisters.PS.V != 0 { cpu.registers.PS.insert( .overflowFlag ) }
+        if inputRegisters.PS.N != 0 { cpu.registers.PS.insert( .negativeFlag ) }
+
+        if let setup = setup
+        {
+            XCTAssertNoThrow( try setup( cpu ) )
+        }
+
+        XCTAssertThrowsError( try cpu.run( instructions: 1 ) )
     }
 }
