@@ -102,26 +102,12 @@ public class AddressingContext
 
     public class func zeroPageX( cpu: CPU ) throws -> AddressingContext
     {
-        AddressingContext
-        {
-            throw RuntimeError( message: "Not implemented" )
-        }
-        write:
-        {
-            _ in throw RuntimeError( message: "Not implemented" )
-        }
+        AddressingContext( address: UInt16( try cpu.readUInt8FromMemoryAtPC() &+ cpu.registers.X ), cpu: cpu )
     }
 
     public class func zeroPageY( cpu: CPU ) throws -> AddressingContext
     {
-        AddressingContext
-        {
-            throw RuntimeError( message: "Not implemented" )
-        }
-        write:
-        {
-            _ in throw RuntimeError( message: "Not implemented" )
-        }
+        AddressingContext( address: UInt16( try cpu.readUInt8FromMemoryAtPC() &+ cpu.registers.Y ), cpu: cpu )
     }
 
     public class func relative( cpu: CPU ) throws -> AddressingContext
