@@ -42,5 +42,7 @@ import Foundation
  */
 public func DEY( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.Y &-= 1
+
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.Y )
 }
