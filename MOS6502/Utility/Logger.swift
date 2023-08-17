@@ -23,14 +23,8 @@
  ******************************************************************************/
 
 import Foundation
-import MOS6502
 
-public class Apple1: Computer
+public protocol Logger
 {
-    public init() throws
-    {
-        try super.init( frequency: .mhz( 1 ), memory: .kb( 4 ) )
-        try self.mapDevice( PIA(), at: 0xD010, size: 4 )
-        try self.loadROM( Apple1WozMonitor() )
-    }
+    func log( text: String )
 }

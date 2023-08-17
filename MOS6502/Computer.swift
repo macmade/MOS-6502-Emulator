@@ -25,12 +25,22 @@
 import Foundation
 import xasm65lib
 
-open class Computer
+open class Computer: LogSource
 {
     private var clock: Clock
     private var bus:   Bus
     private var cpu:   CPU
     private var ram:   RAM
+
+    public var logger: Logger?
+    {
+        didSet
+        {
+            self.clock.logger = self.logger
+            self.bus.logger   = self.logger
+            self.cpu.logger   = self.logger
+        }
+    }
 
     public init( frequency: Clock.Frequency, memory: RAM.Capacity, memoryOptions: Memory< UInt16 >.Options = [] ) throws
     {
@@ -69,7 +79,7 @@ open class Computer
 
         try self.bus.mapDevice( rom, at: rom.origin, size: UInt64( rom.data.count ) )
 
-        print( "Loaded \( data.count ) bytes ROM at \( rom.origin.asHex ): \( rom.name )" )
+        self.logger?.log( text: "Loaded \( data.count ) bytes ROM at \( rom.origin.asHex ): \( rom.name )" )
 
         let disassembly = try? Disassembler.disassemble(
             stream:    MemoryDeviceStream( device: rom ),
@@ -82,7 +92,7 @@ open class Computer
 
         if let disassembly = disassembly, disassembly.isEmpty == false
         {
-            print( disassembly )
+            self.logger?.log( text: disassembly )
         }
 
         rom.labels.forEach   { self.cpu.disassemblerLabels[   $0.key ] = $0.value }
@@ -91,7 +101,7 @@ open class Computer
 
     public func reset() throws
     {
-        print( "Resetting CPU and running..." )
+        self.logger?.log( text: "Resetting CPU and running..." )
 
         try self.cpu.reset()
         try self.clock.run()

@@ -10,6 +10,9 @@
 		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */; };
+		0564ACF52A8E93E200EF1950 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ACF42A8E93E200EF1950 /* Logger.swift */; };
+		0564ACF92A8E93EE00EF1950 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ACF82A8E93EE00EF1950 /* ConsoleLogger.swift */; };
+		0564ACFB2A8E944800EF1950 /* LogSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ACFA2A8E944800EF1950 /* LogSource.swift */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -232,6 +235,9 @@
 		0564AC062A8D2CD900EF1950 /* MOS-Microcomputers-Hardware-Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MOS-Microcomputers-Hardware-Manual.pdf"; sourceTree = "<group>"; };
 		0564AC072A8D2CD900EF1950 /* MOS-Microcomputers-Programming-Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MOS-Microcomputers-Programming-Manual.pdf"; sourceTree = "<group>"; };
 		0564AC1B2A8D41C200EF1950 /* Apple-1-Operation-Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Apple-1-Operation-Manual.pdf"; sourceTree = "<group>"; };
+		0564ACF42A8E93E200EF1950 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		0564ACF82A8E93EE00EF1950 /* ConsoleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
+		0564ACFA2A8E944800EF1950 /* LogSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSource.swift; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -880,7 +886,10 @@
 			isa = PBXGroup;
 			children = (
 				05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */,
+				0564ACF82A8E93EE00EF1950 /* ConsoleLogger.swift */,
 				05C6D0E62A88EFE700A984EB /* Either.swift */,
+				0564ACF42A8E93E200EF1950 /* Logger.swift */,
+				0564ACFA2A8E944800EF1950 /* LogSource.swift */,
 				05C3C1A62A85700100436F6D /* Memory.swift */,
 				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
 			);
@@ -1060,11 +1069,13 @@
 				05C3C22E2A87D29500436F6D /* CLC.swift in Sources */,
 				05C6D1022A89165A00A984EB /* Bus.swift in Sources */,
 				05C3C2322A87D2BC00436F6D /* BVS.swift in Sources */,
+				0564ACFB2A8E944800EF1950 /* LogSource.swift in Sources */,
 				05C3C1DA2A85A96600436F6D /* LDA.swift in Sources */,
 				05C3C2742A87D48300436F6D /* TYA.swift in Sources */,
 				05C3C1F12A8655B100436F6D /* CLD.swift in Sources */,
 				05C3C26A2A87D43800436F6D /* TAX.swift in Sources */,
 				05C3C2502A87D39900436F6D /* ORA.swift in Sources */,
+				0564ACF52A8E93E200EF1950 /* Logger.swift in Sources */,
 				05C3C2182A87D1F200436F6D /* AND.swift in Sources */,
 				05C3C2442A87D34C00436F6D /* INX.swift in Sources */,
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
@@ -1111,6 +1122,7 @@
 				05C3C2202A87D22600436F6D /* BEQ.swift in Sources */,
 				05C6D1082A896C9900A984EB /* Clock.swift in Sources */,
 				05C3C2722A87D47600436F6D /* TXS.swift in Sources */,
+				0564ACF92A8E93EE00EF1950 /* ConsoleLogger.swift in Sources */,
 				05C3C25C2A87D3DD00436F6D /* ROR.swift in Sources */,
 				05C3C2362A87D2D900436F6D /* CPX.swift in Sources */,
 				05C3C2162A87D1B800436F6D /* ADC.swift in Sources */,

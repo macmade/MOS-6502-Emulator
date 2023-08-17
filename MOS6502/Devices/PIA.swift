@@ -24,12 +24,13 @@
 
 import Foundation
 
-public class PIA: WriteableMemoryDevice
+public class PIA: WriteableMemoryDevice, LogSource
 {
     public var data0:    UInt8 = 0
     public var control0: UInt8 = 0
     public var data1:    UInt8 = 0
     public var control1: UInt8 = 0
+    public var logger:   Logger?
 
     public init()
     {}

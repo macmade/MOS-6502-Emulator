@@ -27,7 +27,8 @@ import MOS6502
 
 do
 {
-    let computer = try Apple1()
+    let computer    = try Apple1()
+    computer.logger = ConsoleLogger()
 
     try computer.reset()
 }

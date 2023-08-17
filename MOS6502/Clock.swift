@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class Clock
+public class Clock: LogSource
 {
     public enum Frequency
     {
@@ -40,6 +40,8 @@ public class Clock
             }
         }
     }
+
+    public var logger: Logger?
 
     public private( set ) var frequency: Frequency
 

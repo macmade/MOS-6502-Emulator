@@ -25,7 +25,7 @@
 import Foundation
 import xasm65lib
 
-public class CPU
+public class CPU: LogSource
 {
     public private( set ) var registers      = Registers()
     public private( set ) var clock: UInt64 = 0
@@ -47,6 +47,7 @@ public class CPU
 
     public var disassemblerLabels:   [ UInt16: String ] = [ : ]
     public var disassemblerComments: [ UInt16: String ] = [ : ]
+    public var logger:               Logger?
 
     public init( bus: Bus )
     {
@@ -112,21 +113,21 @@ public class CPU
 
             if let label = label, let comment = comment
             {
-                print( "" )
-                print( "; \( label ): \( comment )" )
+                self.logger?.log( text: "" )
+                self.logger?.log( text: "; \( label ): \( comment )" )
             }
             else if let label = label
             {
-                print( "" )
-                print( "; \( label ):" )
+                self.logger?.log( text: "" )
+                self.logger?.log( text: "; \( label ):" )
             }
             else if let comment = comment
             {
-                print( "" )
-                print( "; \( comment )" )
+                self.logger?.log( text: "" )
+                self.logger?.log( text: "; \( comment )" )
             }
 
-            print( disassembly )
+            self.logger?.log( text: disassembly )
         }
 
         let opcode = try self.readUInt8FromMemoryAtPC()

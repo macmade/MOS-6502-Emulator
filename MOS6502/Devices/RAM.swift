@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class RAM: WriteableMemoryDevice
+public class RAM: WriteableMemoryDevice, LogSource
 {
     public enum Capacity
     {
@@ -42,6 +42,8 @@ public class RAM: WriteableMemoryDevice
             }
         }
     }
+
+    public var logger: Logger?
 
     public private( set ) var capacity: Capacity
 

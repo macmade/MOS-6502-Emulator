@@ -24,9 +24,23 @@
 
 import Foundation
 
-public class Bus: WriteableMemoryDevice
+public class Bus: WriteableMemoryDevice, LogSource
 {
     private var devices: [ ( address: UInt16, size: UInt64, device: MemoryDevice ) ] = []
+
+    public var logger: Logger?
+    {
+        didSet
+        {
+            self.devices.forEach
+            {
+                if var source = $0 as? LogSource
+                {
+                    source.logger = self.logger
+                }
+            }
+        }
+    }
 
     public init()
     {}
