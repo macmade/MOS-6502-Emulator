@@ -4,3 +4,6 @@
 [submodule "Submodules/xasm65"]
 	path = Submodules/xasm65
 	url = https://github.com/macmade/xasm65.git
+[submodule "Submodules/SwiftCurses"]
+	path = Submodules/SwiftCurses
+	url = https://github.com/macmade/SwiftCurses.git

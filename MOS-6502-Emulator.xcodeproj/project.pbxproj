@@ -13,6 +13,8 @@
 		0564ACF52A8E93E200EF1950 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ACF42A8E93E200EF1950 /* Logger.swift */; };
 		0564ACF92A8E93EE00EF1950 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ACF82A8E93EE00EF1950 /* ConsoleLogger.swift */; };
 		0564ACFB2A8E944800EF1950 /* LogSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ACFA2A8E944800EF1950 /* LogSource.swift */; };
+		0564AD2C2A8EB4AD00EF1950 /* libSwiftCurses.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD212A8EB48900EF1950 /* libSwiftCurses.a */; };
+		0564AD2D2A8EB4B200EF1950 /* libSwiftCurses.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD212A8EB48900EF1950 /* libSwiftCurses.a */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -199,6 +201,41 @@
 			remoteGlobalIDString = 05DED7A42A8AAF0300DA42F9;
 			remoteInfo = xasm65lib;
 		};
+		0564AD202A8EB48900EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0564AC752A8E0C5B00EF1950;
+			remoteInfo = SwiftCurses;
+		};
+		0564AD222A8EB48900EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0564AD022A8EA02500EF1950;
+			remoteInfo = "SwiftCurses-Example";
+		};
+		0564AD262A8EB49500EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0564AC742A8E0C5B00EF1950;
+			remoteInfo = SwiftCurses;
+		};
+		0564AD282A8EB49D00EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0564AC742A8E0C5B00EF1950;
+			remoteInfo = SwiftCurses;
+		};
+		0564AD2A2A8EB4A100EF1950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0564AC742A8E0C5B00EF1950;
+			remoteInfo = SwiftCurses;
+		};
 		05C3C1A12A856EC400436F6D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05C3C1332A8568D500436F6D /* Project object */;
@@ -238,6 +275,7 @@
 		0564ACF42A8E93E200EF1950 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0564ACF82A8E93EE00EF1950 /* ConsoleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
 		0564ACFA2A8E944800EF1950 /* LogSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSource.swift; sourceTree = "<group>"; };
+		0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCurses.xcodeproj; path = Submodules/SwiftCurses/SwiftCurses.xcodeproj; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -456,6 +494,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0564AD2D2A8EB4B200EF1950 /* libSwiftCurses.a in Frameworks */,
 				0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */,
 				05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */,
 			);
@@ -465,6 +504,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0564AD2C2A8EB4AD00EF1950 /* libSwiftCurses.a in Frameworks */,
 				0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */,
 				05C3C1BA2A8570A900436F6D /* libMOS6502.a in Frameworks */,
 			);
@@ -483,6 +523,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0564AD1C2A8EB48900EF1950 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0564AD212A8EB48900EF1950 /* libSwiftCurses.a */,
+				0564AD232A8EB48900EF1950 /* SwiftCurses-Example */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		05C3C1322A8568D500436F6D = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +545,7 @@
 				05C3C14A2A856AA400436F6D /* .github */,
 				05C3C14E2A856B6F00436F6D /* xcconfig */,
 				0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */,
+				0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */,
 				05C3C13D2A8568D500436F6D /* MOS6502 */,
 				05C3C1B12A85708C00436F6D /* MOS6502-Demo */,
 				05C3C19D2A856EC400436F6D /* MOS6502-Tests */,
@@ -920,6 +970,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0564AD272A8EB49500EF1950 /* PBXTargetDependency */,
 				0564ABF32A8C082D00EF1950 /* PBXTargetDependency */,
 			);
 			name = MOS6502;
@@ -938,6 +989,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0564AD292A8EB49D00EF1950 /* PBXTargetDependency */,
 				0564ABF72A8C084C00EF1950 /* PBXTargetDependency */,
 				05C3C1A22A856EC400436F6D /* PBXTargetDependency */,
 			);
@@ -957,6 +1009,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0564AD2B2A8EB4A100EF1950 /* PBXTargetDependency */,
 				0564ABF92A8C085200EF1950 /* PBXTargetDependency */,
 				05C3C1B82A8570A500436F6D /* PBXTargetDependency */,
 			);
@@ -1000,6 +1053,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 0564AD1C2A8EB48900EF1950 /* Products */;
+					ProjectRef = 0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */;
+				},
+				{
 					ProductGroup = 0564ABE72A8C081A00EF1950 /* Products */;
 					ProjectRef = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
 				},
@@ -1033,6 +1090,20 @@
 			fileType = wrapper.cfbundle;
 			path = "xasm65-tests.xctest";
 			remoteRef = 0564ABF02A8C081A00EF1950 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0564AD212A8EB48900EF1950 /* libSwiftCurses.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSwiftCurses.a;
+			remoteRef = 0564AD202A8EB48900EF1950 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0564AD232A8EB48900EF1950 /* SwiftCurses-Example */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "SwiftCurses-Example";
+			remoteRef = 0564AD222A8EB48900EF1950 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1229,6 +1300,21 @@
 			isa = PBXTargetDependency;
 			name = xasm65lib;
 			targetProxy = 0564ABF82A8C085200EF1950 /* PBXContainerItemProxy */;
+		};
+		0564AD272A8EB49500EF1950 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftCurses;
+			targetProxy = 0564AD262A8EB49500EF1950 /* PBXContainerItemProxy */;
+		};
+		0564AD292A8EB49D00EF1950 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftCurses;
+			targetProxy = 0564AD282A8EB49D00EF1950 /* PBXContainerItemProxy */;
+		};
+		0564AD2B2A8EB4A100EF1950 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftCurses;
+			targetProxy = 0564AD2A2A8EB4A100EF1950 /* PBXContainerItemProxy */;
 		};
 		05C3C1A22A856EC400436F6D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
