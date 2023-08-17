@@ -23,13 +23,23 @@
  ******************************************************************************/
 
 import Foundation
-import MOS6502
+import SwiftCurses
 
-do
+public class InteractiveDebugger: ComputerRunner
 {
-    try Debugger.debugger( for: Apple1() ).run()
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+    private var computer: Computer
+    private var screen:   Screen
+
+    public init( computer: Computer, screen: Screen )
+    {
+        self.computer = computer
+        self.screen   = screen
+    }
+
+    public func run() throws
+    {
+        self.computer.logger = nil
+
+        try self.computer.reset()
+    }
 }

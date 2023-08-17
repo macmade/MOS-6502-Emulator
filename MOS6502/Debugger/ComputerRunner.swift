@@ -23,13 +23,8 @@
  ******************************************************************************/
 
 import Foundation
-import MOS6502
 
-do
+public protocol ComputerRunner
 {
-    try Debugger.debugger( for: Apple1() ).run()
-}
-catch
-{
-    print( "Error - \( error.localizedDescription )" )
+    func run() throws
 }

@@ -15,6 +15,11 @@
 		0564ACFB2A8E944800EF1950 /* LogSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ACFA2A8E944800EF1950 /* LogSource.swift */; };
 		0564AD2C2A8EB4AD00EF1950 /* libSwiftCurses.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD212A8EB48900EF1950 /* libSwiftCurses.a */; };
 		0564AD2D2A8EB4B200EF1950 /* libSwiftCurses.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD212A8EB48900EF1950 /* libSwiftCurses.a */; };
+		0564AD2F2A8EB80500EF1950 /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD2E2A8EB80500EF1950 /* Debugger.swift */; };
+		0564AD322A8EBE5400EF1950 /* InteractiveDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD312A8EBE5400EF1950 /* InteractiveDebugger.swift */; };
+		0564AD342A8EBE5A00EF1950 /* NonInteractiveDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */; };
+		0564AD362A8EC0FB00EF1950 /* ComputerRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */; };
+		0564AD382A8EC13D00EF1950 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD372A8EC13D00EF1950 /* libncurses.tbd */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -276,6 +281,11 @@
 		0564ACF82A8E93EE00EF1950 /* ConsoleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
 		0564ACFA2A8E944800EF1950 /* LogSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSource.swift; sourceTree = "<group>"; };
 		0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCurses.xcodeproj; path = Submodules/SwiftCurses/SwiftCurses.xcodeproj; sourceTree = "<group>"; };
+		0564AD2E2A8EB80500EF1950 /* Debugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugger.swift; sourceTree = "<group>"; };
+		0564AD312A8EBE5400EF1950 /* InteractiveDebugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDebugger.swift; sourceTree = "<group>"; };
+		0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonInteractiveDebugger.swift; sourceTree = "<group>"; };
+		0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerRunner.swift; sourceTree = "<group>"; };
+		0564AD372A8EC13D00EF1950 /* libncurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libncurses.tbd; path = usr/lib/libncurses.tbd; sourceTree = SDKROOT; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -504,6 +514,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0564AD382A8EC13D00EF1950 /* libncurses.tbd in Frameworks */,
 				0564AD2C2A8EB4AD00EF1950 /* libSwiftCurses.a in Frameworks */,
 				0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */,
 				05C3C1BA2A8570A900436F6D /* libMOS6502.a in Frameworks */,
@@ -530,6 +541,17 @@
 				0564AD232A8EB48900EF1950 /* SwiftCurses-Example */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0564AD302A8EBE3500EF1950 /* Debugger */ = {
+			isa = PBXGroup;
+			children = (
+				0564AD2E2A8EB80500EF1950 /* Debugger.swift */,
+				0564AD312A8EBE5400EF1950 /* InteractiveDebugger.swift */,
+				0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */,
+				0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */,
+			);
+			path = Debugger;
 			sourceTree = "<group>";
 		};
 		05C3C1322A8568D500436F6D = {
@@ -572,6 +594,7 @@
 				05C6D1072A896C9900A984EB /* Clock.swift */,
 				05C3C1F62A865D5300436F6D /* Computer.swift */,
 				05C3C1A82A85700700436F6D /* CPU.swift */,
+				0564AD302A8EBE3500EF1950 /* Debugger */,
 				05DED74D2A8AA6BF00DA42F9 /* Devices */,
 				05C3C2112A87A11D00436F6D /* Instruction.swift */,
 				05C3C1D82A85A95A00436F6D /* Instructions */,
@@ -750,6 +773,7 @@
 		05C3C1B92A8570A900436F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0564AD372A8EC13D00EF1950 /* libncurses.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1129,6 +1153,7 @@
 				05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */,
 				05DED74A2A8AA41E00DA42F9 /* RAM.swift in Sources */,
 				05C3C2462A87D35500436F6D /* INY.swift in Sources */,
+				0564AD2F2A8EB80500EF1950 /* Debugger.swift in Sources */,
 				05C3C24E2A87D38E00436F6D /* LSR.swift in Sources */,
 				05C3C1F72A865D5300436F6D /* Computer.swift in Sources */,
 				05C3C25E2A87D3EB00436F6D /* RTI.swift in Sources */,
@@ -1141,6 +1166,7 @@
 				05C6D1022A89165A00A984EB /* Bus.swift in Sources */,
 				05C3C2322A87D2BC00436F6D /* BVS.swift in Sources */,
 				0564ACFB2A8E944800EF1950 /* LogSource.swift in Sources */,
+				0564AD322A8EBE5400EF1950 /* InteractiveDebugger.swift in Sources */,
 				05C3C1DA2A85A96600436F6D /* LDA.swift in Sources */,
 				05C3C2742A87D48300436F6D /* TYA.swift in Sources */,
 				05C3C1F12A8655B100436F6D /* CLD.swift in Sources */,
@@ -1148,6 +1174,7 @@
 				05C3C2502A87D39900436F6D /* ORA.swift in Sources */,
 				0564ACF52A8E93E200EF1950 /* Logger.swift in Sources */,
 				05C3C2182A87D1F200436F6D /* AND.swift in Sources */,
+				0564AD342A8EBE5A00EF1950 /* NonInteractiveDebugger.swift in Sources */,
 				05C3C2442A87D34C00436F6D /* INX.swift in Sources */,
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
 				05C3C2702A87D46A00436F6D /* TXA.swift in Sources */,
@@ -1184,6 +1211,7 @@
 				05C3C22C2A87D28700436F6D /* CMP.swift in Sources */,
 				05C3C2222A87D23000436F6D /* BIT.swift in Sources */,
 				05C6D10A2A897EB700A984EB /* PIA.swift in Sources */,
+				0564AD362A8EC0FB00EF1950 /* ComputerRunner.swift in Sources */,
 				05C3C24C2A87D38500436F6D /* NOP.swift in Sources */,
 				05C3C2262A87D24D00436F6D /* BNE.swift in Sources */,
 				05C3C25A2A87D3D400436F6D /* ROL.swift in Sources */,
