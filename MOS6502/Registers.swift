@@ -40,6 +40,7 @@ public class Registers: Equatable
         public static let interruptDisable = Flags( rawValue: 1 << 2 ) // Set with SEI, cleared with CLI
         public static let decimalMode      = Flags( rawValue: 1 << 3 ) // Set with SED, cleared with CLD
         public static let breakCommand     = Flags( rawValue: 1 << 4 ) // Set after BRK if an interrupt has been generated
+        public static let unused           = Flags( rawValue: 1 << 5 ) // Unused
         public static let overflowFlag     = Flags( rawValue: 1 << 6 ) // Set during arithmetic operations if the result has yielded an invalid 2's complement result
         public static let negativeFlag     = Flags( rawValue: 1 << 7 ) // Set if the result of the last operation had bit 7 set
 
