@@ -26,7 +26,7 @@ import Foundation
 
 public class Bus: WriteableMemoryDevice, LogSource
 {
-    private var devices: [ ( address: UInt16, size: UInt64, device: MemoryDevice ) ] = []
+    public private( set ) var devices: [ ( address: UInt16, size: UInt64, device: MemoryDevice ) ] = []
 
     public var logger: Logger?
     {

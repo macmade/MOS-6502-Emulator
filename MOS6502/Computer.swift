@@ -27,10 +27,10 @@ import xasm65lib
 
 open class Computer: LogSource
 {
-    private var clock: Clock
-    private var bus:   Bus
-    private var cpu:   CPU
-    private var ram:   RAM
+    public private( set ) var clock: Clock
+    public private( set ) var bus:   Bus
+    public private( set ) var cpu:   CPU
+    public private( set ) var ram:   RAM
 
     public var logger: Logger?
     {
