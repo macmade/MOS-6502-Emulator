@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class PIA: WriteableMemoryDevice, LogSource
+public class PIA: WriteableMemoryDevice, LogSource, CustomStringConvertible
 {
     public var data0:    UInt8 = 0
     public var control0: UInt8 = 0
@@ -59,5 +59,10 @@ public class PIA: WriteableMemoryDevice, LogSource
 
             default: throw RuntimeError( message: "Invalid PIA address: \( address.asHex )" )
         }
+    }
+
+    public var description: String
+    {
+        "PIA"
     }
 }

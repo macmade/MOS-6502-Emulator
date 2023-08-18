@@ -24,7 +24,7 @@
 
 import Foundation
 
-public protocol ROM: MemoryDevice
+public protocol ROM: MemoryDevice, CustomStringConvertible
 {
     var name: String
     {
@@ -62,5 +62,10 @@ public extension ROM
         }
 
         return self.data[ Int( address ) ]
+    }
+
+    var description: String
+    {
+        "ROM - \( self.name )"
     }
 }

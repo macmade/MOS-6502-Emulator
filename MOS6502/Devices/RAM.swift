@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class RAM: WriteableMemoryDevice, LogSource
+public class RAM: WriteableMemoryDevice, LogSource, CustomStringConvertible
 {
     public enum Capacity
     {
@@ -63,5 +63,10 @@ public class RAM: WriteableMemoryDevice, LogSource
     public func write( _ value: UInt8, at address: UInt16 ) throws
     {
         try self.memory.writeUInt8( value, at: address )
+    }
+
+    public var description: String
+    {
+        "RAM"
     }
 }
