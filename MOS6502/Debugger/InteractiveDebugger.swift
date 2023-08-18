@@ -81,6 +81,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 if self.reset
                 {
                     try self.computer.cpu.reset()
+                    try self.computer.bus.reset()
 
                     self.reset = false
                 }
