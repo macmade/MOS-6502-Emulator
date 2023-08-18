@@ -201,7 +201,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
     private func printClockPrompt( window: ManagedWindow )
     {
-        window.print( foreground: .cyan,   text: "Enter a new clock frequency in HZ: " )
+        window.print( foreground: .cyan,   text: "Enter a new clock frequency in Hz: " )
         window.print( foreground: .yellow, text: self.newClock )
     }
 
