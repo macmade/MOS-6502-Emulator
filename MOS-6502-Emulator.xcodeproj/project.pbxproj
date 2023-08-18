@@ -20,6 +20,7 @@
 		0564AD342A8EBE5A00EF1950 /* NonInteractiveDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */; };
 		0564AD362A8EC0FB00EF1950 /* ComputerRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */; };
 		0564AD382A8EC13D00EF1950 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD372A8EC13D00EF1950 /* libncurses.tbd */; };
+		0564AD6C2A902F4900EF1950 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD372A8EC13D00EF1950 /* libncurses.tbd */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -504,6 +505,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0564AD6C2A902F4900EF1950 /* libncurses.tbd in Frameworks */,
 				0564AD2D2A8EB4B200EF1950 /* libSwiftCurses.a in Frameworks */,
 				0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */,
 				05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */,
