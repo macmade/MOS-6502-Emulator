@@ -28,14 +28,15 @@ import xasm65lib
 
 public class InteractiveDebugger: ComputerRunner, Synchronizable
 {
-    private var computer:   Computer
-    private var screen:     Screen
-    private var queue:      DispatchQueue
-    private var error:      Error?
-    private var keyHandler: Any?
-    private var sync      = DispatchGroup()
-    private var step      = false
-    private var paused    = false
+    private var computer:      Computer
+    private var screen:        Screen
+    private var queue:         DispatchQueue
+    private var error:         Error?
+    private var keyHandler:    Any?
+    private var sync         = DispatchGroup()
+    private var step         = false
+    private var memoryOffset = 0
+    private var paused       = false
     {
         willSet( newValue )
         {
@@ -98,6 +99,14 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                     self.step = false
 
                     self.paused.toggle()
+                }
+                else if key == 0x2B // +
+                {
+                    self.memoryOffset += 1
+                }
+                else if key == 0x2D // -
+                {
+                    self.memoryOffset -= 1
                 }
             }
         }
@@ -472,16 +481,39 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             return
         }
 
-        var address = 0x0000
+        if self.memoryOffset < 0
+        {
+            self.memoryOffset = 0
+        }
+
+        let totalLines = bytes.count / memoryBytesPerLine
+        let maxOffset  = ( totalLines / memoryLines ) * 2
+
+        if self.memoryOffset >= maxOffset
+        {
+            self.memoryOffset = maxOffset
+        }
+
+        var address = 0x0000 + ( memoryBytesPerLine * ( memoryLines / 2 ) * self.memoryOffset )
 
         ( 0 ..< memoryLines ).forEach
         {
             _ in
 
+            if address > UInt16.max
+            {
+                return
+            }
+
             window.print( foreground: .cyan, text: "\( String( format: "%04X", UInt16( address ) ) ): " )
 
             ( 0 ..< memoryBytesPerLine ).forEach
             {
+                if address + $0 >= bytes.count
+                {
+                    return
+                }
+
                 if let byte = bytes[ address + $0 ]
                 {
                     window.print( foreground: .yellow, text: "\( String( format: "%02X", byte ) ) " )
@@ -496,6 +528,11 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
             ( 0 ..< memoryBytesPerLine ).forEach
             {
+                if address + $0 >= bytes.count
+                {
+                    return
+                }
+
                 if let byte = bytes[ address + $0 ]
                 {
                     if isprint( Int32( byte ) ) == 1, isspace( Int32( byte ) ) == 0
