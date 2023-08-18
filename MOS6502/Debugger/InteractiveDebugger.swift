@@ -52,12 +52,39 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
     }
 
-    private var newClock     = ""
-    private var setClock     = false
+    private var newClock = ""
+    private var setClock = false
     {
         didSet
         {
             self.newClock = ""
+        }
+    }
+
+    private var newA = ""
+    private var setA = false
+    {
+        didSet
+        {
+            self.newA = ""
+        }
+    }
+
+    private var newX = ""
+    private var setX = false
+    {
+        didSet
+        {
+            self.newX = ""
+        }
+    }
+
+    private var newY = ""
+    private var setY = false
+    {
+        didSet
+        {
+            self.newY = ""
         }
     }
 
@@ -105,18 +132,63 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         {
             key in self.synchronized
             {
-                if self.setClock, ( 0x30 ... 0x39 ).contains( key ) // Number
+                if ( 0x30 ... 0x39 ).contains( key ) // Number
                 {
-                    self.newClock.append( String( format: "%c", key ) )
-                }
-                else if self.setClock, key == 0x0D // Enter
-                {
-                    if let clock = UInt( self.newClock )
+                    if self.setClock
                     {
-                        self.computer.clock.frequency = .hz( clock )
+                        self.newClock.append( String( format: "%c", key ) )
                     }
+                    else if self.setA
+                    {
+                        self.newA.append( String( format: "%c", key ) )
+                    }
+                    else if self.setX
+                    {
+                        self.newX.append( String( format: "%c", key ) )
+                    }
+                    else if self.setY
+                    {
+                        self.newY.append( String( format: "%c", key ) )
+                    }
+                }
+                else if key == 0x0D // Enter
+                {
+                    if self.setClock
+                    {
+                        if let clock = UInt( self.newClock )
+                        {
+                            self.computer.clock.frequency = .hz( clock )
+                        }
 
-                    self.setClock.toggle()
+                        self.setClock.toggle()
+                    }
+                    else if self.setA
+                    {
+                        if let a = UInt8( self.newA )
+                        {
+                            self.computer.cpu.registers.A = a
+                        }
+
+                        self.setA.toggle()
+                    }
+                    else if self.setX
+                    {
+                        if let x = UInt8( self.newX )
+                        {
+                            self.computer.cpu.registers.X = x
+                        }
+
+                        self.setX.toggle()
+                    }
+                    else if self.setY
+                    {
+                        if let y = UInt8( self.newY )
+                        {
+                            self.computer.cpu.registers.Y = y
+                        }
+
+                        self.setY.toggle()
+                    }
                 }
                 else if key == 0x20 // space
                 {
@@ -149,9 +221,21 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 {
                     self.memoryOffset -= 1
                 }
-                else if key == 0x66 // f
+                else if key == 0x66, self.setA == false, self.setX == false, self.setY == false // f
                 {
                     self.setClock.toggle()
+                }
+                else if key == 0x61, self.setClock == false, self.setX == false, self.setY == false // a
+                {
+                    self.setA.toggle()
+                }
+                else if key == 0x78, self.setClock == false, self.setA == false, self.setY == false // x
+                {
+                    self.setX.toggle()
+                }
+                else if key == 0x79, self.setClock == false, self.setA == false, self.setX == false // y
+                {
+                    self.setY.toggle()
                 }
             }
         }
@@ -173,6 +257,18 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             if self.setClock
             {
                 self.printClockPrompt( window: $0 )
+            }
+            else if self.setA
+            {
+                self.printAPrompt( window: $0 )
+            }
+            else if self.setX
+            {
+                self.printXPrompt( window: $0 )
+            }
+            else if self.setY
+            {
+                self.printYPrompt( window: $0 )
             }
             else
             {
@@ -222,6 +318,24 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
     {
         window.print( foreground: .cyan,   text: "Enter a new clock frequency in Hz: " )
         window.print( foreground: .yellow, text: self.newClock )
+    }
+
+    private func printAPrompt( window: ManagedWindow )
+    {
+        window.print( foreground: .cyan,   text: "Enter a new value for the A register: " )
+        window.print( foreground: .yellow, text: self.newA )
+    }
+
+    private func printXPrompt( window: ManagedWindow )
+    {
+        window.print( foreground: .cyan,   text: "Enter a new value for the X register: " )
+        window.print( foreground: .yellow, text: self.newX )
+    }
+
+    private func printYPrompt( window: ManagedWindow )
+    {
+        window.print( foreground: .cyan,   text: "Enter a new value for the Y register: " )
+        window.print( foreground: .yellow, text: self.newY )
     }
 
     private func printStatus( window: ManagedWindow )
