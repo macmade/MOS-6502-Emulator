@@ -49,6 +49,9 @@ public class CPU: LogSource
     public var disassemblerComments: [ UInt16: String ] = [ : ]
     public var logger:               Logger?
 
+    public var beforeInstruction: ( () -> Void )?
+    public var afterInstruction:  ( () -> Void )?
+
     public init( bus: Bus )
     {
         self.bus = bus
@@ -71,7 +74,9 @@ public class CPU: LogSource
 
         if self.cycles == 0
         {
+            self.beforeInstruction?()
             try self.decodeAndExecuteNextInstruction()
+            self.afterInstruction?()
         }
         else
         {

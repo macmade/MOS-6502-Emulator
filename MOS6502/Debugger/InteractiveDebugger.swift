@@ -26,13 +26,29 @@ import Foundation
 import SwiftCurses
 import xasm65lib
 
-public class InteractiveDebugger: ComputerRunner
+public class InteractiveDebugger: ComputerRunner, Synchronizable
 {
-    private var computer: Computer
-    private var screen:   Screen
-    private var queue:    DispatchQueue
-    private var error:    Error?
-    private var update:   Any?
+    private var computer:   Computer
+    private var screen:     Screen
+    private var queue:      DispatchQueue
+    private var error:      Error?
+    private var keyHandler: Any?
+    private var sync      = DispatchGroup()
+    private var step      = false
+    private var paused    = false
+    {
+        willSet( newValue )
+        {
+            if newValue != self.paused, newValue
+            {
+                self.sync.enter()
+            }
+            else if newValue != self.paused, newValue == false
+            {
+                self.sync.leave()
+            }
+        }
+    }
 
     public init( computer: Computer, screen: Screen )
     {
@@ -44,6 +60,47 @@ public class InteractiveDebugger: ComputerRunner
     public func run() throws
     {
         self.computer.logger = nil
+
+        self.paused = true
+
+        self.computer.cpu.beforeInstruction =
+        {
+            self.sync.wait()
+        }
+
+        self.computer.cpu.afterInstruction =
+        {
+            self.synchronized
+            {
+                if self.step
+                {
+                    self.paused.toggle()
+                }
+            }
+        }
+
+        self.keyHandler = self.screen.onKeyPress.add
+        {
+            key in self.synchronized
+            {
+                if key == 0x20 // space
+                {
+                    self.step = true
+
+                    self.paused.toggle()
+                }
+                else if key == 0x71, self.paused // q
+                {
+                    self.screen.stop()
+                }
+                else if key == 0x72, self.paused // r
+                {
+                    self.step = false
+
+                    self.paused.toggle()
+                }
+            }
+        }
 
         self.queue.async
         {
@@ -109,19 +166,30 @@ public class InteractiveDebugger: ComputerRunner
 
     private func printStatus( window: ManagedWindow )
     {
-        if let error = self.error
+        self.synchronized
         {
-            window.print( foreground: .cyan,   text: "Status: " )
-            window.print( foreground: .red,    text: "Error" )
-            window.print(                      text: " - " )
-            window.print( foreground: .yellow, text: error.localizedDescription )
-        }
-        else
-        {
-            window.print( foreground: .cyan,   text: "Status: " )
-            window.print( foreground: .green,  text: "Running" )
-            window.print(                      text: " - " )
-            window.print( foreground: .yellow, text: "\( self.computer.cpu.clock ) cycles" )
+            if let error = self.error
+            {
+                window.print( foreground: .cyan,   text: "Status: " )
+                window.print( foreground: .red,    text: "Error" )
+                window.print(                      text: " - " )
+                window.print( foreground: .yellow, text: error.localizedDescription )
+            }
+            else if self.paused
+            {
+                window.print( foreground: .cyan,   text: "Status: " )
+                window.print( foreground: .blue,   text: "Paused" )
+                window.print(                      text: " - " )
+                window.print( foreground: .yellow, text: "\( self.computer.cpu.clock ) cycles" )
+                window.print(                      text: " - Press 'r' to run or 'space' to step" )
+            }
+            else
+            {
+                window.print( foreground: .cyan,   text: "Status: " )
+                window.print( foreground: .green,  text: "Running" )
+                window.print(                      text: " - " )
+                window.print( foreground: .yellow, text: "\( self.computer.cpu.clock ) cycles" )
+            }
         }
     }
 
