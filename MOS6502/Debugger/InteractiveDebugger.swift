@@ -206,11 +206,11 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
                     self.paused.toggle()
                 }
-                else if key == 0x72, self.paused == false // r
+                else if key == 0x7A // z
                 {
                     self.reset = true
-                    self.step  = false
 
+                    self.step.toggle()
                     self.paused.toggle()
                 }
                 else if key == 0x2B // +
