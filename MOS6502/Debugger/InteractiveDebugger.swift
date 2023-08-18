@@ -89,7 +89,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
                     self.paused.toggle()
                 }
-                else if key == 0x71, self.paused // q
+                else if key == 0x71 // q
                 {
                     self.screen.stop()
                 }
