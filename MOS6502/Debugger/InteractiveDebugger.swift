@@ -254,6 +254,11 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
         self.screen.addWindow( frame: Rect( x: 0, y: 0, width: 0, height: 3 ), style: .boxed )
         {
+            self.printMenu( window: $0 )
+        }
+
+        self.screen.addWindow( frame: Rect( x: 0, y: 3, width: 0, height: 3 ), style: .boxed )
+        {
             if self.setClock
             {
                 self.printClockPrompt( window: $0 )
@@ -276,42 +281,73 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             }
         }
 
-        self.screen.addWindow( frame: Rect( x: 0, y: 3, width: 18, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 0, y: 6, width: 18, height: 12 ), style: .boxed )
         {
             self.printComputer( window: $0 )
         }
 
-        self.screen.addWindow( frame: Rect( x: 18, y: 3, width: 25, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 18, y: 6, width: 25, height: 12 ), style: .boxed )
         {
             self.printRegisters( window: $0, registers: self.computer.cpu.registers )
         }
 
-        self.screen.addWindow( frame: Rect( x: 43, y: 3, width: 26, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 43, y: 6, width: 26, height: 12 ), style: .boxed )
         {
             self.printFlags( window: $0, flags: self.computer.cpu.registers.PS )
         }
 
-        self.screen.addWindow( frame: Rect( x: 69, y: 3, width: 18, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 69, y: 6, width: 18, height: 12 ), style: .boxed )
         {
             self.printInstructions( window: $0 )
         }
 
-        self.screen.addWindow( frame: Rect( x: 87, y: 3, width: 0, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 87, y: 6, width: 0, height: 12 ), style: .boxed )
         {
             self.printDisassembly( window: $0 )
         }
 
-        self.screen.addWindow( frame: Rect( x: 0, y: 15, width: 69, height: 0 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 0, y: 18, width: 69, height: 0 ), style: .boxed )
         {
             self.printMemoryDevices( window: $0 )
         }
 
-        self.screen.addWindow( frame: Rect( x: 69, y: 15, width: 0, height: 0 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 69, y: 18, width: 0, height: 0 ), style: .boxed )
         {
             self.printMemory( window: $0 )
         }
 
         self.screen.start()
+    }
+
+    private func printMenu( window: ManagedWindow )
+    {
+        window.print( foreground: .cyan,   text: "r" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Run" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "[space]" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Pause/Step" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "+/-" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Scroll Memory" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "f" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Set CPU frequency" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "a" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Set A register" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "x" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Set X Register" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "y" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Set Y Register" )
     }
 
     private func printClockPrompt( window: ManagedWindow )
