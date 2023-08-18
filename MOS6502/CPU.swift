@@ -49,8 +49,8 @@ public class CPU: LogSource
     public var disassemblerComments: [ UInt16: String ] = [ : ]
     public var logger:               Logger?
 
-    public var beforeInstruction: ( () -> Void )?
-    public var afterInstruction:  ( () -> Void )?
+    public var beforeInstruction: ( () throws -> Void )?
+    public var afterInstruction:  ( () throws -> Void )?
 
     public init( bus: Bus )
     {
@@ -66,22 +66,23 @@ public class CPU: LogSource
         self.registers.Y  = 0
         self.registers.PS = []
         self.clock        = 0
+        self.cycles       = 0
     }
 
     public func cycle() throws
     {
-        self.clock += 1
-
         if self.cycles == 0
         {
-            self.beforeInstruction?()
+            try self.beforeInstruction?()
             try self.decodeAndExecuteNextInstruction()
-            self.afterInstruction?()
+            try self.afterInstruction?()
         }
         else
         {
             self.cycles -= 1
         }
+
+        self.clock += 1
     }
 
     public func run( instructions: UInt ) throws

@@ -36,6 +36,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
     private var sync         = DispatchGroup()
     private var step         = false
     private var memoryOffset = 0
+    private var reset        = false
     private var paused       = false
     {
         willSet( newValue )
@@ -75,6 +76,16 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
         self.computer.cpu.beforeInstruction =
         {
+            try self.synchronized
+            {
+                if self.reset
+                {
+                    try self.computer.cpu.reset()
+
+                    self.reset = false
+                }
+            }
+
             self.sync.wait()
         }
 
@@ -119,6 +130,13 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 else if key == 0x72, self.paused // r
                 {
                     self.step = false
+
+                    self.paused.toggle()
+                }
+                else if key == 0x72, self.paused == false // r
+                {
+                    self.reset = true
+                    self.step  = false
 
                     self.paused.toggle()
                 }
@@ -234,6 +252,14 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
     }
 
+    private func readUInt16FromMemory( at address: UInt16 ) throws -> UInt16
+    {
+        let u1 = UInt16( try self.computer.bus.read( at: address ) )
+        let u2 = UInt16( try self.computer.bus.read( at: address + 1 ) )
+
+        return ( u2 << 8 ) | u1
+    }
+
     private func printComputer( window: ManagedWindow )
     {
         window.printLine( foreground: .blue, text: "Computer:" )
@@ -250,12 +276,39 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         window.print(     foreground: .cyan,   text: "RAM:   " )
         window.printLine( foreground: .yellow, text: "\( self.printableSize( bytes: self.computer.ram.capacity.bytes ) )" )
         window.separator()
-        window.print(     foreground: .cyan,   text: "NMI:   " )
-        window.printLine( foreground: .yellow, text: "FFFF" )
-        window.print(     foreground: .cyan,   text: "RESET: " )
-        window.printLine( foreground: .yellow, text: "FFFF" )
+
+        window.print( foreground: .cyan,   text: "NMI:   " )
+
+        if let nmi = try? self.readUInt16FromMemory( at: CPU.nmi )
+        {
+            window.printLine( foreground: .yellow, text: String( format: "%04X", nmi ) )
+        }
+        else
+        {
+            window.printLine( foreground: .red, text: "????" )
+        }
+
+        window.print( foreground: .cyan,   text: "RESET: " )
+
+        if let reset = try? self.readUInt16FromMemory( at: CPU.resetVector )
+        {
+            window.printLine( foreground: .yellow, text: String( format: "%04X", reset ) )
+        }
+        else
+        {
+            window.printLine( foreground: .red, text: "????" )
+        }
+
         window.print(     foreground: .cyan,   text: "IRQ:   " )
-        window.printLine( foreground: .yellow, text: "FFFF" )
+
+        if let irq = try? self.readUInt16FromMemory( at: CPU.irq )
+        {
+            window.printLine( foreground: .yellow, text: String( format: "%04X", irq ) )
+        }
+        else
+        {
+            window.printLine( foreground: .red, text: "????" )
+        }
     }
 
     private enum RegisterDisplayMode
