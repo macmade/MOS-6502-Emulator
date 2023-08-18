@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class Bus: WriteableMemoryDevice, LogSource
+public class Bus: WriteableMemoryDevice, LogSource, Resettable
 {
     public private( set ) var devices: [ ( address: UInt16, size: UInt64, device: MemoryDevice ) ] = []
 
@@ -44,6 +44,14 @@ public class Bus: WriteableMemoryDevice, LogSource
 
     public init()
     {}
+
+    public func reset() throws
+    {
+        try self.devices.forEach
+        {
+            try ( $0.device as? Resettable )?.reset()
+        }
+    }
 
     public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt64 ) throws
     {

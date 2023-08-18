@@ -25,7 +25,7 @@
 import Foundation
 import xasm65lib
 
-public class CPU: LogSource
+public class CPU: LogSource, Resettable
 {
     public private( set ) var registers      = Registers()
     public private( set ) var clock: UInt64 = 0

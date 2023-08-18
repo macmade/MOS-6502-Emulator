@@ -21,6 +21,7 @@
 		0564AD362A8EC0FB00EF1950 /* ComputerRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */; };
 		0564AD382A8EC13D00EF1950 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD372A8EC13D00EF1950 /* libncurses.tbd */; };
 		0564AD6C2A902F4900EF1950 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD372A8EC13D00EF1950 /* libncurses.tbd */; };
+		0564AD6E2A9030A100EF1950 /* Resettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD6D2A9030A100EF1950 /* Resettable.swift */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -287,6 +288,7 @@
 		0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonInteractiveDebugger.swift; sourceTree = "<group>"; };
 		0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerRunner.swift; sourceTree = "<group>"; };
 		0564AD372A8EC13D00EF1950 /* libncurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libncurses.tbd; path = usr/lib/libncurses.tbd; sourceTree = SDKROOT; };
+		0564AD6D2A9030A100EF1950 /* Resettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resettable.swift; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -953,6 +955,7 @@
 				0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */,
 				05C6D1092A897EB600A984EB /* PIA.swift */,
 				05DED7492A8AA41D00DA42F9 /* RAM.swift */,
+				0564AD6D2A9030A100EF1950 /* Resettable.swift */,
 				05C3C1F82A865D5900436F6D /* ROM.swift */,
 			);
 			path = Devices;
@@ -1187,6 +1190,7 @@
 				05DED74C2A8AA67A00DA42F9 /* AddressingContext.swift in Sources */,
 				05C3C2382A87D2EF00436F6D /* CPY.swift in Sources */,
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
+				0564AD6E2A9030A100EF1950 /* Resettable.swift in Sources */,
 				05C3C1F32A86572F00436F6D /* CLI.swift in Sources */,
 				05C3C2402A87D32D00436F6D /* EOR.swift in Sources */,
 				0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */,

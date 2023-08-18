@@ -24,53 +24,7 @@
 
 import Foundation
 
-public class PIA: WriteableMemoryDevice, LogSource, Resettable, CustomStringConvertible
+public protocol Resettable
 {
-    public var data0:    UInt8 = 0
-    public var control0: UInt8 = 0
-    public var data1:    UInt8 = 0
-    public var control1: UInt8 = 0
-    public var logger:   Logger?
-
-    public init()
-    {}
-
-    public func reset() throws
-    {
-        self.data0    = 0
-        self.control0 = 0
-        self.data1    = 0
-        self.control1 = 0
-    }
-
-    public func write( _ value: UInt8, at address: UInt16 ) throws
-    {
-        switch address
-        {
-            case 0: self.data0    = value
-            case 1: self.control0 = value
-            case 2: self.data1    = value
-            case 3: self.control1 = value
-
-            default: throw RuntimeError( message: "Invalid PIA address: \( address.asHex )" )
-        }
-    }
-
-    public func read( at address: UInt16 ) throws -> UInt8
-    {
-        switch address
-        {
-            case 0: return self.data0
-            case 1: return self.control0
-            case 2: return self.data1
-            case 3: return self.control1
-
-            default: throw RuntimeError( message: "Invalid PIA address: \( address.asHex )" )
-        }
-    }
-
-    public var description: String
-    {
-        "PIA"
-    }
+    func reset() throws
 }
