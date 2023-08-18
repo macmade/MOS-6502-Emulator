@@ -51,6 +51,15 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
     }
 
+    private var newClock     = ""
+    private var setClock     = false
+    {
+        didSet
+        {
+            self.newClock = ""
+        }
+    }
+
     public init( computer: Computer, screen: Screen )
     {
         self.computer = computer
@@ -84,7 +93,20 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         {
             key in self.synchronized
             {
-                if key == 0x20 // space
+                if self.setClock, ( 0x30 ... 0x39 ).contains( key ) // Number
+                {
+                    self.newClock.append( String( format: "%c", key ) )
+                }
+                else if self.setClock, key == 0x0D // Enter
+                {
+                    if let clock = UInt( self.newClock )
+                    {
+                        self.computer.clock.frequency = .hz( clock )
+                    }
+
+                    self.setClock.toggle()
+                }
+                else if key == 0x20 // space
                 {
                     self.step = true
 
@@ -108,6 +130,10 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 {
                     self.memoryOffset -= 1
                 }
+                else if key == 0x66 // f
+                {
+                    self.setClock.toggle()
+                }
             }
         }
 
@@ -125,7 +151,14 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
         self.screen.addWindow( frame: Rect( x: 0, y: 0, width: 0, height: 3 ), style: .boxed )
         {
-            self.printStatus( window: $0 )
+            if self.setClock
+            {
+                self.printClockPrompt( window: $0 )
+            }
+            else
+            {
+                self.printStatus( window: $0 )
+            }
         }
 
         self.screen.addWindow( frame: Rect( x: 0, y: 3, width: 18, height: 12 ), style: .boxed )
@@ -166,11 +199,10 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         self.screen.start()
     }
 
-    private enum RegisterDisplayMode
+    private func printClockPrompt( window: ManagedWindow )
     {
-        case none
-        case decimal
-        case binary
+        window.print( foreground: .cyan,   text: "Enter a new clock frequency in HZ: " )
+        window.print( foreground: .yellow, text: self.newClock )
     }
 
     private func printStatus( window: ManagedWindow )
@@ -224,6 +256,13 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         window.printLine( foreground: .yellow, text: "FFFF" )
         window.print(     foreground: .cyan,   text: "IRQ:   " )
         window.printLine( foreground: .yellow, text: "FFFF" )
+    }
+
+    private enum RegisterDisplayMode
+    {
+        case none
+        case decimal
+        case binary
     }
 
     private func printRegisters( window: ManagedWindow, registers: Registers )

@@ -41,9 +41,8 @@ public class Clock: LogSource
         }
     }
 
-    public var logger: Logger?
-
-    public private( set ) var frequency: Frequency
+    public var frequency: Frequency
+    public var logger:    Logger?
 
     private var onCycle: () throws -> Void
 
