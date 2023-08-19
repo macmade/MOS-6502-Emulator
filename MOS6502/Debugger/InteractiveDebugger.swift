@@ -739,13 +739,13 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 }
                 else
                 {
-                    window.printLine( foreground: .red, text: "???" )
+                    window.printLine( foreground: .red, text: "????" )
                 }
             }
         }
         else
         {
-            window.printLine( foreground: .red, text: "???" )
+            window.printLine( foreground: .red, text: "????" )
         }
     }
 
