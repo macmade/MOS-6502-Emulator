@@ -38,7 +38,23 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
     private var memoryOffset = 0
     private var prompt       = ""
     private var inPrompt     = false
+    private var running      = false
     private var reset        = false
+    {
+        didSet
+        {
+            self.synchronized
+            {
+                self.error = nil
+
+                if self.running == false
+                {
+                    self.runComputer()
+                }
+            }
+        }
+    }
+
     private var paused       = false
     {
         willSet( newValue )
@@ -300,17 +316,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             }
         }
 
-        self.queue.async
-        {
-            do
-            {
-                try self.computer.reset()
-            }
-            catch
-            {
-                self.error = error
-            }
-        }
+        self.runComputer()
 
         self.screen.addWindow( frame: Rect( x: 0, y: 0, width: 0, height: 3 ), style: .boxed )
         {
@@ -394,6 +400,36 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
 
         self.screen.start()
+    }
+
+    private func runComputer()
+    {
+        self.synchronized
+        {
+            if self.running
+            {
+                return
+            }
+
+            self.running = true
+        }
+
+        self.queue.async
+        {
+            do
+            {
+                try self.computer.reset()
+            }
+            catch
+            {
+                self.error = error
+            }
+
+            self.synchronized
+            {
+                self.running = false
+            }
+        }
     }
 
     private func promptValue< T: UnsignedInteger >( initialize: ( String, Int ) -> T? ) -> T?
