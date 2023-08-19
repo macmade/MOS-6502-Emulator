@@ -667,14 +667,14 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
     {
         window.printLine( foreground: .blue, text: "Instructions:" )
         window.separator()
-        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ), options1: [ .address ], options2: [ .bytes ], showComments: false )
+        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ), options1: [ .address ], options2: [ .bytes ] )
     }
 
     private func printDisassembly( window: ManagedWindow )
     {
         window.printLine( foreground: .blue, text: "Disassembly:" )
         window.separator()
-        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ), options1: [ .address ], options2: [ .disassembly ], showComments: true )
+        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ), options1: [ .address ], options2: [ .disassembly, .comments ] )
     }
 
     private var disassemblerLabels: [ UInt16: String ]
@@ -699,13 +699,14 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
     }
 
-    private func printDisassembly( window: ManagedWindow, lines: Int, options1: Disassembler.Options, options2: Disassembler.Options, showComments: Bool )
+    private func printDisassembly( window: ManagedWindow, lines: Int, options1: Disassembler.Options, options2: Disassembler.Options )
     {
         let stream1       = MemoryDeviceStream( device: self.computer.bus, offset: self.computer.cpu.registers.PC )
         let stream2       = MemoryDeviceStream( device: self.computer.bus, offset: self.computer.cpu.registers.PC )
-        let comments      = showComments ? self.disassemblerComments : [ : ]
-        let disassembler1 = try? Disassembler( stream: stream1, origin: self.computer.cpu.registers.PC, size: 0, instructions: 1, options: options1, separator: " ", comments: [ : ],    labels: [ : ] )
-        let disassembler2 = try? Disassembler( stream: stream2, origin: self.computer.cpu.registers.PC, size: 0, instructions: 1, options: options2, separator: " ", comments: comments, labels: [ : ] )
+        let labels        = self.disassemblerLabels
+        let comments      = self.disassemblerComments
+        let disassembler1 = try? Disassembler( stream: stream1, origin: self.computer.cpu.registers.PC, size: 0, instructions: 1, options: options1, separator: " ", comments: comments, labels: labels )
+        let disassembler2 = try? Disassembler( stream: stream2, origin: self.computer.cpu.registers.PC, size: 0, instructions: 1, options: options2, separator: " ", comments: comments, labels: labels )
 
         if let disassembler1 = disassembler1, let disassembler2 = disassembler2
         {
@@ -721,10 +722,10 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                     window.print( foreground: .cyan,   text: address )
                     window.print(                      text: " " )
 
-                    if let index = other.firstIndex( of:  ";" )
+                    if let index = other.firstIndex( of: ";" )
                     {
-                        let part1 = String( other[ other.startIndex ..< index ] )
-                        let part2 = String( other[ index            ..< other.endIndex ] )
+                        let part1 = index == other.startIndex ? "" : String( other[ other.startIndex ..< index ] )
+                        let part2 = String( other[ index ..< other.endIndex ] )
 
                         window.print( foreground: .yellow,  text: part1.padding( toLength: 15, withPad: " ", startingAt: 0 ) )
                         window.print( foreground: .magenta, text: part2 )
