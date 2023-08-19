@@ -54,7 +54,7 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
             case 0: return ( self.CRA & 0x40 ) == 0 ? \.DDRA : \.ORA
             case 1: return                            \.CRA
             case 2: return ( self.CRB & 0x40 ) == 0 ? \.DDRB : \.ORB
-            case 3: return                            \.CRA
+            case 3: return                            \.CRB
 
             default: throw RuntimeError( message: "Invalid MC6820 PIA register address: \( address.asHex )" )
         }
