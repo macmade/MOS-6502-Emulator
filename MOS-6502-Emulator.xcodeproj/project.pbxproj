@@ -289,6 +289,7 @@
 		0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerRunner.swift; sourceTree = "<group>"; };
 		0564AD372A8EC13D00EF1950 /* libncurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libncurses.tbd; path = usr/lib/libncurses.tbd; sourceTree = SDKROOT; };
 		0564AD6D2A9030A100EF1950 /* Resettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resettable.swift; sourceTree = "<group>"; };
+		0564AD702A9049F000EF1950 /* Debugger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Debugger.png; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -558,6 +559,14 @@
 			path = Debugger;
 			sourceTree = "<group>";
 		};
+		0564AD6F2A9049F000EF1950 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0564AD702A9049F000EF1950 /* Debugger.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		05C3C1322A8568D500436F6D = {
 			isa = PBXGroup;
 			children = (
@@ -566,6 +575,7 @@
 				05C3C1492A85698100436F6D /* LICENSE */,
 				05C6D0DA2A883F6600A984EB /* Reference */,
 				05C6D1032A891BE300A984EB /* Datasheets */,
+				0564AD6F2A9049F000EF1950 /* Assets */,
 				05C3C1972A856EA000436F6D /* MOS6502.xctestplan */,
 				05C3C1BB2A85710800436F6D /* MOS6502-Demo.xctestplan */,
 				05C3C14A2A856AA400436F6D /* .github */,

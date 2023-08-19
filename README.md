@@ -12,6 +12,8 @@ MOS-6502-Emulator
 
 A MOS 6502 emulator written in Swift.
 
+![Debugger](Assets/Debugger.png "Debugger")
+
 **Cloning:**  
 This repository uses submodules. Please clone with:
 
