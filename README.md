@@ -37,6 +37,7 @@ This repository uses submodules. Please clone with:
   2. [MOS Microcomputers Programming Manual](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/MOS-Microcomputers-Programming-Manual.pdf)
   3. [Rockwell R650X / R651X](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/Rockwell-R650X-R651X.pdf)
   4. [Synertek SY6500](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/Synertek-SY6500.pdf)
+  5. [Motorola MC6820](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/Motorola-MC6820.pdf)
   5. [Apple-1 Operation Manual](https://github.com/macmade/MOS-6502-Emulator/blob/main/Datasheets/Apple-1-Operation-Manual.pdf)
   
 ### Useful Links
