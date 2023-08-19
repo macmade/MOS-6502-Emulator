@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class PIA: WriteableMemoryDevice, LogSource, Resettable, CustomStringConvertible
+public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringConvertible
 {
     public var data0:    UInt8 = 0
     public var control0: UInt8 = 0
@@ -71,6 +71,6 @@ public class PIA: WriteableMemoryDevice, LogSource, Resettable, CustomStringConv
 
     public var description: String
     {
-        "PIA"
+        "MC6820 PIA"
     }
 }

@@ -159,7 +159,7 @@
 		05C6D0E72A88EFE700A984EB /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0E62A88EFE700A984EB /* Either.swift */; };
 		05C6D1022A89165A00A984EB /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1012A89165A00A984EB /* Bus.swift */; };
 		05C6D1082A896C9900A984EB /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1072A896C9900A984EB /* Clock.swift */; };
-		05C6D10A2A897EB700A984EB /* PIA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1092A897EB600A984EB /* PIA.swift */; };
+		05C6D10A2A897EB700A984EB /* MC6820.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1092A897EB600A984EB /* MC6820.swift */; };
 		05C6D10C2A89814900A984EB /* Apple1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D10B2A89814900A984EB /* Apple1.swift */; };
 		05DED74A2A8AA41E00DA42F9 /* RAM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED7492A8AA41D00DA42F9 /* RAM.swift */; };
 		05DED74C2A8AA67A00DA42F9 /* AddressingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED74B2A8AA67A00DA42F9 /* AddressingContext.swift */; };
@@ -490,7 +490,7 @@
 		05C6D0E62A88EFE700A984EB /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		05C6D1012A89165A00A984EB /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		05C6D1072A896C9900A984EB /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
-		05C6D1092A897EB600A984EB /* PIA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIA.swift; sourceTree = "<group>"; };
+		05C6D1092A897EB600A984EB /* MC6820.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820.swift; sourceTree = "<group>"; };
 		05C6D10B2A89814900A984EB /* Apple1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1.swift; sourceTree = "<group>"; };
 		05DED7492A8AA41D00DA42F9 /* RAM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAM.swift; sourceTree = "<group>"; };
 		05DED74B2A8AA67A00DA42F9 /* AddressingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressingContext.swift; sourceTree = "<group>"; };
@@ -963,7 +963,7 @@
 			children = (
 				05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */,
 				0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */,
-				05C6D1092A897EB600A984EB /* PIA.swift */,
+				05C6D1092A897EB600A984EB /* MC6820.swift */,
 				05DED7492A8AA41D00DA42F9 /* RAM.swift */,
 				0564AD6D2A9030A100EF1950 /* Resettable.swift */,
 				05C3C1F82A865D5900436F6D /* ROM.swift */,
@@ -1226,7 +1226,7 @@
 				05C3C1F92A865D5900436F6D /* ROM.swift in Sources */,
 				05C3C22C2A87D28700436F6D /* CMP.swift in Sources */,
 				05C3C2222A87D23000436F6D /* BIT.swift in Sources */,
-				05C6D10A2A897EB700A984EB /* PIA.swift in Sources */,
+				05C6D10A2A897EB700A984EB /* MC6820.swift in Sources */,
 				0564AD362A8EC0FB00EF1950 /* ComputerRunner.swift in Sources */,
 				05C3C24C2A87D38500436F6D /* NOP.swift in Sources */,
 				05C3C2262A87D24D00436F6D /* BNE.swift in Sources */,
