@@ -30,6 +30,8 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
     public var DDRB:   UInt8 = 0 // Data direction register B
     public var CRA:    UInt8 = 0 // Control register A
     public var CRB:    UInt8 = 0 // Control register B
+    public var ORA:    UInt8 = 0 // Output register A
+    public var ORB:    UInt8 = 0 // Output register B
     public var logger: Logger?
 
     public init()
@@ -38,35 +40,34 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
     public func reset() throws
     {
         self.DDRA = 0
-        self.CRA  = 0
         self.DDRB = 0
+        self.CRA  = 0
         self.CRB  = 0
+        self.ORA  = 0
+        self.ORB  = 0
+    }
+
+    private func register( for address: UInt16 ) throws -> ReferenceWritableKeyPath< MC6820, UInt8 >
+    {
+        switch address
+        {
+            case 0: return ( self.CRA & 0x40 ) == 0 ? \.DDRA : \.ORA
+            case 1: return                            \.CRA
+            case 2: return ( self.CRB & 0x40 ) == 0 ? \.DDRB : \.ORB
+            case 3: return                            \.CRA
+
+            default: throw RuntimeError( message: "Invalid MC6820 PIA register address: \( address.asHex )" )
+        }
     }
 
     public func write( _ value: UInt8, at address: UInt16 ) throws
     {
-        switch address
-        {
-            case 0: self.DDRA = value
-            case 1: self.CRA  = value
-            case 2: self.DDRB = value
-            case 3: self.CRB  = value
-
-            default: throw RuntimeError( message: "Invalid MC6820 PIA address: \( address.asHex )" )
-        }
+        self[ keyPath: try self.register( for: address ) ] = value
     }
 
     public func read( at address: UInt16 ) throws -> UInt8
     {
-        switch address
-        {
-            case 0: return self.DDRA
-            case 1: return self.CRA
-            case 2: return self.DDRB
-            case 3: return self.CRB
-
-            default: throw RuntimeError( message: "Invalid MC6820 PIA address: \( address.asHex )" )
-        }
+        self[ keyPath: try self.register( for: address ) ]
     }
 
     public var description: String
