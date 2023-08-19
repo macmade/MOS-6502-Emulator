@@ -165,6 +165,13 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 {
                     self.prompt.append( String( format: "%c", key ) )
                 }
+                if key == 0x7F, self.inPrompt // Number, a-f, A-F or x
+                {
+                    if self.prompt.isEmpty == false
+                    {
+                        self.prompt = String( self.prompt.dropLast( 1 ) )
+                    }
+                }
                 else if key == 0x0D // Enter
                 {
                     if self.setClock
