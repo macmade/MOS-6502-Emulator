@@ -346,37 +346,42 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             }
         }
 
-        self.screen.addWindow( frame: Rect( x: 0, y: 6, width: 18, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 0, y: 6, width: 19, height: 12 ), style: .boxed )
         {
             self.printComputer( window: $0 )
         }
 
-        self.screen.addWindow( frame: Rect( x: 18, y: 6, width: 25, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 19, y: 6, width: 25, height: 12 ), style: .boxed )
         {
             self.printRegisters( window: $0, registers: self.computer.cpu.registers )
         }
 
-        self.screen.addWindow( frame: Rect( x: 43, y: 6, width: 26, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 44, y: 6, width: 26, height: 12 ), style: .boxed )
         {
             self.printFlags( window: $0, flags: self.computer.cpu.registers.PS )
         }
 
-        self.screen.addWindow( frame: Rect( x: 69, y: 6, width: 18, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 70, y: 6, width: 18, height: 12 ), style: .boxed )
         {
             self.printInstructions( window: $0 )
         }
 
-        self.screen.addWindow( frame: Rect( x: 87, y: 6, width: 0, height: 12 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 88, y: 6, width: 0, height: 12 ), style: .boxed )
         {
             self.printDisassembly( window: $0 )
         }
 
-        self.screen.addWindow( frame: Rect( x: 0, y: 18, width: 69, height: 0 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 0, y: 18, width: 70, height: 20 ), style: .boxed )
+        {
+            self.printStack( window: $0 )
+        }
+
+        self.screen.addWindow( frame: Rect( x: 0, y: 38, width: 70, height: 0 ), style: .boxed )
         {
             self.printMemoryDevices( window: $0 )
         }
 
-        self.screen.addWindow( frame: Rect( x: 69, y: 18, width: 0, height: 0 ), style: .boxed )
+        self.screen.addWindow( frame: Rect( x: 70, y: 18, width: 0, height: 0 ), style: .boxed )
         {
             self.printMemory( window: $0 )
         }
@@ -747,15 +752,15 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
     {
         if bytes < 1024
         {
-            return "\( bytes )B"
+            return "\( bytes ) B"
         }
         else if bytes < 1024 * 1024
         {
-            return "\( String( format: "%.02f", Double( bytes ) / 1024.0 ) )KB"
+            return "\( String( format: "%.02f", Double( bytes ) / 1024.0 ) ) KB"
         }
         else
         {
-            return "\( String( format: "%.02f", ( Double( bytes ) / 1024.0 ) / 1024.0 ) )MB"
+            return "\( String( format: "%.02f", ( Double( bytes ) / 1024.0 ) / 1024.0 ) ) MB"
         }
     }
 
@@ -785,18 +790,29 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
     }
 
+    private func printStack( window: ManagedWindow )
+    {
+        window.printLine( foreground: .blue, text: "Stack:" )
+        window.separator()
+        self.printMemory( window: window, start: CPU.stackStart, end: CPU.stackEnd, columns: Int( window.bounds.size.width ) - 2, lines: Int( window.bounds.size.height ) - 2, canScroll: false )
+    }
+
     private func printMemory( window: ManagedWindow )
     {
         window.printLine( foreground: .blue, text: "Memory:" )
         window.separator()
+        self.printMemory( window: window, start: 0x0000, end: 0xFFFF, columns: Int( window.bounds.size.width ) - 2, lines: Int( window.bounds.size.height ) - 2, canScroll: true )
+    }
 
-        let bytes = ( 0x0000 ... 0xFFFF ).map
+    private func printMemory( window: ManagedWindow, start: UInt16, end: UInt16, columns: Int, lines: Int, canScroll: Bool )
+    {
+        let bytes = ( start ... end ).map
         {
             try? self.computer.bus.read( at: $0 )
         }
 
-        let memoryBytesPerLine = Int( ( window.bounds.size.width / 4 ) - 2 )
-        let memoryLines        = Int( window.bounds.size.height - 2 )
+        let memoryBytesPerLine = ( columns / 4 )
+        let memoryLines        = lines
 
         guard memoryBytesPerLine > 0, memoryLines > 0
         else
@@ -804,31 +820,36 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             return
         }
 
-        if self.memoryOffset < 0
+        var address = 0x0000
+
+        if canScroll
         {
-            self.memoryOffset = 0
+            if self.memoryOffset < 0
+            {
+                self.memoryOffset = 0
+            }
+
+            let totalLines = bytes.count / memoryBytesPerLine
+            let maxOffset  = ( totalLines / memoryLines ) * 2
+
+            if self.memoryOffset >= maxOffset
+            {
+                self.memoryOffset = maxOffset
+            }
+
+            address = 0x0000 + ( memoryBytesPerLine * ( memoryLines / 2 ) * self.memoryOffset )
         }
-
-        let totalLines = bytes.count / memoryBytesPerLine
-        let maxOffset  = ( totalLines / memoryLines ) * 2
-
-        if self.memoryOffset >= maxOffset
-        {
-            self.memoryOffset = maxOffset
-        }
-
-        var address = 0x0000 + ( memoryBytesPerLine * ( memoryLines / 2 ) * self.memoryOffset )
 
         ( 0 ..< memoryLines ).forEach
         {
             _ in
 
-            if address > UInt16.max
+            if address + Int( start ) > Int( end )
             {
                 return
             }
 
-            window.print( foreground: .cyan, text: "\( String( format: "%04X", UInt16( address ) ) ): " )
+            window.print( foreground: .cyan, text: "\( String( format: "%04X", UInt16( address ) + start ) ): " )
 
             ( 0 ..< memoryBytesPerLine ).forEach
             {
