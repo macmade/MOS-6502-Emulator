@@ -36,6 +36,8 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
     private var sync         = DispatchGroup()
     private var step         = false
     private var memoryOffset = 0
+    private var prompt       = ""
+    private var inPrompt     = false
     private var reset        = false
     private var paused       = false
     {
@@ -52,39 +54,48 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
     }
 
-    private var newClock = ""
     private var setClock = false
     {
         didSet
         {
-            self.newClock = ""
+            self.prompt   = ""
+            self.inPrompt = self.setClock
         }
     }
 
-    private var newA = ""
     private var setA = false
     {
         didSet
         {
-            self.newA = ""
+            self.prompt   = ""
+            self.inPrompt = self.setA
         }
     }
 
-    private var newX = ""
     private var setX = false
     {
         didSet
         {
-            self.newX = ""
+            self.prompt   = ""
+            self.inPrompt = self.setX
         }
     }
 
-    private var newY = ""
     private var setY = false
     {
         didSet
         {
-            self.newY = ""
+            self.prompt   = ""
+            self.inPrompt = self.setY
+        }
+    }
+
+    private var setPS = false
+    {
+        didSet
+        {
+            self.prompt   = ""
+            self.inPrompt = self.setPS
         }
     }
 
@@ -132,30 +143,15 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         {
             key in self.synchronized
             {
-                if ( 0x30 ... 0x39 ).contains( key ) // Number
+                if ( ( 0x30 ... 0x39 ).contains( key ) || key == 0x78 || ( 0x61 ... 0x66 ).contains( key ) || ( 0x41 ... 0x46 ).contains( key ) ), self.inPrompt // Number, a-f, A-F or x
                 {
-                    if self.setClock
-                    {
-                        self.newClock.append( String( format: "%c", key ) )
-                    }
-                    else if self.setA
-                    {
-                        self.newA.append( String( format: "%c", key ) )
-                    }
-                    else if self.setX
-                    {
-                        self.newX.append( String( format: "%c", key ) )
-                    }
-                    else if self.setY
-                    {
-                        self.newY.append( String( format: "%c", key ) )
-                    }
+                    self.prompt.append( String( format: "%c", key ) )
                 }
                 else if key == 0x0D // Enter
                 {
                     if self.setClock
                     {
-                        if let clock = UInt( self.newClock )
+                        if let clock = UInt( self.prompt )
                         {
                             self.computer.clock.frequency = .hz( clock )
                         }
@@ -164,7 +160,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                     }
                     else if self.setA
                     {
-                        if let a = UInt8( self.newA )
+                        if let a = self.promptUInt8Value()
                         {
                             self.computer.cpu.registers.A = a
                         }
@@ -173,7 +169,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                     }
                     else if self.setX
                     {
-                        if let x = UInt8( self.newX )
+                        if let x = self.promptUInt8Value()
                         {
                             self.computer.cpu.registers.X = x
                         }
@@ -182,12 +178,21 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                     }
                     else if self.setY
                     {
-                        if let y = UInt8( self.newY )
+                        if let y = self.promptUInt8Value()
                         {
                             self.computer.cpu.registers.Y = y
                         }
 
                         self.setY.toggle()
+                    }
+                    else if self.setPS
+                    {
+                        if let ps = self.promptUInt8Value()
+                        {
+                            self.computer.cpu.registers.PS = .init( rawValue: ps )
+                        }
+
+                        self.setPS.toggle()
                     }
                 }
                 else if key == 0x20 // space
@@ -221,21 +226,25 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 {
                     self.memoryOffset -= 1
                 }
-                else if key == 0x66, self.setA == false, self.setX == false, self.setY == false // f
+                else if key == 0x66, ( self.inPrompt == false || self.setClock ) // f
                 {
                     self.setClock.toggle()
                 }
-                else if key == 0x61, self.setClock == false, self.setX == false, self.setY == false // a
+                else if key == 0x61, ( self.inPrompt == false || self.setA ) // a
                 {
                     self.setA.toggle()
                 }
-                else if key == 0x78, self.setClock == false, self.setA == false, self.setY == false // x
+                else if key == 0x78, ( self.inPrompt == false || self.setX ) // x
                 {
                     self.setX.toggle()
                 }
-                else if key == 0x79, self.setClock == false, self.setA == false, self.setX == false // y
+                else if key == 0x79, ( self.inPrompt == false || self.setY ) // y
                 {
                     self.setY.toggle()
+                }
+                else if key == 0x73, ( self.inPrompt == false || self.setPS ) // s
+                {
+                    self.setPS.toggle()
                 }
             }
         }
@@ -265,15 +274,19 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             }
             else if self.setA
             {
-                self.printAPrompt( window: $0 )
+                self.printRegisterPrompt( window: $0, register: "A" )
             }
             else if self.setX
             {
-                self.printXPrompt( window: $0 )
+                self.printRegisterPrompt( window: $0, register: "X" )
             }
             else if self.setY
             {
-                self.printYPrompt( window: $0 )
+                self.printRegisterPrompt( window: $0, register: "Y" )
+            }
+            else if self.setPS
+            {
+                self.printRegisterPrompt( window: $0, register: "PS" )
             }
             else
             {
@@ -319,6 +332,16 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         self.screen.start()
     }
 
+    private func promptUInt8Value() -> UInt8?
+    {
+        if self.prompt.hasPrefix( "0x" )
+        {
+            return UInt8( String( self.prompt[ self.prompt.index( self.prompt.startIndex, offsetBy: 2 ) ..< self.prompt.endIndex ] ), radix: 16 )
+        }
+
+        return UInt8( self.prompt )
+    }
+
     private func printMenu( window: ManagedWindow )
     {
         window.print( foreground: .cyan,   text: "r" )
@@ -348,30 +371,22 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         window.print( foreground: .cyan,   text: "y" )
         window.print(                      text: ": " )
         window.print( foreground: .yellow, text: "Set Y Register" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "s" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Set PS Register" )
     }
 
     private func printClockPrompt( window: ManagedWindow )
     {
         window.print( foreground: .cyan,   text: "Enter a new clock frequency in Hz: " )
-        window.print( foreground: .yellow, text: self.newClock )
+        window.print( foreground: .yellow, text: self.prompt )
     }
 
-    private func printAPrompt( window: ManagedWindow )
+    private func printRegisterPrompt( window: ManagedWindow, register: String )
     {
-        window.print( foreground: .cyan,   text: "Enter a new value for the A register: " )
-        window.print( foreground: .yellow, text: self.newA )
-    }
-
-    private func printXPrompt( window: ManagedWindow )
-    {
-        window.print( foreground: .cyan,   text: "Enter a new value for the X register: " )
-        window.print( foreground: .yellow, text: self.newX )
-    }
-
-    private func printYPrompt( window: ManagedWindow )
-    {
-        window.print( foreground: .cyan,   text: "Enter a new value for the Y register: " )
-        window.print( foreground: .yellow, text: self.newY )
+        window.print( foreground: .cyan,   text: "Enter a new value for the \( register ) register: " )
+        window.print( foreground: .yellow, text: self.prompt )
     }
 
     private func printStatus( window: ManagedWindow )
