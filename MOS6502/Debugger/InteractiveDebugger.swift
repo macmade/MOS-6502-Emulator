@@ -63,6 +63,24 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
     }
 
+    private var setPC = false
+    {
+        didSet
+        {
+            self.prompt   = ""
+            self.inPrompt = self.setPC
+        }
+    }
+
+    private var setSP = false
+    {
+        didSet
+        {
+            self.prompt   = ""
+            self.inPrompt = self.setSP
+        }
+    }
+
     private var setA = false
     {
         didSet
@@ -151,16 +169,34 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 {
                     if self.setClock
                     {
-                        if let clock = UInt( self.prompt )
+                        if let clock: UInt = self.promptValue( initialize: { UInt( $0, radix: $1 ) } )
                         {
                             self.computer.clock.frequency = .hz( clock )
                         }
 
                         self.setClock.toggle()
                     }
+                    else if self.setPC
+                    {
+                        if let pc: UInt16 = self.promptValue( initialize: { UInt16( $0, radix: $1 ) } )
+                        {
+                            self.computer.cpu.registers.PC = pc
+                        }
+
+                        self.setPC.toggle()
+                    }
+                    else if self.setSP
+                    {
+                        if let sp: UInt8 = self.promptValue( initialize: { UInt8( $0, radix: $1 ) } )
+                        {
+                            self.computer.cpu.registers.SP = sp
+                        }
+
+                        self.setSP.toggle()
+                    }
                     else if self.setA
                     {
-                        if let a = self.promptUInt8Value()
+                        if let a: UInt8 = self.promptValue( initialize: { UInt8( $0, radix: $1 ) } )
                         {
                             self.computer.cpu.registers.A = a
                         }
@@ -169,7 +205,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                     }
                     else if self.setX
                     {
-                        if let x = self.promptUInt8Value()
+                        if let x: UInt8 = self.promptValue( initialize: { UInt8( $0, radix: $1 ) } )
                         {
                             self.computer.cpu.registers.X = x
                         }
@@ -178,7 +214,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                     }
                     else if self.setY
                     {
-                        if let y = self.promptUInt8Value()
+                        if let y: UInt8 = self.promptValue( initialize: { UInt8( $0, radix: $1 ) } )
                         {
                             self.computer.cpu.registers.Y = y
                         }
@@ -187,7 +223,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                     }
                     else if self.setPS
                     {
-                        if let ps = self.promptUInt8Value()
+                        if let ps: UInt8 = self.promptValue( initialize: { UInt8( $0, radix: $1 ) } )
                         {
                             self.computer.cpu.registers.PS = .init( rawValue: ps )
                         }
@@ -226,9 +262,17 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 {
                     self.memoryOffset -= 1
                 }
-                else if key == 0x66, ( self.inPrompt == false || self.setClock ) // f
+                else if key == 0x68, ( self.inPrompt == false || self.setClock ) // f
                 {
                     self.setClock.toggle()
+                }
+                else if key == 0x70, ( self.inPrompt == false || self.setPC ) // p
+                {
+                    self.setPC.toggle()
+                }
+                else if key == 0x73, ( self.inPrompt == false || self.setSP ) // s
+                {
+                    self.setSP.toggle()
                 }
                 else if key == 0x61, ( self.inPrompt == false || self.setA ) // a
                 {
@@ -242,7 +286,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 {
                     self.setY.toggle()
                 }
-                else if key == 0x73, ( self.inPrompt == false || self.setPS ) // s
+                else if key == 0x66, ( self.inPrompt == false || self.setPS ) // f
                 {
                     self.setPS.toggle()
                 }
@@ -271,6 +315,14 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             if self.setClock
             {
                 self.printClockPrompt( window: $0 )
+            }
+            else if self.setPC
+            {
+                self.printRegisterPrompt( window: $0, register: "PC" )
+            }
+            else if self.setSP
+            {
+                self.printRegisterPrompt( window: $0, register: "SP" )
             }
             else if self.setA
             {
@@ -332,14 +384,19 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         self.screen.start()
     }
 
-    private func promptUInt8Value() -> UInt8?
+    private func promptValue< T: UnsignedInteger >( initialize: ( String, Int ) -> T? ) -> T?
     {
-        if self.prompt.hasPrefix( "0x" )
+        let prompt = self.prompt.trimmingCharacters( in: .whitespaces )
+
+        if prompt.hasPrefix( "0x" )
         {
-            return UInt8( String( self.prompt[ self.prompt.index( self.prompt.startIndex, offsetBy: 2 ) ..< self.prompt.endIndex ] ), radix: 16 )
+            let start = prompt.index( prompt.startIndex, offsetBy: 2 )
+            let end   = prompt.endIndex
+
+            return initialize( String( prompt[ start ..< end ] ), 16 )
         }
 
-        return UInt8( self.prompt )
+        return initialize( prompt, 10 )
     }
 
     private func printMenu( window: ManagedWindow )
@@ -356,25 +413,33 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         window.print(                      text: ": " )
         window.print( foreground: .yellow, text: "Scroll Memory" )
         window.print(                      text: " | " )
-        window.print( foreground: .cyan,   text: "f" )
+        window.print( foreground: .cyan,   text: "h" )
         window.print(                      text: ": " )
         window.print( foreground: .yellow, text: "Set CPU frequency" )
         window.print(                      text: " | " )
-        window.print( foreground: .cyan,   text: "a" )
+        window.print( foreground: .cyan,   text: "p" )
         window.print(                      text: ": " )
-        window.print( foreground: .yellow, text: "Set A register" )
-        window.print(                      text: " | " )
-        window.print( foreground: .cyan,   text: "x" )
-        window.print(                      text: ": " )
-        window.print( foreground: .yellow, text: "Set X Register" )
-        window.print(                      text: " | " )
-        window.print( foreground: .cyan,   text: "y" )
-        window.print(                      text: ": " )
-        window.print( foreground: .yellow, text: "Set Y Register" )
+        window.print( foreground: .yellow, text: "Set PC" )
         window.print(                      text: " | " )
         window.print( foreground: .cyan,   text: "s" )
         window.print(                      text: ": " )
-        window.print( foreground: .yellow, text: "Set PS Register" )
+        window.print( foreground: .yellow, text: "Set SP" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "a" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Set A" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "x" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Set X" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "y" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Set Y" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "f" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Set PS" )
     }
 
     private func printClockPrompt( window: ManagedWindow )
@@ -597,14 +662,14 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
     {
         window.printLine( foreground: .blue, text: "Instructions:" )
         window.separator()
-        self.printDisassembly( window: window, options1: [ .address ], options2: [ .bytes ], showComments: false )
+        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ), options1: [ .address ], options2: [ .bytes ], showComments: false )
     }
 
     private func printDisassembly( window: ManagedWindow )
     {
         window.printLine( foreground: .blue, text: "Disassembly:" )
         window.separator()
-        self.printDisassembly( window: window, options1: [ .address ], options2: [ .disassembly ], showComments: true )
+        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ), options1: [ .address ], options2: [ .disassembly ], showComments: true )
     }
 
     private var disassemblerLabels: [ UInt16: String ]
@@ -629,7 +694,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
     }
 
-    private func printDisassembly( window: ManagedWindow, options1: Disassembler.Options, options2: Disassembler.Options, showComments: Bool )
+    private func printDisassembly( window: ManagedWindow, lines: Int, options1: Disassembler.Options, options2: Disassembler.Options, showComments: Bool )
     {
         let stream1       = MemoryDeviceStream( device: self.computer.bus, offset: self.computer.cpu.registers.PC )
         let stream2       = MemoryDeviceStream( device: self.computer.bus, offset: self.computer.cpu.registers.PC )
@@ -639,7 +704,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
         if let disassembler1 = disassembler1, let disassembler2 = disassembler2
         {
-            ( 0 ..< 8 ).forEach
+            ( 0 ..< lines ).forEach
             {
                 _ in
 
