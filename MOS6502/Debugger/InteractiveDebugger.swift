@@ -85,6 +85,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
     let computerWindow:      ComputerWindow
     let registersWindow:     RegistersWindow
     let flagsWindow:         FlagsWindow
+    let mc6820Window:        MC6820Window
     let instructionsWindow:  InstructionsWindow
     let disassemblyWindow:   DisassemblyWindow
     let stackWindow:         StackWindow
@@ -99,6 +100,7 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             self.computerWindow,
             self.registersWindow,
             self.flagsWindow,
+            self.mc6820Window,
             self.instructionsWindow,
             self.disassemblyWindow,
             self.stackWindow,
@@ -113,16 +115,17 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         self.screen   = screen
         self.queue    = DispatchQueue( label: "com.xs-labs.MOS6502-Debugger", qos: .userInitiated, attributes: [] )
 
-        self.menuWindow          = MenuWindow(          computer: computer, frame: Rect( x:  0, y:  0, width:  0, height:  3 ), style: .boxed )
-        self.statusWindow        = StatusWindow(        computer: computer, frame: Rect( x:  0, y:  3, width:  0, height:  3 ), style: .boxed )
-        self.computerWindow      = ComputerWindow(      computer: computer, frame: Rect( x:  0, y:  6, width: 19, height: 12 ), style: .boxed )
-        self.registersWindow     = RegistersWindow(     computer: computer, frame: Rect( x: 19, y:  6, width: 25, height: 12 ), style: .boxed )
-        self.flagsWindow         = FlagsWindow(         computer: computer, frame: Rect( x: 44, y:  6, width: 26, height: 12 ), style: .boxed )
-        self.instructionsWindow  = InstructionsWindow(  computer: computer, frame: Rect( x: 70, y:  6, width: 18, height: 12 ), style: .boxed )
-        self.disassemblyWindow   = DisassemblyWindow(   computer: computer, frame: Rect( x: 88, y:  6, width:  0, height: 12 ), style: .boxed )
-        self.stackWindow         = StackWindow(         computer: computer, frame: Rect( x:  0, y: 18, width: 70, height: 20 ), style: .boxed )
-        self.memoryDevicesWindow = MemoryDevicesWindow( computer: computer, frame: Rect( x:  0, y: 38, width: 70, height:  0 ), style: .boxed )
-        self.memoryWindow        = MemoryWindow(        computer: computer, frame: Rect( x: 70, y: 18, width:  0, height:  0 ), style: .boxed )
+        self.menuWindow          = MenuWindow(          computer: computer, frame: Rect( x:   0, y:  0, width:  0, height:  3 ), style: .boxed )
+        self.statusWindow        = StatusWindow(        computer: computer, frame: Rect( x:   0, y:  3, width:  0, height:  3 ), style: .boxed )
+        self.computerWindow      = ComputerWindow(      computer: computer, frame: Rect( x:   0, y:  6, width: 19, height: 12 ), style: .boxed )
+        self.registersWindow     = RegistersWindow(     computer: computer, frame: Rect( x:  19, y:  6, width: 25, height: 12 ), style: .boxed )
+        self.flagsWindow         = FlagsWindow(         computer: computer, frame: Rect( x:  44, y:  6, width: 26, height: 12 ), style: .boxed )
+        self.mc6820Window        = MC6820Window(        computer: computer, frame: Rect( x:  70, y:  6, width: 26, height: 12 ), style: .boxed )
+        self.instructionsWindow  = InstructionsWindow(  computer: computer, frame: Rect( x:  96, y:  6, width: 18, height: 12 ), style: .boxed )
+        self.disassemblyWindow   = DisassemblyWindow(   computer: computer, frame: Rect( x: 114, y:  6, width:  0, height: 12 ), style: .boxed )
+        self.stackWindow         = StackWindow(         computer: computer, frame: Rect( x:   0, y: 18, width: 70, height: 20 ), style: .boxed )
+        self.memoryDevicesWindow = MemoryDevicesWindow( computer: computer, frame: Rect( x:   0, y: 38, width: 70, height:  0 ), style: .boxed )
+        self.memoryWindow        = MemoryWindow(        computer: computer, frame: Rect( x:  70, y: 18, width:  0, height:  0 ), style: .boxed )
     }
 
     public func run() throws

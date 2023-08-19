@@ -93,7 +93,7 @@ public class RegistersWindow: DebuggerWindow
         if register.mode == .binary
         {
             window.print( text: " | " )
-            bits.forEach
+            bits.reversed().forEach
             {
                 window.print( foreground: $0 ? .green : .red, text: $0 ? "1" : "0" )
             }

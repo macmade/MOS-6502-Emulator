@@ -33,6 +33,7 @@
 		0564AD902A90EA2C00EF1950 /* MemoryDevicesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */; };
 		0564AD922A90EA4800EF1950 /* MemoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD912A90EA4800EF1950 /* MemoryWindow.swift */; };
 		0564AD942A90EA6800EF1950 /* StatusWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD932A90EA6800EF1950 /* StatusWindow.swift */; };
+		0564AD9A2A90F8CC00EF1950 /* MC6820Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD992A90F8CC00EF1950 /* MC6820Window.swift */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -313,6 +314,7 @@
 		0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDevicesWindow.swift; sourceTree = "<group>"; };
 		0564AD912A90EA4800EF1950 /* MemoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryWindow.swift; sourceTree = "<group>"; };
 		0564AD932A90EA6800EF1950 /* StatusWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusWindow.swift; sourceTree = "<group>"; };
+		0564AD992A90F8CC00EF1950 /* MC6820Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Window.swift; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 				0564AD8B2A90E9E300EF1950 /* DisassemblyWindow.swift */,
 				0564AD872A90E90300EF1950 /* FlagsWindow.swift */,
 				0564AD892A90E9C100EF1950 /* InstructionsWindow.swift */,
+				0564AD992A90F8CC00EF1950 /* MC6820Window.swift */,
 				0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */,
 				0564AD912A90EA4800EF1950 /* MemoryWindow.swift */,
 				0564AD7E2A90E48A00EF1950 /* MenuWindow.swift */,
@@ -1226,6 +1229,7 @@
 				05C3C22E2A87D29500436F6D /* CLC.swift in Sources */,
 				05C6D1022A89165A00A984EB /* Bus.swift in Sources */,
 				05C3C2322A87D2BC00436F6D /* BVS.swift in Sources */,
+				0564AD9A2A90F8CC00EF1950 /* MC6820Window.swift in Sources */,
 				0564ACFB2A8E944800EF1950 /* LogSource.swift in Sources */,
 				0564AD922A90EA4800EF1950 /* MemoryWindow.swift in Sources */,
 				0564AD322A8EBE5400EF1950 /* InteractiveDebugger.swift in Sources */,
