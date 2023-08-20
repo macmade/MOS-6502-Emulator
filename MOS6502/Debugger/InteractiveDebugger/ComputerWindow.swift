@@ -77,4 +77,22 @@ public class ComputerWindow: DebuggerWindow
             window.printLine( foreground: .red, text: "????" )
         }
     }
+
+    public override func handleKey( _ key: Int32 ) -> Bool
+    {
+        if key == 0x68 // f
+        {
+            self.prompt.show( title: "Enter a new clock frequency in Hz:", descriptions: nil )
+            {
+                if let value = $0.uint
+                {
+                    self.computer.clock.frequency = .hz( value )
+                }
+            }
+
+            return true
+        }
+
+        return false
+    }
 }

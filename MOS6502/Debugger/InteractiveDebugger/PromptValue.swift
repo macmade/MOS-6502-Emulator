@@ -23,58 +23,53 @@
  ******************************************************************************/
 
 import Foundation
-import SwiftCurses
 
-public class DebuggerWindow: WindowBuilder
+public class PromptValue
 {
-    public var desiredFame: Rect
-    public var style:       ManagedWindow.Style
+    public private( set ) var string: String
 
-    public private( set ) var computer: Computer
-    public private( set ) var prompt:   PromptWindow
-
-    public init( computer: Computer, frame: Rect, style: ManagedWindow.Style, prompt: PromptWindow )
+    public init( string: String )
     {
-        self.computer    = computer
-        self.desiredFame = frame
-        self.style       = style
-        self.prompt      = prompt
+        self.string = string
     }
 
-    public func shouldBeRendered() -> Bool
+    public var uint8: UInt8?
     {
-        true
+        self.numericValue { UInt8( $0, radix: $1 ) }
     }
 
-    public func render( on window: ManagedWindow )
-    {}
-
-    public func handleKey( _ key: Int32 ) -> Bool
+    public var uint16: UInt16?
     {
-        false
+        self.numericValue { UInt16( $0, radix: $1 ) }
     }
 
-    func readUInt16FromMemory( at address: UInt16 ) throws -> UInt16
+    public var uint32: UInt32?
     {
-        let u1 = UInt16( try self.computer.bus.read( at: address ) )
-        let u2 = UInt16( try self.computer.bus.read( at: address + 1 ) )
-
-        return ( u2 << 8 ) | u1
+        self.numericValue { UInt32( $0, radix: $1 ) }
     }
 
-    func printableSize( bytes: UInt64 ) -> String
+    public var uint64: UInt64?
     {
-        if bytes < 1024
+        self.numericValue { UInt64( $0, radix: $1 ) }
+    }
+
+    public var uint: UInt?
+    {
+        self.numericValue { UInt( $0, radix: $1 ) }
+    }
+
+    private func numericValue< T: UnsignedInteger >( initialize: ( String, Int ) -> T? ) -> T?
+    {
+        let prompt = self.string.trimmingCharacters( in: .whitespaces )
+
+        if prompt.hasPrefix( "0x" )
         {
-            return "\( bytes ) B"
+            let start = prompt.index( prompt.startIndex, offsetBy: 2 )
+            let end   = prompt.endIndex
+
+            return initialize( String( prompt[ start ..< end ] ), 16 )
         }
-        else if bytes < 1024 * 1024
-        {
-            return "\( String( format: "%.02f", Double( bytes ) / 1024.0 ) ) KB"
-        }
-        else
-        {
-            return "\( String( format: "%.02f", ( Double( bytes ) / 1024.0 ) / 1024.0 ) ) MB"
-        }
+
+        return initialize( prompt, 10 )
     }
 }

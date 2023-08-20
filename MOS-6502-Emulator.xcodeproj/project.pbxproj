@@ -34,6 +34,8 @@
 		0564AD922A90EA4800EF1950 /* MemoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD912A90EA4800EF1950 /* MemoryWindow.swift */; };
 		0564AD942A90EA6800EF1950 /* StatusWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD932A90EA6800EF1950 /* StatusWindow.swift */; };
 		0564AD9A2A90F8CC00EF1950 /* MC6820Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD992A90F8CC00EF1950 /* MC6820Window.swift */; };
+		0564AD9C2A9109D300EF1950 /* PromptWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD9B2A9109D300EF1950 /* PromptWindow.swift */; };
+		0564AD9E2A9117F200EF1950 /* PromptValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD9D2A9117F200EF1950 /* PromptValue.swift */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -315,6 +317,8 @@
 		0564AD912A90EA4800EF1950 /* MemoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryWindow.swift; sourceTree = "<group>"; };
 		0564AD932A90EA6800EF1950 /* StatusWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusWindow.swift; sourceTree = "<group>"; };
 		0564AD992A90F8CC00EF1950 /* MC6820Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Window.swift; sourceTree = "<group>"; };
+		0564AD9B2A9109D300EF1950 /* PromptWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptWindow.swift; sourceTree = "<group>"; };
+		0564AD9D2A9117F200EF1950 /* PromptValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptValue.swift; sourceTree = "<group>"; };
 		05C3C13B2A8568D500436F6D /* libMOS6502.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1472A85698100436F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05C3C1482A85698100436F6D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -605,6 +609,8 @@
 				0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */,
 				0564AD912A90EA4800EF1950 /* MemoryWindow.swift */,
 				0564AD7E2A90E48A00EF1950 /* MenuWindow.swift */,
+				0564AD9D2A9117F200EF1950 /* PromptValue.swift */,
+				0564AD9B2A9109D300EF1950 /* PromptWindow.swift */,
 				0564AD852A90E8F800EF1950 /* RegistersWindow.swift */,
 				0564AD8D2A90EA1100EF1950 /* StackWindow.swift */,
 				0564AD932A90EA6800EF1950 /* StatusWindow.swift */,
@@ -1238,10 +1244,12 @@
 				05C3C1F12A8655B100436F6D /* CLD.swift in Sources */,
 				05C3C26A2A87D43800436F6D /* TAX.swift in Sources */,
 				0564AD942A90EA6800EF1950 /* StatusWindow.swift in Sources */,
+				0564AD9C2A9109D300EF1950 /* PromptWindow.swift in Sources */,
 				05C3C2502A87D39900436F6D /* ORA.swift in Sources */,
 				0564ACF52A8E93E200EF1950 /* Logger.swift in Sources */,
 				05C3C2182A87D1F200436F6D /* AND.swift in Sources */,
 				0564AD342A8EBE5A00EF1950 /* NonInteractiveDebugger.swift in Sources */,
+				0564AD9E2A9117F200EF1950 /* PromptValue.swift in Sources */,
 				05C3C2442A87D34C00436F6D /* INX.swift in Sources */,
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
 				05C3C2702A87D46A00436F6D /* TXA.swift in Sources */,

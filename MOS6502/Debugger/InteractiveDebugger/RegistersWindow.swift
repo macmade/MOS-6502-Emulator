@@ -112,4 +112,65 @@ public class RegistersWindow: DebuggerWindow
 
         window.newLine()
     }
+
+    public override func handleKey( _ key: Int32 ) -> Bool
+    {
+        if key == 0x70 // p
+        {
+            self.showPrompt( name: "PC", register: \.PC ) { $0.uint16 }
+
+            return true
+        }
+        else if key == 0x73 // s
+        {
+            self.showPrompt( name: "SP", register: \.SP ) { $0.uint8 }
+
+            return true
+        }
+        else if key == 0x61 // a
+        {
+            self.showPrompt( name: "A", register: \.A ) { $0.uint8 }
+
+            return true
+        }
+        else if key == 0x78 // x
+        {
+            self.showPrompt( name: "X", register: \.X ) { $0.uint8 }
+
+            return true
+        }
+        else if key == 0x79 // y
+        {
+            self.showPrompt( name: "Y", register: \.Y ) { $0.uint8 }
+
+            return true
+        }
+        else if key == 0x66 // f
+        {
+            self.showPrompt( name: "PS", register: \.PS )
+            {
+                if let value = $0.uint8
+                {
+                    return Registers.Flags( rawValue: value )
+                }
+
+                return nil
+            }
+
+            return true
+        }
+
+        return false
+    }
+
+    private func showPrompt< T >( name: String, register: ReferenceWritableKeyPath< Registers, T >, getValue: @escaping ( PromptValue ) -> T? )
+    {
+        self.prompt.show( title: "Enter a new value for the \( name ) register:", descriptions: nil )
+        {
+            if let value = getValue( $0 )
+            {
+                self.computer.cpu.registers[ keyPath: register ] = value
+            }
+        }
+    }
 }
