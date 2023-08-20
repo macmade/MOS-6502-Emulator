@@ -72,5 +72,9 @@ public class MenuWindow: DebuggerWindow
         window.print( foreground: .cyan,   text: "f" )
         window.print(                      text: ": " )
         window.print( foreground: .yellow, text: "Set PS" )
+        window.print(                      text: " | " )
+        window.print( foreground: .cyan,   text: "m" )
+        window.print(                      text: ": " )
+        window.print( foreground: .yellow, text: "Edit Memory" )
     }
 }

@@ -50,6 +50,24 @@ public class MemoryWindow: DebuggerWindow
 
             return true
         }
+        else if key == 0x6D // m
+        {
+            self.prompt.show( title: "Enter a memory address:", descriptions: nil )
+            {
+                if let address = $0.uint16
+                {
+                    self.prompt.show( title: "Enter a value for memory address \( address.asHex ):", descriptions: nil )
+                    {
+                        if let value = $0.uint8
+                        {
+                            try? self.computer.bus.write( value, at: address )
+                        }
+                    }
+                }
+            }
+
+            return true
+        }
 
         return false
     }
