@@ -29,6 +29,7 @@
 		054E897B2A93B6FB001E47DD /* StatusWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD932A90EA6800EF1950 /* StatusWindow.swift */; };
 		054E897C2A93B6FB001E47DD /* MemoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD912A90EA4800EF1950 /* MemoryWindow.swift */; };
 		054E897F2A93B713001E47DD /* libMOS6502Debugger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054E89652A93B68B001E47DD /* libMOS6502Debugger.a */; };
+		054E89842A93B9CA001E47DD /* MC6820PeripheralsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89822A93B9C0001E47DD /* MC6820PeripheralsWindow.swift */; };
 		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */; };
@@ -308,6 +309,7 @@
 		054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Peripheral.swift; sourceTree = "<group>"; };
 		054E88F72A93AD38001E47DD /* MC6820Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Display.swift; sourceTree = "<group>"; };
 		054E89652A93B68B001E47DD /* libMOS6502Debugger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502Debugger.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		054E89822A93B9C0001E47DD /* MC6820PeripheralsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820PeripheralsWindow.swift; sourceTree = "<group>"; };
 		0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xasm65.xcodeproj; path = Submodules/xasm65/xasm65.xcodeproj; sourceTree = "<group>"; };
 		0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceStream.swift; sourceTree = "<group>"; };
 		0564AC042A8D2CD900EF1950 /* Synertek-SY6500.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Synertek-SY6500.pdf"; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 				0564AD7E2A90E48A00EF1950 /* HelpWindow.swift */,
 				0564AD892A90E9C100EF1950 /* InstructionsWindow.swift */,
 				0564AD992A90F8CC00EF1950 /* MC6820Window.swift */,
+				054E89822A93B9C0001E47DD /* MC6820PeripheralsWindow.swift */,
 				0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */,
 				0564AD912A90EA4800EF1950 /* MemoryWindow.swift */,
 				0564AD9D2A9117F200EF1950 /* PromptValue.swift */,
@@ -1281,6 +1284,7 @@
 				054E89712A93B6FB001E47DD /* ComputerWindow.swift in Sources */,
 				054E897C2A93B6FB001E47DD /* MemoryWindow.swift in Sources */,
 				054E896C2A93B6F6001E47DD /* ComputerRunner.swift in Sources */,
+				054E89842A93B9CA001E47DD /* MC6820PeripheralsWindow.swift in Sources */,
 				054E89722A93B6FB001E47DD /* DebuggerWindow.swift in Sources */,
 				054E89752A93B6FB001E47DD /* MemoryDevicesWindow.swift in Sources */,
 				054E896E2A93B6F6001E47DD /* Debugger.swift in Sources */,

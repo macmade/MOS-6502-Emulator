@@ -34,8 +34,8 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
     public var ORB:    UInt8 = 0 // Output register B
     public var logger: Logger?
 
-    private var peripheral1: MC6820Peripheral
-    private var peripheral2: MC6820Peripheral
+    public private( set ) var peripheral1: MC6820Peripheral
+    public private( set ) var peripheral2: MC6820Peripheral
 
     private var ready1Observer: Any?
     private var ready2Observer: Any?
