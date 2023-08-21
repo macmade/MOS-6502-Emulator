@@ -35,7 +35,7 @@ public class MC6820Keyboard: MC6820Peripheral
     {
         if let ascii = key.asciiValue
         {
-            self.data = ascii
+            self.data = ascii | 0x80
         }
     }
 }
