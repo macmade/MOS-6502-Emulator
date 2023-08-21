@@ -97,6 +97,15 @@ public class RegistersWindow: DebuggerWindow
                 signed   = Int16( bitPattern: unsigned )
         }
 
+        if register.options.contains( .binary )
+        {
+            window.print( text: " | " )
+            bits.reversed().forEach
+            {
+                window.print( foreground: $0 ? .green : .red, text: $0 ? "1" : "0" )
+            }
+        }
+
         if register.options.contains( .decimal )
         {
             window.print( text: " | " )
@@ -106,15 +115,6 @@ public class RegistersWindow: DebuggerWindow
             {
                 window.print( text: " | " )
                 window.print( foreground: .yellow, text: "\( signed )" )
-            }
-        }
-
-        if register.options.contains( .binary )
-        {
-            window.print( text: " | " )
-            bits.reversed().forEach
-            {
-                window.print( foreground: $0 ? .green : .red, text: $0 ? "1" : "0" )
             }
         }
 
