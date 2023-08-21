@@ -205,6 +205,13 @@
 			remoteGlobalIDString = 054E88F92A93B68B001E47DD;
 			remoteInfo = MOS6502Debugger;
 		};
+		054E89802A93B85E001E47DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05C3C1332A8568D500436F6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05C3C13A2A8568D500436F6D;
+			remoteInfo = MOS6502;
+		};
 		0564ABEC2A8C081A00EF1950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
@@ -260,20 +267,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 0564AD022A8EA02500EF1950;
 			remoteInfo = "SwiftCurses-Example";
-		};
-		0564AD262A8EB49500EF1950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0564AC742A8E0C5B00EF1950;
-			remoteInfo = SwiftCurses;
-		};
-		0564AD282A8EB49D00EF1950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0564AC742A8E0C5B00EF1950;
-			remoteInfo = SwiftCurses;
 		};
 		0564AD2A2A8EB4A100EF1950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -401,12 +394,12 @@
 		05C3C1842A856B6F00436F6D /* FUNDING.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = FUNDING.yml; sourceTree = "<group>"; };
 		05C3C1852A856B6F00436F6D /* Debug - zld.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - zld.xcconfig"; sourceTree = "<group>"; };
 		05C3C1972A856EA000436F6D /* MOS6502.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MOS6502.xctestplan; sourceTree = "<group>"; };
-		05C3C19C2A856EC400436F6D /* MOS6502-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MOS6502-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05C3C19C2A856EC400436F6D /* MOS6502Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MOS6502Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C19E2A856EC400436F6D /* Test-Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Memory.swift"; sourceTree = "<group>"; };
 		05C3C1A62A85700100436F6D /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		05C3C1A82A85700700436F6D /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
 		05C3C1AA2A85703200436F6D /* Test-CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-CPU.swift"; sourceTree = "<group>"; };
-		05C3C1B02A85708C00436F6D /* MOS6502-Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "MOS6502-Demo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05C3C1B02A85708C00436F6D /* MOS6502Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MOS6502Demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1B22A85708C00436F6D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		05C3C1BB2A85710800436F6D /* MOS6502-Demo.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MOS6502-Demo.xctestplan"; sourceTree = "<group>"; };
 		05C3C1BC2A8572B100436F6D /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
@@ -614,7 +607,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0564AD302A8EBE3500EF1950 /* MOS6502Debugger */ = {
+		0564AD302A8EBE3500EF1950 /* MOS6502-Debugger */ = {
 			isa = PBXGroup;
 			children = (
 				0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */,
@@ -623,7 +616,7 @@
 				0564AD7A2A90E30800EF1950 /* InteractiveDebugger */,
 				0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */,
 			);
-			path = MOS6502Debugger;
+			path = "MOS6502-Debugger";
 			sourceTree = "<group>";
 		};
 		0564AD6F2A9049F000EF1950 /* Assets */ = {
@@ -671,7 +664,7 @@
 				0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */,
 				0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */,
 				05C3C13D2A8568D500436F6D /* MOS6502 */,
-				0564AD302A8EBE3500EF1950 /* MOS6502Debugger */,
+				0564AD302A8EBE3500EF1950 /* MOS6502-Debugger */,
 				05C3C1B12A85708C00436F6D /* MOS6502-Demo */,
 				05C3C19D2A856EC400436F6D /* MOS6502-Tests */,
 				05C3C13C2A8568D500436F6D /* Products */,
@@ -683,8 +676,8 @@
 			isa = PBXGroup;
 			children = (
 				05C3C13B2A8568D500436F6D /* libMOS6502.a */,
-				05C3C19C2A856EC400436F6D /* MOS6502-Tests.xctest */,
-				05C3C1B02A85708C00436F6D /* MOS6502-Demo */,
+				05C3C19C2A856EC400436F6D /* MOS6502Tests.xctest */,
+				05C3C1B02A85708C00436F6D /* MOS6502Demo */,
 				054E89652A93B68B001E47DD /* libMOS6502Debugger.a */,
 			);
 			name = Products;
@@ -1109,6 +1102,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				054E89812A93B85E001E47DD /* PBXTargetDependency */,
 				054E88FA2A93B68B001E47DD /* PBXTargetDependency */,
 				054E88FC2A93B68B001E47DD /* PBXTargetDependency */,
 			);
@@ -1128,7 +1122,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0564AD272A8EB49500EF1950 /* PBXTargetDependency */,
 				0564ABF32A8C082D00EF1950 /* PBXTargetDependency */,
 			);
 			name = MOS6502;
@@ -1136,9 +1129,9 @@
 			productReference = 05C3C13B2A8568D500436F6D /* libMOS6502.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		05C3C19B2A856EC400436F6D /* MOS6502-Tests */ = {
+		05C3C19B2A856EC400436F6D /* MOS6502Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 05C3C1A32A856EC400436F6D /* Build configuration list for PBXNativeTarget "MOS6502-Tests" */;
+			buildConfigurationList = 05C3C1A32A856EC400436F6D /* Build configuration list for PBXNativeTarget "MOS6502Tests" */;
 			buildPhases = (
 				05C3C1982A856EC400436F6D /* Sources */,
 				05C3C1992A856EC400436F6D /* Frameworks */,
@@ -1147,18 +1140,17 @@
 			buildRules = (
 			);
 			dependencies = (
-				0564AD292A8EB49D00EF1950 /* PBXTargetDependency */,
 				0564ABF72A8C084C00EF1950 /* PBXTargetDependency */,
 				05C3C1A22A856EC400436F6D /* PBXTargetDependency */,
 			);
-			name = "MOS6502-Tests";
+			name = MOS6502Tests;
 			productName = "MOS-6502-Tests";
-			productReference = 05C3C19C2A856EC400436F6D /* MOS6502-Tests.xctest */;
+			productReference = 05C3C19C2A856EC400436F6D /* MOS6502Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		05C3C1AF2A85708C00436F6D /* MOS6502-Demo */ = {
+		05C3C1AF2A85708C00436F6D /* MOS6502Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 05C3C1B42A85708C00436F6D /* Build configuration list for PBXNativeTarget "MOS6502-Demo" */;
+			buildConfigurationList = 05C3C1B42A85708C00436F6D /* Build configuration list for PBXNativeTarget "MOS6502Demo" */;
 			buildPhases = (
 				05C3C1AC2A85708C00436F6D /* Sources */,
 				05C3C1AD2A85708C00436F6D /* Frameworks */,
@@ -1172,9 +1164,9 @@
 				05C3C1B82A8570A500436F6D /* PBXTargetDependency */,
 				054E897E2A93B70C001E47DD /* PBXTargetDependency */,
 			);
-			name = "MOS6502-Demo";
+			name = MOS6502Demo;
 			productName = "MOS-6502-Demo";
-			productReference = 05C3C1B02A85708C00436F6D /* MOS6502-Demo */;
+			productReference = 05C3C1B02A85708C00436F6D /* MOS6502Demo */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -1224,8 +1216,8 @@
 			targets = (
 				05C3C13A2A8568D500436F6D /* MOS6502 */,
 				054E88F92A93B68B001E47DD /* MOS6502Debugger */,
-				05C3C19B2A856EC400436F6D /* MOS6502-Tests */,
-				05C3C1AF2A85708C00436F6D /* MOS6502-Demo */,
+				05C3C19B2A856EC400436F6D /* MOS6502Tests */,
+				05C3C1AF2A85708C00436F6D /* MOS6502Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -1490,6 +1482,11 @@
 			target = 054E88F92A93B68B001E47DD /* MOS6502Debugger */;
 			targetProxy = 054E897D2A93B70C001E47DD /* PBXContainerItemProxy */;
 		};
+		054E89812A93B85E001E47DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05C3C13A2A8568D500436F6D /* MOS6502 */;
+			targetProxy = 054E89802A93B85E001E47DD /* PBXContainerItemProxy */;
+		};
 		0564ABF32A8C082D00EF1950 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = xasm65lib;
@@ -1504,16 +1501,6 @@
 			isa = PBXTargetDependency;
 			name = xasm65lib;
 			targetProxy = 0564ABF82A8C085200EF1950 /* PBXContainerItemProxy */;
-		};
-		0564AD272A8EB49500EF1950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftCurses;
-			targetProxy = 0564AD262A8EB49500EF1950 /* PBXContainerItemProxy */;
-		};
-		0564AD292A8EB49D00EF1950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftCurses;
-			targetProxy = 0564AD282A8EB49D00EF1950 /* PBXContainerItemProxy */;
 		};
 		0564AD2B2A8EB4A100EF1950 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1663,7 +1650,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		05C3C1A32A856EC400436F6D /* Build configuration list for PBXNativeTarget "MOS6502-Tests" */ = {
+		05C3C1A32A856EC400436F6D /* Build configuration list for PBXNativeTarget "MOS6502Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05C3C1A42A856EC400436F6D /* Debug */,
@@ -1672,7 +1659,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		05C3C1B42A85708C00436F6D /* Build configuration list for PBXNativeTarget "MOS6502-Demo" */ = {
+		05C3C1B42A85708C00436F6D /* Build configuration list for PBXNativeTarget "MOS6502Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05C3C1B52A85708C00436F6D /* Debug */,

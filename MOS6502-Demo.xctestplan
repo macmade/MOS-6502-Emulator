@@ -21,7 +21,7 @@
       "target" : {
         "containerPath" : "container:MOS-6502-Emulator.xcodeproj",
         "identifier" : "05C3C19B2A856EC400436F6D",
-        "name" : "MOS-6502-Tests"
+        "name" : "MOS6502Tests"
       }
     }
   ],

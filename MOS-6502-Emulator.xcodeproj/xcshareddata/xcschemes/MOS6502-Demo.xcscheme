@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "05C3C1AF2A85708C00436F6D"
-               BuildableName = "MOS6502-Demo"
-               BlueprintName = "MOS6502-Demo"
+               BuildableName = "MOS6502Demo"
+               BlueprintName = "MOS6502Demo"
                ReferencedContainer = "container:MOS-6502-Emulator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,8 +50,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "05C3C1AF2A85708C00436F6D"
-            BuildableName = "MOS6502-Demo"
-            BlueprintName = "MOS6502-Demo"
+            BuildableName = "MOS6502Demo"
+            BlueprintName = "MOS6502Demo"
             ReferencedContainer = "container:MOS-6502-Emulator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -67,8 +67,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "05C3C1AF2A85708C00436F6D"
-            BuildableName = "MOS6502-Demo"
-            BlueprintName = "MOS6502-Demo"
+            BuildableName = "MOS6502Demo"
+            BlueprintName = "MOS6502Demo"
             ReferencedContainer = "container:MOS-6502-Emulator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
