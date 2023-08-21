@@ -23,14 +23,11 @@
  ******************************************************************************/
 
 import Foundation
-import MOS6502
 
-public class Apple1: Computer
+public class MC6820Display: MC6820Peripheral
 {
-    public init() throws
+    public override var description: String
     {
-        try super.init( frequency: .mhz( 1 ), memory: .kb( 4 ) )
-        try self.mapDevice( MC6820( peripheral1: MC6820Keyboard(), peripheral2: MC6820Display() ), at: 0xD010, size: 4 )
-        try self.loadROM( Apple1WozMonitor() )
+        "MC6820 Display"
     }
 }

@@ -34,8 +34,27 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
     public var ORB:    UInt8 = 0 // Output register B
     public var logger: Logger?
 
-    public init()
-    {}
+    private var peripheral1: MC6820Peripheral
+    private var peripheral2: MC6820Peripheral
+
+    private var ready1Observer: Any?
+    private var ready2Observer: Any?
+
+    public init( peripheral1: MC6820Peripheral, peripheral2: MC6820Peripheral )
+    {
+        self.peripheral1 = peripheral1
+        self.peripheral2 = peripheral2
+
+        peripheral1.readyChanged =
+        {
+            [ weak self ] in self?.ready( on: $0 )
+        }
+
+        peripheral2.readyChanged =
+        {
+            [ weak self ] in self?.ready( on: $0 )
+        }
+    }
 
     public func reset() throws
     {
@@ -74,4 +93,7 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
     {
         "MC6820 PIA"
     }
+
+    private func ready( on peripheral: MC6820Peripheral )
+    {}
 }

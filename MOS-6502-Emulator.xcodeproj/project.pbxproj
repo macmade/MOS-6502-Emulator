@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		054E88F42A93AD19001E47DD /* MC6820Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */; };
+		054E88F62A93AD32001E47DD /* MC6820Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */; };
+		054E88F82A93AD38001E47DD /* MC6820Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F72A93AD38001E47DD /* MC6820Display.swift */; };
 		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */; };
@@ -286,6 +289,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Keyboard.swift; sourceTree = "<group>"; };
+		054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Peripheral.swift; sourceTree = "<group>"; };
+		054E88F72A93AD38001E47DD /* MC6820Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Display.swift; sourceTree = "<group>"; };
 		0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xasm65.xcodeproj; path = Submodules/xasm65/xasm65.xcodeproj; sourceTree = "<group>"; };
 		0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceStream.swift; sourceTree = "<group>"; };
 		0564AC042A8D2CD900EF1950 /* Synertek-SY6500.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Synertek-SY6500.pdf"; sourceTree = "<group>"; };
@@ -1013,9 +1019,12 @@
 		05DED74D2A8AA6BF00DA42F9 /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				05C6D1092A897EB600A984EB /* MC6820.swift */,
+				054E88F72A93AD38001E47DD /* MC6820Display.swift */,
+				054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */,
+				054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */,
 				05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */,
 				0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */,
-				05C6D1092A897EB600A984EB /* MC6820.swift */,
 				05DED7492A8AA41D00DA42F9 /* RAM.swift */,
 				0564AD6D2A9030A100EF1950 /* Resettable.swift */,
 				05C3C1F82A865D5900436F6D /* ROM.swift */,
@@ -1214,6 +1223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				054E88F82A93AD38001E47DD /* MC6820Display.swift in Sources */,
 				05C3C2582A87D3C200436F6D /* PLP.swift in Sources */,
 				05C6D0E52A88DE3400A984EB /* MemoryDevice.swift in Sources */,
 				0564AD8E2A90EA1100EF1950 /* StackWindow.swift in Sources */,
@@ -1261,6 +1271,7 @@
 				05DED74C2A8AA67A00DA42F9 /* AddressingContext.swift in Sources */,
 				05C3C2382A87D2EF00436F6D /* CPY.swift in Sources */,
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
+				054E88F42A93AD19001E47DD /* MC6820Keyboard.swift in Sources */,
 				0564AD882A90E90300EF1950 /* FlagsWindow.swift in Sources */,
 				0564AD8C2A90E9E300EF1950 /* DisassemblyWindow.swift in Sources */,
 				0564AD7F2A90E48A00EF1950 /* HelpWindow.swift in Sources */,
@@ -1274,6 +1285,7 @@
 				05C3C2682A87D43000436F6D /* SEI.swift in Sources */,
 				05C3C2482A87D36700436F6D /* JMP.swift in Sources */,
 				05C3C2642A87D40F00436F6D /* SEC.swift in Sources */,
+				054E88F62A93AD32001E47DD /* MC6820Peripheral.swift in Sources */,
 				05C3C1D52A85948500436F6D /* Registers.swift in Sources */,
 				05C3C23E2A87D31800436F6D /* DEY.swift in Sources */,
 				05C3C23A2A87D2FE00436F6D /* DEC.swift in Sources */,

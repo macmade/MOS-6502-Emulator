@@ -23,14 +23,51 @@
  ******************************************************************************/
 
 import Foundation
-import MOS6502
 
-public class Apple1: Computer
+public class MC6820Peripheral: CustomStringConvertible
 {
-    public init() throws
+    public var ready: Bool = false
     {
-        try super.init( frequency: .mhz( 1 ), memory: .kb( 4 ) )
-        try self.mapDevice( MC6820( peripheral1: MC6820Keyboard(), peripheral2: MC6820Display() ), at: 0xD010, size: 4 )
-        try self.loadROM( Apple1WozMonitor() )
+        didSet
+        {
+            self.readyChanged?( self )
+        }
+    }
+
+    public var acknowledge: Bool = false
+    {
+        didSet
+        {}
+    }
+
+    public private( set ) var data: UInt8 = 0
+    {
+        didSet
+        {
+            self.ready = true
+        }
+    }
+
+    public var readyChanged: ( ( MC6820Peripheral ) -> Void )?
+
+    private var queue = DispatchQueue( label: "MC6820PeripheralQueue", qos: .userInitiated, attributes: [] )
+
+    public init()
+    {}
+
+    public func setData( _ data: UInt8 )
+    {
+        self.setData( [ data ] )
+    }
+
+    public func setData( _ data: [ UInt8 ] )
+    {
+        self.queue.async
+        {}
+    }
+
+    public var description: String
+    {
+        "Unknown Peripheral"
     }
 }
