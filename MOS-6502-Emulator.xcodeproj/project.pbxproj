@@ -30,9 +30,8 @@
 		054E897C2A93B6FB001E47DD /* MemoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD912A90EA4800EF1950 /* MemoryWindow.swift */; };
 		054E897F2A93B713001E47DD /* libMOS6502Debugger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054E89652A93B68B001E47DD /* libMOS6502Debugger.a */; };
 		054E89842A93B9CA001E47DD /* MC6820PeripheralsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89822A93B9C0001E47DD /* MC6820PeripheralsWindow.swift */; };
-		054E89872A93EAB7001E47DD /* DebugAwareMemoryDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89852A93EAB3001E47DD /* DebugAwareMemoryDevice.swift */; };
-		054E898D2A93EB79001E47DD /* Bus+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89892A93EB01001E47DD /* Bus+Debug.swift */; };
-		054E898E2A93EB79001E47DD /* MC6820+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E898B2A93EB0D001E47DD /* MC6820+Debug.swift */; };
+		054E898D2A93EB79001E47DD /* Devices+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89892A93EB01001E47DD /* Devices+Debug.swift */; };
+		054E89B82A93F2BE001E47DD /* MC6820+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89B62A93F2AF001E47DD /* MC6820+Debug.swift */; };
 		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */; };
@@ -313,9 +312,8 @@
 		054E88F72A93AD38001E47DD /* MC6820Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Display.swift; sourceTree = "<group>"; };
 		054E89652A93B68B001E47DD /* libMOS6502Debugger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502Debugger.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		054E89822A93B9C0001E47DD /* MC6820PeripheralsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820PeripheralsWindow.swift; sourceTree = "<group>"; };
-		054E89852A93EAB3001E47DD /* DebugAwareMemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugAwareMemoryDevice.swift; sourceTree = "<group>"; };
-		054E89892A93EB01001E47DD /* Bus+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bus+Debug.swift"; sourceTree = "<group>"; };
-		054E898B2A93EB0D001E47DD /* MC6820+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MC6820+Debug.swift"; sourceTree = "<group>"; };
+		054E89892A93EB01001E47DD /* Devices+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Devices+Debug.swift"; sourceTree = "<group>"; };
+		054E89B62A93F2AF001E47DD /* MC6820+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MC6820+Debug.swift"; sourceTree = "<group>"; };
 		0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xasm65.xcodeproj; path = Submodules/xasm65/xasm65.xcodeproj; sourceTree = "<group>"; };
 		0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceStream.swift; sourceTree = "<group>"; };
 		0564AC042A8D2CD900EF1950 /* Synertek-SY6500.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Synertek-SY6500.pdf"; sourceTree = "<group>"; };
@@ -596,12 +594,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		054E89882A93EADA001E47DD /* Devices */ = {
+		054E89B52A93F29B001E47DD /* Devices */ = {
 			isa = PBXGroup;
 			children = (
-				054E89892A93EB01001E47DD /* Bus+Debug.swift */,
-				054E89852A93EAB3001E47DD /* DebugAwareMemoryDevice.swift */,
-				054E898B2A93EB0D001E47DD /* MC6820+Debug.swift */,
+				054E89892A93EB01001E47DD /* Devices+Debug.swift */,
+				054E89B62A93F2AF001E47DD /* MC6820+Debug.swift */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -630,9 +627,9 @@
 			children = (
 				0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */,
 				0564AD2E2A8EB80500EF1950 /* Debugger.swift */,
-				054E89882A93EADA001E47DD /* Devices */,
-				0564AD312A8EBE5400EF1950 /* InteractiveDebugger.swift */,
+				054E89B52A93F29B001E47DD /* Devices */,
 				0564AD7A2A90E30800EF1950 /* InteractiveDebugger */,
+				0564AD312A8EBE5400EF1950 /* InteractiveDebugger.swift */,
 				0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */,
 			);
 			path = "MOS6502-Debugger";
@@ -1295,7 +1292,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				054E89872A93EAB7001E47DD /* DebugAwareMemoryDevice.swift in Sources */,
 				054E89762A93B6FB001E47DD /* RegistersWindow.swift in Sources */,
 				054E896F2A93B6FB001E47DD /* HelpWindow.swift in Sources */,
 				054E896D2A93B6F6001E47DD /* InteractiveDebugger.swift in Sources */,
@@ -1304,9 +1300,9 @@
 				054E896C2A93B6F6001E47DD /* ComputerRunner.swift in Sources */,
 				054E89842A93B9CA001E47DD /* MC6820PeripheralsWindow.swift in Sources */,
 				054E89722A93B6FB001E47DD /* DebuggerWindow.swift in Sources */,
-				054E898E2A93EB79001E47DD /* MC6820+Debug.swift in Sources */,
 				054E89752A93B6FB001E47DD /* MemoryDevicesWindow.swift in Sources */,
 				054E896E2A93B6F6001E47DD /* Debugger.swift in Sources */,
+				054E89B82A93F2BE001E47DD /* MC6820+Debug.swift in Sources */,
 				054E89702A93B6FB001E47DD /* InstructionsWindow.swift in Sources */,
 				054E89792A93B6FB001E47DD /* PromptWindow.swift in Sources */,
 				054E897A2A93B6FB001E47DD /* StackWindow.swift in Sources */,
@@ -1316,7 +1312,7 @@
 				054E897B2A93B6FB001E47DD /* StatusWindow.swift in Sources */,
 				054E89772A93B6FB001E47DD /* PromptValue.swift in Sources */,
 				054E89732A93B6FB001E47DD /* DisassemblyWindow.swift in Sources */,
-				054E898D2A93EB79001E47DD /* Bus+Debug.swift in Sources */,
+				054E898D2A93EB79001E47DD /* Devices+Debug.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

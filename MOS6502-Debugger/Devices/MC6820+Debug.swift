@@ -25,14 +25,14 @@
 import Foundation
 import MOS6502
 
-extension MC6820: DebugAwareWriteableMemoryDevice
+public extension MC6820
 {
-    public func debugRead( at address: UInt16 ) throws -> UInt8
+    func debugRead( at address: UInt16 ) throws -> UInt8
     {
         self[ keyPath: try self.register( for: address ) ]
     }
 
-    public func debugWrite( _ value: UInt8, at address: UInt16 ) throws
+    func debugWrite( _ value: UInt8, at address: UInt16 ) throws
     {
         self[ keyPath: try self.register( for: address ) ] = value
     }

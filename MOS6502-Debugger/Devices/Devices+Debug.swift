@@ -25,12 +25,33 @@
 import Foundation
 import MOS6502
 
-public protocol DebugAwareMemoryDevice: MemoryDevice
+public extension Bus
 {
     func debugRead( at address: UInt16 ) throws -> UInt8
-}
+    {
+        let mapped = try self.deviceForAddress( address )
 
-public protocol DebugAwareWriteableMemoryDevice: WriteableMemoryDevice, DebugAwareMemoryDevice
-{
+        if let pia = mapped.device as? MC6820
+        {
+            return try pia.debugRead( at: mapped.address )
+        }
+        else
+        {
+            return try self.read( at: address )
+        }
+    }
+
     func debugWrite( _ value: UInt8, at address: UInt16 ) throws
+    {
+        let mapped = try self.writeableDeviceForAddress( address )
+
+        if let pia = mapped.device as? MC6820
+        {
+            try pia.debugWrite( value, at: mapped.address )
+        }
+        else
+        {
+            try self.write( value, at: address )
+        }
+    }
 }
