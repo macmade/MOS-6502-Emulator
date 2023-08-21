@@ -45,5 +45,5 @@ public func LDX( cpu: CPU, context: AddressingContext ) throws
 {
     cpu.registers.X = try context.read()
 
-    cpu.setZeroAndNegativeFlags( for: cpu.registers.Y )
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.X )
 }

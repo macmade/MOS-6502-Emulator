@@ -45,5 +45,5 @@ public func LDA( cpu: CPU, context: AddressingContext ) throws
 {
     cpu.registers.A = try context.read()
 
-    cpu.setZeroAndNegativeFlags( for: cpu.registers.Y )
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.A )
 }
