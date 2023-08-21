@@ -28,6 +28,21 @@ import SwiftCurses
 
 public class MC6820PeripheralsWindow: DebuggerWindow
 {
+    private var pia: MC6820?
+    {
+        self.computer.bus.devices.compactMap { $0.device as? MC6820 }.first
+    }
+
+    private var keyboard: MC6820Keyboard?
+    {
+        self.pia?.peripheral1 as? MC6820Keyboard ?? self.pia?.peripheral2 as? MC6820Keyboard
+    }
+
+    private var display: MC6820Display?
+    {
+        self.pia?.peripheral1 as? MC6820Display ?? self.pia?.peripheral2 as? MC6820Display
+    }
+
     public override func render( on window: ManagedWindow )
     {
         window.printLine( foreground: .blue, text: "MC6820 Peripherals:" )
@@ -45,6 +60,24 @@ public class MC6820PeripheralsWindow: DebuggerWindow
         self.printPeripheral( window: window, peripheral: pia.peripheral1 )
         window.separator()
         self.printPeripheral( window: window, peripheral: pia.peripheral2 )
+    }
+
+    public override func handleKey( _ key: Int32 ) -> Bool
+    {
+        if key == 0x6B // k
+        {
+            self.prompt.show( title: "Enter a text to send to the keyboard", descriptions: nil )
+            {
+                if let key = $0.string.first
+                {
+                    self.keyboard?.enterKey( key )
+                }
+            }
+
+            return true
+        }
+
+        return false
     }
 
     private func printPeripheral( window: ManagedWindow, peripheral: MC6820Peripheral )

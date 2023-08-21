@@ -49,6 +49,7 @@ public class HelpWindow: DebuggerWindow
             ( "x",       "Set the X register" ),
             ( "y",       "Set the Y register" ),
             ( "f",       "Set the PS register" ),
+            ( "k",       "Enter keyboard input" ),
         ]
 
     public override init( computer: Computer, frame: Rect, style: ManagedWindow.Style, prompt: PromptWindow )

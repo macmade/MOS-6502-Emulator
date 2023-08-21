@@ -30,4 +30,7 @@ public class MC6820Keyboard: MC6820Peripheral
     {
         "MC6820 Keyboard"
     }
+
+    public func enterKey( _ key: Character )
+    {}
 }
