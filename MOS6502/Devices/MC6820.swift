@@ -66,7 +66,7 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
         self.ORB  = 0
     }
 
-    private func register( for address: UInt16 ) throws -> ReferenceWritableKeyPath< MC6820, UInt8 >
+    public func register( for address: UInt16 ) throws -> ReferenceWritableKeyPath< MC6820, UInt8 >
     {
         switch address
         {

@@ -112,7 +112,7 @@ public class Bus: WriteableMemoryDevice, LogSource, Resettable
         try mapped.device.write( u2, at: mapped.address + 1 )
     }
 
-    private func deviceForAddress( _ address: UInt16 ) throws -> ( address: UInt16, device: MemoryDevice )
+    public func deviceForAddress( _ address: UInt16 ) throws -> ( address: UInt16, device: MemoryDevice )
     {
         for mapped in self.devices
         {
@@ -125,7 +125,7 @@ public class Bus: WriteableMemoryDevice, LogSource, Resettable
         throw RuntimeError( message: "No mapped device for address \( address.asHex )" )
     }
 
-    private func writeableDeviceForAddress( _ address: UInt16 ) throws -> ( address: UInt16, device: WriteableMemoryDevice )
+    public func writeableDeviceForAddress( _ address: UInt16 ) throws -> ( address: UInt16, device: WriteableMemoryDevice )
     {
         let mapped = try self.deviceForAddress( address )
 

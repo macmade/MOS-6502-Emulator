@@ -76,8 +76,9 @@ public class MemoryWindow: DebuggerWindow
     {
         let bytes = ( start ... end ).map
         {
-            try? self.computer.bus.read( at: $0 )
+            try? self.computer.bus.debugRead( at: $0 )
         }
+
 
         let memoryBytesPerLine = ( columns / 4 )
         let memoryLines        = lines
