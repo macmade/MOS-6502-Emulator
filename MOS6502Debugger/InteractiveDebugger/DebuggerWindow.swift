@@ -23,20 +23,64 @@
  ******************************************************************************/
 
 import Foundation
+import MOS6502
 import SwiftCurses
 
-public class Debugger
+public class DebuggerWindow: WindowBuilder
 {
-    private init()
+    public var desiredFame: Rect
+    public var style:       ManagedWindow.Style
+
+    public var priority: Int
+    {
+        DebuggerWindow.defaultPriority
+    }
+
+    public private( set ) var computer: Computer
+    public private( set ) var prompt:   PromptWindow
+
+    public init( computer: Computer, frame: Rect, style: ManagedWindow.Style, prompt: PromptWindow )
+    {
+        self.computer    = computer
+        self.desiredFame = frame
+        self.style       = style
+        self.prompt      = prompt
+    }
+
+    public func shouldBeRendered() -> Bool
+    {
+        true
+    }
+
+    public func render( on window: ManagedWindow )
     {}
 
-    public class func debugger( for computer: Computer ) -> ComputerRunner
+    public func handleKey( _ key: Int32 ) -> Bool
     {
-        if let screen = Screen.shared
-        {
-            return InteractiveDebugger( computer: computer, screen: screen )
-        }
+        false
+    }
 
-        return NonInteractiveDebugger( computer: computer )
+    func readUInt16FromMemory( at address: UInt16 ) throws -> UInt16
+    {
+        let u1 = UInt16( try self.computer.bus.read( at: address ) )
+        let u2 = UInt16( try self.computer.bus.read( at: address + 1 ) )
+
+        return ( u2 << 8 ) | u1
+    }
+
+    func printableSize( bytes: UInt64 ) -> String
+    {
+        if bytes < 1024
+        {
+            return "\( bytes ) B"
+        }
+        else if bytes < 1024 * 1024
+        {
+            return "\( String( format: "%.02f", Double( bytes ) / 1024.0 ) ) KB"
+        }
+        else
+        {
+            return "\( String( format: "%.02f", ( Double( bytes ) / 1024.0 ) / 1024.0 ) ) MB"
+        }
     }
 }

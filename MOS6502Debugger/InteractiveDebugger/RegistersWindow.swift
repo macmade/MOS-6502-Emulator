@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Foundation
+import MOS6502
 import SwiftCurses
 
 public class RegistersWindow: DebuggerWindow
@@ -39,7 +40,7 @@ public class RegistersWindow: DebuggerWindow
         window.printLine( foreground: .blue,   text: "CPU Registers:" )
         window.separator()
 
-        let registers: [ ( name: String, value: Either< UInt8, UInt16 >, mode: RegisterDisplayMode ) ] = [
+        let registers: [ ( name: String, value: MOS6502.Either< UInt8, UInt16 >, mode: RegisterDisplayMode ) ] = [
             ( "PC: ", .right( self.computer.cpu.registers.PC          ), .none ),
             ( "SP: ", .left(  self.computer.cpu.registers.SP          ), .none ),
             ( "--",   .left(  0                                       ), .none ),
@@ -63,7 +64,7 @@ public class RegistersWindow: DebuggerWindow
         }
     }
 
-    private func printRegister( window: ManagedWindow, register: ( name: String, value: Either< UInt8, UInt16 >, mode: RegisterDisplayMode ) )
+    private func printRegister( window: ManagedWindow, register: ( name: String, value: MOS6502.Either< UInt8, UInt16 >, mode: RegisterDisplayMode ) )
     {
         window.print( foreground: .cyan, text: register.name )
 

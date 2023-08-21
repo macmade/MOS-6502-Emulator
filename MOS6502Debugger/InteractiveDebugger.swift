@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Foundation
+import MOS6502
 import SwiftCurses
 import xasm65lib
 

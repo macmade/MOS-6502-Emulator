@@ -24,6 +24,7 @@
 
 import Foundation
 import MOS6502
+import MOS6502Debugger
 
 do
 {

@@ -10,6 +10,25 @@
 		054E88F42A93AD19001E47DD /* MC6820Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */; };
 		054E88F62A93AD32001E47DD /* MC6820Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */; };
 		054E88F82A93AD38001E47DD /* MC6820Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F72A93AD38001E47DD /* MC6820Display.swift */; };
+		054E896B2A93B6F6001E47DD /* NonInteractiveDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */; };
+		054E896C2A93B6F6001E47DD /* ComputerRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */; };
+		054E896D2A93B6F6001E47DD /* InteractiveDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD312A8EBE5400EF1950 /* InteractiveDebugger.swift */; };
+		054E896E2A93B6F6001E47DD /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD2E2A8EB80500EF1950 /* Debugger.swift */; };
+		054E896F2A93B6FB001E47DD /* HelpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD7E2A90E48A00EF1950 /* HelpWindow.swift */; };
+		054E89702A93B6FB001E47DD /* InstructionsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD892A90E9C100EF1950 /* InstructionsWindow.swift */; };
+		054E89712A93B6FB001E47DD /* ComputerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD802A90E54A00EF1950 /* ComputerWindow.swift */; };
+		054E89722A93B6FB001E47DD /* DebuggerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD832A90E65F00EF1950 /* DebuggerWindow.swift */; };
+		054E89732A93B6FB001E47DD /* DisassemblyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8B2A90E9E300EF1950 /* DisassemblyWindow.swift */; };
+		054E89742A93B6FB001E47DD /* MC6820Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD992A90F8CC00EF1950 /* MC6820Window.swift */; };
+		054E89752A93B6FB001E47DD /* MemoryDevicesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */; };
+		054E89762A93B6FB001E47DD /* RegistersWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD852A90E8F800EF1950 /* RegistersWindow.swift */; };
+		054E89772A93B6FB001E47DD /* PromptValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD9D2A9117F200EF1950 /* PromptValue.swift */; };
+		054E89782A93B6FB001E47DD /* FlagsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD872A90E90300EF1950 /* FlagsWindow.swift */; };
+		054E89792A93B6FB001E47DD /* PromptWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD9B2A9109D300EF1950 /* PromptWindow.swift */; };
+		054E897A2A93B6FB001E47DD /* StackWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8D2A90EA1100EF1950 /* StackWindow.swift */; };
+		054E897B2A93B6FB001E47DD /* StatusWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD932A90EA6800EF1950 /* StatusWindow.swift */; };
+		054E897C2A93B6FB001E47DD /* MemoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD912A90EA4800EF1950 /* MemoryWindow.swift */; };
+		054E897F2A93B713001E47DD /* libMOS6502Debugger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054E89652A93B68B001E47DD /* libMOS6502Debugger.a */; };
 		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */; };
@@ -18,27 +37,9 @@
 		0564ACFB2A8E944800EF1950 /* LogSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ACFA2A8E944800EF1950 /* LogSource.swift */; };
 		0564AD2C2A8EB4AD00EF1950 /* libSwiftCurses.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD212A8EB48900EF1950 /* libSwiftCurses.a */; };
 		0564AD2D2A8EB4B200EF1950 /* libSwiftCurses.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD212A8EB48900EF1950 /* libSwiftCurses.a */; };
-		0564AD2F2A8EB80500EF1950 /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD2E2A8EB80500EF1950 /* Debugger.swift */; };
-		0564AD322A8EBE5400EF1950 /* InteractiveDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD312A8EBE5400EF1950 /* InteractiveDebugger.swift */; };
-		0564AD342A8EBE5A00EF1950 /* NonInteractiveDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */; };
-		0564AD362A8EC0FB00EF1950 /* ComputerRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */; };
 		0564AD382A8EC13D00EF1950 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD372A8EC13D00EF1950 /* libncurses.tbd */; };
 		0564AD6C2A902F4900EF1950 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD372A8EC13D00EF1950 /* libncurses.tbd */; };
 		0564AD6E2A9030A100EF1950 /* Resettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD6D2A9030A100EF1950 /* Resettable.swift */; };
-		0564AD7F2A90E48A00EF1950 /* HelpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD7E2A90E48A00EF1950 /* HelpWindow.swift */; };
-		0564AD812A90E54A00EF1950 /* ComputerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD802A90E54A00EF1950 /* ComputerWindow.swift */; };
-		0564AD842A90E65F00EF1950 /* DebuggerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD832A90E65F00EF1950 /* DebuggerWindow.swift */; };
-		0564AD862A90E8F800EF1950 /* RegistersWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD852A90E8F800EF1950 /* RegistersWindow.swift */; };
-		0564AD882A90E90300EF1950 /* FlagsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD872A90E90300EF1950 /* FlagsWindow.swift */; };
-		0564AD8A2A90E9C100EF1950 /* InstructionsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD892A90E9C100EF1950 /* InstructionsWindow.swift */; };
-		0564AD8C2A90E9E300EF1950 /* DisassemblyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8B2A90E9E300EF1950 /* DisassemblyWindow.swift */; };
-		0564AD8E2A90EA1100EF1950 /* StackWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8D2A90EA1100EF1950 /* StackWindow.swift */; };
-		0564AD902A90EA2C00EF1950 /* MemoryDevicesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */; };
-		0564AD922A90EA4800EF1950 /* MemoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD912A90EA4800EF1950 /* MemoryWindow.swift */; };
-		0564AD942A90EA6800EF1950 /* StatusWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD932A90EA6800EF1950 /* StatusWindow.swift */; };
-		0564AD9A2A90F8CC00EF1950 /* MC6820Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD992A90F8CC00EF1950 /* MC6820Window.swift */; };
-		0564AD9C2A9109D300EF1950 /* PromptWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD9B2A9109D300EF1950 /* PromptWindow.swift */; };
-		0564AD9E2A9117F200EF1950 /* PromptValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD9D2A9117F200EF1950 /* PromptValue.swift */; };
 		05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C19E2A856EC400436F6D /* Test-Memory.swift */; };
 		05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
 		05C3C1A72A85700100436F6D /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1A62A85700100436F6D /* Memory.swift */; };
@@ -183,6 +184,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		054E88FB2A93B68B001E47DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0564AC742A8E0C5B00EF1950;
+			remoteInfo = SwiftCurses;
+		};
+		054E88FD2A93B68B001E47DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05DED7A42A8AAF0300DA42F9;
+			remoteInfo = xasm65lib;
+		};
+		054E897D2A93B70C001E47DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05C3C1332A8568D500436F6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 054E88F92A93B68B001E47DD;
+			remoteInfo = MOS6502Debugger;
+		};
 		0564ABEC2A8C081A00EF1950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */;
@@ -292,6 +314,7 @@
 		054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Keyboard.swift; sourceTree = "<group>"; };
 		054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Peripheral.swift; sourceTree = "<group>"; };
 		054E88F72A93AD38001E47DD /* MC6820Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Display.swift; sourceTree = "<group>"; };
+		054E89652A93B68B001E47DD /* libMOS6502Debugger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMOS6502Debugger.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xasm65.xcodeproj; path = Submodules/xasm65/xasm65.xcodeproj; sourceTree = "<group>"; };
 		0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceStream.swift; sourceTree = "<group>"; };
 		0564AC042A8D2CD900EF1950 /* Synertek-SY6500.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Synertek-SY6500.pdf"; sourceTree = "<group>"; };
@@ -532,6 +555,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		054E89612A93B68B001E47DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		05C3C1392A8568D500436F6D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -558,6 +588,7 @@
 				0564AD2C2A8EB4AD00EF1950 /* libSwiftCurses.a in Frameworks */,
 				0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */,
 				05C3C1BA2A8570A900436F6D /* libMOS6502.a in Frameworks */,
+				054E897F2A93B713001E47DD /* libMOS6502Debugger.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +614,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0564AD302A8EBE3500EF1950 /* Debugger */ = {
+		0564AD302A8EBE3500EF1950 /* MOS6502Debugger */ = {
 			isa = PBXGroup;
 			children = (
 				0564AD352A8EC0FB00EF1950 /* ComputerRunner.swift */,
@@ -592,7 +623,7 @@
 				0564AD7A2A90E30800EF1950 /* InteractiveDebugger */,
 				0564AD332A8EBE5A00EF1950 /* NonInteractiveDebugger.swift */,
 			);
-			path = Debugger;
+			path = MOS6502Debugger;
 			sourceTree = "<group>";
 		};
 		0564AD6F2A9049F000EF1950 /* Assets */ = {
@@ -640,6 +671,7 @@
 				0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */,
 				0564AD1B2A8EB48900EF1950 /* SwiftCurses.xcodeproj */,
 				05C3C13D2A8568D500436F6D /* MOS6502 */,
+				0564AD302A8EBE3500EF1950 /* MOS6502Debugger */,
 				05C3C1B12A85708C00436F6D /* MOS6502-Demo */,
 				05C3C19D2A856EC400436F6D /* MOS6502-Tests */,
 				05C3C13C2A8568D500436F6D /* Products */,
@@ -653,6 +685,7 @@
 				05C3C13B2A8568D500436F6D /* libMOS6502.a */,
 				05C3C19C2A856EC400436F6D /* MOS6502-Tests.xctest */,
 				05C3C1B02A85708C00436F6D /* MOS6502-Demo */,
+				054E89652A93B68B001E47DD /* libMOS6502Debugger.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -665,7 +698,6 @@
 				05C6D1072A896C9900A984EB /* Clock.swift */,
 				05C3C1F62A865D5300436F6D /* Computer.swift */,
 				05C3C1A82A85700700436F6D /* CPU.swift */,
-				0564AD302A8EBE3500EF1950 /* Debugger */,
 				05DED74D2A8AA6BF00DA42F9 /* Devices */,
 				05C3C2112A87A11D00436F6D /* Instruction.swift */,
 				05C3C1D82A85A95A00436F6D /* Instructions */,
@@ -1049,6 +1081,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		054E88FE2A93B68B001E47DD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		05C3C1372A8568D500436F6D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1059,6 +1098,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		054E88F92A93B68B001E47DD /* MOS6502Debugger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 054E89622A93B68B001E47DD /* Build configuration list for PBXNativeTarget "MOS6502Debugger" */;
+			buildPhases = (
+				054E88FE2A93B68B001E47DD /* Headers */,
+				054E88FF2A93B68B001E47DD /* Sources */,
+				054E89612A93B68B001E47DD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				054E88FA2A93B68B001E47DD /* PBXTargetDependency */,
+				054E88FC2A93B68B001E47DD /* PBXTargetDependency */,
+			);
+			name = MOS6502Debugger;
+			productName = "MOS-6502-Emulator";
+			productReference = 054E89652A93B68B001E47DD /* libMOS6502Debugger.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		05C3C13A2A8568D500436F6D /* MOS6502 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05C3C1442A8568D500436F6D /* Build configuration list for PBXNativeTarget "MOS6502" */;
@@ -1112,6 +1170,7 @@
 				0564AD2B2A8EB4A100EF1950 /* PBXTargetDependency */,
 				0564ABF92A8C085200EF1950 /* PBXTargetDependency */,
 				05C3C1B82A8570A500436F6D /* PBXTargetDependency */,
+				054E897E2A93B70C001E47DD /* PBXTargetDependency */,
 			);
 			name = "MOS6502-Demo";
 			productName = "MOS-6502-Demo";
@@ -1164,6 +1223,7 @@
 			projectRoot = "";
 			targets = (
 				05C3C13A2A8568D500436F6D /* MOS6502 */,
+				054E88F92A93B68B001E47DD /* MOS6502Debugger */,
 				05C3C19B2A856EC400436F6D /* MOS6502-Tests */,
 				05C3C1AF2A85708C00436F6D /* MOS6502-Demo */,
 			);
@@ -1219,6 +1279,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		054E88FF2A93B68B001E47DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				054E89762A93B6FB001E47DD /* RegistersWindow.swift in Sources */,
+				054E896F2A93B6FB001E47DD /* HelpWindow.swift in Sources */,
+				054E896D2A93B6F6001E47DD /* InteractiveDebugger.swift in Sources */,
+				054E89712A93B6FB001E47DD /* ComputerWindow.swift in Sources */,
+				054E897C2A93B6FB001E47DD /* MemoryWindow.swift in Sources */,
+				054E896C2A93B6F6001E47DD /* ComputerRunner.swift in Sources */,
+				054E89722A93B6FB001E47DD /* DebuggerWindow.swift in Sources */,
+				054E89752A93B6FB001E47DD /* MemoryDevicesWindow.swift in Sources */,
+				054E896E2A93B6F6001E47DD /* Debugger.swift in Sources */,
+				054E89702A93B6FB001E47DD /* InstructionsWindow.swift in Sources */,
+				054E89792A93B6FB001E47DD /* PromptWindow.swift in Sources */,
+				054E897A2A93B6FB001E47DD /* StackWindow.swift in Sources */,
+				054E89782A93B6FB001E47DD /* FlagsWindow.swift in Sources */,
+				054E89742A93B6FB001E47DD /* MC6820Window.swift in Sources */,
+				054E896B2A93B6F6001E47DD /* NonInteractiveDebugger.swift in Sources */,
+				054E897B2A93B6FB001E47DD /* StatusWindow.swift in Sources */,
+				054E89772A93B6FB001E47DD /* PromptValue.swift in Sources */,
+				054E89732A93B6FB001E47DD /* DisassemblyWindow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		05C3C1382A8568D500436F6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1226,40 +1311,29 @@
 				054E88F82A93AD38001E47DD /* MC6820Display.swift in Sources */,
 				05C3C2582A87D3C200436F6D /* PLP.swift in Sources */,
 				05C6D0E52A88DE3400A984EB /* MemoryDevice.swift in Sources */,
-				0564AD8E2A90EA1100EF1950 /* StackWindow.swift in Sources */,
 				05C3C2542A87D3AD00436F6D /* PHP.swift in Sources */,
 				05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */,
 				05DED74A2A8AA41E00DA42F9 /* RAM.swift in Sources */,
 				05C3C2462A87D35500436F6D /* INY.swift in Sources */,
-				0564AD2F2A8EB80500EF1950 /* Debugger.swift in Sources */,
 				05C3C24E2A87D38E00436F6D /* LSR.swift in Sources */,
 				05C3C1F72A865D5300436F6D /* Computer.swift in Sources */,
 				05C3C25E2A87D3EB00436F6D /* RTI.swift in Sources */,
-				0564AD902A90EA2C00EF1950 /* MemoryDevicesWindow.swift in Sources */,
 				05C3C2662A87D42700436F6D /* SED.swift in Sources */,
 				05C3C22A2A87D27E00436F6D /* BRK.swift in Sources */,
-				0564AD862A90E8F800EF1950 /* RegistersWindow.swift in Sources */,
 				05C3C2122A87A11D00436F6D /* Instruction.swift in Sources */,
 				05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */,
 				05C3C2602A87D3F300436F6D /* RTS.swift in Sources */,
 				05C3C22E2A87D29500436F6D /* CLC.swift in Sources */,
 				05C6D1022A89165A00A984EB /* Bus.swift in Sources */,
 				05C3C2322A87D2BC00436F6D /* BVS.swift in Sources */,
-				0564AD9A2A90F8CC00EF1950 /* MC6820Window.swift in Sources */,
 				0564ACFB2A8E944800EF1950 /* LogSource.swift in Sources */,
-				0564AD922A90EA4800EF1950 /* MemoryWindow.swift in Sources */,
-				0564AD322A8EBE5400EF1950 /* InteractiveDebugger.swift in Sources */,
 				05C3C1DA2A85A96600436F6D /* LDA.swift in Sources */,
 				05C3C2742A87D48300436F6D /* TYA.swift in Sources */,
 				05C3C1F12A8655B100436F6D /* CLD.swift in Sources */,
 				05C3C26A2A87D43800436F6D /* TAX.swift in Sources */,
-				0564AD942A90EA6800EF1950 /* StatusWindow.swift in Sources */,
-				0564AD9C2A9109D300EF1950 /* PromptWindow.swift in Sources */,
 				05C3C2502A87D39900436F6D /* ORA.swift in Sources */,
 				0564ACF52A8E93E200EF1950 /* Logger.swift in Sources */,
 				05C3C2182A87D1F200436F6D /* AND.swift in Sources */,
-				0564AD342A8EBE5A00EF1950 /* NonInteractiveDebugger.swift in Sources */,
-				0564AD9E2A9117F200EF1950 /* PromptValue.swift in Sources */,
 				05C3C2442A87D34C00436F6D /* INX.swift in Sources */,
 				05C3C1DE2A85B1A400436F6D /* LDX.swift in Sources */,
 				05C3C2702A87D46A00436F6D /* TXA.swift in Sources */,
@@ -1267,16 +1341,11 @@
 				05C3C21C2A87D20D00436F6D /* BCC.swift in Sources */,
 				05C3C2012A86798200436F6D /* STA.swift in Sources */,
 				05C3C21A2A87D1FD00436F6D /* ASL.swift in Sources */,
-				0564AD842A90E65F00EF1950 /* DebuggerWindow.swift in Sources */,
 				05DED74C2A8AA67A00DA42F9 /* AddressingContext.swift in Sources */,
 				05C3C2382A87D2EF00436F6D /* CPY.swift in Sources */,
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
 				054E88F42A93AD19001E47DD /* MC6820Keyboard.swift in Sources */,
-				0564AD882A90E90300EF1950 /* FlagsWindow.swift in Sources */,
-				0564AD8C2A90E9E300EF1950 /* DisassemblyWindow.swift in Sources */,
-				0564AD7F2A90E48A00EF1950 /* HelpWindow.swift in Sources */,
 				0564AD6E2A9030A100EF1950 /* Resettable.swift in Sources */,
-				0564AD812A90E54A00EF1950 /* ComputerWindow.swift in Sources */,
 				05C3C1F32A86572F00436F6D /* CLI.swift in Sources */,
 				05C3C2402A87D32D00436F6D /* EOR.swift in Sources */,
 				0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */,
@@ -1296,7 +1365,6 @@
 				05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */,
 				05C3C2562A87D3B800436F6D /* PLA.swift in Sources */,
 				05C3C2032A86798800436F6D /* STX.swift in Sources */,
-				0564AD8A2A90E9C100EF1950 /* InstructionsWindow.swift in Sources */,
 				05C3C2522A87D3A500436F6D /* PHA.swift in Sources */,
 				05C3C24A2A87D37000436F6D /* JSR.swift in Sources */,
 				05C3C2282A87D26700436F6D /* BPL.swift in Sources */,
@@ -1305,7 +1373,6 @@
 				05C3C22C2A87D28700436F6D /* CMP.swift in Sources */,
 				05C3C2222A87D23000436F6D /* BIT.swift in Sources */,
 				05C6D10A2A897EB700A984EB /* MC6820.swift in Sources */,
-				0564AD362A8EC0FB00EF1950 /* ComputerRunner.swift in Sources */,
 				05C3C24C2A87D38500436F6D /* NOP.swift in Sources */,
 				05C3C2262A87D24D00436F6D /* BNE.swift in Sources */,
 				05C3C25A2A87D3D400436F6D /* ROL.swift in Sources */,
@@ -1408,6 +1475,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		054E88FA2A93B68B001E47DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftCurses;
+			targetProxy = 054E88FB2A93B68B001E47DD /* PBXContainerItemProxy */;
+		};
+		054E88FC2A93B68B001E47DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = xasm65lib;
+			targetProxy = 054E88FD2A93B68B001E47DD /* PBXContainerItemProxy */;
+		};
+		054E897E2A93B70C001E47DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 054E88F92A93B68B001E47DD /* MOS6502Debugger */;
+			targetProxy = 054E897D2A93B70C001E47DD /* PBXContainerItemProxy */;
+		};
 		0564ABF32A8C082D00EF1950 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = xasm65lib;
@@ -1451,6 +1533,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		054E89632A93B68B001E47DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		054E89642A93B68B001E47DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		05C3C1422A8568D500436F6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 05C3C1532A856B6F00436F6D /* Debug.xcconfig */;
@@ -1531,6 +1636,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		054E89622A93B68B001E47DD /* Build configuration list for PBXNativeTarget "MOS6502Debugger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				054E89632A93B68B001E47DD /* Debug */,
+				054E89642A93B68B001E47DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		05C3C1362A8568D500436F6D /* Build configuration list for PBXProject "MOS-6502-Emulator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
