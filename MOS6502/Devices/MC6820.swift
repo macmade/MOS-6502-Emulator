@@ -47,12 +47,12 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
 
         peripheral1.readyChanged =
         {
-            [ weak self ] in self?.ready( on: $0 )
+            [ weak self ] in self?.ready( on: $0, control: \.CRA )
         }
 
         peripheral2.readyChanged =
         {
-            [ weak self ] in self?.ready( on: $0 )
+            [ weak self ] in self?.ready( on: $0, control: \.CRB )
         }
     }
 
@@ -79,14 +79,22 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
         }
     }
 
+    public func read( at address: UInt16 ) throws -> UInt8
+    {
+        let register = try self.register( for: address )
+        let value    = self[ keyPath: register ]
+
+        if register == \.CRA || register == \.CRB
+        {
+            self[ keyPath: register ] &= 0x3F
+        }
+
+        return value
+    }
+
     public func write( _ value: UInt8, at address: UInt16 ) throws
     {
         self[ keyPath: try self.register( for: address ) ] = value
-    }
-
-    public func read( at address: UInt16 ) throws -> UInt8
-    {
-        self[ keyPath: try self.register( for: address ) ]
     }
 
     public var description: String
@@ -94,6 +102,6 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
         "MC6820 PIA"
     }
 
-    private func ready( on peripheral: MC6820Peripheral )
+    private func ready( on peripheral: MC6820Peripheral, control: ReferenceWritableKeyPath< MC6820, UInt8 > )
     {}
 }

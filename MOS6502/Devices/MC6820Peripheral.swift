@@ -57,13 +57,15 @@ public class MC6820Peripheral: CustomStringConvertible
 
     public func setData( _ data: UInt8 )
     {
-        self.setData( [ data ] )
-    }
-
-    public func setData( _ data: [ UInt8 ] )
-    {
         self.queue.async
-        {}
+        {
+            while self.ready, self.acknowledge == false
+            {}
+
+            self.data        = data
+            self.acknowledge = false
+            self.ready       = true
+        }
     }
 
     public var description: String
