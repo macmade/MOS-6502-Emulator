@@ -43,12 +43,12 @@ public class MC6820Window: DebuggerWindow
         }
 
         self.printRegister( window: window, name: "DDR A", value: pia.DDRA )
-        self.printRegister( window: window, name: "OR  A",  value: pia.ORA )
-        self.printRegister( window: window, name: "CR  A",  value: pia.CRA )
+        self.printRegister( window: window, name: "OR  A", value: pia.ORA )
+        self.printRegister( window: window, name: "CR  A", value: pia.CRA )
         window.separator()
         self.printRegister( window: window, name: "DDR B", value: pia.DDRB )
-        self.printRegister( window: window, name: "OR  B",  value: pia.ORB )
-        self.printRegister( window: window, name: "CR  A",  value: pia.CRB )
+        self.printRegister( window: window, name: "OR  B", value: pia.ORB )
+        self.printRegister( window: window, name: "CR  B", value: pia.CRB )
     }
 
     private func printRegister( window: ManagedWindow, name: String, value: UInt8 )
