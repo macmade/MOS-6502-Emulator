@@ -32,6 +32,7 @@
 		054E89842A93B9CA001E47DD /* MC6820PeripheralsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89822A93B9C0001E47DD /* MC6820PeripheralsWindow.swift */; };
 		054E898D2A93EB79001E47DD /* Devices+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89892A93EB01001E47DD /* Devices+Debug.swift */; };
 		054E89B82A93F2BE001E47DD /* MC6820+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89B62A93F2AF001E47DD /* MC6820+Debug.swift */; };
+		054E89BA2A940C64001E47DD /* IRQSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89B92A940C64001E47DD /* IRQSource.swift */; };
 		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */; };
@@ -314,6 +315,7 @@
 		054E89822A93B9C0001E47DD /* MC6820PeripheralsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820PeripheralsWindow.swift; sourceTree = "<group>"; };
 		054E89892A93EB01001E47DD /* Devices+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Devices+Debug.swift"; sourceTree = "<group>"; };
 		054E89B62A93F2AF001E47DD /* MC6820+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MC6820+Debug.swift"; sourceTree = "<group>"; };
+		054E89B92A940C64001E47DD /* IRQSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRQSource.swift; sourceTree = "<group>"; };
 		0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xasm65.xcodeproj; path = Submodules/xasm65/xasm65.xcodeproj; sourceTree = "<group>"; };
 		0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceStream.swift; sourceTree = "<group>"; };
 		0564AC042A8D2CD900EF1950 /* Synertek-SY6500.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Synertek-SY6500.pdf"; sourceTree = "<group>"; };
@@ -1061,6 +1063,7 @@
 		05DED74D2A8AA6BF00DA42F9 /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				054E89B92A940C64001E47DD /* IRQSource.swift */,
 				05C6D1092A897EB600A984EB /* MC6820.swift */,
 				054E88F72A93AD38001E47DD /* MC6820Display.swift */,
 				054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */,
@@ -1359,6 +1362,7 @@
 				054E88F42A93AD19001E47DD /* MC6820Keyboard.swift in Sources */,
 				0564AD6E2A9030A100EF1950 /* Resettable.swift in Sources */,
 				05C3C1F32A86572F00436F6D /* CLI.swift in Sources */,
+				054E89BA2A940C64001E47DD /* IRQSource.swift in Sources */,
 				05C3C2402A87D32D00436F6D /* EOR.swift in Sources */,
 				0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */,
 				05C3C21E2A87D21A00436F6D /* BCS.swift in Sources */,

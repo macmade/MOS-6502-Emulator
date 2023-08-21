@@ -24,8 +24,10 @@
 
 import Foundation
 
-public class Bus: WriteableMemoryDevice, LogSource, Resettable
+public class Bus: WriteableMemoryDevice, LogSource, Resettable, IRQSource
 {
+    public var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
+
     public private( set ) var devices: [ ( address: UInt16, size: UInt64, device: MemoryDevice ) ] = []
 
     public var logger: Logger?
@@ -64,6 +66,11 @@ public class Bus: WriteableMemoryDevice, LogSource, Resettable
             {
                 throw RuntimeError( message: "Cannot map device at address: \( address.asHex ): would overlap an existing device" )
             }
+        }
+
+        if var irqSource = device as? IRQSource
+        {
+            irqSource.sendIRQ = self.sendIRQ
         }
 
         self.devices.append( ( address: address, size: size, device: device ) )

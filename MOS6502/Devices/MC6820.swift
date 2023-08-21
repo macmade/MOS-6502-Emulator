@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringConvertible
+public class MC6820: WriteableMemoryDevice, LogSource, Resettable, IRQSource, CustomStringConvertible
 {
     public var DDRA:   UInt8 = 0 // Data direction register A
     public var DDRB:   UInt8 = 0 // Data direction register B
@@ -39,6 +39,8 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
 
     private var ready1Observer: Any?
     private var ready2Observer: Any?
+
+    public var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
 
     public init( peripheral1: MC6820Peripheral, peripheral2: MC6820Peripheral )
     {
@@ -131,9 +133,12 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
     {
         if peripheral.ready
         {
-            self[ keyPath: or ]    = peripheral.data
-            self[ keyPath: cr ]   |= 0x80
-            peripheral.acknowledge = true
+            self.sendIRQ?
+            {
+                self[ keyPath: or ]    = peripheral.data
+                self[ keyPath: cr ]   |= 0x80
+                peripheral.acknowledge = true
+            }
         }
     }
 }

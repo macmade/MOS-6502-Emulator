@@ -52,9 +52,15 @@ public class CPU: LogSource, Resettable
     public var beforeInstruction: ( () throws -> Void )?
     public var afterInstruction:  ( () throws -> Void )?
 
+    private var irqs: [ () -> Void ] = []
+
     public init( bus: Bus )
     {
         self.bus = bus
+        self.bus.sendIRQ =
+        {
+            [ weak self ] in self?.irqs.append( $0 )
+        }
     }
 
     public func reset() throws
@@ -74,6 +80,15 @@ public class CPU: LogSource, Resettable
         if self.cycles == 0
         {
             try self.beforeInstruction?()
+
+            if self.registers.PS.contains( .interruptDisable ) == false
+            {
+                let irqs  = self.irqs
+                self.irqs = []
+
+                irqs.forEach { $0() }
+            }
+
             try self.decodeAndExecuteNextInstruction()
             try self.afterInstruction?()
         }
