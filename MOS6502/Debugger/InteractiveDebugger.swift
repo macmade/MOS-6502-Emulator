@@ -190,8 +190,8 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
                 else if key == 0x7A // z
                 {
                     self.reset = true
+                    self.step  = true
 
-                    self.step.toggle()
                     self.paused.toggle()
                 }
                 else
