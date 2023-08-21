@@ -37,10 +37,12 @@ public class MC6820Peripheral: CustomStringConvertible
     public var acknowledge: Bool = false
     {
         didSet
-        {}
+        {
+            self.ready = false
+        }
     }
 
-    public private( set ) var data: UInt8 = 0
+    public var data: UInt8 = 0
     {
         didSet
         {
@@ -59,7 +61,7 @@ public class MC6820Peripheral: CustomStringConvertible
     {
         self.queue.async
         {
-            while self.ready, self.acknowledge == false
+            while self.ready
             {}
 
             self.data        = data

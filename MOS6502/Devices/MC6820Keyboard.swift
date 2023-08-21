@@ -32,5 +32,10 @@ public class MC6820Keyboard: MC6820Peripheral
     }
 
     public func enterKey( _ key: Character )
-    {}
+    {
+        if let ascii = key.asciiValue
+        {
+            self.data = ascii
+        }
+    }
 }

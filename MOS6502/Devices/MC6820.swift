@@ -47,12 +47,12 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
 
         peripheral1.readyChanged =
         {
-            [ weak self ] in self?.ready( on: $0, control: \.CRA )
+            [ weak self ] in self?.ready( on: $0, cr: \.CRA, or: \.ORA, ddr: \.DDRA )
         }
 
         peripheral2.readyChanged =
         {
-            [ weak self ] in self?.ready( on: $0, control: \.CRB )
+            [ weak self ] in self?.ready( on: $0, cr: \.CRB, or: \.ORB, ddr: \.DDRB )
         }
     }
 
@@ -70,10 +70,10 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
     {
         switch address
         {
-            case 0: return ( self.CRA & 0x40 ) == 0 ? \.DDRA : \.ORA
-            case 1: return                            \.CRA
-            case 2: return ( self.CRB & 0x40 ) == 0 ? \.DDRB : \.ORB
-            case 3: return                            \.CRB
+            case 0: return ( self.CRA & 0x4 ) == 0 ? \.DDRA : \.ORA
+            case 1: return                           \.CRA
+            case 2: return ( self.CRB & 0x4 ) == 0 ? \.DDRB : \.ORB
+            case 3: return                           \.CRB
 
             default: throw RuntimeError( message: "Invalid MC6820 PIA register address: \( address.asHex )" )
         }
@@ -84,9 +84,17 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
         let register = try self.register( for: address )
         let value    = self[ keyPath: register ]
 
-        if register == \.CRA || register == \.CRB
+        if register == \.ORA
         {
-            self[ keyPath: register ] &= 0x3F
+            self.CRA &= 0x3F // Clear IRQ bits with a MPU read
+
+            return value & ( ~( self.DDRA ) )
+        }
+        else if register == \.ORB
+        {
+            self.CRB &= 0x3F // Clear IRQ bits with a MPU read
+
+            return value & ( ~( self.DDRB ) )
         }
 
         return value
@@ -94,7 +102,24 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
 
     public func write( _ value: UInt8, at address: UInt16 ) throws
     {
-        self[ keyPath: try self.register( for: address ) ] = value
+        let register = try self.register( for: address )
+
+        if register == \.CRA || register == \.CRB
+        {
+            self[ keyPath: register ] = value & 0x3F // IRQ bits are read-only
+        }
+        else if register == \.ORA
+        {
+            self[ keyPath: register ] = value & self.DDRA
+        }
+        else if register == \.ORB
+        {
+            self[ keyPath: register ] = value & self.DDRB
+        }
+        else
+        {
+            self[ keyPath: register ] = value
+        }
     }
 
     public var description: String
@@ -102,6 +127,13 @@ public class MC6820: WriteableMemoryDevice, LogSource, Resettable, CustomStringC
         "MC6820 PIA"
     }
 
-    private func ready( on peripheral: MC6820Peripheral, control: ReferenceWritableKeyPath< MC6820, UInt8 > )
-    {}
+    private func ready( on peripheral: MC6820Peripheral, cr: ReferenceWritableKeyPath< MC6820, UInt8 >, or: ReferenceWritableKeyPath< MC6820, UInt8 >, ddr: KeyPath< MC6820, UInt8 > )
+    {
+        if peripheral.ready
+        {
+            self[ keyPath: or ]    = peripheral.data
+            self[ keyPath: cr ]   |= 0x80
+            peripheral.acknowledge = true
+        }
+    }
 }
