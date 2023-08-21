@@ -84,9 +84,9 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
     let helpWindow:              HelpWindow
     let statusWindow:            StatusWindow
     let computerWindow:          ComputerWindow
-    let registersWindow:         RegistersWindow
-    let flagsWindow:             FlagsWindow
     let mc6820Window:            MC6820Window
+    let flagsWindow:             FlagsWindow
+    let registersWindow:         RegistersWindow
     let instructionsWindow:      InstructionsWindow
     let disassemblyWindow:       DisassemblyWindow
     let stackWindow:             StackWindow
@@ -101,9 +101,9 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
             self.helpWindow,
             self.statusWindow,
             self.computerWindow,
-            self.registersWindow,
-            self.flagsWindow,
             self.mc6820Window,
+            self.flagsWindow,
+            self.registersWindow,
             self.instructionsWindow,
             self.disassemblyWindow,
             self.stackWindow,
@@ -123,15 +123,15 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         self.helpWindow              = HelpWindow(              computer: computer, frame: Rect( x:  -1, y: -1, width:  0, height:  0 ), style: .boxed, prompt: self.promptWindow )
         self.statusWindow            = StatusWindow(            computer: computer, frame: Rect( x:   0, y:  0, width:  0, height:  3 ), style: .boxed, prompt: self.promptWindow )
         self.computerWindow          = ComputerWindow(          computer: computer, frame: Rect( x:   0, y:  3, width: 19, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.registersWindow         = RegistersWindow(         computer: computer, frame: Rect( x:  19, y:  3, width: 25, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.flagsWindow             = FlagsWindow(             computer: computer, frame: Rect( x:  44, y:  3, width: 26, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.mc6820Window            = MC6820Window(            computer: computer, frame: Rect( x:  70, y:  3, width: 26, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.instructionsWindow      = InstructionsWindow(      computer: computer, frame: Rect( x:  96, y:  3, width: 18, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.disassemblyWindow       = DisassemblyWindow(       computer: computer, frame: Rect( x: 114, y:  3, width:  0, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.stackWindow             = StackWindow(             computer: computer, frame: Rect( x:   0, y: 15, width: 70, height: 20 ), style: .boxed, prompt: self.promptWindow )
-        self.mc6820PeripheralsWindow = MC6820PeripheralsWindow( computer: computer, frame: Rect( x:   0, y: 35, width: 70, height: 13 ), style: .boxed, prompt: self.promptWindow )
-        self.memoryDevicesWindow     = MemoryDevicesWindow(     computer: computer, frame: Rect( x:   0, y: 48, width: 70, height:  0 ), style: .boxed, prompt: self.promptWindow )
-        self.memoryWindow            = MemoryWindow(            computer: computer, frame: Rect( x:  70, y: 15, width:  0, height:  0 ), style: .boxed, prompt: self.promptWindow )
+        self.mc6820Window            = MC6820Window(            computer: computer, frame: Rect( x:  19, y:  3, width: 26, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.flagsWindow             = FlagsWindow(             computer: computer, frame: Rect( x:  45, y:  3, width: 26, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.registersWindow         = RegistersWindow(         computer: computer, frame: Rect( x:  71, y:  3, width: 36, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.instructionsWindow      = InstructionsWindow(      computer: computer, frame: Rect( x: 107, y:  3, width: 18, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.disassemblyWindow       = DisassemblyWindow(       computer: computer, frame: Rect( x: 125, y:  3, width:  0, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.stackWindow             = StackWindow(             computer: computer, frame: Rect( x:   0, y: 15, width: 71, height: 20 ), style: .boxed, prompt: self.promptWindow )
+        self.mc6820PeripheralsWindow = MC6820PeripheralsWindow( computer: computer, frame: Rect( x:   0, y: 35, width: 71, height: 13 ), style: .boxed, prompt: self.promptWindow )
+        self.memoryDevicesWindow     = MemoryDevicesWindow(     computer: computer, frame: Rect( x:   0, y: 48, width: 71, height:  0 ), style: .boxed, prompt: self.promptWindow )
+        self.memoryWindow            = MemoryWindow(            computer: computer, frame: Rect( x:  71, y: 15, width:  0, height:  0 ), style: .boxed, prompt: self.promptWindow )
     }
 
     public func run() throws

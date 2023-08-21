@@ -28,11 +28,17 @@ import SwiftCurses
 
 public class RegistersWindow: DebuggerWindow
 {
-    private enum RegisterDisplayMode
+    public struct RegisterDisplayOptions: OptionSet
     {
-        case none
-        case decimal
-        case binary
+        public static var decimal: RegisterDisplayOptions { RegisterDisplayOptions( rawValue: 1 << 0 ) }
+        public static var binary:  RegisterDisplayOptions { RegisterDisplayOptions( rawValue: 1 << 1 ) }
+
+        public let rawValue: Int
+
+        public init( rawValue: Int )
+        {
+            self.rawValue = rawValue
+        }
     }
 
     public override func render( on window: ManagedWindow )
@@ -40,14 +46,14 @@ public class RegistersWindow: DebuggerWindow
         window.printLine( foreground: .blue,   text: "CPU Registers:" )
         window.separator()
 
-        let registers: [ ( name: String, value: MOS6502.Either< UInt8, UInt16 >, mode: RegisterDisplayMode ) ] = [
-            ( "PC: ", .right( self.computer.cpu.registers.PC          ), .none ),
-            ( "SP: ", .left(  self.computer.cpu.registers.SP          ), .none ),
-            ( "--",   .left(  0                                       ), .none ),
-            ( "A:  ", .left(  self.computer.cpu.registers.A           ), .decimal ),
-            ( "X:  ", .left(  self.computer.cpu.registers.X           ), .decimal ),
-            ( "Y:  ", .left(  self.computer.cpu.registers.Y           ), .decimal ),
-            ( "--",   .left(  0                                       ), .none ),
+        let registers: [ ( name: String, value: MOS6502.Either< UInt8, UInt16 >, options: RegisterDisplayOptions ) ] = [
+            ( "PC: ", .right( self.computer.cpu.registers.PC          ), [] ),
+            ( "SP: ", .left(  self.computer.cpu.registers.SP          ), [] ),
+            ( "--",   .left(  0                                       ), [] ),
+            ( "A:  ", .left(  self.computer.cpu.registers.A           ), [ .decimal, .binary ] ),
+            ( "X:  ", .left(  self.computer.cpu.registers.X           ), [ .decimal, .binary ] ),
+            ( "Y:  ", .left(  self.computer.cpu.registers.Y           ), [ .decimal, .binary ] ),
+            ( "--",   .left(  0                                       ), [] ),
             ( "PS: ", .left(  self.computer.cpu.registers.PS.rawValue ), .binary ),
         ]
 
@@ -64,7 +70,7 @@ public class RegistersWindow: DebuggerWindow
         }
     }
 
-    private func printRegister( window: ManagedWindow, register: ( name: String, value: MOS6502.Either< UInt8, UInt16 >, mode: RegisterDisplayMode ) )
+    private func printRegister( window: ManagedWindow, register: ( name: String, value: MOS6502.Either< UInt8, UInt16 >, options: RegisterDisplayOptions ) )
     {
         window.print( foreground: .cyan, text: register.name )
 
@@ -91,15 +97,7 @@ public class RegistersWindow: DebuggerWindow
                 signed   = Int16( bitPattern: unsigned )
         }
 
-        if register.mode == .binary
-        {
-            window.print( text: " | " )
-            bits.reversed().forEach
-            {
-                window.print( foreground: $0 ? .green : .red, text: $0 ? "1" : "0" )
-            }
-        }
-        else if register.mode == .decimal
+        if register.options.contains( .decimal )
         {
             window.print( text: " | " )
             window.print( foreground: .yellow, text: "\( unsigned )" )
@@ -108,6 +106,15 @@ public class RegistersWindow: DebuggerWindow
             {
                 window.print( text: " | " )
                 window.print( foreground: .yellow, text: "\( signed )" )
+            }
+        }
+
+        if register.options.contains( .binary )
+        {
+            window.print( text: " | " )
+            bits.reversed().forEach
+            {
+                window.print( foreground: $0 ? .green : .red, text: $0 ? "1" : "0" )
             }
         }
 
