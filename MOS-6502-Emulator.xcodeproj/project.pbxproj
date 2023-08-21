@@ -22,7 +22,7 @@
 		0564AD382A8EC13D00EF1950 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD372A8EC13D00EF1950 /* libncurses.tbd */; };
 		0564AD6C2A902F4900EF1950 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564AD372A8EC13D00EF1950 /* libncurses.tbd */; };
 		0564AD6E2A9030A100EF1950 /* Resettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD6D2A9030A100EF1950 /* Resettable.swift */; };
-		0564AD7F2A90E48A00EF1950 /* MenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD7E2A90E48A00EF1950 /* MenuWindow.swift */; };
+		0564AD7F2A90E48A00EF1950 /* HelpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD7E2A90E48A00EF1950 /* HelpWindow.swift */; };
 		0564AD812A90E54A00EF1950 /* ComputerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD802A90E54A00EF1950 /* ComputerWindow.swift */; };
 		0564AD842A90E65F00EF1950 /* DebuggerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD832A90E65F00EF1950 /* DebuggerWindow.swift */; };
 		0564AD862A90E8F800EF1950 /* RegistersWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD852A90E8F800EF1950 /* RegistersWindow.swift */; };
@@ -305,7 +305,7 @@
 		0564AD6D2A9030A100EF1950 /* Resettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resettable.swift; sourceTree = "<group>"; };
 		0564AD702A9049F000EF1950 /* Debugger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Debugger.png; sourceTree = "<group>"; };
 		0564AD712A90C83A00EF1950 /* Motorola-MC6820.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Motorola-MC6820.pdf"; sourceTree = "<group>"; };
-		0564AD7E2A90E48A00EF1950 /* MenuWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWindow.swift; sourceTree = "<group>"; };
+		0564AD7E2A90E48A00EF1950 /* HelpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpWindow.swift; sourceTree = "<group>"; };
 		0564AD802A90E54A00EF1950 /* ComputerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerWindow.swift; sourceTree = "<group>"; };
 		0564AD832A90E65F00EF1950 /* DebuggerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggerWindow.swift; sourceTree = "<group>"; };
 		0564AD852A90E8F800EF1950 /* RegistersWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistersWindow.swift; sourceTree = "<group>"; };
@@ -604,11 +604,11 @@
 				0564AD832A90E65F00EF1950 /* DebuggerWindow.swift */,
 				0564AD8B2A90E9E300EF1950 /* DisassemblyWindow.swift */,
 				0564AD872A90E90300EF1950 /* FlagsWindow.swift */,
+				0564AD7E2A90E48A00EF1950 /* HelpWindow.swift */,
 				0564AD892A90E9C100EF1950 /* InstructionsWindow.swift */,
 				0564AD992A90F8CC00EF1950 /* MC6820Window.swift */,
 				0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */,
 				0564AD912A90EA4800EF1950 /* MemoryWindow.swift */,
-				0564AD7E2A90E48A00EF1950 /* MenuWindow.swift */,
 				0564AD9D2A9117F200EF1950 /* PromptValue.swift */,
 				0564AD9B2A9109D300EF1950 /* PromptWindow.swift */,
 				0564AD852A90E8F800EF1950 /* RegistersWindow.swift */,
@@ -1263,7 +1263,7 @@
 				05C3C1A92A85700700436F6D /* CPU.swift in Sources */,
 				0564AD882A90E90300EF1950 /* FlagsWindow.swift in Sources */,
 				0564AD8C2A90E9E300EF1950 /* DisassemblyWindow.swift in Sources */,
-				0564AD7F2A90E48A00EF1950 /* MenuWindow.swift in Sources */,
+				0564AD7F2A90E48A00EF1950 /* HelpWindow.swift in Sources */,
 				0564AD6E2A9030A100EF1950 /* Resettable.swift in Sources */,
 				0564AD812A90E54A00EF1950 /* ComputerWindow.swift in Sources */,
 				05C3C1F32A86572F00436F6D /* CLI.swift in Sources */,

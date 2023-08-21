@@ -32,27 +32,59 @@ public class StatusWindow: DebuggerWindow
 
     public override func render( on window: ManagedWindow )
     {
+        let status: [ ( color: Color?, text: String ) ]
+
         if let error = self.error
         {
-            window.print( foreground: .cyan,   text: "Status: " )
-            window.print( foreground: .red,    text: "Error" )
-            window.print(                      text: " - " )
-            window.print( foreground: .yellow, text: error.localizedDescription )
+            status = [
+                ( .cyan,   "Status: " ),
+                ( .red,    "Error" ),
+                ( .red,    " - " ),
+                ( .yellow, error.localizedDescription ),
+            ]
         }
         else if self.paused
         {
-            window.print( foreground: .cyan,   text: "Status: " )
-            window.print( foreground: .blue,   text: "Paused" )
-            window.print(                      text: " - " )
-            window.print( foreground: .yellow, text: "\( self.computer.cpu.clock ) cycles" )
-            window.print(                      text: " - Press 'r' to run or 'space' to step" )
+            status = [
+                ( .cyan,   "Status: " ),
+                ( .blue,   "Paused" ),
+                ( nil,     " - " ),
+                ( .yellow, "\( self.computer.cpu.clock ) cycles" ),
+                ( nil,     " - Press 'r' to run or 'space' to step" ),
+            ]
         }
         else
         {
-            window.print( foreground: .cyan,   text: "Status: " )
-            window.print( foreground: .green,  text: "Running" )
-            window.print(                      text: " - " )
-            window.print( foreground: .yellow, text: "\( self.computer.cpu.clock ) cycles" )
+            status = [
+                (  .cyan,   "Status: " ),
+                (  .green,  "Running" ),
+                (  nil,     " - " ),
+                (  .yellow, "\( self.computer.cpu.clock ) cycles" ),
+            ]
+        }
+
+        status.forEach
+        {
+            if let color = $0.color
+            {
+                window.print( foreground: color, text: $0.text )
+            }
+            else
+            {
+                window.print( text: $0.text )
+            }
+        }
+
+        let help = "Press '?' for help"
+        let text = status.reduce( "" )
+        {
+            $0.appending( $1.text )
+        }
+
+        if text.count < window.bounds.size.width
+        {
+            window.moveX( by: ( window.bounds.size.width - Int32( text.count ) ) - Int32( help.count ) )
+            window.print( text: help )
         }
     }
 }

@@ -30,6 +30,11 @@ public class DebuggerWindow: WindowBuilder
     public var desiredFame: Rect
     public var style:       ManagedWindow.Style
 
+    public var priority: Int
+    {
+        DebuggerWindow.defaultPriority
+    }
+
     public private( set ) var computer: Computer
     public private( set ) var prompt:   PromptWindow
 

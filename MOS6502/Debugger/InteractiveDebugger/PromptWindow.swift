@@ -30,6 +30,11 @@ public class PromptWindow: WindowBuilder
     public var desiredFame: Rect
     public var style:       ManagedWindow.Style
 
+    public var priority: Int
+    {
+        1000
+    }
+
     public private( set ) var computer: Computer
 
     private var isActive    = false
