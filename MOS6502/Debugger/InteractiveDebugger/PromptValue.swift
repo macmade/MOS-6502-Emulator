@@ -58,6 +58,31 @@ public class PromptValue
         self.numericValue { UInt( $0, radix: $1 ) }
     }
 
+    public var uint8Array: [ UInt8 ]
+    {
+        self.numericArray { UInt8( $0, radix: $1 ) }
+    }
+
+    public var uint16Array: [ UInt16 ]
+    {
+        self.numericArray { UInt16( $0, radix: $1 ) }
+    }
+
+    public var uint32Array: [ UInt32 ]
+    {
+        self.numericArray { UInt32( $0, radix: $1 ) }
+    }
+
+    public var uint64Array: [ UInt64 ]
+    {
+        self.numericArray { UInt64( $0, radix: $1 ) }
+    }
+
+    public var uintArray: [ UInt ]
+    {
+        self.numericArray { UInt( $0, radix: $1 ) }
+    }
+
     private func numericValue< T: UnsignedInteger >( initialize: ( String, Int ) -> T? ) -> T?
     {
         let prompt = self.string.trimmingCharacters( in: .whitespaces )
@@ -71,5 +96,28 @@ public class PromptValue
         }
 
         return initialize( prompt, 10 )
+    }
+
+    private func numericArray< T: UnsignedInteger >( initialize: ( String, Int ) -> T? ) -> [ T ]
+    {
+        let prompt         = self.string.trimmingCharacters( in: .whitespaces ).components( separatedBy: " " )
+        let values: [ T? ] = prompt.filter
+        {
+            $0.trimmingCharacters( in: .whitespaces ).isEmpty == false
+        }
+        .map
+        {
+            if $0.hasPrefix( "0x" )
+            {
+                let start = $0.index( $0.startIndex, offsetBy: 2 )
+                let end   = $0.endIndex
+
+                return initialize( String( $0[ start ..< end ] ), 16 )
+            }
+
+            return initialize( $0, 10 )
+        }
+
+        return values.contains( nil ) ? [] : values.compactMap { $0 }
     }
 }

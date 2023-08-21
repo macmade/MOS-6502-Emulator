@@ -56,11 +56,11 @@ public class MemoryWindow: DebuggerWindow
             {
                 if let address = $0.uint16
                 {
-                    self.prompt.show( title: "Enter a value for memory address \( address.asHex ):", descriptions: nil )
+                    self.prompt.show( title: "Enter a value for memory address \( address.asHex ):", descriptions: [ "Note: you can enter multiple values separated by a space." ] )
                     {
-                        if let value = $0.uint8
+                        $0.uint8Array.enumerated().forEach
                         {
-                            try? self.computer.bus.write( value, at: address )
+                            try? self.computer.bus.write( $0.element, at: address + UInt16( $0.offset ) )
                         }
                     }
                 }
