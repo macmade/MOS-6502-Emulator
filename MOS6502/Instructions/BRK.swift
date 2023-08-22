@@ -45,5 +45,9 @@ import Foundation
  */
 public func BRK( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    try cpu.pushUInt16ToStack( value: cpu.registers.PC )
+    try cpu.pushUInt8ToStack( value: cpu.registers.PS.rawValue )
+    cpu.registers.PS.insert( .breakCommand )
+
+    cpu.registers.PC = try cpu.readUInt16FromMemory( at: CPU.irq )
 }
