@@ -27,6 +27,8 @@ import Foundation
 /*
  * LDX - Load X Register
  *
+ *    X,Z,N = M
+ *
  * Loads a byte of memory into the X register setting the zero and negative
  * flags as appropriate.
  *

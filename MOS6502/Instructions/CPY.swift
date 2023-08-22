@@ -27,6 +27,8 @@ import Foundation
 /*
  * CPY - Compare Y Register
  *
+ *    Z,C,N = Y-M
+ *
  * This instruction compares the contents of the Y register with another
  * memory held value and sets the zero and carry flags as appropriate.
  *

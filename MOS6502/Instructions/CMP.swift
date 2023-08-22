@@ -27,6 +27,8 @@ import Foundation
 /*
  * CMP - Compare
  *
+ *    Z,C,N = A-M
+ *
  * This instruction compares the contents of the accumulator with another
  * memory held value and sets the zero and carry flags as appropriate.
  *

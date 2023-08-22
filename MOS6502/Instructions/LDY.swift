@@ -27,6 +27,8 @@ import Foundation
 /*
  * LDY - Load Y Register
  *
+ *    Y,Z,N = M
+ *
  * Loads a byte of memory into the Y register setting the zero and negative
  * flags as appropriate.
  *

@@ -27,6 +27,8 @@ import Foundation
 /*
  * STX - Store X Register
  *
+ *    M = X
+ *
  * Stores the contents of the X register into memory.
  *
  * Flags:

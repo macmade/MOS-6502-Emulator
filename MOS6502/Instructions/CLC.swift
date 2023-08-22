@@ -27,6 +27,8 @@ import Foundation
 /*
  * CLC - Clear Carry Flag
  *
+ *    C = 0
+ *
  * Set the carry flag to zero.
  *
  * Flags:

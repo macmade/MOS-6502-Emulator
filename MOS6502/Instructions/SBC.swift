@@ -27,6 +27,8 @@ import Foundation
 /*
  * SBC - Subtract with Carry
  *
+ *    A,Z,C,N = A-M-(1-C)
+ *
  * This instruction subtracts the contents of a memory location to the
  * accumulator together with the not of the carry bit.
  * If overflow occurs the carry bit is clear, this enables multiple byte

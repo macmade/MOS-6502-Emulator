@@ -27,6 +27,8 @@ import Foundation
 /*
  * ORA - Logical Inclusive OR
  *
+ *    A,Z,N = A|M
+ *
  * An inclusive OR is performed, bit by bit, on the accumulator contents using
  * the contents of a byte of memory.
  *

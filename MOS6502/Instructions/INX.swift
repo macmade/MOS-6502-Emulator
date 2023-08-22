@@ -27,6 +27,8 @@ import Foundation
 /*
  * INX - Increment X Register
  *
+ *    X,Z,N = X+1
+ *
  * Adds one to the X register setting the zero and negative flags as appropriate.
  *
  * Flags:

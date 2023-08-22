@@ -27,6 +27,8 @@ import Foundation
 /*
  * STY - Store Y Register
  *
+ *    M = Y
+ *
  * Stores the contents of the Y register into memory.
  *
  * Flags:

@@ -27,6 +27,8 @@ import Foundation
 /*
  * BIT - Bit Test
  *
+ *    A & M, N = M7, V = M6
+ *
  * This instructions is used to test if one or more bits are set in a target
  * memory location. The mask pattern in A is ANDed with the value in memory
  * to set or clear the zero flag, but the result is not kept.

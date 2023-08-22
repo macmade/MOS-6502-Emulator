@@ -27,6 +27,8 @@ import Foundation
 /*
  * ASL - Arithmetic Shift Left
  *
+ *    A,Z,C,N = M*2 or M,Z,C,N = M*2
+ *
  * This operation shifts all the bits of the accumulator or memory contents
  * one bit left. Bit 0 is set to 0 and bit 7 is placed in the carry flag.
  * The effect of this operation is to multiply the memory contents by 2

@@ -27,6 +27,8 @@ import Foundation
 /*
  * INY - Increment Y Register
  *
+ *    Y,Z,N = Y+1
+ *
  * Adds one to the Y register setting the zero and negative flags as appropriate.
  *
  * Flags:

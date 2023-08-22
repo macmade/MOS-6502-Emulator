@@ -27,6 +27,8 @@ import Foundation
 /*
  * SEC - Set Carry Flag
  *
+ *    C = 1
+ *
  * Set the carry flag to one.
  *
  * Flags:

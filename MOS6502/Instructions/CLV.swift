@@ -27,6 +27,8 @@ import Foundation
 /*
  * CLV - Clear Overflow Flag
  *
+ *    V = 0
+ *
  * Clears the overflow flag.
  *
  * Flags:

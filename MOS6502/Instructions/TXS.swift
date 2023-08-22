@@ -27,6 +27,8 @@ import Foundation
 /*
  * TXS - Transfer X to Stack Pointer
  *
+ *    S = X
+ *
  * Copies the current contents of the X register into the stack register.
  *
  * Flags:

@@ -27,6 +27,8 @@ import Foundation
 /*
  * SED - Set Decimal Flag
  *
+ *    D = 1
+ *
  * Set the decimal mode flag to one.
  *
  * Flags:

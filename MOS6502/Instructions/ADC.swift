@@ -27,6 +27,8 @@ import Foundation
 /*
  * ADC - Add with Carry
  *
+ *     A,Z,C,N = A+M+C
+ *
  * This instruction adds the contents of a memory location to the accumulator
  * together with the carry bit.
  * If overflow occurs the carry bit is set, this enables multiple byte addition

@@ -27,6 +27,8 @@ import Foundation
 /*
  * SEI - Set Interrupt Disable
  *
+ *    I = 1
+ *
  * Set the interrupt disable flag to one.
  *
  * Flags:

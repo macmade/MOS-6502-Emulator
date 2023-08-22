@@ -27,6 +27,8 @@ import Foundation
 /*
  * CLI - Clear Interrupt Disable
  *
+ *    I = 0
+ *
  * Clears the interrupt disable flag allowing normal interrupt requests
  * to be serviced.
  *

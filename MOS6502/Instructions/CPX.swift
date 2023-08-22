@@ -27,6 +27,8 @@ import Foundation
 /*
  * CPX - Compare X Register
  *
+ *    Z,C,N = X-M
+ *
  * This instruction compares the contents of the X register with another
  * memory held value and sets the zero and carry flags as appropriate.
  *

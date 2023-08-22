@@ -27,6 +27,8 @@ import Foundation
 /*
  * AND - Logical AND
  *
+ *     A,Z,N = A&M
+ *
  * A logical AND is performed, bit by bit, on the accumulator contents using
  * the contents of a byte of memory.
  *

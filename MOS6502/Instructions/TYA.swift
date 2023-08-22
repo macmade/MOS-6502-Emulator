@@ -27,6 +27,8 @@ import Foundation
 /*
  * TYA - Transfer Y to Accumulator
  *
+ *    A = Y
+ *
  * Copies the current contents of the Y register into the accumulator and sets
  * the zero and negative flags as appropriate.
  *

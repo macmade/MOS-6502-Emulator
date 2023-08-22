@@ -27,6 +27,8 @@ import Foundation
 /*
  * TAX -  Transfer Accumulator to X
  *
+ *    X = A
+ *
  * Copies the current contents of the accumulator into the X register and sets
  * the zero and negative flags as appropriate.
  *

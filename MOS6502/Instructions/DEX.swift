@@ -27,6 +27,8 @@ import Foundation
 /*
  * DEX - Decrement X Register
  *
+ *    X,Z,N = X-1
+ *
  * Subtracts one from the X register setting the zero and negative flags
  * as appropriate.
  *

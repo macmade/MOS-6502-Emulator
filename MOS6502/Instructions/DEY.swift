@@ -27,6 +27,8 @@ import Foundation
 /*
  * DEY - Decrement Y Register
  *
+ *    Y,Z,N = Y-1
+ *
  * Subtracts one from the Y register setting the zero and negative flags as appropriate.
  *
  * Flags:

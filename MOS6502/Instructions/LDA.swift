@@ -27,6 +27,8 @@ import Foundation
 /*
  * LDA - Load Accumulator
  *
+ *    A,Z,N = M
+ *
  * Loads a byte of memory into the accumulator setting the zero and negative
  * flags as appropriate.
  *

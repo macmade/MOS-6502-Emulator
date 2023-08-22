@@ -27,6 +27,8 @@ import Foundation
 /*
  * STA - Store Accumulator
  *
+ *    M = A
+ *
  * Stores the contents of the accumulator into memory.
  *
  * Flags:

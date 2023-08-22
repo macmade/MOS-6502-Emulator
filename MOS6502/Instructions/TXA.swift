@@ -27,6 +27,8 @@ import Foundation
 /*
  * TXA - Transfer X to Accumulator
  *
+ *    A = X
+ *
  * Copies the current contents of the X register into the accumulator and sets
  * the zero and negative flags as appropriate.
  *

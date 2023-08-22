@@ -27,6 +27,8 @@ import Foundation
 /*
  * EOR - Exclusive OR
  *
+ *    A,Z,N = A^M
+ *
  * An exclusive OR is performed, bit by bit, on the accumulator contents using
  * the contents of a byte of memory.
  *

@@ -27,6 +27,8 @@ import Foundation
 /*
  * CLD - Clear Decimal Mode
  *
+ *    D = 0
+ *
  * Sets the decimal mode flag to zero.
  *
  * Flags:
