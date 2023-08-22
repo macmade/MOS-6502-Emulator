@@ -82,17 +82,16 @@ public class MC6820PeripheralsWindow: DebuggerWindow
 
     private func printPeripheral( window: ManagedWindow, peripheral: MC6820Peripheral )
     {
-        window.print( foreground: .cyan, text: "Type:        " )
+        window.print( foreground: .cyan, text: "Type: " )
         window.print( foreground: .magenta, text: peripheral.description )
         window.newLine()
-        window.print( foreground: .cyan,   text: "Ready:       " )
+        window.print( foreground: .cyan,   text: "RDY:  " )
         self.printBool( window: window, value: peripheral.ready )
         window.newLine()
-        window.print( foreground: .cyan,   text: "Acknowledge: " )
+        window.print( foreground: .cyan,   text: "ACC:  " )
         self.printBool( window: window, value: peripheral.acknowledge )
         window.newLine()
-        window.print( foreground: .cyan,   text: "Data:        " )
-        self.printData( window: window, value: peripheral.data )
+        self.printInteger( window: window, label: "Data: ", value: peripheral.data )
     }
 
     private func printBool( window: ManagedWindow, value: Bool )
@@ -104,27 +103,6 @@ public class MC6820PeripheralsWindow: DebuggerWindow
         else
         {
             window.print( foreground: .red, text: "No" )
-        }
-    }
-
-    private func printData( window: ManagedWindow, value: UInt8 )
-    {
-        let signed = Int8( bitPattern: value )
-
-        window.print( foreground: .yellow, text: value.asHex )
-        window.print( text: " | " )
-        window.print( foreground: .yellow, text: "\( value )" )
-
-        if signed < 0
-        {
-            window.print( text: " | " )
-            window.print( foreground: .yellow, text: "\( signed )" )
-        }
-
-        window.print( text: " | " )
-        value.bits.reversed().forEach
-        {
-            window.print( foreground: $0 ? .green : .red, text: $0 ? "1" : "0" )
         }
     }
 }

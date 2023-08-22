@@ -42,33 +42,16 @@ public class MC6820Window: DebuggerWindow
             return
         }
 
-        self.printRegister( window: window, name: "DDR A", value: pia.DDRA )
-        self.printRegister( window: window, name: "OR  A", value: pia.ORA )
-        self.printRegister( window: window, name: "CR  A", value: pia.CRA )
+        self.printInteger( window: window, label: "DDR-A: ", value: pia.DDRA )
+        self.printInteger( window: window, label: "OR-A:  ", value: pia.ORA )
+        self.printInteger( window: window, label: "CR-A:  ", value: pia.CRA )
+        window.print( foreground: .cyan,    text: "I/O:   " )
+        window.print( foreground: .yellow,  text: pia.CRA & 0x04 != 0 ? "OR-A" : "DDR-A" )
         window.separator()
-        self.printRegister( window: window, name: "DDR B", value: pia.DDRB )
-        self.printRegister( window: window, name: "OR  B", value: pia.ORB )
-        self.printRegister( window: window, name: "CR  B", value: pia.CRB )
-    }
-
-    private func printRegister( window: ManagedWindow, name: String, value: UInt8 )
-    {
-        window.print( foreground: .cyan,   text: "\( name ): " )
-        window.print( foreground: .yellow, text: value.asHex )
-        window.print(                      text: " | " )
-
-        value.bits.reversed().forEach
-        {
-            if $0
-            {
-                window.print( foreground: .green, text: "1" )
-            }
-            else
-            {
-                window.print( foreground: .red, text: "0" )
-            }
-        }
-
-        window.newLine()
+        self.printInteger( window: window, label: "DDR-B: ", value: pia.DDRB )
+        self.printInteger( window: window, label: "OR-B:  ", value: pia.ORB )
+        self.printInteger( window: window, label: "CR_B:  ", value: pia.CRB )
+        window.print( foreground: .cyan,    text: "I/O:   " )
+        window.print( foreground: .yellow,  text: pia.CRB & 0x04 != 0 ? "OR-B" : "DDR-B" )
     }
 }

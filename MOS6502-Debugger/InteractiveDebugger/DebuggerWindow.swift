@@ -83,4 +83,81 @@ public class DebuggerWindow: WindowBuilder
             return "\( String( format: "%.02f", ( Double( bytes ) / 1024.0 ) / 1024.0 ) ) MB"
         }
     }
+
+    public struct IntegerDisplayOptions: OptionSet
+    {
+        public static var decimal: IntegerDisplayOptions { IntegerDisplayOptions( rawValue: 1 << 0 ) }
+        public static var binary:  IntegerDisplayOptions { IntegerDisplayOptions( rawValue: 1 << 1 ) }
+
+        public let rawValue: Int
+
+        public init( rawValue: Int )
+        {
+            self.rawValue = rawValue
+        }
+    }
+
+    public func printInteger( window: ManagedWindow, label: String?, value: UInt8, options: IntegerDisplayOptions = [ .binary, .decimal ] )
+    {
+        self.printInteger( window: window, label: label, value: .left( value ), options: options )
+    }
+
+    public func printInteger( window: ManagedWindow, label: String?, value: UInt16, options: IntegerDisplayOptions = [ .binary, .decimal ] )
+    {
+        self.printInteger( window: window, label: label, value: .right( value ), options: options )
+    }
+
+    public func printInteger( window: ManagedWindow, label: String?, value: MOS6502.Either< UInt8, UInt16 >, options: IntegerDisplayOptions )
+    {
+        if let label = label
+        {
+            window.print( foreground: .cyan, text: label )
+        }
+
+        let bits:     [ Bool ]
+        let unsigned: UInt16
+        let signed:   Int16
+
+        switch value
+        {
+            case .left( let value ):
+
+                window.print( foreground: .yellow, text: value.asHex )
+
+                bits     = value.bits
+                unsigned = UInt16( value )
+                signed   = Int16( Int8( bitPattern: value ) )
+
+            case .right( let value ):
+
+                window.print( foreground: .yellow, text: value.asHex )
+
+                bits     = value.bits
+                unsigned = value
+                signed   = Int16( bitPattern: unsigned )
+        }
+
+        if options.contains( .binary )
+        {
+            window.print( text: " | " )
+            bits.reversed().forEach
+            {
+                window.print( foreground: $0 ? .green : .red, text: $0 ? "1" : "0" )
+            }
+        }
+
+        if options.contains( .decimal )
+        {
+            window.print( text: " | " )
+            window.print( foreground: .yellow, text: "\( unsigned )" )
+
+            if signed < 0
+            {
+                window.print( text: " | " )
+                window.print( foreground: .yellow, text: "\( signed )" )
+            }
+        }
+
+        window.newLine()
+    }
 }

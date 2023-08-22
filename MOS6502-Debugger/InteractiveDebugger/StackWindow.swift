@@ -32,7 +32,10 @@ public class StackWindow: MemoryWindow
     {
         window.printLine( foreground: .blue, text: "Stack:" )
         window.separator()
-        self.printMemory( window: window, start: CPU.stackStart, end: CPU.stackEnd, columns: Int( window.bounds.size.width ) - 2, lines: Int( window.bounds.size.height ) - 2, canScroll: false )
+
+        let columns = Int( window.bounds.size.width ) - 2
+
+        self.printMemory( window: window, start: CPU.stackStart, end: CPU.stackEnd, columns: columns > 74 ? 74 : columns, lines: Int( window.bounds.size.height ) - 2, canScroll: false )
     }
 
     public override func handleKey( _ key: Int32 ) -> Bool
