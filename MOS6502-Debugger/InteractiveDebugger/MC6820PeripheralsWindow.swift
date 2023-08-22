@@ -66,7 +66,7 @@ public class MC6820PeripheralsWindow: DebuggerWindow
     {
         if key == 0x6B // k
         {
-            self.prompt.show( title: "Enter a text to send to the keyboard", descriptions: nil )
+            self.prompt.show( title: "Enter a key to send to the keyboard", descriptions: nil, mode: .singleLetter )
             {
                 if let key = $0.string.first
                 {

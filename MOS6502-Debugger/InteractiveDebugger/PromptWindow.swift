@@ -36,6 +36,12 @@ public class PromptWindow: WindowBuilder
         1000
     }
 
+    public enum InputMode
+    {
+        case normal
+        case singleLetter
+    }
+
     public private( set ) var computer: Computer
 
     private var isActive    = false
@@ -43,6 +49,7 @@ public class PromptWindow: WindowBuilder
     private var title:        String     = ""
     private var value:        String     = ""
     private var descriptions: [ String ] = []
+    private var inputMode:    InputMode  = .normal
 
     public init( computer: Computer, frame: Rect, style: ManagedWindow.Style )
     {
@@ -78,6 +85,11 @@ public class PromptWindow: WindowBuilder
 
     public func show( title: String, descriptions: [ String ]?, completion: @escaping ( PromptValue ) -> Void )
     {
+        self.show( title: title, descriptions: descriptions, mode: .normal, completion: completion )
+    }
+
+    public func show( title: String, descriptions: [ String ]?, mode: InputMode, completion: @escaping ( PromptValue ) -> Void )
+    {
         if self.isActive
         {
             return
@@ -88,6 +100,7 @@ public class PromptWindow: WindowBuilder
         self.title        = title
         self.value        = ""
         self.descriptions = descriptions ?? []
+        self.inputMode    = mode
 
         let height = self.descriptions.isEmpty ? 5 : 6 + self.descriptions.count
         let width  = self.descriptions.reduce( self.title.count )
@@ -102,7 +115,14 @@ public class PromptWindow: WindowBuilder
     {
         if self.isActive, isprint( key ) == 1 || key == 0x20
         {
-            self.value.append( String( format: "%c", key ) )
+            if self.inputMode == .singleLetter
+            {
+                self.value = String( format: "%c", key )
+            }
+            else
+            {
+                self.value.append( String( format: "%c", key ) )
+            }
 
             return true
         }
