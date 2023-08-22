@@ -43,5 +43,8 @@ import Foundation
  */
 public func DEC( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    let value = try context.read() &- 1
+
+    try context.write( value )
+    cpu.setZeroAndNegativeFlags( for: value )
 }
