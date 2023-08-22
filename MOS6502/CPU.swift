@@ -66,13 +66,17 @@ public class CPU: LogSource, Resettable
     public func reset() throws
     {
         self.registers.PC = try self.bus.readUInt16( at: CPU.resetVector )
-        self.registers.SP = 0
+        self.registers.SP = 0x00
         self.registers.A  = 0
         self.registers.X  = 0
         self.registers.Y  = 0
         self.registers.PS = [ .interruptDisable ]
         self.clock        = 6
         self.cycles       = 0
+
+        // SP starts at 0x00. Reset pushes PC and SP, so SP will be 0xFD after reset.
+        try self.pushUInt16ToStack( value: self.registers.PC )
+        try self.pushUInt8ToStack(  value: self.registers.PS.rawValue )
     }
 
     public func cycle() throws
@@ -189,6 +193,34 @@ public class CPU: LogSource, Resettable
             case .indirectX:   return try AddressingContext.indirectX(   cpu: self )
             case .indirectY:   return try AddressingContext.indirectY(   cpu: self )
         }
+    }
+
+    public func pushUInt8ToStack( value: UInt8 ) throws
+    {
+        try self.writeUInt8ToMemory( value, at: CPU.stackStart + UInt16( self.registers.SP ) )
+
+        self.registers.SP &-= 1
+    }
+
+    public func pushUInt16ToStack( value: UInt16 ) throws
+    {
+        try self.pushUInt8ToStack( value: UInt8( ( value >> 8 ) & 0xFF ) )
+        try self.pushUInt8ToStack( value: UInt8( value & 0xFF ) )
+    }
+
+    public func popUInt8FromStack() throws -> UInt8
+    {
+        self.registers.SP &+= 1
+
+        return try self.readUInt8FromMemory( at: CPU.stackStart + UInt16( self.registers.SP ) )
+    }
+
+    public func popUInt16FromStack() throws -> UInt16
+    {
+        let u1 = UInt16( try self.popUInt8FromStack() )
+        let u2 = UInt16( try self.popUInt8FromStack() )
+
+        return ( u2 << 8 ) | u1
     }
 
     public func setFlag( _ value: Bool, for flag: Registers.Flags )
