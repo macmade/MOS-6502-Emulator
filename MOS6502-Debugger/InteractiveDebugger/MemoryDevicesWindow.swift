@@ -33,8 +33,13 @@ public class MemoryDevicesWindow: DebuggerWindow
         window.separator()
         self.computer.bus.devices.forEach
         {
+            if $0.size == 0
+            {
+                return
+            }
+
             let start = String( format: "%04X", $0.address )
-            let end   = String( format: "%04X", $0.address + UInt16( $0.size - 1 ) )
+            let end   = String( format: "%04X", UInt64( $0.address ) + ( $0.size - 1 ) )
 
             window.print( foreground: .cyan,   text: "\( start ) - \( end ): " )
             window.print( foreground: .yellow, text: self.printableSize( bytes: $0.size ).padding( toLength: 6, withPad: " ", startingAt: 0 ) )
