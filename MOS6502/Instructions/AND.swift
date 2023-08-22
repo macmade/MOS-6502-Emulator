@@ -43,5 +43,7 @@ import Foundation
  */
 public func AND( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.A &= try context.read()
+
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.A )
 }
