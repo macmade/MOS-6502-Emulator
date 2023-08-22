@@ -45,5 +45,9 @@ import Foundation
  */
 public func BIT( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    let value = try context.read()
+    let mask  = cpu.registers.A
+
+    cpu.setFlag( value & ( 1 << 6 ) != 0, for: .overflowFlag )
+    cpu.setZeroAndNegativeFlags( for: value & mask )
 }

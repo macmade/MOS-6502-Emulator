@@ -50,7 +50,7 @@ public func ASL( cpu: CPU, context: AddressingContext ) throws
     let result = input << 1
 
     cpu.setZeroAndNegativeFlags( for: result )
-    cpu.setFlag( input & 0x80 != 0, for: .carryFlag )
+    cpu.setFlag( input & ( 1 << 7 ) != 0, for: .carryFlag )
 
     try context.write( result )
 }
