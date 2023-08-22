@@ -43,5 +43,5 @@ import Foundation
  */
 public func PLP( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.PS = Registers.Flags( rawValue: try cpu.popUInt8FromStack() )
 }

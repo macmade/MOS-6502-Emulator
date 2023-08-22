@@ -43,5 +43,7 @@ import Foundation
  */
 public func PLA( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.A = try cpu.popUInt8FromStack()
+
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.A )
 }

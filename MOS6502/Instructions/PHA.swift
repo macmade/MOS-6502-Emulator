@@ -42,5 +42,5 @@ import Foundation
  */
 public func PHA( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    try cpu.pushUInt8ToStack( value: cpu.registers.A )
 }
