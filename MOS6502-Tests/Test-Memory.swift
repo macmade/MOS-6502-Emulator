@@ -29,7 +29,7 @@ final class Test_Memory: XCTestCase
 {
     func testInitSizeZero() throws
     {
-        XCTAssertThrowsError( _ = try Memory< UInt64 >( size: 0, options: [], initializeTo: 0 ) )
+        XCTAssertNoThrow( _ = try Memory< UInt64 >( size: 0, options: [], initializeTo: 0 ) )
     }
 
     func testInitBufferZero() throws
