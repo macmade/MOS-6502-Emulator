@@ -71,7 +71,7 @@ open class Computer: LogSource
             throw RuntimeError( message: "Cannot load empty ROM" )
         }
 
-        guard data.count <= UInt16.max
+        guard data.count <= Int( UInt16.max ) + 1
         else
         {
             throw RuntimeError( message: "ROM is too large: \( data.count ) bytes" )
