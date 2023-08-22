@@ -44,5 +44,11 @@ import Foundation
  */
 public func ROL( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    let value  = try context.read()
+    let carry  = cpu.registers.PS.contains( .carryFlag ) ? UInt8( 1 ) : UInt8( 0 )
+    let result = ( value << 1 ) | carry
+
+    cpu.setFlag( value & ( 1 << 7 ) != 0, for: .carryFlag )
+    cpu.setZeroAndNegativeFlags( for: result )
+    try context.write( result )
 }
