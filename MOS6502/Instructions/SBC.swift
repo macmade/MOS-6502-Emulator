@@ -47,5 +47,25 @@ import Foundation
  */
 public func SBC( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    let base        = cpu.registers.A
+    let sub         = try context.read()
+    let carry       = cpu.registers.PS.contains( .carryFlag ) ? UInt8( 1 ) : UInt8( 0 )
+    let result      = ( UInt16( cpu.registers.A ) - UInt16( sub ) ) - UInt16( 1 - carry )
+    cpu.registers.A = UInt8( result & 0xFF )
+
+    if base & ( 1 << 7 ) == 0, sub & ( 1 << 7 ) == 0, cpu.registers.A & ( 1 << 7 ) != 0
+    {
+        cpu.setFlag( .overflowFlag )
+    }
+    else if base & ( 1 << 7 ) != 0, sub & ( 1 << 7 ) != 0, cpu.registers.A & ( 1 << 7 ) == 0
+    {
+        cpu.setFlag( .overflowFlag )
+    }
+    else
+    {
+        cpu.clearFlag( .overflowFlag )
+    }
+
+    cpu.setFlag( result > 0xFF, for: .carryFlag )
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.A )
 }
