@@ -43,5 +43,8 @@ import Foundation
  */
 public func BCS( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    if cpu.registers.PS.contains( .carryFlag )
+    {
+        cpu.registers.PC = try cpu.relativeAddressFromPC( signedOffset: context.read() )
+    }
 }
