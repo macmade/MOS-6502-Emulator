@@ -53,7 +53,10 @@ open class Computer: LogSource
             try cpu.cycle()
         }
 
-        try self.bus.mapDevice( self.ram, at: 0x00, size: self.ram.capacity.bytes )
+        if self.ram.capacity.bytes > 0
+        {
+            try self.bus.mapDevice( self.ram, at: 0x00, size: self.ram.capacity.bytes )
+        }
     }
 
     public func mapDevice( _ device: MemoryDevice, at address: UInt16, size: UInt64 ) throws
