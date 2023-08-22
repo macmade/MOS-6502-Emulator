@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class Bus: WriteableMemoryDevice, LogSource, Resettable, IRQSource
+public class Bus: WritableMemoryDevice, LogSource, Resettable, IRQSource
 {
     public var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
 
@@ -104,14 +104,14 @@ public class Bus: WriteableMemoryDevice, LogSource, Resettable, IRQSource
 
     public func writeUInt8( _ value: UInt8, at address: UInt16 ) throws
     {
-        let mapped = try self.writeableDeviceForAddress( address )
+        let mapped = try self.writableDeviceForAddress( address )
 
         try mapped.device.write( value, at: mapped.address )
     }
 
     public func writeUInt16( _ value: UInt16, at address: UInt16 ) throws
     {
-        let mapped = try self.writeableDeviceForAddress( address )
+        let mapped = try self.writableDeviceForAddress( address )
         let u1     = UInt8( value & 0xFF )
         let u2     = UInt8( ( value >> 8 ) & 0xFF )
 
@@ -132,14 +132,14 @@ public class Bus: WriteableMemoryDevice, LogSource, Resettable, IRQSource
         throw RuntimeError( message: "No mapped device for address \( address.asHex )" )
     }
 
-    public func writeableDeviceForAddress( _ address: UInt16 ) throws -> ( address: UInt16, device: WriteableMemoryDevice )
+    public func writableDeviceForAddress( _ address: UInt16 ) throws -> ( address: UInt16, device: WritableMemoryDevice )
     {
         let mapped = try self.deviceForAddress( address )
 
-        guard let device = mapped.device as? WriteableMemoryDevice
+        guard let device = mapped.device as? WritableMemoryDevice
         else
         {
-            throw RuntimeError( message: "Invalid device for memory address \( address.asHex ): not writeable" )
+            throw RuntimeError( message: "Invalid device for memory address \( address.asHex ): not writable" )
         }
 
         return ( address: mapped.address, device: device )

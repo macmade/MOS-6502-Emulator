@@ -43,7 +43,7 @@ public extension Bus
 
     func debugWrite( _ value: UInt8, at address: UInt16 ) throws
     {
-        let mapped = try self.writeableDeviceForAddress( address )
+        let mapped = try self.writableDeviceForAddress( address )
 
         if let pia = mapped.device as? MC6820
         {

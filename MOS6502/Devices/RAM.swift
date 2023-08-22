@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class RAM: WriteableMemoryDevice, LogSource, Resettable, CustomStringConvertible
+public class RAM: WritableMemoryDevice, LogSource, Resettable, CustomStringConvertible
 {
     public enum Capacity
     {

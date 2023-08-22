@@ -29,7 +29,7 @@ public protocol MemoryDevice
     func read( at address: UInt16 ) throws -> UInt8
 }
 
-public protocol WriteableMemoryDevice: MemoryDevice
+public protocol WritableMemoryDevice: MemoryDevice
 {
     func write( _ value: UInt8, at address: UInt16 ) throws
 }

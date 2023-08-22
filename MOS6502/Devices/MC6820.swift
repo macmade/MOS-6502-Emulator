@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class MC6820: WriteableMemoryDevice, LogSource, Resettable, IRQSource, CustomStringConvertible
+public class MC6820: WritableMemoryDevice, LogSource, Resettable, IRQSource, CustomStringConvertible
 {
     public var DDRA:   UInt8 = 0 // Data direction register A
     public var DDRB:   UInt8 = 0 // Data direction register B
