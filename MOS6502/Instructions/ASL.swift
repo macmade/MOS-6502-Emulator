@@ -46,5 +46,11 @@ import Foundation
  */
 public func ASL( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    let input  = try context.read()
+    let result = input << 1
+
+    cpu.setZeroAndNegativeFlags( for: result )
+    cpu.setFlag( input & 0x80 != 0, for: .carryFlag )
+
+    try context.write( result )
 }
