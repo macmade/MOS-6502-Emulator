@@ -42,5 +42,5 @@ import Foundation
  */
 public func JMP( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.PC = try context.address
 }
