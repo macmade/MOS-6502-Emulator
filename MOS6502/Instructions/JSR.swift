@@ -43,5 +43,7 @@ import Foundation
  */
 public func JSR( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    try cpu.pushUInt16ToStack( value: cpu.registers.PC - 1 )
+
+    cpu.registers.PC = try context.address
 }

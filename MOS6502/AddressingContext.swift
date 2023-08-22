@@ -26,8 +26,23 @@ import Foundation
 
 public class AddressingContext
 {
-    private var readValue:  ()        throws -> UInt8
-    private var writeValue: ( UInt8 ) throws -> Void
+    private var readValue:     ()        throws -> UInt8
+    private var writeValue:    ( UInt8 ) throws -> Void
+    private var sourceAddress: UInt16?
+
+    public var address: UInt16
+    {
+        get throws
+        {
+            guard let address = self.sourceAddress
+            else
+            {
+                throw RuntimeError( message: "No address available for the current addressing mode" )
+            }
+
+            return address
+        }
+    }
 
     public convenience init( address: UInt16, cpu: CPU )
     {
@@ -39,6 +54,8 @@ public class AddressingContext
         {
             try cpu.writeUInt8ToMemory( $0, at: address )
         }
+
+        self.sourceAddress = address
     }
 
     public init( read: @escaping () throws -> UInt8, write: @escaping ( UInt8 ) throws -> Void )

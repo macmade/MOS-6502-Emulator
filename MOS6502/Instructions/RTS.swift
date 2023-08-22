@@ -43,5 +43,5 @@ import Foundation
  */
 public func RTS( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.PC = try cpu.popUInt16FromStack() + 1
 }
