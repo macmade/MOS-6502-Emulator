@@ -52,7 +52,7 @@ public class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: Fixed
 
     public init( size: UInt64, options: Options, initializeTo defaultValue: UInt8 ) throws
     {
-        if size == 0 || size > Int.max || ( size > Memory< SizeType >.max )
+        if size > Int.max || ( size > Memory< SizeType >.max )
         {
             throw RuntimeError( message: "Invalid memory size: \( size )" )
         }
