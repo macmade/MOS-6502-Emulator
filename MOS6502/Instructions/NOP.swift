@@ -42,6 +42,4 @@ import Foundation
  * Reference: https://github.com/macmade/MOS-6502-Emulator/blob/main/Reference/7-Reference.md#NOP
  */
 public func NOP( cpu: CPU, context: AddressingContext ) throws
-{
-    throw RuntimeError( message: "Instruction not implemented" )
-}
+{}
