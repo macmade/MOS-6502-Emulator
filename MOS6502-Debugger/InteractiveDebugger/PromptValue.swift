@@ -94,6 +94,13 @@ public class PromptValue
 
             return initialize( String( prompt[ start ..< end ] ), 16 )
         }
+        else if prompt.hasPrefix( "$" )
+        {
+            let start = prompt.index( prompt.startIndex, offsetBy: 1 )
+            let end   = prompt.endIndex
+
+            return initialize( String( prompt[ start ..< end ] ), 16 )
+        }
 
         return initialize( prompt, 10 )
     }
