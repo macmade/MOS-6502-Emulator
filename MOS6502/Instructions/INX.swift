@@ -42,5 +42,7 @@ import Foundation
  */
 public func INX( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.X &+= 1
+
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.X )
 }
