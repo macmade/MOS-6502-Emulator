@@ -34,6 +34,8 @@
 		054E89B82A93F2BE001E47DD /* MC6820+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89B62A93F2AF001E47DD /* MC6820+Debug.swift */; };
 		054E89BA2A940C64001E47DD /* IRQSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89B92A940C64001E47DD /* IRQSource.swift */; };
 		054E89BC2A951EF5001E47DD /* FileROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89BB2A951EF5001E47DD /* FileROM.swift */; };
+		054E89BE2A952355001E47DD /* WritableROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89BD2A952355001E47DD /* WritableROM.swift */; };
+		054E89C02A952401001E47DD /* WritableFileROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89BF2A952401001E47DD /* WritableFileROM.swift */; };
 		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */; };
@@ -318,6 +320,8 @@
 		054E89B62A93F2AF001E47DD /* MC6820+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MC6820+Debug.swift"; sourceTree = "<group>"; };
 		054E89B92A940C64001E47DD /* IRQSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRQSource.swift; sourceTree = "<group>"; };
 		054E89BB2A951EF5001E47DD /* FileROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileROM.swift; sourceTree = "<group>"; };
+		054E89BD2A952355001E47DD /* WritableROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritableROM.swift; sourceTree = "<group>"; };
+		054E89BF2A952401001E47DD /* WritableFileROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritableFileROM.swift; sourceTree = "<group>"; };
 		0564ABE62A8C081A00EF1950 /* xasm65.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xasm65.xcodeproj; path = Submodules/xasm65/xasm65.xcodeproj; sourceTree = "<group>"; };
 		0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceStream.swift; sourceTree = "<group>"; };
 		0564AC042A8D2CD900EF1950 /* Synertek-SY6500.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Synertek-SY6500.pdf"; sourceTree = "<group>"; };
@@ -1065,6 +1069,7 @@
 		05DED74D2A8AA6BF00DA42F9 /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				054E89BB2A951EF5001E47DD /* FileROM.swift */,
 				054E89B92A940C64001E47DD /* IRQSource.swift */,
 				05C6D1092A897EB600A984EB /* MC6820.swift */,
 				054E88F72A93AD38001E47DD /* MC6820Display.swift */,
@@ -1075,7 +1080,8 @@
 				05DED7492A8AA41D00DA42F9 /* RAM.swift */,
 				0564AD6D2A9030A100EF1950 /* Resettable.swift */,
 				05C3C1F82A865D5900436F6D /* ROM.swift */,
-				054E89BB2A951EF5001E47DD /* FileROM.swift */,
+				054E89BF2A952401001E47DD /* WritableFileROM.swift */,
+				054E89BD2A952355001E47DD /* WritableROM.swift */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -1384,6 +1390,7 @@
 				05C3C26E2A87D46000436F6D /* TSX.swift in Sources */,
 				05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */,
 				05C3C2562A87D3B800436F6D /* PLA.swift in Sources */,
+				054E89BE2A952355001E47DD /* WritableROM.swift in Sources */,
 				05C3C2032A86798800436F6D /* STX.swift in Sources */,
 				05C3C2522A87D3A500436F6D /* PHA.swift in Sources */,
 				05C3C24A2A87D37000436F6D /* JSR.swift in Sources */,
@@ -1391,6 +1398,7 @@
 				05C3C2242A87D23B00436F6D /* BMI.swift in Sources */,
 				05C3C1F92A865D5900436F6D /* ROM.swift in Sources */,
 				05C3C22C2A87D28700436F6D /* CMP.swift in Sources */,
+				054E89C02A952401001E47DD /* WritableFileROM.swift in Sources */,
 				05C3C2222A87D23000436F6D /* BIT.swift in Sources */,
 				05C6D10A2A897EB700A984EB /* MC6820.swift in Sources */,
 				05C3C24C2A87D38500436F6D /* NOP.swift in Sources */,
