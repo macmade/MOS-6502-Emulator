@@ -43,5 +43,7 @@ import Foundation
  */
 public func TAY( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.Y = cpu.registers.A
+
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.Y )
 }

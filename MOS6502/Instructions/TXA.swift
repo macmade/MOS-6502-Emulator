@@ -43,5 +43,7 @@ import Foundation
  */
 public func TXA( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.A = cpu.registers.X
+
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.A )
 }

@@ -43,5 +43,7 @@ import Foundation
  */
 public func TSX( cpu: CPU, context: AddressingContext ) throws
 {
-    throw RuntimeError( message: "Instruction not implemented" )
+    cpu.registers.X = cpu.registers.SP
+
+    cpu.setZeroAndNegativeFlags( for: cpu.registers.X )
 }
