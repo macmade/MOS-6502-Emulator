@@ -70,8 +70,8 @@ public class CPU: LogSource, Resettable
         self.registers.A  = 0
         self.registers.X  = 0
         self.registers.Y  = 0
-        self.registers.PS = []
-        self.clock        = 0
+        self.registers.PS = [ .interruptDisable ]
+        self.clock        = 6
         self.cycles       = 0
     }
 
