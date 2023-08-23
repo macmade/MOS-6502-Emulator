@@ -28,5 +28,31 @@ import XCTest
 class Test_Instruction_PLA: Test_Instruction
 {
     func testImplied() throws
-    {}
+    {
+        let r1 = try self.executeSingleInstruction(
+            instruction:     "PLA",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( SP: 0xFF ),
+            outputRegisters: Registers( SP: 0x00, A: 0x42 )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x42, at: CPU.stackStart + UInt16( 0x00 ) )
+        }
+
+        XCTAssertEqual( try r1.ram.read( at: CPU.stackStart + UInt16( 0x00 ) ), 0x42 )
+
+        let r2 = try self.executeSingleInstruction(
+            instruction:     "PLA",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( SP: 0x00 ),
+            outputRegisters: Registers( SP: 0x01, A: 0x42 )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x42, at: CPU.stackStart + UInt16( 0x01 ) )
+        }
+
+        XCTAssertEqual( try r2.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0x42 )
+    }
 }
