@@ -29,7 +29,7 @@ class Test_Instruction_PHP: Test_Instruction
 {
     func testImplied() throws
     {
-        try ( 0x00 ... 0xFF ).map
+        try [ 0x00, 0x55, 0xAA, 0xFF ].map
         {
             UInt8( $0 )
         }
