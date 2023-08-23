@@ -60,6 +60,31 @@ public class DisassemblyWindow: DebuggerWindow
 
     public func printDisassembly( window: ManagedWindow, lines: Int, options1: Disassembler.Options, options2: Disassembler.Options )
     {
+        self.getInstructions( lines: lines, options1: options1, options2: options2 ).forEach
+        {
+            self.printInstruction( window: window, instruction: $0 )
+        }
+    }
+
+    private func printInstruction( window: ManagedWindow, instruction: [ ( color: Color?, text: String ) ] )
+    {
+        instruction.forEach
+        {
+            if let color = $0.color
+            {
+                window.print( foreground: color, text: $0.text )
+            }
+            else
+            {
+                window.print( text: $0.text )
+            }
+        }
+
+        window.newLine()
+    }
+
+    private func getInstructions( lines: Int, options1: Disassembler.Options, options2: Disassembler.Options ) -> [ [ ( color: Color?, text: String ) ] ]
+    {
         let stream1       = MemoryDeviceStream( device: self.computer.bus, offset: self.computer.cpu.registers.PC )
         let stream2       = MemoryDeviceStream( device: self.computer.bus, offset: self.computer.cpu.registers.PC )
         let labels        = self.disassemblerLabels
@@ -67,44 +92,44 @@ public class DisassemblyWindow: DebuggerWindow
         let disassembler1 = try? Disassembler( stream: stream1, origin: self.computer.cpu.registers.PC, size: 0, instructions: 1, options: options1, separator: " ", comments: comments, labels: labels )
         let disassembler2 = try? Disassembler( stream: stream2, origin: self.computer.cpu.registers.PC, size: 0, instructions: 1, options: options2, separator: " ", comments: comments, labels: labels )
 
-        if let disassembler1 = disassembler1, let disassembler2 = disassembler2
-        {
-            ( 0 ..< lines ).forEach
-            {
-                _ in
-
-                let address = try? disassembler1.disassemble()
-                let other   = try? disassembler2.disassemble()
-
-                if let address = address, let other = other
-                {
-                    window.print( foreground: .cyan,   text: address )
-                    window.print(                      text: " " )
-
-                    if let index = other.firstIndex( of: ";" )
-                    {
-                        let part1 = index == other.startIndex ? "" : String( other[ other.startIndex ..< index ] )
-                        let part2 = String( other[ index ..< other.endIndex ] )
-
-                        window.print( foreground: .yellow,  text: part1.padding( toLength: 15, withPad: " ", startingAt: 0 ) )
-                        window.print( foreground: .magenta, text: part2 )
-                    }
-                    else
-                    {
-                        window.print( foreground: .yellow, text: other )
-                    }
-
-                    window.newLine()
-                }
-                else
-                {
-                    window.printLine( foreground: .red, text: "????" )
-                }
-            }
-        }
+        guard let disassembler1 = disassembler1, let disassembler2 = disassembler2
         else
         {
-            window.printLine( foreground: .red, text: "????" )
+            return [ [ ( color: .red, text: "???" ) ] ]
+        }
+
+        return ( 0 ..< lines ).map
+        {
+            _ in
+
+            let address = try? disassembler1.disassemble()
+            let other   = try? disassembler2.disassemble()
+
+            guard let address = address, let other = other
+            else
+            {
+                return [ ( color: .red, text: "???" ) ]
+            }
+
+            var parts = [ ( color: Color?, text: String ) ]()
+
+            parts.append( ( color: .cyan, text: address ) )
+            parts.append( ( color: nil,   text: " " ) )
+
+            if let index = other.firstIndex( of: ";" )
+            {
+                let part1 = index == other.startIndex ? "" : String( other[ other.startIndex ..< index ] )
+                let part2 = String( other[ index ..< other.endIndex ] )
+
+                parts.append( ( color: .yellow,  text: part1.padding( toLength: 15, withPad: " ", startingAt: 0 ) ) )
+                parts.append( ( color: .magenta, text: part2 ) )
+            }
+            else
+            {
+                parts.append( ( color: .yellow, text: other ) )
+            }
+
+            return parts
         }
     }
 }
