@@ -14,6 +14,23 @@ A MOS 6502 emulator written in Swift.
 
 ![Debugger](Assets/Debugger.png "Debugger")
 
+**Debugger Shortcuts**
+
+    [space]    Pause/Step
+    r          Run
+    z          Reset CPU
+    h          Set CPU frequency
+    +/-        Scroll memory up or down
+    m          Edit memory
+    p          Set the PC register
+    s          Set the SP register
+    a          Set the A register
+    x          Set the X register
+    y          Set the Y register
+    f          Set the PS register
+    k          Enter keyboard input
+    $          Show instructions history
+
 **Cloning:**  
 This repository uses submodules. Please clone with:
 
