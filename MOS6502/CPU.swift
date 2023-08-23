@@ -50,8 +50,8 @@ public class CPU: LogSource, Resettable
     public var disassemblerComments: [ UInt16: String ] = [ : ]
     public var logger:               Logger?
 
-    public var beforeInstruction: ( () throws -> Void )?
-    public var afterInstruction:  ( () throws -> Void )?
+    public var beforeInstruction = Event< Void >()
+    public var afterInstruction  = Event< Void >()
 
     private var irqs: [ () -> Void ] = []
 
@@ -84,7 +84,7 @@ public class CPU: LogSource, Resettable
     {
         if self.cycles == 0
         {
-            try self.beforeInstruction?()
+            self.beforeInstruction.fire()
 
             if self.registers.PS.contains( .interruptDisable ) == false
             {
@@ -95,7 +95,7 @@ public class CPU: LogSource, Resettable
             }
 
             try self.decodeAndExecuteNextInstruction()
-            try self.afterInstruction?()
+            self.afterInstruction.fire()
         }
         else
         {

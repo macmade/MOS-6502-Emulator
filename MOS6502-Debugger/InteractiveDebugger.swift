@@ -82,19 +82,22 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
         }
     }
 
-    let helpWindow:              HelpWindow
-    let statusWindow:            StatusWindow
-    let computerWindow:          ComputerWindow
-    let registersWindow:         RegistersWindow
-    let flagsWindow:             FlagsWindow
-    let instructionsWindow:      InstructionsWindow
-    let disassemblyWindow:       DisassemblyWindow
-    let stackWindow:             StackWindow
-    let mc6820Window:            MC6820Window?
-    let mc6820PeripheralsWindow: MC6820PeripheralsWindow?
-    let memoryDevicesWindow:     MemoryDevicesWindow
-    let memoryWindow:            MemoryWindow
-    let promptWindow:            PromptWindow
+    private var beforeInstructionObserver: Any?
+    private var afterInstructionObserver:  Any?
+
+    private let helpWindow:              HelpWindow
+    private let statusWindow:            StatusWindow
+    private let computerWindow:          ComputerWindow
+    private let registersWindow:         RegistersWindow
+    private let flagsWindow:             FlagsWindow
+    private let instructionsWindow:      InstructionsWindow
+    private let disassemblyWindow:       DisassemblyWindow
+    private let stackWindow:             StackWindow
+    private let mc6820Window:            MC6820Window?
+    private let mc6820PeripheralsWindow: MC6820PeripheralsWindow?
+    private let memoryDevicesWindow:     MemoryDevicesWindow
+    private let memoryWindow:            MemoryWindow
+    private let promptWindow:            PromptWindow
 
     public var windows: [ DebuggerWindow ]
     {
@@ -147,23 +150,30 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
         self.paused = true
 
-        self.computer.cpu.beforeInstruction =
+        self.beforeInstructionObserver = self.computer.cpu.beforeInstruction.add
         {
-            try self.synchronized
+            do
             {
-                if self.reset
+                try self.synchronized
                 {
-                    try self.computer.cpu.reset()
-                    try self.computer.bus.reset()
+                    if self.reset
+                    {
+                        try self.computer.cpu.reset()
+                        try self.computer.bus.reset()
 
-                    self.reset = false
+                        self.reset = false
+                    }
                 }
+            }
+            catch
+            {
+                self.error = error
             }
 
             self.sync.wait()
         }
 
-        self.computer.cpu.afterInstruction =
+        self.afterInstructionObserver = self.computer.cpu.afterInstruction.add
         {
             self.synchronized
             {

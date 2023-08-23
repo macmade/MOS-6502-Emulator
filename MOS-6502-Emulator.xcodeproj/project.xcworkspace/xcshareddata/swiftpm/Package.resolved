@@ -5,7 +5,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/macmade/XSLabsSwift",
       "state" : {
-        "revision" : "e590ba736c193894feeb1e9fd505b8f5721b0d74",
+        "revision" : "6b8d7b10fed8db6f0c20ba7539fa133e3747464d",
         "version" : "1.0.0"
       }
     }
