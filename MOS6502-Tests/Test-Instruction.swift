@@ -63,9 +63,9 @@ class Test_Instruction: XCTestCase
             return nil
         }
 
-        let bus    = Bus()
-        let cpu    = CPU( bus: bus )
-        let ram    = try RAM( capacity: .kb( 64 ), options: [] )
+        let bus = Bus()
+        let cpu = CPU( bus: bus )
+        let ram = try RAM( capacity: .kb( 64 ), options: [] )
 
         XCTAssertNoThrow( try bus.mapDevice( ram, at: 0x00, size: ram.capacity.bytes ) )
         XCTAssertNoThrow( try ram.write( instruction.opcode, at: origin ) )
@@ -133,10 +133,9 @@ class Test_Instruction: XCTestCase
             return
         }
 
-        let bus    = Bus()
-        let cpu    = CPU( bus: bus )
-        let ram    = try RAM( capacity: .kb( 64 ), options: [] )
-        let origin = UInt16( 0xFF00 )
+        let bus = Bus()
+        let cpu = CPU( bus: bus )
+        let ram = try RAM( capacity: .kb( 64 ), options: [] )
 
         XCTAssertNoThrow( try bus.mapDevice( ram, at: 0x00, size: ram.capacity.bytes ) )
         XCTAssertNoThrow( try ram.write( instruction.opcode, at: origin ) )
