@@ -29,11 +29,31 @@ import xasm65lib
 
 public class DisassemblyWindow: DebuggerWindow
 {
+    private var lastInstruction:          [ ( color: Color?, text: String ) ]?
+    private var previousInstructions:     [ [ ( color: Color?, text: String ) ] ] = []
+    private var afterInstructionObserver: Any?
+
+    public override init( computer: Computer, frame: Rect, style: ManagedWindow.Style, prompt: PromptWindow )
+    {
+        super.init( computer: computer, frame: frame, style: style, prompt: prompt )
+
+        self.afterInstructionObserver = computer.cpu.afterInstruction.add
+        {
+            [ weak self ] in guard let self = self, let last = self.lastInstruction
+            else
+            {
+                return
+            }
+
+            self.previousInstructions.append( last )
+        }
+    }
+
     public override func render( on window: ManagedWindow )
     {
         window.printLine( foreground: .blue, text: "Disassembly:" )
         window.separator()
-        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ), options1: [ .address ], options2: [ .disassembly, .comments ] )
+        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ) - 2, options1: [ .address ], options2: [ .disassembly, .comments ] )
     }
 
     private var disassemblerLabels: [ UInt16: String ]
@@ -60,14 +80,49 @@ public class DisassemblyWindow: DebuggerWindow
 
     public func printDisassembly( window: ManagedWindow, lines: Int, options1: Disassembler.Options, options2: Disassembler.Options )
     {
-        self.getInstructions( lines: lines, options1: options1, options2: options2 ).forEach
+        guard lines > 0
+        else
         {
-            self.printInstruction( window: window, instruction: $0 )
+            return
+        }
+
+        let oldCount              = min( ( lines - 1 ) / 2, self.previousInstructions.count )
+        self.previousInstructions = self.previousInstructions.suffix( oldCount )
+
+        if self.previousInstructions.isEmpty == false
+        {
+            self.previousInstructions.forEach
+            {
+                self.printInstruction( window: window, instruction: $0, isCurrent: false )
+            }
+
+            window.separator()
+        }
+
+        self.getInstructions( lines: lines, options1: options1, options2: options2 ).enumerated().forEach
+        {
+            if $0.offset == 0
+            {
+                self.lastInstruction = $0.element
+            }
+
+            self.printInstruction( window: window, instruction: $0.element, isCurrent: $0.offset == 0 )
         }
     }
 
-    private func printInstruction( window: ManagedWindow, instruction: [ ( color: Color?, text: String ) ] )
+    private func printInstruction( window: ManagedWindow, instruction: [ ( color: Color?, text: String ) ], isCurrent: Bool )
     {
+        var instruction = instruction
+
+        if isCurrent
+        {
+            instruction.insert( ( .green, "> " ), at: 0 )
+        }
+        else
+        {
+            instruction.insert( ( nil, "  " ), at: 0 )
+        }
+
         instruction.forEach
         {
             if let color = $0.color

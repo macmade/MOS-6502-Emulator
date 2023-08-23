@@ -31,6 +31,6 @@ public class InstructionsWindow: DisassemblyWindow
     {
         window.printLine( foreground: .blue, text: "Instructions:" )
         window.separator()
-        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ), options1: [ .address ], options2: [ .bytes ] )
+        self.printDisassembly( window: window, lines: Int( window.bounds.size.height ) - 2, options1: [ .address ], options2: [ .bytes ] )
     }
 }

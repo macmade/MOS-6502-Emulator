@@ -129,19 +129,19 @@ public class InteractiveDebugger: ComputerRunner, Synchronizable
 
         let hasPIA = computer.bus.devices.first { $0.device is MC6820 } != nil
 
-        self.promptWindow            =          PromptWindow(            computer: computer, frame: Rect( x: -1, y:               -1, width: 50, height: 10 ), style: .boxed )
-        self.helpWindow              =          HelpWindow(              computer: computer, frame: Rect( x: -1, y:               -1, width:  0, height:  0 ), style: .boxed, prompt: self.promptWindow )
-        self.statusWindow            =          StatusWindow(            computer: computer, frame: Rect( x:  0, y:                0, width:  0, height:  3 ), style: .boxed, prompt: self.promptWindow )
-        self.computerWindow          =          ComputerWindow(          computer: computer, frame: Rect( x:  0, y:                3, width: 19, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.registersWindow         =          RegistersWindow(         computer: computer, frame: Rect( x: 19, y:                3, width: 36, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.flagsWindow             =          FlagsWindow(             computer: computer, frame: Rect( x: 55, y:                3, width: 26, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.instructionsWindow      =          InstructionsWindow(      computer: computer, frame: Rect( x: 81, y:                3, width: 18, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.disassemblyWindow       =          DisassemblyWindow(       computer: computer, frame: Rect( x: 99, y:                3, width:  0, height: 12 ), style: .boxed, prompt: self.promptWindow )
-        self.stackWindow             =          StackWindow(             computer: computer, frame: Rect( x:  0, y:               15, width: 81, height: 20 ), style: .boxed, prompt: self.promptWindow )
-        self.mc6820Window            = hasPIA ? MC6820Window(            computer: computer, frame: Rect( x:  0, y:               35, width: 41, height: 13 ), style: .boxed, prompt: self.promptWindow ) : nil
-        self.mc6820PeripheralsWindow = hasPIA ? MC6820PeripheralsWindow( computer: computer, frame: Rect( x: 41, y:               35, width: 40, height: 13 ), style: .boxed, prompt: self.promptWindow ) : nil
-        self.memoryDevicesWindow     =          MemoryDevicesWindow(     computer: computer, frame: Rect( x:  0, y: hasPIA ? 48 : 35, width: 81, height:  0 ), style: .boxed, prompt: self.promptWindow )
-        self.memoryWindow            =          MemoryWindow(            computer: computer, frame: Rect( x: 81, y:               15, width:  0, height:  0 ), style: .boxed, prompt: self.promptWindow )
+        self.promptWindow            =          PromptWindow(            computer: computer, frame: Rect( x:  -1, y:               -1, width: 50, height: 10 ), style: .boxed )
+        self.helpWindow              =          HelpWindow(              computer: computer, frame: Rect( x:  -1, y:               -1, width:  0, height:  0 ), style: .boxed, prompt: self.promptWindow )
+        self.statusWindow            =          StatusWindow(            computer: computer, frame: Rect( x:   0, y:                0, width:  0, height:  3 ), style: .boxed, prompt: self.promptWindow )
+        self.computerWindow          =          ComputerWindow(          computer: computer, frame: Rect( x:   0, y:                3, width: 19, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.registersWindow         =          RegistersWindow(         computer: computer, frame: Rect( x:  19, y:                3, width: 36, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.flagsWindow             =          FlagsWindow(             computer: computer, frame: Rect( x:  55, y:                3, width: 26, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.instructionsWindow      =          InstructionsWindow(      computer: computer, frame: Rect( x:  81, y:                3, width: 20, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.disassemblyWindow       =          DisassemblyWindow(       computer: computer, frame: Rect( x: 101, y:                3, width:  0, height: 12 ), style: .boxed, prompt: self.promptWindow )
+        self.stackWindow             =          StackWindow(             computer: computer, frame: Rect( x:   0, y:               15, width: 81, height: 20 ), style: .boxed, prompt: self.promptWindow )
+        self.mc6820Window            = hasPIA ? MC6820Window(            computer: computer, frame: Rect( x:   0, y:               35, width: 41, height: 13 ), style: .boxed, prompt: self.promptWindow ) : nil
+        self.mc6820PeripheralsWindow = hasPIA ? MC6820PeripheralsWindow( computer: computer, frame: Rect( x:  41, y:               35, width: 40, height: 13 ), style: .boxed, prompt: self.promptWindow ) : nil
+        self.memoryDevicesWindow     =          MemoryDevicesWindow(     computer: computer, frame: Rect( x:   0, y: hasPIA ? 48 : 35, width: 81, height:  0 ), style: .boxed, prompt: self.promptWindow )
+        self.memoryWindow            =          MemoryWindow(            computer: computer, frame: Rect( x:  81, y:               15, width:  0, height:  0 ), style: .boxed, prompt: self.promptWindow )
     }
 
     public func run() throws
