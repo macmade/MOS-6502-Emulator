@@ -28,12 +28,6 @@ import XSLabsSwift
 
 public class CPU: LogSource, Resettable
 {
-    public private( set ) var registers      = Registers()
-    public private( set ) var clock: UInt64 = 0
-
-    private var bus:    Bus
-    private var cycles: UInt = 0
-
     public static let zeroPageStart:  UInt16 = 0x0000
     public static let zeroPageEnd:    UInt16 = 0x00FF
     public static let zeroPageSize:   UInt16 = 0x00FF
@@ -46,6 +40,8 @@ public class CPU: LogSource, Resettable
     public static let requiredMemory: UInt64 = 512
     public static let maximumMemory:  UInt64 = 0xFFFF
 
+    public var registers = Registers()
+
     public var disassemblerLabels:   [ UInt16: String ] = [ : ]
     public var disassemblerComments: [ UInt16: String ] = [ : ]
     public var logger:               Logger?
@@ -54,7 +50,11 @@ public class CPU: LogSource, Resettable
     public var beforeInstruction = Event< Void >()
     public var afterInstruction  = Event< Void >()
 
-    private var irqs: [ () -> Void ] = []
+    public private( set ) var clock: UInt64 = 0
+
+    private var bus:    Bus
+    private var cycles: UInt = 0
+    private var irqs:   [ () -> Void ] = []
 
     public init( bus: Bus )
     {

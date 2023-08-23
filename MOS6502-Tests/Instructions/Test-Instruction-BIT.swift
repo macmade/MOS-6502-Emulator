@@ -32,5 +32,4 @@ class Test_Instruction_BIT: Test_Instruction
     
     func testZeroPage() throws
     {}
-
 }

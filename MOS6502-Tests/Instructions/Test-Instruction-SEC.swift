@@ -33,24 +33,16 @@ class Test_Instruction_SEC: Test_Instruction
             instruction:     "SEC",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( A: 0, X: 0, Y: 0, PS: Flags( C: 0, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) ),
-            outputRegisters: Registers( A: 0, X: 0, Y: 0, PS: Flags( C: 1, Z: 0, I: 0, D: 0, B: 0, V: 0, N: 0 ) )
+            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1 ) )
         )
 
         try self.executeSingleInstruction(
             instruction:     "SEC",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 1, N: 1 ) ),
-            outputRegisters: Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 1, N: 1 ) )
-        )
-
-        try self.executeSingleInstruction(
-            instruction:     "SEC",
-            addressingMode:  .implied,
-            operands:        [],
-            inputRegisters:  Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 0, Z: 1, I: 1, D: 1, B: 1, V: 1, N: 1 ) ),
-            outputRegisters: Registers( A: 1, X: 1, Y: 1, PS: Flags( C: 1, Z: 1, I: 1, D: 1, B: 1, V: 1, N: 1 ) )
+            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1 ) )
         )
     }
 }

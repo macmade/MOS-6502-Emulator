@@ -29,25 +29,25 @@ class Test_Instruction_EOR: Test_Instruction
 {
     func testAbsolute() throws
     {}
-    
+
     func testAbsoluteX() throws
     {}
-    
+
     func testAbsoluteY() throws
     {}
-    
+
     func testImmediate() throws
     {}
-    
+
     func testIndirectX() throws
     {}
-    
+
     func testIndirectY() throws
     {}
-    
+
     func testZeroPage() throws
     {}
-    
+
     func testZeroPageX() throws
     {}
 }

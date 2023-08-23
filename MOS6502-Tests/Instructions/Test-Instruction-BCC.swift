@@ -29,5 +29,4 @@ class Test_Instruction_BCC: Test_Instruction
 {
     func testRelative() throws
     {}
-
 }
