@@ -50,6 +50,7 @@ public class CPU: LogSource, Resettable
     public var disassemblerComments: [ UInt16: String ] = [ : ]
     public var logger:               Logger?
 
+    public var onReset           = Event< Void >()
     public var beforeInstruction = Event< Void >()
     public var afterInstruction  = Event< Void >()
 
@@ -78,6 +79,8 @@ public class CPU: LogSource, Resettable
         // SP starts at 0x00. Reset pushes PC and SP, so SP will be 0xFD after reset.
         try self.pushUInt16ToStack( value: self.registers.PC )
         try self.pushUInt8ToStack(  value: self.registers.PS.rawValue )
+
+        self.onReset.fire()
     }
 
     public func cycle() throws
