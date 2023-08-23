@@ -42,7 +42,7 @@ public class MemoryDevicesWindow: DebuggerWindow
             let end   = String( format: "%04X", UInt64( $0.address ) + ( $0.size - 1 ) )
 
             window.print( foreground: .cyan,   text: "\( start ) - \( end ): " )
-            window.print( foreground: .yellow, text: self.printableSize( bytes: $0.size ).padding( toLength: 6, withPad: " ", startingAt: 0 ) )
+            window.print( foreground: .yellow, text: self.printableSize( bytes: $0.size ).padding( toLength: 7, withPad: " ", startingAt: 0 ) )
             window.print(                      text: " - " )
 
             if let device = $0.device as? CustomStringConvertible
