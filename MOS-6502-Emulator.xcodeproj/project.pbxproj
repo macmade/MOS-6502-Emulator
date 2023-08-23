@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0520D9212A95F74A00ECFB20 /* InstructionsHistoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520D9202A95F74A00ECFB20 /* InstructionsHistoryWindow.swift */; };
 		054E88F42A93AD19001E47DD /* MC6820Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */; };
 		054E88F62A93AD32001E47DD /* MC6820Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */; };
 		054E88F82A93AD38001E47DD /* MC6820Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F72A93AD38001E47DD /* MC6820Display.swift */; };
@@ -311,6 +312,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0520D9202A95F74A00ECFB20 /* InstructionsHistoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsHistoryWindow.swift; sourceTree = "<group>"; };
 		054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Keyboard.swift; sourceTree = "<group>"; };
 		054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Peripheral.swift; sourceTree = "<group>"; };
 		054E88F72A93AD38001E47DD /* MC6820Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Display.swift; sourceTree = "<group>"; };
@@ -658,6 +660,7 @@
 				0564AD832A90E65F00EF1950 /* DebuggerWindow.swift */,
 				0564AD872A90E90300EF1950 /* FlagsWindow.swift */,
 				0564AD7E2A90E48A00EF1950 /* HelpWindow.swift */,
+				0520D9202A95F74A00ECFB20 /* InstructionsHistoryWindow.swift */,
 				0564AD8B2A90E9E300EF1950 /* InstructionsWindow.swift */,
 				054E89822A93B9C0001E47DD /* MC6820PeripheralsWindow.swift */,
 				0564AD992A90F8CC00EF1950 /* MC6820Window.swift */,
@@ -1325,6 +1328,7 @@
 				054E89752A93B6FB001E47DD /* MemoryDevicesWindow.swift in Sources */,
 				054E896E2A93B6F6001E47DD /* Debugger.swift in Sources */,
 				054E89B82A93F2BE001E47DD /* MC6820+Debug.swift in Sources */,
+				0520D9212A95F74A00ECFB20 /* InstructionsHistoryWindow.swift in Sources */,
 				054E89792A93B6FB001E47DD /* PromptWindow.swift in Sources */,
 				054E897A2A93B6FB001E47DD /* StackWindow.swift in Sources */,
 				054E89782A93B6FB001E47DD /* FlagsWindow.swift in Sources */,

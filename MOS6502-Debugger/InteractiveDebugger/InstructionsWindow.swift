@@ -29,11 +29,6 @@ import xasm65lib
 
 public class InstructionsWindow: DebuggerWindow
 {
-    public override init( computer: Computer, frame: Rect, style: ManagedWindow.Style, prompt: PromptWindow )
-    {
-        super.init( computer: computer, frame: frame, style: style, prompt: prompt )
-    }
-
     public override func render( on window: ManagedWindow )
     {
         window.printLine( foreground: .blue, text: "Instructions:" )
@@ -71,8 +66,15 @@ public class InstructionsWindow: DebuggerWindow
             return
         }
 
-        let instructions = self.getInstructions( lines: lines )
-        let max          = instructions.reduce( into: [ Int: Int ]() )
+        self.alignInstructions( self.getInstructions( lines: lines ) ).forEach
+        {
+            self.printInstruction( window: window, instruction: $0 )
+        }
+    }
+
+    public func alignInstructions( _ instructions: [ [ ( color: Color?, text: String ) ] ] ) -> [ [ ( color: Color?, text: String ) ] ]
+    {
+        let max = instructions.reduce( into: [ Int: Int ]() )
         {
             result, line in line.enumerated().forEach
             {
@@ -85,7 +87,7 @@ public class InstructionsWindow: DebuggerWindow
             }
         }
 
-        instructions.map
+        return instructions.map
         {
             $0.enumerated().map
             {
@@ -106,13 +108,9 @@ public class InstructionsWindow: DebuggerWindow
                 }
             }
         }
-        .forEach
-        {
-            self.printInstruction( window: window, instruction: $0 )
-        }
     }
 
-    private func printInstruction( window: ManagedWindow, instruction: [ ( color: Color?, text: String ) ] )
+    public func printInstruction( window: ManagedWindow, instruction: [ ( color: Color?, text: String ) ] )
     {
         instruction.forEach
         {
@@ -129,7 +127,7 @@ public class InstructionsWindow: DebuggerWindow
         window.newLine()
     }
 
-    private func getInstructions( lines: Int ) -> [ [ ( color: Color?, text: String ) ] ]
+    public func getInstructions( lines: Int ) -> [ [ ( color: Color?, text: String ) ] ]
     {
         let stream       = MemoryDeviceStream( device: self.computer.bus, offset: self.computer.cpu.registers.PC )
         let comments     = self.disassemblerComments
