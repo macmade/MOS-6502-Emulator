@@ -33,7 +33,7 @@ class Test_Instruction_TAX: Test_Instruction
             instruction:     "TAX",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( A: 0x00  ),
+            inputRegisters:  Registers( A: 0x00 ),
             outputRegisters: Registers( A: 0x00, X: 0x00, PS: Flags( Z: 1, N: 0 ) )
         )
 
@@ -41,7 +41,7 @@ class Test_Instruction_TAX: Test_Instruction
             instruction:     "TAX",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( A: 0x7F  ),
+            inputRegisters:  Registers( A: 0x7F ),
             outputRegisters: Registers( A: 0x7F, X: 0x7F, PS: Flags( Z: 0, N: 0 ) )
         )
 
@@ -49,7 +49,7 @@ class Test_Instruction_TAX: Test_Instruction
             instruction:     "TAX",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( A: 0x80  ),
+            inputRegisters:  Registers( A: 0x80 ),
             outputRegisters: Registers( A: 0x80, X: 0x80, PS: Flags( Z: 0, N: 1 ) )
         )
 
@@ -57,7 +57,7 @@ class Test_Instruction_TAX: Test_Instruction
             instruction:     "TAX",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( A: 0xFF  ),
+            inputRegisters:  Registers( A: 0xFF ),
             outputRegisters: Registers( A: 0xFF, X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
         )
     }

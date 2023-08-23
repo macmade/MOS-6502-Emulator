@@ -33,7 +33,7 @@ class Test_Instruction_TXS: Test_Instruction
             instruction:     "TXS",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( X:  0x00  ),
+            inputRegisters:  Registers( X:  0x00 ),
             outputRegisters: Registers( SP: 0x00, X: 0x00 )
         )
 
@@ -41,7 +41,7 @@ class Test_Instruction_TXS: Test_Instruction
             instruction:     "TXS",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( X:  0x7F  ),
+            inputRegisters:  Registers( X:  0x7F ),
             outputRegisters: Registers( SP: 0x7F, X: 0x7F )
         )
 
@@ -49,7 +49,7 @@ class Test_Instruction_TXS: Test_Instruction
             instruction:     "TXS",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( X:  0x80  ),
+            inputRegisters:  Registers( X:  0x80 ),
             outputRegisters: Registers( SP: 0x80, X: 0x80 )
         )
 
@@ -57,7 +57,7 @@ class Test_Instruction_TXS: Test_Instruction
             instruction:     "TXS",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( X:  0xFF  ),
+            inputRegisters:  Registers( X:  0xFF ),
             outputRegisters: Registers( SP: 0xFF, X: 0xFF )
         )
     }
