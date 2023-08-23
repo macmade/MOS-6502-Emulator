@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Foundation
+import XSLabsSwift
 
 public class Bus: WritableMemoryDevice, LogSource, Resettable, IRQSource
 {

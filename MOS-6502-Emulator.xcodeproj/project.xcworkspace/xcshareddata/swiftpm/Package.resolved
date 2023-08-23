@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "xslabsswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/macmade/XSLabsSwift",
+      "state" : {
+        "revision" : "e590ba736c193894feeb1e9fd505b8f5721b0d74",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Foundation
+import XSLabsSwift
 
 public class Clock: LogSource
 {

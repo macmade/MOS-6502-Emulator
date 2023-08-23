@@ -25,6 +25,7 @@
 import Foundation
 import MOS6502
 import SwiftCurses
+import XSLabsSwift
 
 public class RegistersWindow: DebuggerWindow
 {
@@ -33,7 +34,7 @@ public class RegistersWindow: DebuggerWindow
         window.printLine( foreground: .blue,   text: "CPU Registers:" )
         window.separator()
 
-        let registers: [ ( name: String, value: MOS6502.Either< UInt8, UInt16 >, options: IntegerDisplayOptions ) ] = [
+        let registers: [ ( name: String, value: Either< UInt8, UInt16 >, options: IntegerDisplayOptions ) ] = [
             ( "PC: ", .right( self.computer.cpu.registers.PC          ), [] ),
             ( "SP: ", .left(  self.computer.cpu.registers.SP          ), [] ),
             ( "--",   .left(  0                                       ), [] ),

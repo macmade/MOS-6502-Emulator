@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Foundation
+import XSLabsSwift
 
 public class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWidthInteger
 {

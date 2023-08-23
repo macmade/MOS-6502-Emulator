@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Foundation
+import XSLabsSwift
 
 public class MC6820: WritableMemoryDevice, LogSource, Resettable, IRQSource, CustomStringConvertible
 {

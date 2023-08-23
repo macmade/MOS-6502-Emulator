@@ -36,6 +36,9 @@
 		054E89BC2A951EF5001E47DD /* FileROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89BB2A951EF5001E47DD /* FileROM.swift */; };
 		054E89BE2A952355001E47DD /* WritableROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89BD2A952355001E47DD /* WritableROM.swift */; };
 		054E89C02A952401001E47DD /* WritableFileROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E89BF2A952401001E47DD /* WritableFileROM.swift */; };
+		05589B182A95E11B00C22F10 /* XSLabsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 05589B172A95E11B00C22F10 /* XSLabsSwift */; };
+		05589B1A2A95E12800C22F10 /* XSLabsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 05589B192A95E12800C22F10 /* XSLabsSwift */; };
+		05589B1C2A95E12C00C22F10 /* XSLabsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 05589B1B2A95E12C00C22F10 /* XSLabsSwift */; };
 		0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0564ABEF2A8C081A00EF1950 /* libxasm65lib.a */; };
 		0564ABFB2A8C0E2500EF1950 /* MemoryDeviceStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564ABFA2A8C0E2500EF1950 /* MemoryDeviceStream.swift */; };
@@ -54,7 +57,6 @@
 		05C3C1AB2A85703200436F6D /* Test-CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1AA2A85703200436F6D /* Test-CPU.swift */; };
 		05C3C1B32A85708C00436F6D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1B22A85708C00436F6D /* main.swift */; };
 		05C3C1BA2A8570A900436F6D /* libMOS6502.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C3C13B2A8568D500436F6D /* libMOS6502.a */; };
-		05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1BC2A8572B100436F6D /* RuntimeError.swift */; };
 		05C3C1D52A85948500436F6D /* Registers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1D42A85948500436F6D /* Registers.swift */; };
 		05C3C1DA2A85A96600436F6D /* LDA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1D92A85A96600436F6D /* LDA.swift */; };
 		05C3C1DC2A85ABFF00436F6D /* BinaryInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */; };
@@ -181,7 +183,6 @@
 		05C3C3622A88204F00436F6D /* C64KernalRev2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C35B2A88203500436F6D /* C64KernalRev2.swift */; };
 		05C3C3632A88204F00436F6D /* Apple1WozMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C1FA2A865D6D00436F6D /* Apple1WozMonitor.swift */; };
 		05C6D0E52A88DE3400A984EB /* MemoryDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */; };
-		05C6D0E72A88EFE700A984EB /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D0E62A88EFE700A984EB /* Either.swift */; };
 		05C6D1022A89165A00A984EB /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1012A89165A00A984EB /* Bus.swift */; };
 		05C6D1082A896C9900A984EB /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1072A896C9900A984EB /* Clock.swift */; };
 		05C6D10A2A897EB700A984EB /* MC6820.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1092A897EB600A984EB /* MC6820.swift */; };
@@ -416,7 +417,6 @@
 		05C3C1B02A85708C00436F6D /* MOS6502Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MOS6502Demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C1B22A85708C00436F6D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		05C3C1BB2A85710800436F6D /* MOS6502-Demo.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MOS6502-Demo.xctestplan"; sourceTree = "<group>"; };
-		05C3C1BC2A8572B100436F6D /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 		05C3C1D42A85948500436F6D /* Registers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registers.swift; sourceTree = "<group>"; };
 		05C3C1D92A85A96600436F6D /* LDA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDA.swift; sourceTree = "<group>"; };
 		05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryInteger.swift; sourceTree = "<group>"; };
@@ -552,7 +552,6 @@
 		05C6D0E22A8854EF00A984EB /* 1-Introduction.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "1-Introduction.md"; sourceTree = "<group>"; };
 		05C6D0E32A8854EF00A984EB /* 9-Links.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "9-Links.md"; sourceTree = "<group>"; };
 		05C6D0E42A88DE3400A984EB /* MemoryDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDevice.swift; sourceTree = "<group>"; };
-		05C6D0E62A88EFE700A984EB /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		05C6D1012A89165A00A984EB /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		05C6D1072A896C9900A984EB /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		05C6D1092A897EB600A984EB /* MC6820.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820.swift; sourceTree = "<group>"; };
@@ -566,6 +565,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05589B182A95E11B00C22F10 /* XSLabsSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +583,7 @@
 				0564AD6C2A902F4900EF1950 /* libncurses.tbd in Frameworks */,
 				0564AD2D2A8EB4B200EF1950 /* libSwiftCurses.a in Frameworks */,
 				0564ABF52A8C084700EF1950 /* libxasm65lib.a in Frameworks */,
+				05589B1A2A95E12800C22F10 /* XSLabsSwift in Frameworks */,
 				05C3C1A02A856EC400436F6D /* libMOS6502.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,6 +595,7 @@
 				0564AD382A8EC13D00EF1950 /* libncurses.tbd in Frameworks */,
 				0564AD2C2A8EB4AD00EF1950 /* libSwiftCurses.a in Frameworks */,
 				0564ABF42A8C083A00EF1950 /* libxasm65lib.a in Frameworks */,
+				05589B1C2A95E12C00C22F10 /* XSLabsSwift in Frameworks */,
 				05C3C1BA2A8570A900436F6D /* libMOS6502.a in Frameworks */,
 				054E897F2A93B713001E47DD /* libMOS6502Debugger.a in Frameworks */,
 			);
@@ -1091,11 +1093,9 @@
 			children = (
 				05C3C1DB2A85ABFF00436F6D /* BinaryInteger.swift */,
 				0564ACF82A8E93EE00EF1950 /* ConsoleLogger.swift */,
-				05C6D0E62A88EFE700A984EB /* Either.swift */,
 				0564ACF42A8E93E200EF1950 /* Logger.swift */,
 				0564ACFA2A8E944800EF1950 /* LogSource.swift */,
 				05C3C1A62A85700100436F6D /* Memory.swift */,
-				05C3C1BC2A8572B100436F6D /* RuntimeError.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1136,6 +1136,9 @@
 				054E88FC2A93B68B001E47DD /* PBXTargetDependency */,
 			);
 			name = MOS6502Debugger;
+			packageProductDependencies = (
+				05589B172A95E11B00C22F10 /* XSLabsSwift */,
+			);
 			productName = "MOS-6502-Emulator";
 			productReference = 054E89652A93B68B001E47DD /* libMOS6502Debugger.a */;
 			productType = "com.apple.product-type.library.static";
@@ -1151,6 +1154,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				05589B1E2A95E13200C22F10 /* PBXTargetDependency */,
 				0564ABF32A8C082D00EF1950 /* PBXTargetDependency */,
 			);
 			name = MOS6502;
@@ -1173,6 +1177,9 @@
 				05C3C1A22A856EC400436F6D /* PBXTargetDependency */,
 			);
 			name = MOS6502Tests;
+			packageProductDependencies = (
+				05589B192A95E12800C22F10 /* XSLabsSwift */,
+			);
 			productName = "MOS-6502-Tests";
 			productReference = 05C3C19C2A856EC400436F6D /* MOS6502Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1194,6 +1201,9 @@
 				054E897E2A93B70C001E47DD /* PBXTargetDependency */,
 			);
 			name = MOS6502Demo;
+			packageProductDependencies = (
+				05589B1B2A95E12C00C22F10 /* XSLabsSwift */,
+			);
 			productName = "MOS-6502-Demo";
 			productReference = 05C3C1B02A85708C00436F6D /* MOS6502Demo */;
 			productType = "com.apple.product-type.tool";
@@ -1229,6 +1239,9 @@
 				Base,
 			);
 			mainGroup = 05C3C1322A8568D500436F6D;
+			packageReferences = (
+				05589B162A95E11B00C22F10 /* XCRemoteSwiftPackageReference "XSLabsSwift" */,
+			);
 			productRefGroup = 05C3C13C2A8568D500436F6D /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -1345,7 +1358,6 @@
 				05C3C2662A87D42700436F6D /* SED.swift in Sources */,
 				05C3C22A2A87D27E00436F6D /* BRK.swift in Sources */,
 				05C3C2122A87A11D00436F6D /* Instruction.swift in Sources */,
-				05C3C1BD2A8572B100436F6D /* RuntimeError.swift in Sources */,
 				05C3C2602A87D3F300436F6D /* RTS.swift in Sources */,
 				05C3C22E2A87D29500436F6D /* CLC.swift in Sources */,
 				05C6D1022A89165A00A984EB /* Bus.swift in Sources */,
@@ -1386,7 +1398,6 @@
 				05C3C23A2A87D2FE00436F6D /* DEC.swift in Sources */,
 				05C3C2342A87D2CA00436F6D /* CLV.swift in Sources */,
 				05C3C23C2A87D30F00436F6D /* DEX.swift in Sources */,
-				05C6D0E72A88EFE700A984EB /* Either.swift in Sources */,
 				05C3C26E2A87D46000436F6D /* TSX.swift in Sources */,
 				05C3C1E02A85B1AE00436F6D /* LDY.swift in Sources */,
 				05C3C2562A87D3B800436F6D /* PLA.swift in Sources */,
@@ -1522,6 +1533,10 @@
 			isa = PBXTargetDependency;
 			target = 05C3C13A2A8568D500436F6D /* MOS6502 */;
 			targetProxy = 054E89802A93B85E001E47DD /* PBXContainerItemProxy */;
+		};
+		05589B1E2A95E13200C22F10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 05589B1D2A95E13200C22F10 /* XSLabsSwift */;
 		};
 		0564ABF32A8C082D00EF1950 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1705,6 +1720,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		05589B162A95E11B00C22F10 /* XCRemoteSwiftPackageReference "XSLabsSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/macmade/XSLabsSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		05589B172A95E11B00C22F10 /* XSLabsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05589B162A95E11B00C22F10 /* XCRemoteSwiftPackageReference "XSLabsSwift" */;
+			productName = XSLabsSwift;
+		};
+		05589B192A95E12800C22F10 /* XSLabsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05589B162A95E11B00C22F10 /* XCRemoteSwiftPackageReference "XSLabsSwift" */;
+			productName = XSLabsSwift;
+		};
+		05589B1B2A95E12C00C22F10 /* XSLabsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05589B162A95E11B00C22F10 /* XCRemoteSwiftPackageReference "XSLabsSwift" */;
+			productName = XSLabsSwift;
+		};
+		05589B1D2A95E13200C22F10 /* XSLabsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05589B162A95E11B00C22F10 /* XCRemoteSwiftPackageReference "XSLabsSwift" */;
+			productName = XSLabsSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 05C3C1332A8568D500436F6D /* Project object */;
 }

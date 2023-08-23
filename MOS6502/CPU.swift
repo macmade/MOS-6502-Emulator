@@ -24,6 +24,7 @@
 
 import Foundation
 import xasm65lib
+import XSLabsSwift
 
 public class CPU: LogSource, Resettable
 {

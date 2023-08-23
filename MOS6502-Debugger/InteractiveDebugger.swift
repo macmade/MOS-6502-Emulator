@@ -26,6 +26,7 @@ import Foundation
 import MOS6502
 import SwiftCurses
 import xasm65lib
+import XSLabsSwift
 
 public class InteractiveDebugger: ComputerRunner, Synchronizable
 {

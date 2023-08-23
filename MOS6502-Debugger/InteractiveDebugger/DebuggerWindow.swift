@@ -25,6 +25,7 @@
 import Foundation
 import MOS6502
 import SwiftCurses
+import XSLabsSwift
 
 public class DebuggerWindow: WindowBuilder
 {
@@ -107,7 +108,7 @@ public class DebuggerWindow: WindowBuilder
         self.printInteger( window: window, label: label, value: .right( value ), options: options )
     }
 
-    public func printInteger( window: ManagedWindow, label: String?, value: MOS6502.Either< UInt8, UInt16 >, options: IntegerDisplayOptions )
+    public func printInteger( window: ManagedWindow, label: String?, value: Either< UInt8, UInt16 >, options: IntegerDisplayOptions )
     {
         if let label = label
         {

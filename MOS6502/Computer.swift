@@ -24,6 +24,7 @@
 
 import Foundation
 import xasm65lib
+import XSLabsSwift
 
 open class Computer: LogSource
 {

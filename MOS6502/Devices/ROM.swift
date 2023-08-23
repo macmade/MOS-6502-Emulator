@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Foundation
+import XSLabsSwift
 
 public protocol ROM: MemoryDevice, CustomStringConvertible
 {
