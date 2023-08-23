@@ -28,5 +28,45 @@ import XCTest
 class Test_Instruction_DEX: Test_Instruction
 {
     func testImplied() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "DEX",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( X: 0x00 ),
+            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEX",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( X: 0x01 ),
+            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEX",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( X: 0x02 ),
+            outputRegisters: Registers( X: 0x01, PS: Flags( Z: 0, N: 0 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEX",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( X: 0xFF ),
+            outputRegisters: Registers( X: 0xFE, PS: Flags( Z: 0, N: 1 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "DEX",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( X: 0x80 ),
+            outputRegisters: Registers( X: 0x7F, PS: Flags( Z: 0, N: 0 ) )
+        )
+    }
 }
