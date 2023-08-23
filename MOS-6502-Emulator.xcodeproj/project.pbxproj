@@ -15,10 +15,9 @@
 		054E896D2A93B6F6001E47DD /* InteractiveDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD312A8EBE5400EF1950 /* InteractiveDebugger.swift */; };
 		054E896E2A93B6F6001E47DD /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD2E2A8EB80500EF1950 /* Debugger.swift */; };
 		054E896F2A93B6FB001E47DD /* HelpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD7E2A90E48A00EF1950 /* HelpWindow.swift */; };
-		054E89702A93B6FB001E47DD /* InstructionsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD892A90E9C100EF1950 /* InstructionsWindow.swift */; };
 		054E89712A93B6FB001E47DD /* ComputerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD802A90E54A00EF1950 /* ComputerWindow.swift */; };
 		054E89722A93B6FB001E47DD /* DebuggerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD832A90E65F00EF1950 /* DebuggerWindow.swift */; };
-		054E89732A93B6FB001E47DD /* DisassemblyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8B2A90E9E300EF1950 /* DisassemblyWindow.swift */; };
+		054E89732A93B6FB001E47DD /* InstructionsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8B2A90E9E300EF1950 /* InstructionsWindow.swift */; };
 		054E89742A93B6FB001E47DD /* MC6820Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD992A90F8CC00EF1950 /* MC6820Window.swift */; };
 		054E89752A93B6FB001E47DD /* MemoryDevicesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */; };
 		054E89762A93B6FB001E47DD /* RegistersWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564AD852A90E8F800EF1950 /* RegistersWindow.swift */; };
@@ -347,8 +346,7 @@
 		0564AD832A90E65F00EF1950 /* DebuggerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggerWindow.swift; sourceTree = "<group>"; };
 		0564AD852A90E8F800EF1950 /* RegistersWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistersWindow.swift; sourceTree = "<group>"; };
 		0564AD872A90E90300EF1950 /* FlagsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsWindow.swift; sourceTree = "<group>"; };
-		0564AD892A90E9C100EF1950 /* InstructionsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsWindow.swift; sourceTree = "<group>"; };
-		0564AD8B2A90E9E300EF1950 /* DisassemblyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisassemblyWindow.swift; sourceTree = "<group>"; };
+		0564AD8B2A90E9E300EF1950 /* InstructionsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsWindow.swift; sourceTree = "<group>"; };
 		0564AD8D2A90EA1100EF1950 /* StackWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackWindow.swift; sourceTree = "<group>"; };
 		0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDevicesWindow.swift; sourceTree = "<group>"; };
 		0564AD912A90EA4800EF1950 /* MemoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryWindow.swift; sourceTree = "<group>"; };
@@ -658,12 +656,11 @@
 			children = (
 				0564AD802A90E54A00EF1950 /* ComputerWindow.swift */,
 				0564AD832A90E65F00EF1950 /* DebuggerWindow.swift */,
-				0564AD8B2A90E9E300EF1950 /* DisassemblyWindow.swift */,
 				0564AD872A90E90300EF1950 /* FlagsWindow.swift */,
 				0564AD7E2A90E48A00EF1950 /* HelpWindow.swift */,
-				0564AD892A90E9C100EF1950 /* InstructionsWindow.swift */,
-				0564AD992A90F8CC00EF1950 /* MC6820Window.swift */,
+				0564AD8B2A90E9E300EF1950 /* InstructionsWindow.swift */,
 				054E89822A93B9C0001E47DD /* MC6820PeripheralsWindow.swift */,
+				0564AD992A90F8CC00EF1950 /* MC6820Window.swift */,
 				0564AD8F2A90EA2C00EF1950 /* MemoryDevicesWindow.swift */,
 				0564AD912A90EA4800EF1950 /* MemoryWindow.swift */,
 				0564AD9D2A9117F200EF1950 /* PromptValue.swift */,
@@ -1328,7 +1325,6 @@
 				054E89752A93B6FB001E47DD /* MemoryDevicesWindow.swift in Sources */,
 				054E896E2A93B6F6001E47DD /* Debugger.swift in Sources */,
 				054E89B82A93F2BE001E47DD /* MC6820+Debug.swift in Sources */,
-				054E89702A93B6FB001E47DD /* InstructionsWindow.swift in Sources */,
 				054E89792A93B6FB001E47DD /* PromptWindow.swift in Sources */,
 				054E897A2A93B6FB001E47DD /* StackWindow.swift in Sources */,
 				054E89782A93B6FB001E47DD /* FlagsWindow.swift in Sources */,
@@ -1336,7 +1332,7 @@
 				054E896B2A93B6F6001E47DD /* NonInteractiveDebugger.swift in Sources */,
 				054E897B2A93B6FB001E47DD /* StatusWindow.swift in Sources */,
 				054E89772A93B6FB001E47DD /* PromptValue.swift in Sources */,
-				054E89732A93B6FB001E47DD /* DisassemblyWindow.swift in Sources */,
+				054E89732A93B6FB001E47DD /* InstructionsWindow.swift in Sources */,
 				054E898D2A93EB79001E47DD /* Devices+Debug.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
