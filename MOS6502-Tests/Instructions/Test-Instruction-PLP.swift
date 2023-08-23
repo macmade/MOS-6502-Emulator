@@ -28,5 +28,40 @@ import XCTest
 class Test_Instruction_PLP: Test_Instruction
 {
     func testImplied() throws
-    {}
+    {
+        try ( 0x00 ... 0xFF ).map
+        {
+            UInt8( $0 )
+        }
+        .forEach
+        {
+            byte in
+
+            let r1 = try self.executeSingleInstruction(
+                instruction:     "PLP",
+                addressingMode:  .implied,
+                operands:        [],
+                inputRegisters:  Registers( SP: 0xFF ),
+                outputRegisters: Registers( SP: 0x00, PS: Flags( rawValue: byte ) )
+            )
+            {
+                cpu, bus, ram in try bus.write( byte, at: CPU.stackStart + UInt16( 0x00 ) )
+            }
+
+            XCTAssertEqual( try r1.ram.read( at: CPU.stackStart + UInt16( 0x00 ) ), byte )
+
+            let r2 = try self.executeSingleInstruction(
+                instruction:     "PLP",
+                addressingMode:  .implied,
+                operands:        [],
+                inputRegisters:  Registers( SP: 0x00 ),
+                outputRegisters: Registers( SP: 0x01, PS: Flags( rawValue: byte ) )
+            )
+            {
+                cpu, bus, ram in try bus.write( byte, at: CPU.stackStart + UInt16( 0x01 ) )
+            }
+
+            XCTAssertEqual( try r2.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), byte )
+        }
+    }
 }

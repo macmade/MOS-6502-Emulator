@@ -34,7 +34,7 @@ class Test_Instruction_PLA: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( SP: 0xFF ),
-            outputRegisters: Registers( SP: 0x00, A: 0x42 )
+            outputRegisters: Registers( SP: 0x00, A: 0x42, PS: Flags( Z: 0, N: 0 ) )
         )
         {
             cpu, bus, ram in try bus.write( 0x42, at: CPU.stackStart + UInt16( 0x00 ) )
@@ -47,12 +47,38 @@ class Test_Instruction_PLA: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( SP: 0x00 ),
-            outputRegisters: Registers( SP: 0x01, A: 0x42 )
+            outputRegisters: Registers( SP: 0x01, A: 0x42, PS: Flags( Z: 0, N: 0 ) )
         )
         {
             cpu, bus, ram in try bus.write( 0x42, at: CPU.stackStart + UInt16( 0x01 ) )
         }
 
         XCTAssertEqual( try r2.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0x42 )
+
+        let r3 = try self.executeSingleInstruction(
+            instruction:     "PLA",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( SP: 0x00 ),
+            outputRegisters: Registers( SP: 0x01, A: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: CPU.stackStart + UInt16( 0x01 ) )
+        }
+
+        XCTAssertEqual( try r3.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0x00 )
+
+        let r4 = try self.executeSingleInstruction(
+            instruction:     "PLA",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( SP: 0x00 ),
+            outputRegisters: Registers( SP: 0x01, A: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xFF, at: CPU.stackStart + UInt16( 0x01 ) )
+        }
+
+        XCTAssertEqual( try r4.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0xFF )
     }
 }

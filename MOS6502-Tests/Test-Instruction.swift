@@ -29,13 +29,38 @@ class Test_Instruction: XCTestCase
 {
     struct Flags
     {
-        var C: UInt8? = nil
-        var Z: UInt8? = nil
-        var I: UInt8? = nil
-        var D: UInt8? = nil
-        var B: UInt8? = nil
-        var V: UInt8? = nil
-        var N: UInt8? = nil
+        var C: UInt8?
+        var Z: UInt8?
+        var I: UInt8?
+        var D: UInt8?
+        var B: UInt8?
+        var U: UInt8?
+        var V: UInt8?
+        var N: UInt8?
+
+        init( C: UInt8? = nil, Z: UInt8? = nil, I: UInt8? = nil, D: UInt8? = nil, B: UInt8? = nil, U: UInt8? = nil, V: UInt8? = nil, N: UInt8? = nil )
+        {
+            self.C = C
+            self.Z = Z
+            self.I = I
+            self.D = D
+            self.B = B
+            self.U = U
+            self.V = V
+            self.N = N
+        }
+
+        init( rawValue: UInt8 )
+        {
+            self.C = rawValue & ( 1 << 0 ) != 0 ? 1 : 0
+            self.Z = rawValue & ( 1 << 1 ) != 0 ? 1 : 0
+            self.I = rawValue & ( 1 << 2 ) != 0 ? 1 : 0
+            self.D = rawValue & ( 1 << 3 ) != 0 ? 1 : 0
+            self.B = rawValue & ( 1 << 4 ) != 0 ? 1 : 0
+            self.U = rawValue & ( 1 << 5 ) != 0 ? 1 : 0
+            self.V = rawValue & ( 1 << 6 ) != 0 ? 1 : 0
+            self.N = rawValue & ( 1 << 7 ) != 0 ? 1 : 0
+        }
     }
 
     struct Registers
@@ -57,6 +82,7 @@ class Test_Instruction: XCTestCase
         if ( additionalRegisters.PS?.I ?? defaultFlags ?? ( registers.PS.contains( .interruptDisable ) ? 1 : 0 ) ) == 1 { flags.insert( .interruptDisable ) }
         if ( additionalRegisters.PS?.D ?? defaultFlags ?? ( registers.PS.contains( .decimalMode      ) ? 1 : 0 ) ) == 1 { flags.insert( .decimalMode ) }
         if ( additionalRegisters.PS?.B ?? defaultFlags ?? ( registers.PS.contains( .breakCommand     ) ? 1 : 0 ) ) == 1 { flags.insert( .breakCommand ) }
+        if ( additionalRegisters.PS?.U ?? defaultFlags ?? ( registers.PS.contains( .unused           ) ? 1 : 0 ) ) == 1 { flags.insert( .unused ) }
         if ( additionalRegisters.PS?.V ?? defaultFlags ?? ( registers.PS.contains( .overflowFlag     ) ? 1 : 0 ) ) == 1 { flags.insert( .overflowFlag ) }
         if ( additionalRegisters.PS?.N ?? defaultFlags ?? ( registers.PS.contains( .negativeFlag     ) ? 1 : 0 ) ) == 1 { flags.insert( .negativeFlag ) }
 
@@ -144,6 +170,7 @@ class Test_Instruction: XCTestCase
             XCTAssertEqual( expectedRegisters.PS.contains( .interruptDisable ), cpu.registers.PS.contains( .interruptDisable ), "Register mismatch for PS: interrupt disable" )
             XCTAssertEqual( expectedRegisters.PS.contains( .decimalMode      ), cpu.registers.PS.contains( .decimalMode      ), "Register mismatch for PS: decimal mode" )
             XCTAssertEqual( expectedRegisters.PS.contains( .breakCommand     ), cpu.registers.PS.contains( .breakCommand     ), "Register mismatch for PS: break command" )
+            XCTAssertEqual( expectedRegisters.PS.contains( .unused           ), cpu.registers.PS.contains( .unused           ), "Register mismatch for PS: unused" )
             XCTAssertEqual( expectedRegisters.PS.contains( .overflowFlag     ), cpu.registers.PS.contains( .overflowFlag     ), "Register mismatch for PS: overlfow flag" )
             XCTAssertEqual( expectedRegisters.PS.contains( .negativeFlag     ), cpu.registers.PS.contains( .negativeFlag     ), "Register mismatch for PS: negative flag" )
         }
