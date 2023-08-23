@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0520D9212A95F74A00ECFB20 /* InstructionsHistoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520D9202A95F74A00ECFB20 /* InstructionsHistoryWindow.swift */; };
+		0520D9232A960EDC00ECFB20 /* 6502-Functional-Test.bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0520D9222A960EBD00ECFB20 /* 6502-Functional-Test.bin */; };
 		054E88F42A93AD19001E47DD /* MC6820Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */; };
 		054E88F62A93AD32001E47DD /* MC6820Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */; };
 		054E88F82A93AD38001E47DD /* MC6820Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F72A93AD38001E47DD /* MC6820Display.swift */; };
@@ -186,7 +187,6 @@
 		05C6D1022A89165A00A984EB /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1012A89165A00A984EB /* Bus.swift */; };
 		05C6D1082A896C9900A984EB /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1072A896C9900A984EB /* Clock.swift */; };
 		05C6D10A2A897EB700A984EB /* MC6820.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1092A897EB600A984EB /* MC6820.swift */; };
-		05C6D10C2A89814900A984EB /* Apple1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D10B2A89814900A984EB /* Apple1.swift */; };
 		05DED74A2A8AA41E00DA42F9 /* RAM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED7492A8AA41D00DA42F9 /* RAM.swift */; };
 		05DED74C2A8AA67A00DA42F9 /* AddressingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED74B2A8AA67A00DA42F9 /* AddressingContext.swift */; };
 /* End PBXBuildFile section */
@@ -306,6 +306,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				0520D9232A960EDC00ECFB20 /* 6502-Functional-Test.bin in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +314,7 @@
 
 /* Begin PBXFileReference section */
 		0520D9202A95F74A00ECFB20 /* InstructionsHistoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsHistoryWindow.swift; sourceTree = "<group>"; };
+		0520D9222A960EBD00ECFB20 /* 6502-Functional-Test.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "6502-Functional-Test.bin"; sourceTree = "<group>"; };
 		054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Keyboard.swift; sourceTree = "<group>"; };
 		054E88F52A93AD32001E47DD /* MC6820Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Peripheral.swift; sourceTree = "<group>"; };
 		054E88F72A93AD38001E47DD /* MC6820Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Display.swift; sourceTree = "<group>"; };
@@ -555,7 +557,6 @@
 		05C6D1012A89165A00A984EB /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		05C6D1072A896C9900A984EB /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		05C6D1092A897EB600A984EB /* MC6820.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820.swift; sourceTree = "<group>"; };
-		05C6D10B2A89814900A984EB /* Apple1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple1.swift; sourceTree = "<group>"; };
 		05DED7492A8AA41D00DA42F9 /* RAM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAM.swift; sourceTree = "<group>"; };
 		05DED74B2A8AA67A00DA42F9 /* AddressingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressingContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -887,7 +888,6 @@
 			isa = PBXGroup;
 			children = (
 				05C3C1B22A85708C00436F6D /* main.swift */,
-				05C6D10B2A89814900A984EB /* Apple1.swift */,
 				05C3C2062A867F2400436F6D /* ROMS */,
 			);
 			path = "MOS6502-Demo";
@@ -967,6 +967,7 @@
 		05C3C2062A867F2400436F6D /* ROMS */ = {
 			isa = PBXGroup;
 			children = (
+				0520D9222A960EBD00ECFB20 /* 6502-Functional-Test.bin */,
 				05C3C2072A867F4600436F6D /* Apple1Basic.swift */,
 				05C3C1FA2A865D6D00436F6D /* Apple1WozMonitor.swift */,
 				05C3C3592A881FC000436F6D /* C64KernalRev1.swift */,
@@ -1502,7 +1503,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				05C3C3612A88204F00436F6D /* C64KernalRev3.swift in Sources */,
-				05C6D10C2A89814900A984EB /* Apple1.swift in Sources */,
 				05C3C1B32A85708C00436F6D /* main.swift in Sources */,
 				05C3C3622A88204F00436F6D /* C64KernalRev2.swift in Sources */,
 				05C3C35F2A88204F00436F6D /* Apple1Basic.swift in Sources */,

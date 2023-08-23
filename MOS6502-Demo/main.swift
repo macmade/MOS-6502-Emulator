@@ -28,7 +28,26 @@ import MOS6502Debugger
 
 do
 {
-    try Debugger.debugger( for: Apple1() ).run()
+    if ProcessInfo.processInfo.arguments.contains( "--test" )
+    {
+        let computer = try Computer( frequency: .mhz( 1 ), memory: .kb( 0 ) )
+        let rom      = try WritableFileROM( url: Bundle.main.bundleURL.appendingPathComponent( "6502-Functional-Test.bin" ), origin: 0 )
+
+        try computer.loadROM( rom )
+        try Debugger.debugger( for: computer ).run()
+    }
+    else
+    {
+        let computer = try Computer( frequency: .mhz( 1 ), memory: .kb( 4 ) )
+        let rom      = Apple1WozMonitor()
+        let keyboard = MC6820Keyboard()
+        let display  = MC6820Display()
+        let pia      = MC6820( peripheral1: keyboard, peripheral2: display )
+
+        try computer.mapDevice( pia, at: 0xD010, size: 4 )
+        try computer.loadROM( rom )
+        try Debugger.debugger( for: computer ).run()
+    }
 }
 catch
 {
