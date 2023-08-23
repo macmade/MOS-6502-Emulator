@@ -28,5 +28,13 @@ import XCTest
 class Test_Instruction_NOP: Test_Instruction
 {
     func testImplied() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "NOP",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers(),
+            outputRegisters: Registers()
+        )
+    }
 }
