@@ -7,6 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050569A52A96BB6400DDD588 /* Test-Instruction-ROR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3182A87FADB00436F6D /* Test-Instruction-ROR.swift */; };
+		050569A62A96BB6400DDD588 /* Test-Instruction-BNE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3032A87FADB00436F6D /* Test-Instruction-BNE.swift */; };
+		050569A72A96BB6400DDD588 /* Test-Instruction-STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C30C2A87FADB00436F6D /* Test-Instruction-STX.swift */; };
+		050569A82A96BB6400DDD588 /* Test-Instruction-SED.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F02A87FADB00436F6D /* Test-Instruction-SED.swift */; };
+		050569A92A96BB6400DDD588 /* Test-Instruction-CMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2E82A87FADB00436F6D /* Test-Instruction-CMP.swift */; };
+		050569AA2A96BB6400DDD588 /* Test-Instruction-SEI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3062A87FADB00436F6D /* Test-Instruction-SEI.swift */; };
+		050569AB2A96BB6400DDD588 /* Test-Instruction-INC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2ED2A87FADB00436F6D /* Test-Instruction-INC.swift */; };
+		050569AC2A96BB6400DDD588 /* Test-Instruction-INX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2EE2A87FADB00436F6D /* Test-Instruction-INX.swift */; };
+		050569AD2A96BB6400DDD588 /* Test-Instruction-LSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C31E2A87FADB00436F6D /* Test-Instruction-LSR.swift */; };
+		050569AE2A96BB6400DDD588 /* Test-Instruction-ROL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3052A87FADB00436F6D /* Test-Instruction-ROL.swift */; };
+		050569AF2A96BB6400DDD588 /* Test-Instruction-PHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2FA2A87FADB00436F6D /* Test-Instruction-PHP.swift */; };
+		050569B02A96BB6400DDD588 /* Test-Instruction-BEQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2E72A87FADB00436F6D /* Test-Instruction-BEQ.swift */; };
+		050569B12A96BB6400DDD588 /* Test-Instruction-CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3092A87FADB00436F6D /* Test-Instruction-CLI.swift */; };
+		050569B22A96BB6400DDD588 /* Test-Instruction-PHA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3072A87FADB00436F6D /* Test-Instruction-PHA.swift */; };
+		050569B32A96BB6400DDD588 /* Test-Instruction-DEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F22A87FADB00436F6D /* Test-Instruction-DEC.swift */; };
+		050569B42A96BB6400DDD588 /* Test-Instruction-TXS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3102A87FADB00436F6D /* Test-Instruction-TXS.swift */; };
+		050569B52A96BB6400DDD588 /* Test-Instruction-ORA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C31B2A87FADB00436F6D /* Test-Instruction-ORA.swift */; };
+		050569B62A96BB6400DDD588 /* Test-Instruction-LDY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3142A87FADB00436F6D /* Test-Instruction-LDY.swift */; };
+		050569B72A96BB6400DDD588 /* Test-Instruction-CPY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2FE2A87FADB00436F6D /* Test-Instruction-CPY.swift */; };
+		050569B82A96BB6400DDD588 /* Test-Instruction-JSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F92A87FADB00436F6D /* Test-Instruction-JSR.swift */; };
+		050569B92A96BB6400DDD588 /* Test-Instruction-BCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F52A87FADB00436F6D /* Test-Instruction-BCS.swift */; };
+		050569BA2A96BB6400DDD588 /* Test-Instruction-NOP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3172A87FADB00436F6D /* Test-Instruction-NOP.swift */; };
+		050569BB2A96BB6400DDD588 /* Test-Instruction-BMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2EC2A87FADB00436F6D /* Test-Instruction-BMI.swift */; };
+		050569BC2A96BB6400DDD588 /* Test-Instruction-PLA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3162A87FADB00436F6D /* Test-Instruction-PLA.swift */; };
+		050569BD2A96BB6400DDD588 /* Test-Instruction-DEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F42A87FADB00436F6D /* Test-Instruction-DEX.swift */; };
+		050569BE2A96BB6400DDD588 /* Test-Instruction-AND.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3022A87FADB00436F6D /* Test-Instruction-AND.swift */; };
+		050569BF2A96BB6400DDD588 /* Test-Instruction-BIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3002A87FADB00436F6D /* Test-Instruction-BIT.swift */; };
+		050569C02A96BB6400DDD588 /* Test-Instruction-ASL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F72A87FADB00436F6D /* Test-Instruction-ASL.swift */; };
+		050569C12A96BB6400DDD588 /* Test-Instruction-TYA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3112A87FADB00436F6D /* Test-Instruction-TYA.swift */; };
+		050569C22A96BB6400DDD588 /* Test-Instruction-TXA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2EF2A87FADB00436F6D /* Test-Instruction-TXA.swift */; };
+		050569C32A96BB6400DDD588 /* Test-Instruction-BRK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3192A87FADB00436F6D /* Test-Instruction-BRK.swift */; };
+		050569C42A96BB6400DDD588 /* Test-Instruction-STY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C31A2A87FADB00436F6D /* Test-Instruction-STY.swift */; };
+		050569C52A96BB6400DDD588 /* Test-Instruction-INY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3012A87FADB00436F6D /* Test-Instruction-INY.swift */; };
+		050569C62A96BB6400DDD588 /* Test-Instruction-SBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C30B2A87FADB00436F6D /* Test-Instruction-SBC.swift */; };
+		050569C72A96BB6400DDD588 /* Test-Instruction-CLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2EB2A87FADB00436F6D /* Test-Instruction-CLD.swift */; };
+		050569C82A96BB6400DDD588 /* Test-Instruction-PLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F32A87FADB00436F6D /* Test-Instruction-PLP.swift */; };
+		050569C92A96BB6400DDD588 /* Test-Instruction-STA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3122A87FADB00436F6D /* Test-Instruction-STA.swift */; };
+		050569CA2A96BB6400DDD588 /* Test-Instruction-ADC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2FD2A87FADB00436F6D /* Test-Instruction-ADC.swift */; };
+		050569CB2A96BB6400DDD588 /* Test-Instruction-BVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2FB2A87FADB00436F6D /* Test-Instruction-BVC.swift */; };
+		050569CC2A96BB6400DDD588 /* Test-Instruction-RTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F62A87FADB00436F6D /* Test-Instruction-RTI.swift */; };
+		050569CD2A96BB6400DDD588 /* Test-Instruction-BVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3152A87FADB00436F6D /* Test-Instruction-BVS.swift */; };
+		050569CE2A96BB6400DDD588 /* Test-Instruction-LDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3042A87FADB00436F6D /* Test-Instruction-LDX.swift */; };
+		050569CF2A96BB6400DDD588 /* Test-Instruction-JMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2E92A87FADB00436F6D /* Test-Instruction-JMP.swift */; };
+		050569D02A96BB6400DDD588 /* Test-Instruction-SEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2FC2A87FADB00436F6D /* Test-Instruction-SEC.swift */; };
+		050569D12A96BB6400DDD588 /* Test-Instruction-CPX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F12A87FADB00436F6D /* Test-Instruction-CPX.swift */; };
+		050569D22A96BB6400DDD588 /* Test-Instruction-EOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3082A87FADB00436F6D /* Test-Instruction-EOR.swift */; };
+		050569D32A96BB6400DDD588 /* Test-Instruction-TAX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C30D2A87FADB00436F6D /* Test-Instruction-TAX.swift */; };
+		050569D42A96BB6400DDD588 /* Test-Instruction-TAY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C31C2A87FADB00436F6D /* Test-Instruction-TAY.swift */; };
+		050569D52A96BB6400DDD588 /* Test-Instruction-BCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3132A87FADB00436F6D /* Test-Instruction-BCC.swift */; };
+		050569D62A96BB6400DDD588 /* Test-Instruction-CLV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C30E2A87FADB00436F6D /* Test-Instruction-CLV.swift */; };
+		050569D72A96BB6400DDD588 /* Test-Instruction-CLC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F82A87FADB00436F6D /* Test-Instruction-CLC.swift */; };
+		050569D82A96BB6400DDD588 /* Test-Instruction-LDA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C30A2A87FADB00436F6D /* Test-Instruction-LDA.swift */; };
+		050569D92A96BB6400DDD588 /* Test-Instruction-TSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C31D2A87FADB00436F6D /* Test-Instruction-TSX.swift */; };
+		050569DA2A96BB6400DDD588 /* Test-Instruction-RTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2EA2A87FADB00436F6D /* Test-Instruction-RTS.swift */; };
+		050569DB2A96BB6400DDD588 /* Test-Instruction-BPL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C30F2A87FADB00436F6D /* Test-Instruction-BPL.swift */; };
 		0520D9212A95F74A00ECFB20 /* InstructionsHistoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520D9202A95F74A00ECFB20 /* InstructionsHistoryWindow.swift */; };
 		0520D9232A960EDC00ECFB20 /* 6502-Functional-Test.bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0520D9222A960EBD00ECFB20 /* 6502-Functional-Test.bin */; };
 		054E88F42A93AD19001E47DD /* MC6820Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */; };
@@ -1379,11 +1434,66 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				050569B52A96BB6400DDD588 /* Test-Instruction-ORA.swift in Sources */,
+				050569C52A96BB6400DDD588 /* Test-Instruction-INY.swift in Sources */,
+				050569DB2A96BB6400DDD588 /* Test-Instruction-BPL.swift in Sources */,
+				050569B12A96BB6400DDD588 /* Test-Instruction-CLI.swift in Sources */,
+				050569BA2A96BB6400DDD588 /* Test-Instruction-NOP.swift in Sources */,
+				050569D52A96BB6400DDD588 /* Test-Instruction-BCC.swift in Sources */,
+				050569CF2A96BB6400DDD588 /* Test-Instruction-JMP.swift in Sources */,
+				050569BB2A96BB6400DDD588 /* Test-Instruction-BMI.swift in Sources */,
+				050569BE2A96BB6400DDD588 /* Test-Instruction-AND.swift in Sources */,
+				050569C92A96BB6400DDD588 /* Test-Instruction-STA.swift in Sources */,
+				050569D12A96BB6400DDD588 /* Test-Instruction-CPX.swift in Sources */,
+				050569DA2A96BB6400DDD588 /* Test-Instruction-RTS.swift in Sources */,
+				050569B82A96BB6400DDD588 /* Test-Instruction-JSR.swift in Sources */,
+				050569C22A96BB6400DDD588 /* Test-Instruction-TXA.swift in Sources */,
+				050569CA2A96BB6400DDD588 /* Test-Instruction-ADC.swift in Sources */,
 				05C3C1AB2A85703200436F6D /* Test-CPU.swift in Sources */,
+				050569CD2A96BB6400DDD588 /* Test-Instruction-BVS.swift in Sources */,
+				050569B72A96BB6400DDD588 /* Test-Instruction-CPY.swift in Sources */,
+				050569CC2A96BB6400DDD588 /* Test-Instruction-RTI.swift in Sources */,
 				05C3C19F2A856EC400436F6D /* Test-Memory.swift in Sources */,
+				050569BD2A96BB6400DDD588 /* Test-Instruction-DEX.swift in Sources */,
+				050569BF2A96BB6400DDD588 /* Test-Instruction-BIT.swift in Sources */,
+				050569D92A96BB6400DDD588 /* Test-Instruction-TSX.swift in Sources */,
+				050569AA2A96BB6400DDD588 /* Test-Instruction-SEI.swift in Sources */,
+				050569A52A96BB6400DDD588 /* Test-Instruction-ROR.swift in Sources */,
+				050569D42A96BB6400DDD588 /* Test-Instruction-TAY.swift in Sources */,
+				050569CB2A96BB6400DDD588 /* Test-Instruction-BVC.swift in Sources */,
+				050569B32A96BB6400DDD588 /* Test-Instruction-DEC.swift in Sources */,
+				050569AC2A96BB6400DDD588 /* Test-Instruction-INX.swift in Sources */,
+				050569B02A96BB6400DDD588 /* Test-Instruction-BEQ.swift in Sources */,
+				050569A82A96BB6400DDD588 /* Test-Instruction-SED.swift in Sources */,
+				050569B62A96BB6400DDD588 /* Test-Instruction-LDY.swift in Sources */,
+				050569AB2A96BB6400DDD588 /* Test-Instruction-INC.swift in Sources */,
+				050569D82A96BB6400DDD588 /* Test-Instruction-LDA.swift in Sources */,
+				050569D62A96BB6400DDD588 /* Test-Instruction-CLV.swift in Sources */,
+				050569C02A96BB6400DDD588 /* Test-Instruction-ASL.swift in Sources */,
+				050569BC2A96BB6400DDD588 /* Test-Instruction-PLA.swift in Sources */,
 				05C3C20C2A868A6300436F6D /* Test-Instruction.swift in Sources */,
+				050569D72A96BB6400DDD588 /* Test-Instruction-CLC.swift in Sources */,
+				050569C32A96BB6400DDD588 /* Test-Instruction-BRK.swift in Sources */,
+				050569C62A96BB6400DDD588 /* Test-Instruction-SBC.swift in Sources */,
+				050569B22A96BB6400DDD588 /* Test-Instruction-PHA.swift in Sources */,
+				050569AF2A96BB6400DDD588 /* Test-Instruction-PHP.swift in Sources */,
 				05C3C1E42A8645F200436F6D /* Test-Registers-Flags.swift in Sources */,
+				050569C42A96BB6400DDD588 /* Test-Instruction-STY.swift in Sources */,
+				050569D32A96BB6400DDD588 /* Test-Instruction-TAX.swift in Sources */,
+				050569B92A96BB6400DDD588 /* Test-Instruction-BCS.swift in Sources */,
 				05C3C1E62A86471300436F6D /* Test-BinaryInteger.swift in Sources */,
+				050569D22A96BB6400DDD588 /* Test-Instruction-EOR.swift in Sources */,
+				050569A92A96BB6400DDD588 /* Test-Instruction-CMP.swift in Sources */,
+				050569B42A96BB6400DDD588 /* Test-Instruction-TXS.swift in Sources */,
+				050569C72A96BB6400DDD588 /* Test-Instruction-CLD.swift in Sources */,
+				050569A72A96BB6400DDD588 /* Test-Instruction-STX.swift in Sources */,
+				050569CE2A96BB6400DDD588 /* Test-Instruction-LDX.swift in Sources */,
+				050569A62A96BB6400DDD588 /* Test-Instruction-BNE.swift in Sources */,
+				050569D02A96BB6400DDD588 /* Test-Instruction-SEC.swift in Sources */,
+				050569C82A96BB6400DDD588 /* Test-Instruction-PLP.swift in Sources */,
+				050569AD2A96BB6400DDD588 /* Test-Instruction-LSR.swift in Sources */,
+				050569AE2A96BB6400DDD588 /* Test-Instruction-ROL.swift in Sources */,
+				050569C12A96BB6400DDD588 /* Test-Instruction-TYA.swift in Sources */,
 				05C3C3372A87FADB00436F6D /* Test-Instruction-DEY.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

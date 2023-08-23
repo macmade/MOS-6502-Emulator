@@ -28,5 +28,37 @@ import XCTest
 class Test_Instruction_TAY: Test_Instruction
 {
     func testImplied() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "TAY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0x00  ),
+            outputRegisters: Registers( A: 0x00, Y: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "TAY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0x7F  ),
+            outputRegisters: Registers( A: 0x7F, Y: 0x7F, PS: Flags( Z: 0, N: 0 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "TAY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0x80  ),
+            outputRegisters: Registers( A: 0x80, Y: 0x80, PS: Flags( Z: 0, N: 1 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "TAY",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( A: 0xFF  ),
+            outputRegisters: Registers( A: 0xFF, Y: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+    }
 }

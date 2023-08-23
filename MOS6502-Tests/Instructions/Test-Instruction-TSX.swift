@@ -28,5 +28,37 @@ import XCTest
 class Test_Instruction_TSX: Test_Instruction
 {
     func testImplied() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "TSX",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( SP: 0x00  ),
+            outputRegisters: Registers( SP: 0x00, X: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "TSX",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( SP: 0x7F  ),
+            outputRegisters: Registers( SP: 0x7F, X: 0x7F, PS: Flags( Z: 0, N: 0 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "TSX",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( SP: 0x80  ),
+            outputRegisters: Registers( SP: 0x80, X: 0x80, PS: Flags( Z: 0, N: 1 ) )
+        )
+
+        try self.executeSingleInstruction(
+            instruction:     "TSX",
+            addressingMode:  .implied,
+            operands:        [],
+            inputRegisters:  Registers( SP: 0xFF  ),
+            outputRegisters: Registers( SP: 0xFF, X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+    }
 }
