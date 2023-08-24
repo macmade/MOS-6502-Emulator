@@ -46,8 +46,8 @@ import Foundation
 public func CMP( cpu: CPU, context: AddressingContext ) throws
 {
     let value  = try context.read()
-    let result = Int16( cpu.registers.A ) - Int16( value )
+    let result = cpu.registers.A &- value
 
     cpu.setFlag( cpu.registers.A >= value, for: .carryFlag )
-    cpu.setZeroAndNegativeFlags( for: UInt8( bitPattern: Int8( result & 0x00 ) ) )
+    cpu.setZeroAndNegativeFlags( for: result )
 }
