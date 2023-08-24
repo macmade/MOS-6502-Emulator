@@ -28,11 +28,158 @@ import XCTest
 class Test_Instruction_CPY: Test_Instruction
 {
     func testAbsolute() throws
-    {}
-    
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .absolute,
+            operand:         0x1000,
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xFF, at: 0x1000 )
+        }
+    }
+
+    func testAbsolute_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .absolute,
+            operand:         0x1000,
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x10, at: 0x1000 )
+        }
+    }
+
+    func testAbsolute_Carry() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .absolute,
+            operand:         0x1000,
+            inputRegisters:  Registers( Y: 0x20 ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x10, at: 0x1000 )
+        }
+    }
+
+    func testAbsolute_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .absolute,
+            operand:         0x1000,
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x20, at: 0x1000 )
+        }
+    }
+
     func testImmediate() throws
-    {}
-    
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .immediate,
+            operands:        [ 0xFF ],
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+        )
+    }
+
+    func testImmediate_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .immediate,
+            operands:        [ 0x10 ],
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+        )
+    }
+
+    func testImmediate_Carry() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .immediate,
+            operands:        [ 0x10 ],
+            inputRegisters:  Registers( Y: 0x20 ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+        )
+    }
+
+    func testImmediate_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .immediate,
+            operands:        [ 0x20 ],
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+        )
+    }
+
     func testZeroPage() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .zeroPage,
+            operand:         0x10,
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xFF, at: 0x10 )
+        }
+    }
+
+    func testZeroPage_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .zeroPage,
+            operand:         0x10,
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x10, at: 0x10 )
+        }
+    }
+
+    func testZeroPage_Carry() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .zeroPage,
+            operand:         0x10,
+            inputRegisters:  Registers( Y: 0x20 ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x10, at: 0x10 )
+        }
+    }
+
+    func testZeroPage_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CPY",
+            addressingMode:  .zeroPage,
+            operand:         0x10,
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x20, at: 0x10 )
+        }
+    }
 }
