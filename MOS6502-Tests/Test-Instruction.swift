@@ -143,60 +143,65 @@ class Test_Instruction: XCTestCase
             return ( cpu, bus, ram )
         }
 
-        try [
-            ( 0x00, 0 ),
-            ( 0x00, 1 ),
-            ( 0x01, 0 ),
-            ( 0x01, 1 ),
-            ( 0x7F, 0 ),
-            ( 0x7F, 1 ),
-            ( 0xFF, 0 ),
-            ( 0xFF, 1 ),
-        ]
-        .forEach
+        try [ 0x00, 0xFF ].forEach
         {
-            XCTAssertNoThrow( try ram.reset() )
-            XCTAssertNoThrow( try ram.write( instruction.opcode, at: origin ) )
+            ramDefault in
 
-            try operands.enumerated().forEach
+            try [
+                ( 0x00, 0 ),
+                ( 0x00, 1 ),
+                ( 0x01, 0 ),
+                ( 0x01, 1 ),
+                ( 0x7F, 0 ),
+                ( 0x7F, 1 ),
+                ( 0xFF, 0 ),
+                ( 0xFF, 1 ),
+            ]
+            .forEach
             {
-                XCTAssertNoThrow( try ram.write( $0.element, at: origin + UInt16( $0.offset ) + 1 ) )
+                XCTAssertNoThrow( try ram.reset( UInt8( ramDefault ) ) )
+                XCTAssertNoThrow( try ram.write( instruction.opcode, at: origin ) )
+
+                try operands.enumerated().forEach
+                {
+                    XCTAssertNoThrow( try ram.write( $0.element, at: origin + UInt16( $0.offset ) + 1 ) )
+                }
+
+                XCTAssertNoThrow( try ram.write( UInt8( origin & 0xFF ),          at: CPU.resetVector ) )
+                XCTAssertNoThrow( try ram.write( UInt8( ( origin >> 8 ) & 0xFF ), at: CPU.resetVector + 1 ) )
+                XCTAssertNoThrow( try cpu.reset() )
+
+                let inputRegisters = self.registers( from: cpu.registers, with: inputRegisters, defaultRegisters: UInt8( $0.0 ), defaultFlags: UInt8( $0.1 ) )
+                cpu.registers      = inputRegisters
+
+                if let setup = setup
+                {
+                    XCTAssertNoThrow( try setup( cpu, bus, ram ) )
+                }
+
+                let clock = cpu.clock
+
+                XCTAssertNoThrow( try cpu.run( instructions: 1 ) )
+
+                XCTAssertEqual( cpu.clock, clock + UInt64( instruction.cycles ), "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
+
+                let expectedRegisters = self.registers( from: inputRegisters, with: outputRegisters, defaultRegisters: nil, defaultFlags: nil )
+
+                XCTAssertEqual( cpu.registers.PC, expectedRegisters.PC, "Register mismatch for PC" )
+                XCTAssertEqual( cpu.registers.SP, expectedRegisters.SP, "Register mismatch for SP" )
+                XCTAssertEqual( cpu.registers.A,  expectedRegisters.A,  "Register mismatch for A" )
+                XCTAssertEqual( cpu.registers.X,  expectedRegisters.X,  "Register mismatch for X" )
+                XCTAssertEqual( cpu.registers.Y,  expectedRegisters.Y,  "Register mismatch for Y" )
+
+                XCTAssertEqual( expectedRegisters.PS.contains( .carryFlag        ), cpu.registers.PS.contains( .carryFlag        ), "Register mismatch for PS: carry flag" )
+                XCTAssertEqual( expectedRegisters.PS.contains( .zeroFlag         ), cpu.registers.PS.contains( .zeroFlag         ), "Register mismatch for PS: zero flag" )
+                XCTAssertEqual( expectedRegisters.PS.contains( .interruptDisable ), cpu.registers.PS.contains( .interruptDisable ), "Register mismatch for PS: interrupt disable" )
+                XCTAssertEqual( expectedRegisters.PS.contains( .decimalMode      ), cpu.registers.PS.contains( .decimalMode      ), "Register mismatch for PS: decimal mode" )
+                XCTAssertEqual( expectedRegisters.PS.contains( .breakCommand     ), cpu.registers.PS.contains( .breakCommand     ), "Register mismatch for PS: break command" )
+                XCTAssertEqual( expectedRegisters.PS.contains( .unused           ), cpu.registers.PS.contains( .unused           ), "Register mismatch for PS: unused" )
+                XCTAssertEqual( expectedRegisters.PS.contains( .overflowFlag     ), cpu.registers.PS.contains( .overflowFlag     ), "Register mismatch for PS: overlfow flag" )
+                XCTAssertEqual( expectedRegisters.PS.contains( .negativeFlag     ), cpu.registers.PS.contains( .negativeFlag     ), "Register mismatch for PS: negative flag" )
             }
-
-            XCTAssertNoThrow( try ram.write( UInt8( origin & 0xFF ),          at: CPU.resetVector ) )
-            XCTAssertNoThrow( try ram.write( UInt8( ( origin >> 8 ) & 0xFF ), at: CPU.resetVector + 1 ) )
-            XCTAssertNoThrow( try cpu.reset() )
-
-            let inputRegisters = self.registers( from: cpu.registers, with: inputRegisters, defaultRegisters: UInt8( $0.0 ), defaultFlags: UInt8( $0.1 ) )
-            cpu.registers      = inputRegisters
-
-            if let setup = setup
-            {
-                XCTAssertNoThrow( try setup( cpu, bus, ram ) )
-            }
-
-            let clock = cpu.clock
-
-            XCTAssertNoThrow( try cpu.run( instructions: 1 ) )
-
-            XCTAssertEqual( cpu.clock, clock + UInt64( instruction.cycles ), "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
-
-            let expectedRegisters = self.registers( from: inputRegisters, with: outputRegisters, defaultRegisters: nil, defaultFlags: nil )
-
-            XCTAssertEqual( cpu.registers.PC, expectedRegisters.PC, "Register mismatch for PC" )
-            XCTAssertEqual( cpu.registers.SP, expectedRegisters.SP, "Register mismatch for SP" )
-            XCTAssertEqual( cpu.registers.A,  expectedRegisters.A,  "Register mismatch for A" )
-            XCTAssertEqual( cpu.registers.X,  expectedRegisters.X,  "Register mismatch for X" )
-            XCTAssertEqual( cpu.registers.Y,  expectedRegisters.Y,  "Register mismatch for Y" )
-
-            XCTAssertEqual( expectedRegisters.PS.contains( .carryFlag        ), cpu.registers.PS.contains( .carryFlag        ), "Register mismatch for PS: carry flag" )
-            XCTAssertEqual( expectedRegisters.PS.contains( .zeroFlag         ), cpu.registers.PS.contains( .zeroFlag         ), "Register mismatch for PS: zero flag" )
-            XCTAssertEqual( expectedRegisters.PS.contains( .interruptDisable ), cpu.registers.PS.contains( .interruptDisable ), "Register mismatch for PS: interrupt disable" )
-            XCTAssertEqual( expectedRegisters.PS.contains( .decimalMode      ), cpu.registers.PS.contains( .decimalMode      ), "Register mismatch for PS: decimal mode" )
-            XCTAssertEqual( expectedRegisters.PS.contains( .breakCommand     ), cpu.registers.PS.contains( .breakCommand     ), "Register mismatch for PS: break command" )
-            XCTAssertEqual( expectedRegisters.PS.contains( .unused           ), cpu.registers.PS.contains( .unused           ), "Register mismatch for PS: unused" )
-            XCTAssertEqual( expectedRegisters.PS.contains( .overflowFlag     ), cpu.registers.PS.contains( .overflowFlag     ), "Register mismatch for PS: overlfow flag" )
-            XCTAssertEqual( expectedRegisters.PS.contains( .negativeFlag     ), cpu.registers.PS.contains( .negativeFlag     ), "Register mismatch for PS: negative flag" )
         }
 
         return ( cpu, bus, ram )
