@@ -28,5 +28,20 @@ import XCTest
 class Test_Instruction_RTI: Test_Instruction
 {
     func testImplied() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "RTI",
+            addressingMode:  .implied,
+            operands:        [],
+            origin:          0xFF00,
+            inputRegisters:  Registers( SP: 0xFC ),
+            outputRegisters: Registers( PC: 0x1000, SP: 0xFF, PS: Flags( rawValue: 0xFF ) )
+        )
+        {
+            cpu, bus, ram in
+
+            try bus.writeUInt16( 0x1000, at: CPU.stackStart + 0xFE )
+            try bus.writeUInt8(  0xFF,   at: CPU.stackStart + 0xFD )
+        }
+    }
 }
