@@ -28,23 +28,128 @@ import XCTest
 class Test_Instruction_STA: Test_Instruction
 {
     func testAbsolute() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STA",
+            addressingMode:  .absolute,
+            operand:         0x1000,
+            inputRegisters:  Registers( A: 0x42 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x42 )
+    }
+
     func testAbsoluteX() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STA",
+            addressingMode:  .absoluteX,
+            operand:         0x1000,
+            inputRegisters:  Registers( A: 0x42, X: 0x20 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x1020 ), 0x42 )
+    }
+
     func testAbsoluteY() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STA",
+            addressingMode:  .absoluteY,
+            operand:         0x1000,
+            inputRegisters:  Registers( A: 0x42, Y: 0x20 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x1020 ), 0x42 )
+    }
+
     func testIndirectX() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STA",
+            addressingMode:  .indirectX,
+            operand:         0x10,
+            inputRegisters:  Registers( A: 0x42, X: 0x20 ),
+            outputRegisters: Registers()
+        )
+        {
+            cpu, bus, ram in try bus.writeUInt16( 0x1000, at: 0x30 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x42 )
+    }
+
+    func testIndirectX_Wrap() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STA",
+            addressingMode:  .indirectX,
+            operand:         0xEF,
+            inputRegisters:  Registers( A: 0x42, X: 0x20 ),
+            outputRegisters: Registers()
+        )
+        {
+            cpu, bus, ram in try bus.writeUInt16( 0x1000, at: 0x0F )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x42 )
+    }
+
     func testIndirectY() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STA",
+            addressingMode:  .indirectY,
+            operand:         0x10,
+            inputRegisters:  Registers( A: 0x42, Y: 0x20 ),
+            outputRegisters: Registers()
+        )
+        {
+            cpu, bus, ram in try bus.writeUInt16( 0x1000, at: 0x10 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1020 ), 0x42 )
+    }
+
     func testZeroPage() throws
-    {}
-    
-    func testZeroPageY() throws
-    {}
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STA",
+            addressingMode:  .zeroPage,
+            operands:        [ 0x10 ],
+            inputRegisters:  Registers( A: 0x42 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x10 ), 0x42 )
+    }
+
+    func testZeroPageX() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STA",
+            addressingMode:  .zeroPageX,
+            operands:        [ 0x10 ],
+            inputRegisters:  Registers( A: 0x42, X: 0x10 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x20 ), 0x42 )
+    }
+
+    func testZeroPageX_Wrap() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STA",
+            addressingMode:  .zeroPageX,
+            operands:        [ 0xEF ],
+            inputRegisters:  Registers( A: 0x42, X: 0x20 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x0F ), 0x42 )
+    }
 }
