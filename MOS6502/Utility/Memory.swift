@@ -25,7 +25,7 @@
 import Foundation
 import XSLabsSwift
 
-public class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: FixedWidthInteger
+public class Memory< SizeType >: Resettable where SizeType: UnsignedInteger, SizeType: FixedWidthInteger
 {
     public struct Options: OptionSet
     {
@@ -82,6 +82,16 @@ public class Memory< SizeType > where SizeType: UnsignedInteger, SizeType: Fixed
     deinit
     {
         self.data.deallocate()
+    }
+
+    public func reset() throws
+    {
+        try self.reset( 0x00 )
+    }
+
+    public func reset( _ value: UInt8 ) throws
+    {
+        self.data.initialize( repeating: value )
     }
 
     public func offset( for address: SizeType ) throws -> Int
