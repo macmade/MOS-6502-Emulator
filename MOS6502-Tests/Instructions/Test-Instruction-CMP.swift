@@ -32,7 +32,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
         )
@@ -46,7 +46,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
         )
@@ -60,7 +60,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x20 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
         )
@@ -74,7 +74,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
         )
@@ -88,7 +88,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absoluteX,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
         )
@@ -102,7 +102,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absoluteX,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
         )
@@ -116,7 +116,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absoluteX,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x20, X: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
         )
@@ -130,7 +130,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absoluteX,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
         )
@@ -144,7 +144,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absoluteY,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
         )
@@ -158,7 +158,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absoluteY,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
         )
@@ -172,7 +172,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absoluteY,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x20, Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
         )
@@ -186,7 +186,7 @@ class Test_Instruction_CMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CMP",
             addressingMode:  .absoluteY,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
         )

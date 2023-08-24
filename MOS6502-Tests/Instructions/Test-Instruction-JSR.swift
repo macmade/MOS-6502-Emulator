@@ -32,7 +32,7 @@ class Test_Instruction_JSR: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "JSR",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             origin:          0xFF00,
             inputRegisters:  Registers( SP: 0xFF ),
             outputRegisters: Registers( PC: 0x1000, SP: 0xFD )

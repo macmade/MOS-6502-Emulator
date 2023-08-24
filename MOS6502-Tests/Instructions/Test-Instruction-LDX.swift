@@ -32,7 +32,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers(),
             outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
         )
@@ -46,7 +46,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers(),
             outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
         )
@@ -60,7 +60,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers(),
             outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
         )
@@ -74,7 +74,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .absoluteY,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x20 ),
             outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
         )
@@ -88,7 +88,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .absoluteY,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x20 ),
             outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
         )
@@ -102,7 +102,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .absoluteY,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x20 ),
             outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
         )
@@ -149,7 +149,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers(),
             outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
         )
@@ -163,7 +163,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers(),
             outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
         )
@@ -177,7 +177,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers(),
             outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
         )
@@ -191,7 +191,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .zeroPageY,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
             outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
         )
@@ -205,7 +205,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .zeroPageY,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
             outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
         )
@@ -219,7 +219,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .zeroPageY,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
             outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
         )
@@ -233,7 +233,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .zeroPageY,
-            operand:         0xEF,
+            operand8:        0xEF,
             inputRegisters:  Registers( Y: 0x20 ),
             outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
         )
@@ -247,7 +247,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .zeroPageY,
-            operand:         0xEF,
+            operand8:        0xEF,
             inputRegisters:  Registers( Y: 0x20 ),
             outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
         )
@@ -261,7 +261,7 @@ class Test_Instruction_LDX: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "LDX",
             addressingMode:  .zeroPageY,
-            operand:         0xEF,
+            operand8:        0xEF,
             inputRegisters:  Registers( Y: 0x20 ),
             outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
         )

@@ -32,7 +32,7 @@ class Test_Instruction_STY: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "STY",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x42 ),
             outputRegisters: Registers()
         )

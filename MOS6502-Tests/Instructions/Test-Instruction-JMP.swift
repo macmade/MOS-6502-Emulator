@@ -32,7 +32,7 @@ class Test_Instruction_JMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "JMP",
             addressingMode:  .absolute,
-            operand:         0x0000,
+            operand16:       0x0000,
             origin:          0xFF00,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PC: 0x0000 )
@@ -44,7 +44,7 @@ class Test_Instruction_JMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "JMP",
             addressingMode:  .absolute,
-            operand:         0xFF00,
+            operand16:       0xFF00,
             origin:          0xFF00,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PC: 0xFF00 )
@@ -56,7 +56,7 @@ class Test_Instruction_JMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "JMP",
             addressingMode:  .indirect,
-            operand:         0x0000,
+            operand16:       0x0000,
             origin:          0xFF00,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PC: 0x1000 )
@@ -71,7 +71,7 @@ class Test_Instruction_JMP: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "JMP",
             addressingMode:  .indirect,
-            operand:         0x0000,
+            operand16:       0x0000,
             origin:          0xFF00,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PC: 0xFF00 )

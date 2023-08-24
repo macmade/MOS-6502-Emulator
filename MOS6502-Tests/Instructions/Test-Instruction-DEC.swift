@@ -32,7 +32,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 0 ) )
         )
@@ -48,7 +48,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PS: Flags( Z: 1, N: 0 ) )
         )
@@ -64,7 +64,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 1 ) )
         )
@@ -80,7 +80,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .absoluteX,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( X: 0x10 ),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 0 ) )
         )
@@ -96,7 +96,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .absoluteX,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( X: 0x10 ),
             outputRegisters: Registers( PS: Flags( Z: 1, N: 0 ) )
         )
@@ -112,7 +112,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .absoluteX,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( X: 0x10 ),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 1 ) )
         )
@@ -128,7 +128,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 0 ) )
         )
@@ -144,7 +144,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PS: Flags( Z: 1, N: 0 ) )
         )
@@ -160,7 +160,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 1 ) )
         )
@@ -176,7 +176,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .zeroPageX,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( X: 0x10 ),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 0 ) )
         )
@@ -192,7 +192,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .zeroPageX,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( X: 0x10 ),
             outputRegisters: Registers( PS: Flags( Z: 1, N: 0 ) )
         )
@@ -208,7 +208,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .zeroPageX,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( X: 0x10 ),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 1 ) )
         )
@@ -224,7 +224,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .zeroPageX,
-            operand:         0xEF,
+            operand8:        0xEF,
             inputRegisters:  Registers( X: 0x20 ),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 0 ) )
         )
@@ -240,7 +240,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .zeroPageX,
-            operand:         0xEF,
+            operand8:        0xEF,
             inputRegisters:  Registers( X: 0x20 ),
             outputRegisters: Registers( PS: Flags( Z: 1, N: 0 ) )
         )
@@ -256,7 +256,7 @@ class Test_Instruction_DEC: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "DEC",
             addressingMode:  .zeroPageX,
-            operand:         0xEF,
+            operand8:        0xEF,
             inputRegisters:  Registers( X: 0x20 ),
             outputRegisters: Registers( PS: Flags( Z: 0, N: 1 ) )
         )

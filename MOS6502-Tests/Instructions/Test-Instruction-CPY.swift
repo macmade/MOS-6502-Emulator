@@ -32,7 +32,7 @@ class Test_Instruction_CPY: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CPY",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
         )
@@ -46,7 +46,7 @@ class Test_Instruction_CPY: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CPY",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
         )
@@ -60,7 +60,7 @@ class Test_Instruction_CPY: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CPY",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x20 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
         )
@@ -74,7 +74,7 @@ class Test_Instruction_CPY: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CPY",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
         )
@@ -132,7 +132,7 @@ class Test_Instruction_CPY: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CPY",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
         )
@@ -146,7 +146,7 @@ class Test_Instruction_CPY: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CPY",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
         )
@@ -160,7 +160,7 @@ class Test_Instruction_CPY: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CPY",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( Y: 0x20 ),
             outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
         )
@@ -174,7 +174,7 @@ class Test_Instruction_CPY: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "CPY",
             addressingMode:  .zeroPage,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
             outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
         )

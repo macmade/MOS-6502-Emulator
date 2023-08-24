@@ -32,7 +32,7 @@ class Test_Instruction_STA: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "STA",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x42 ),
             outputRegisters: Registers()
         )
@@ -45,7 +45,7 @@ class Test_Instruction_STA: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "STA",
             addressingMode:  .absoluteX,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x42, X: 0x20 ),
             outputRegisters: Registers()
         )
@@ -58,7 +58,7 @@ class Test_Instruction_STA: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "STA",
             addressingMode:  .absoluteY,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( A: 0x42, Y: 0x20 ),
             outputRegisters: Registers()
         )
@@ -71,7 +71,7 @@ class Test_Instruction_STA: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "STA",
             addressingMode:  .indirectX,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( A: 0x42, X: 0x20 ),
             outputRegisters: Registers()
         )
@@ -87,7 +87,7 @@ class Test_Instruction_STA: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "STA",
             addressingMode:  .indirectX,
-            operand:         0xEF,
+            operand8:        0xEF,
             inputRegisters:  Registers( A: 0x42, X: 0x20 ),
             outputRegisters: Registers()
         )
@@ -103,7 +103,7 @@ class Test_Instruction_STA: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "STA",
             addressingMode:  .indirectY,
-            operand:         0x10,
+            operand8:        0x10,
             inputRegisters:  Registers( A: 0x42, Y: 0x20 ),
             outputRegisters: Registers()
         )

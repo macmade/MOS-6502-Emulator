@@ -32,7 +32,7 @@ class Test_Instruction_STX: Test_Instruction
         let result = try self.executeSingleInstruction(
             instruction:     "STX",
             addressingMode:  .absolute,
-            operand:         0x1000,
+            operand16:       0x1000,
             inputRegisters:  Registers( X: 0x42 ),
             outputRegisters: Registers()
         )

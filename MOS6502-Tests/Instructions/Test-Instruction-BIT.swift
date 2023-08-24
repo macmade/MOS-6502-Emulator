@@ -32,7 +32,7 @@ class Test_Instruction_BIT: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "BIT",
             addressingMode:  .absolute,
-            operand:         0x0200,
+            operand16:       0x0200,
             inputRegisters:  Registers( A: 0xFE ),
             outputRegisters: Registers( PS: Flags( Z: 0, V: 0, N: 0 ) )
         )
@@ -46,7 +46,7 @@ class Test_Instruction_BIT: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "BIT",
             addressingMode:  .absolute,
-            operand:         0x0200,
+            operand16:       0x0200,
             inputRegisters:  Registers( A: 0xFE ),
             outputRegisters: Registers( PS: Flags( Z: 1, V: 0, N: 0 ) )
         )
@@ -60,7 +60,7 @@ class Test_Instruction_BIT: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "BIT",
             addressingMode:  .absolute,
-            operand:         0x0200,
+            operand16:       0x0200,
             inputRegisters:  Registers( A: 0xFF ),
             outputRegisters: Registers( PS: Flags( Z: 0, V: 1, N: 0 ) )
         )
@@ -74,7 +74,7 @@ class Test_Instruction_BIT: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "BIT",
             addressingMode:  .absolute,
-            operand:         0x0200,
+            operand16:       0x0200,
             inputRegisters:  Registers( A: 0xFF ),
             outputRegisters: Registers( PS: Flags( Z: 0, V: 0, N: 1 ) )
         )
@@ -88,7 +88,7 @@ class Test_Instruction_BIT: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "BIT",
             addressingMode:  .absolute,
-            operand:         0x0200,
+            operand16:       0x0200,
             inputRegisters:  Registers( A: 0xBF ),
             outputRegisters: Registers( PS: Flags( Z: 1, V: 1, N: 0 ) )
         )
@@ -102,7 +102,7 @@ class Test_Instruction_BIT: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "BIT",
             addressingMode:  .absolute,
-            operand:         0x0200,
+            operand16:       0x0200,
             inputRegisters:  Registers( A: 0x7F ),
             outputRegisters: Registers( PS: Flags( Z: 1, V: 0, N: 1 ) )
         )
@@ -116,7 +116,7 @@ class Test_Instruction_BIT: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "BIT",
             addressingMode:  .absolute,
-            operand:         0x0200,
+            operand16:       0x0200,
             inputRegisters:  Registers( A: 0x3F ),
             outputRegisters: Registers( PS: Flags( Z: 1, V: 1, N: 1 ) )
         )
