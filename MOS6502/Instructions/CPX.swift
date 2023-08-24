@@ -46,8 +46,8 @@ import Foundation
 public func CPX( cpu: CPU, context: AddressingContext ) throws
 {
     let value  = try context.read()
-    let result = Int16( cpu.registers.X ) - Int16( value )
+    let result = cpu.registers.X &- value
 
     cpu.setFlag( cpu.registers.X >= value, for: .carryFlag )
-    cpu.setZeroAndNegativeFlags( for: UInt8( bitPattern: Int8( result & 0x00 ) ) )
+    cpu.setZeroAndNegativeFlags( for: result )
 }
