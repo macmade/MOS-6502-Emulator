@@ -27,7 +27,7 @@ import XCTest
 
 class Test_Instruction_DEY: Test_Instruction
 {
-    func testImplied() throws
+    func testImplied_Negative_Wrap() throws
     {
         try self.executeSingleInstruction(
             instruction:     "DEY",
@@ -36,7 +36,10 @@ class Test_Instruction_DEY: Test_Instruction
             inputRegisters:  Registers( Y: 0x00 ),
             outputRegisters: Registers( Y: 0xFF, PS: Flags( Z: 0, N: 1 ) )
         )
+    }
 
+    func testImplied_Zero() throws
+    {
         try self.executeSingleInstruction(
             instruction:     "DEY",
             addressingMode:  .implied,
@@ -44,7 +47,10 @@ class Test_Instruction_DEY: Test_Instruction
             inputRegisters:  Registers( Y: 0x01 ),
             outputRegisters: Registers( Y: 0x00, PS: Flags( Z: 1, N: 0 ) )
         )
+    }
 
+    func testImplied() throws
+    {
         try self.executeSingleInstruction(
             instruction:     "DEY",
             addressingMode:  .implied,
@@ -57,16 +63,19 @@ class Test_Instruction_DEY: Test_Instruction
             instruction:     "DEY",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( Y: 0xFF ),
-            outputRegisters: Registers( Y: 0xFE, PS: Flags( Z: 0, N: 1 ) )
+            inputRegisters:  Registers( Y: 0x80 ),
+            outputRegisters: Registers( Y: 0x7F, PS: Flags( Z: 0, N: 0 ) )
         )
+    }
 
+    func testImplied_Negative() throws
+    {
         try self.executeSingleInstruction(
             instruction:     "DEY",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( Y: 0x80 ),
-            outputRegisters: Registers( Y: 0x7F, PS: Flags( Z: 0, N: 0 ) )
+            inputRegisters:  Registers( Y: 0xFF ),
+            outputRegisters: Registers( Y: 0xFE, PS: Flags( Z: 0, N: 1 ) )
         )
     }
 }

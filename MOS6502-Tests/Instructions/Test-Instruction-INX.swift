@@ -27,7 +27,7 @@ import XCTest
 
 class Test_Instruction_INX: Test_Instruction
 {
-    func testImplied() throws
+    func testImplied_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "INX",
@@ -36,7 +36,10 @@ class Test_Instruction_INX: Test_Instruction
             inputRegisters:  Registers( X: 0xFF ),
             outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
         )
+    }
 
+    func testImplied() throws
+    {
         try self.executeSingleInstruction(
             instruction:     "INX",
             addressingMode:  .implied,
@@ -44,7 +47,10 @@ class Test_Instruction_INX: Test_Instruction
             inputRegisters:  Registers( X: 0x00 ),
             outputRegisters: Registers( X: 0x01, PS: Flags( Z: 0, N: 0 ) )
         )
+    }
 
+    func testImplied_Negative() throws
+    {
         try self.executeSingleInstruction(
             instruction:     "INX",
             addressingMode:  .implied,

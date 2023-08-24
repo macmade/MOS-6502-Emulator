@@ -27,9 +27,9 @@ import XCTest
 
 class Test_Instruction_PLA: Test_Instruction
 {
-    func testImplied() throws
+    func testImplied_Wrap() throws
     {
-        let r1 = try self.executeSingleInstruction(
+        let result = try self.executeSingleInstruction(
             instruction:     "PLA",
             addressingMode:  .implied,
             operands:        [],
@@ -40,9 +40,12 @@ class Test_Instruction_PLA: Test_Instruction
             cpu, bus, ram in try bus.write( 0x42, at: CPU.stackStart + UInt16( 0x00 ) )
         }
 
-        XCTAssertEqual( try r1.ram.read( at: CPU.stackStart + UInt16( 0x00 ) ), 0x42 )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0x00 ) ), 0x42 )
+    }
 
-        let r2 = try self.executeSingleInstruction(
+    func testImplied() throws
+    {
+        let result = try self.executeSingleInstruction(
             instruction:     "PLA",
             addressingMode:  .implied,
             operands:        [],
@@ -53,9 +56,12 @@ class Test_Instruction_PLA: Test_Instruction
             cpu, bus, ram in try bus.write( 0x42, at: CPU.stackStart + UInt16( 0x01 ) )
         }
 
-        XCTAssertEqual( try r2.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0x42 )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0x42 )
+    }
 
-        let r3 = try self.executeSingleInstruction(
+    func testImplied_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
             instruction:     "PLA",
             addressingMode:  .implied,
             operands:        [],
@@ -66,9 +72,12 @@ class Test_Instruction_PLA: Test_Instruction
             cpu, bus, ram in try bus.write( 0x00, at: CPU.stackStart + UInt16( 0x01 ) )
         }
 
-        XCTAssertEqual( try r3.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0x00 )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0x00 )
+    }
 
-        let r4 = try self.executeSingleInstruction(
+    func testImplied_Negative() throws
+    {
+        let result = try self.executeSingleInstruction(
             instruction:     "PLA",
             addressingMode:  .implied,
             operands:        [],
@@ -79,6 +88,6 @@ class Test_Instruction_PLA: Test_Instruction
             cpu, bus, ram in try bus.write( 0xFF, at: CPU.stackStart + UInt16( 0x01 ) )
         }
 
-        XCTAssertEqual( try r4.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0xFF )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0x01 ) ), 0xFF )
     }
 }

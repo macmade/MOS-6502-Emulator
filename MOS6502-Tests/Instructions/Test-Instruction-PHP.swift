@@ -35,25 +35,35 @@ class Test_Instruction_PHP: Test_Instruction
         }
         .forEach
         {
-            let r1 = try self.executeSingleInstruction(
+            let result = try self.executeSingleInstruction(
                 instruction:     "PHP",
                 addressingMode:  .implied,
                 operands:        [],
                 inputRegisters:  Registers( SP: 0xFF, PS: Flags( rawValue: $0 ) ),
-                outputRegisters: Registers( SP: 0xFE, PS: Flags( rawValue: $0 ) )
+                outputRegisters: Registers( SP: 0xFE )
             )
 
-            XCTAssertEqual( try r1.ram.read( at: CPU.stackStart + UInt16( 0xFF ) ), $0 )
+            XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFF ) ), $0 )
+        }
+    }
 
-            let r2 = try self.executeSingleInstruction(
+    func testImplied_Wrap() throws
+    {
+        try [ 0x00, 0x55, 0xAA, 0xFF ].map
+        {
+            UInt8( $0 )
+        }
+        .forEach
+        {
+            let result = try self.executeSingleInstruction(
                 instruction:     "PHP",
                 addressingMode:  .implied,
                 operands:        [],
                 inputRegisters:  Registers( SP: 0x00, PS: Flags( rawValue: $0 ) ),
-                outputRegisters: Registers( SP: 0xFF, PS: Flags( rawValue: $0 ) )
+                outputRegisters: Registers( SP: 0xFF )
             )
 
-            XCTAssertEqual( try r2.ram.read( at: CPU.stackStart + UInt16( 0x00 ) ), $0 )
+            XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0x00 ) ), $0 )
         }
     }
 }
