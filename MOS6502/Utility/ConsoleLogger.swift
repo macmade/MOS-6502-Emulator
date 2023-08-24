@@ -26,11 +26,16 @@ import Foundation
 
 public class ConsoleLogger: Logger
 {
+    public var shouldLog: ( ( String ) -> Bool )?
+
     public init()
     {}
 
     public func log( text: String )
     {
-        print( text )
+        if self.shouldLog?( text ) ?? true
+        {
+            print( text )
+        }
     }
 }

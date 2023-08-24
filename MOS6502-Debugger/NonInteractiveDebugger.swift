@@ -29,6 +29,7 @@ import SwiftCurses
 public class NonInteractiveDebugger: ComputerRunner
 {
     private var computer: Computer
+    private var lastLog:  String?
 
     public init( computer: Computer )
     {
@@ -37,7 +38,19 @@ public class NonInteractiveDebugger: ComputerRunner
 
     public func run() throws
     {
-        self.computer.logger = ConsoleLogger()
+        let logger           = ConsoleLogger()
+        self.computer.logger = logger
+        logger.shouldLog     =
+        {
+            if let last = self.lastLog, last == $0
+            {
+                return false
+            }
+
+            self.lastLog = $0
+
+            return true
+        }
 
         try self.computer.reset()
     }
