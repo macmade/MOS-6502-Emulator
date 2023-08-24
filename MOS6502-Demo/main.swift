@@ -34,6 +34,7 @@ do
         let rom      = try WritableFileROM( url: Bundle.main.bundleURL.appendingPathComponent( "6502-Functional-Test.bin" ), origin: 0 )
 
         try computer.loadROM( rom )
+        try computer.bus.writeUInt16( 0x400, at: CPU.resetVector )
         try Debugger.debugger( for: computer ).run()
     }
     else
