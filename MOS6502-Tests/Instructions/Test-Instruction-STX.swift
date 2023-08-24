@@ -28,11 +28,54 @@ import XCTest
 class Test_Instruction_STX: Test_Instruction
 {
     func testAbsolute() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STX",
+            addressingMode:  .absolute,
+            operand:         0x1000,
+            inputRegisters:  Registers( X: 0x42 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x42 )
+    }
+
     func testZeroPage() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STX",
+            addressingMode:  .zeroPage,
+            operands:        [ 0x10 ],
+            inputRegisters:  Registers( X: 0x42 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x10 ), 0x42 )
+    }
+
     func testZeroPageY() throws
-    {}
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STX",
+            addressingMode:  .zeroPageY,
+            operands:        [ 0x10 ],
+            inputRegisters:  Registers( X: 0x42, Y: 0x10 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x20 ), 0x42 )
+    }
+
+    func testZeroPageY_Wrap() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "STX",
+            addressingMode:  .zeroPageY,
+            operands:        [ 0xEF ],
+            inputRegisters:  Registers( X: 0x42, Y: 0x20 ),
+            outputRegisters: Registers()
+        )
+
+        XCTAssertEqual( try result.bus.read( at: 0x0F ), 0x42 )
+    }
 }
