@@ -242,7 +242,7 @@ Processor Status after use:
 |   |                   |                                      |
 |---|-------------------|--------------------------------------|
 | C | Carry Flag        | Not affected                         |
-| Z | Zero Flag         | Set if the result if the AND is zero |
+| Z | Zero Flag         | Set if the result of the AND is zero |
 | I | Interrupt Disable | Not affected                         |
 | D | Decimal Mode Flag | Not affected                         |
 | B | Break Command     | Not affected                         |
