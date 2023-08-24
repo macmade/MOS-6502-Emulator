@@ -27,6 +27,51 @@ import XCTest
 
 class Test_Instruction_BEQ: Test_Instruction
 {
-    func testRelative() throws
-    {}
+    func testRelative_NotTaken() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BEQ",
+            addressingMode:  .relative,
+            operands:        [ 10 ],
+            origin:          0xFF00,
+            inputRegisters:  Registers( PS: Flags( Z: 0 ) ),
+            outputRegisters: Registers( PC: 0xFF02 )
+        )
+    }
+
+    func testRelative_Taken_Forward() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BEQ",
+            addressingMode:  .relative,
+            operands:        [ 10 ],
+            origin:          0xFF00,
+            inputRegisters:  Registers( PS: Flags( Z: 1 ) ),
+            outputRegisters: Registers( PC: 0xFF02 + 10 )
+        )
+    }
+
+    func testRelative_Taken_Backward() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BEQ",
+            addressingMode:  .relative,
+            operands:        [ UInt8( bitPattern: -10 ) ],
+            origin:          0xFF00,
+            inputRegisters:  Registers( PS: Flags( Z: 1 ) ),
+            outputRegisters: Registers( PC: 0xFF02 - 10 )
+        )
+    }
+
+    func testRelative_Taken_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BEQ",
+            addressingMode:  .relative,
+            operands:        [ 0x00 ],
+            origin:          0xFF00,
+            inputRegisters:  Registers( PS: Flags( Z: 1 ) ),
+            outputRegisters: Registers( PC: 0xFF02 )
+        )
+    }
 }
