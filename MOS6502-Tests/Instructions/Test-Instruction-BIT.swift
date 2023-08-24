@@ -28,8 +28,198 @@ import XCTest
 class Test_Instruction_BIT: Test_Instruction
 {
     func testAbsolute() throws
-    {}
-    
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operand:         0x0200,
+            inputRegisters:  Registers( A: 0xFE ),
+            outputRegisters: Registers( PS: Flags( Z: 0, V: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x02, at: 0x0200 )
+        }
+    }
+
+    func testAbsolute_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operand:         0x0200,
+            inputRegisters:  Registers( A: 0xFE ),
+            outputRegisters: Registers( PS: Flags( Z: 1, V: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x01, at: 0x0200 )
+        }
+    }
+
+    func testAbsolute_Overflow() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operand:         0x0200,
+            inputRegisters:  Registers( A: 0xFF ),
+            outputRegisters: Registers( PS: Flags( Z: 0, V: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x40, at: 0x0200 )
+        }
+    }
+
+    func testAbsolute_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operand:         0x0200,
+            inputRegisters:  Registers( A: 0xFF ),
+            outputRegisters: Registers( PS: Flags( Z: 0, V: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x80, at: 0x0200 )
+        }
+    }
+
+    func testAbsolute_Zero_Overflow() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operand:         0x0200,
+            inputRegisters:  Registers( A: 0xBF ),
+            outputRegisters: Registers( PS: Flags( Z: 1, V: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x40, at: 0x0200 )
+        }
+    }
+
+    func testAbsolute_Zero_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operand:         0x0200,
+            inputRegisters:  Registers( A: 0x7F ),
+            outputRegisters: Registers( PS: Flags( Z: 1, V: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x80, at: 0x0200 )
+        }
+    }
+
+    func testAbsolute_Zero_Overflow_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operand:         0x0200,
+            inputRegisters:  Registers( A: 0x3F ),
+            outputRegisters: Registers( PS: Flags( Z: 1, V: 1, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xC0, at: 0x0200 )
+        }
+    }
+
     func testZeroPage() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operands:        [ 0x20 ],
+            inputRegisters:  Registers( A: 0xFE ),
+            outputRegisters: Registers( PS: Flags( Z: 0, V: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x02, at: 0x0020 )
+        }
+    }
+
+    func testZeroPage_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operands:        [ 0x20 ],
+            inputRegisters:  Registers( A: 0xFE ),
+            outputRegisters: Registers( PS: Flags( Z: 1, V: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x01, at: 0x0020 )
+        }
+    }
+
+    func testZeroPage_Overflow() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operands:        [ 0x20 ],
+            inputRegisters:  Registers( A: 0xFF ),
+            outputRegisters: Registers( PS: Flags( Z: 0, V: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x40, at: 0x0020 )
+        }
+    }
+
+    func testZeroPage_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operands:        [ 0x20 ],
+            inputRegisters:  Registers( A: 0xFF ),
+            outputRegisters: Registers( PS: Flags( Z: 0, V: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x80, at: 0x0020 )
+        }
+    }
+
+    func testZeroPage_Zero_Overflow() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operands:        [ 0x20 ],
+            inputRegisters:  Registers( A: 0xBF ),
+            outputRegisters: Registers( PS: Flags( Z: 1, V: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x40, at: 0x0020 )
+        }
+    }
+
+    func testZeroPage_Zero_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operands:        [ 0x20 ],
+            inputRegisters:  Registers( A: 0x7F ),
+            outputRegisters: Registers( PS: Flags( Z: 1, V: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x80, at: 0x0020 )
+        }
+    }
+
+    func testZeroPage_Zero_Overflow_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BIT",
+            addressingMode:  .absolute,
+            operands:        [ 0x20 ],
+            inputRegisters:  Registers( A: 0x3F ),
+            outputRegisters: Registers( PS: Flags( Z: 1, V: 1, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xC0, at: 0x0020 )
+        }
+    }
 }
