@@ -28,17 +28,245 @@ import XCTest
 class Test_Instruction_LDX: Test_Instruction
 {
     func testAbsolute() throws
-    {}
-    
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .absolute,
+            operand:         0x1000,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x42, at: 0x1000 )
+        }
+    }
+
+    func testAbsolute_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .absolute,
+            operand:         0x1000,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x1000 )
+        }
+    }
+
+    func testAbsolute_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .absolute,
+            operand:         0x1000,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xFF, at: 0x1000 )
+        }
+    }
+
     func testAbsoluteY() throws
-    {}
-    
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .absoluteY,
+            operand:         0x1000,
+            inputRegisters:  Registers( Y: 0x20 ),
+            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x42, at: 0x1020 )
+        }
+    }
+
+    func testAbsoluteY_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .absoluteY,
+            operand:         0x1000,
+            inputRegisters:  Registers( Y: 0x20 ),
+            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x1020 )
+        }
+    }
+
+    func testAbsoluteY_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .absoluteY,
+            operand:         0x1000,
+            inputRegisters:  Registers( Y: 0x20 ),
+            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xFF, at: 0x1020 )
+        }
+    }
+
     func testImmediate() throws
-    {}
-    
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .immediate,
+            operands:        [ 0x42 ],
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
+        )
+    }
+
+    func testImmediate_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .immediate,
+            operands:        [ 0x00 ],
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+    }
+
+    func testImmediate_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .immediate,
+            operands:        [ 0xFF ],
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+    }
+
     func testZeroPage() throws
-    {}
-    
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .zeroPage,
+            operand:         0x10,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x42, at: 0x10 )
+        }
+    }
+
+    func testZeroPage_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .zeroPage,
+            operand:         0x10,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x10 )
+        }
+    }
+
+    func testZeroPage_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .zeroPage,
+            operand:         0x10,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xFF, at: 0x10 )
+        }
+    }
+
     func testZeroPageY() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .zeroPageY,
+            operand:         0x10,
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x42, at: 0x20 )
+        }
+    }
+
+    func testZeroPageY_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .zeroPageY,
+            operand:         0x10,
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x20 )
+        }
+    }
+
+    func testZeroPageY_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .zeroPageY,
+            operand:         0x10,
+            inputRegisters:  Registers( Y: 0x10 ),
+            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xFF, at: 0x20 )
+        }
+    }
+
+    func testZeroPageY_Wrap() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .zeroPageY,
+            operand:         0xEF,
+            inputRegisters:  Registers( Y: 0x20 ),
+            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x42, at: 0x0F )
+        }
+    }
+
+    func testZeroPageY_Wrap_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .zeroPageY,
+            operand:         0xEF,
+            inputRegisters:  Registers( Y: 0x20 ),
+            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x0F )
+        }
+    }
+
+    func testZeroPageY_Wrap_Negative() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDX",
+            addressingMode:  .zeroPageY,
+            operand:         0xEF,
+            inputRegisters:  Registers( Y: 0x20 ),
+            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xFF, at: 0x0F )
+        }
+    }
 }
