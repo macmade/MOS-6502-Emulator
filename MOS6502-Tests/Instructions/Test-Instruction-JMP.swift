@@ -28,8 +28,56 @@ import XCTest
 class Test_Instruction_JMP: Test_Instruction
 {
     func testAbsolute() throws
-    {}
-    
+    {
+        try self.executeSingleInstruction(
+            instruction:     "JMP",
+            addressingMode:  .absolute,
+            operand:         0x0000,
+            origin:          0xFF00,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( PC: 0x0000 )
+        )
+    }
+
+    func testAbsolute_Loop() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "JMP",
+            addressingMode:  .absolute,
+            operand:         0xFF00,
+            origin:          0xFF00,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( PC: 0xFF00 )
+        )
+    }
+
     func testIndirect() throws
-    {}
+    {
+        try self.executeSingleInstruction(
+            instruction:     "JMP",
+            addressingMode:  .indirect,
+            operand:         0x0000,
+            origin:          0xFF00,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( PC: 0x1000 )
+        )
+        {
+            cpu, bus, ram in try bus.writeUInt16( 0x1000, at: 0x0000 )
+        }
+    }
+
+    func testIndirect_Loop() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "JMP",
+            addressingMode:  .indirect,
+            operand:         0x0000,
+            origin:          0xFF00,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( PC: 0xFF00 )
+        )
+        {
+            cpu, bus, ram in try bus.writeUInt16( 0xFF00, at: 0x0000 )
+        }
+    }
 }
