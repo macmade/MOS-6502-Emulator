@@ -51,5 +51,6 @@ public func BIT( cpu: CPU, context: AddressingContext ) throws
     let mask  = cpu.registers.A
 
     cpu.setFlag( value & ( 1 << 6 ) != 0, for: .overflowFlag )
-    cpu.setZeroAndNegativeFlags( for: value & mask )
+    cpu.setFlag( value & ( 1 << 7 ) != 0, for: .negativeFlag )
+    cpu.setFlag( value & mask       == 0, for: .zeroFlag )
 }
