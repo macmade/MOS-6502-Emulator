@@ -28,17 +28,548 @@ import XCTest
 class Test_Instruction_ROR: Test_Instruction
 {
     func testAbsolute() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absolute,
+            operand16:       0x1000,
+            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x1000 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x55 )
+    }
+
+    func testAbsolute_WithCarry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absolute,
+            operand16:       0x1000,
+            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x1000 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0xD5 )
+    }
+
+    func testAbsolute_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absolute,
+            operand16:       0x1000,
+            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x1000 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x2A )
+    }
+
+    func testAbsolute_WithCarry_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absolute,
+            operand16:       0x1000,
+            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x1000 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0xAA )
+    }
+
+    func testAbsolute_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absolute,
+            operand16:       0x1000,
+            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x1000 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x00 )
+    }
+
+    func testAbsolute_Carry_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absolute,
+            operand16:       0x1000,
+            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x01, at: 0x1000 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x00 )
+    }
+
     func testAbsoluteX() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absoluteX,
+            operand16:       0x1000,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x1010 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1010 ), 0x55 )
+    }
+
+    func testAbsoluteX_WithCarry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absoluteX,
+            operand16:       0x1000,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x1010 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1010 ), 0xD5 )
+    }
+
+    func testAbsoluteX_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absoluteX,
+            operand16:       0x1000,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x1010 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1010 ), 0x2A )
+    }
+
+    func testAbsoluteX_WithCarry_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absoluteX,
+            operand16:       0x1000,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x1010 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1010 ), 0xAA )
+    }
+
+    func testAbsoluteX_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absoluteX,
+            operand16:       0x1000,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x1010 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1010 ), 0x00 )
+    }
+
+    func testAbsoluteX_Carry_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .absoluteX,
+            operand16:       0x1000,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x01, at: 0x1010 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x1010 ), 0x00 )
+    }
+
     func testAccumulator() throws
-    {}
-    
+    {
+        try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .accumulator,
+            operands:        [],
+            inputRegisters:  Registers( A: 0xAA, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0x55, PS: Flags( C: 0, Z: 0, N: 0 ) )
+        )
+    }
+
+    func testAccumulator_WithCarry() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .accumulator,
+            operands:        [],
+            inputRegisters:  Registers( A: 0xAA, PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( A: 0xD5, PS: Flags( C: 0, Z: 0, N: 1 ) )
+        )
+    }
+
+    func testAccumulator_Carry() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .accumulator,
+            operands:        [],
+            inputRegisters:  Registers( A: 0x55, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0x2A, PS: Flags( C: 1, Z: 0, N: 0 ) )
+        )
+    }
+
+    func testAccumulator_WithCarry_Carry() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .accumulator,
+            operands:        [],
+            inputRegisters:  Registers( A: 0x55, PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( A: 0xAA, PS: Flags( C: 1, Z: 0, N: 1 ) )
+        )
+    }
+
+    func testAccumulator_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .accumulator,
+            operands:        [],
+            inputRegisters:  Registers( A: 0x00, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0x00, PS: Flags( C: 0, Z: 1, N: 0 ) )
+        )
+    }
+
+    func testAccumulator_Carry_Zero() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .accumulator,
+            operands:        [],
+            inputRegisters:  Registers( A: 0x01, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0x00, PS: Flags( C: 1, Z: 1, N: 0 ) )
+        )
+    }
+
     func testZeroPage() throws
-    {}
-    
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPage,
+            operand8:        0x10,
+            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x10 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x10 ), 0x55 )
+    }
+
+    func testZeroPage_WithCarry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPage,
+            operand8:        0x10,
+            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x10 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x10 ), 0xD5 )
+    }
+
+    func testZeroPage_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPage,
+            operand8:        0x10,
+            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x10 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x10 ), 0x2A )
+    }
+
+    func testZeroPage_WithCarry_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPage,
+            operand8:        0x10,
+            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x10 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x10 ), 0xAA )
+    }
+
+    func testZeroPage_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPage,
+            operand8:        0x10,
+            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x10 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x10 ), 0x00 )
+    }
+
+    func testZeroPage_Carry_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPage,
+            operand8:        0x10,
+            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x01, at: 0x10 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x10 ), 0x00 )
+    }
+
     func testZeroPageX() throws
-    {}
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0x10,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x20 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x20 ), 0x55 )
+    }
+
+    func testZeroPageX_WithCarry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0x10,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x20 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x20 ), 0xD5 )
+    }
+
+    func testZeroPageX_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0x10,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x20 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x20 ), 0x2A )
+    }
+
+    func testZeroPageX_WithCarry_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0x10,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x20 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x20 ), 0xAA )
+    }
+
+    func testZeroPageX_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0x10,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x20 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x20 ), 0x00 )
+    }
+
+    func testZeroPageX_Carry_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0x10,
+            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x01, at: 0x20 )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x20 ), 0x00 )
+    }
+
+    func testZeroPageX_Wrap() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0xEF,
+            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x0F )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x0F ), 0x55 )
+    }
+
+    func testZeroPageX_Wrap_WithCarry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0xEF,
+            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0xAA, at: 0x0F )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x0F ), 0xD5 )
+    }
+
+    func testZeroPageX_Wrap_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0xEF,
+            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x0F )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x0F ), 0x2A )
+    }
+
+    func testZeroPageX_Wrap_WithCarry_Carry() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0xEF,
+            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 1 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x55, at: 0x0F )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x0F ), 0xAA )
+    }
+
+    func testZeroPageX_Wrap_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0xEF,
+            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x00, at: 0x0F )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x0F ), 0x00 )
+    }
+
+    func testZeroPageX_Wrap_Carry_Zero() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "ROR",
+            addressingMode:  .zeroPageX,
+            operand8:        0xEF,
+            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x01, at: 0x0F )
+        }
+
+        XCTAssertEqual( try result.bus.read( at: 0x0F ), 0x00 )
+    }
 }
