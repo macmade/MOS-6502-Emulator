@@ -35,7 +35,8 @@ class Test_Instruction_JSR: Test_Instruction
             operand16:       0x1000,
             origin:          0xFF00,
             inputRegisters:  Registers( SP: 0xFF ),
-            outputRegisters: Registers( PC: 0x1000, SP: 0xFD )
+            outputRegisters: Registers( PC: 0x1000, SP: 0xFD ),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.readUInt16( at: CPU.stackStart + 0xFE ), 0xFF02 )

@@ -34,7 +34,8 @@ class Test_Instruction_STA: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x42 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x42 )
@@ -47,7 +48,8 @@ class Test_Instruction_STA: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x42, X: 0x20 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x1020 ), 0x42 )
@@ -60,7 +62,8 @@ class Test_Instruction_STA: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x42, Y: 0x20 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x1020 ), 0x42 )
@@ -73,7 +76,8 @@ class Test_Instruction_STA: Test_Instruction
             addressingMode:  .indirectX,
             operand8:        0x10,
             inputRegisters:  Registers( A: 0x42, X: 0x20 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.writeUInt16( 0x1000, at: 0x30 )
@@ -89,7 +93,8 @@ class Test_Instruction_STA: Test_Instruction
             addressingMode:  .indirectX,
             operand8:        0xEF,
             inputRegisters:  Registers( A: 0x42, X: 0x20 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.writeUInt16( 0x1000, at: 0x0F )
@@ -105,7 +110,8 @@ class Test_Instruction_STA: Test_Instruction
             addressingMode:  .indirectY,
             operand8:        0x10,
             inputRegisters:  Registers( A: 0x42, Y: 0x20 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.writeUInt16( 0x1000, at: 0x10 )
@@ -121,7 +127,8 @@ class Test_Instruction_STA: Test_Instruction
             addressingMode:  .zeroPage,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x42 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x10 ), 0x42 )
@@ -134,7 +141,8 @@ class Test_Instruction_STA: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x42, X: 0x10 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x20 ), 0x42 )
@@ -147,7 +155,8 @@ class Test_Instruction_STA: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( A: 0x42, X: 0x20 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x0F ), 0x42 )

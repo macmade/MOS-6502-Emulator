@@ -34,7 +34,8 @@ class Test_Instruction_PHA: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( SP: 0xFF, A: 0x42 ),
-            outputRegisters: Registers( SP: 0xFE )
+            outputRegisters: Registers( SP: 0xFE ),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFF ) ), 0x42 )
@@ -47,7 +48,8 @@ class Test_Instruction_PHA: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( SP: 0x00, A: 0x42 ),
-            outputRegisters: Registers( SP: 0xFF )
+            outputRegisters: Registers( SP: 0xFF ),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0x00 ) ), 0x42 )

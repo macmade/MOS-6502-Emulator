@@ -34,7 +34,8 @@ class Test_Instruction_NOP: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers(),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
     }
 }

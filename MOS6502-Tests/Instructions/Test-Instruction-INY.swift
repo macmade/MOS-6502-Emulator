@@ -34,7 +34,8 @@ class Test_Instruction_INY: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( Y: 0xFF ),
-            outputRegisters: Registers( Y: 0x00, PS: Flags( Z: 1, N: 0 ) )
+            outputRegisters: Registers( Y: 0x00, PS: Flags( Z: 1, N: 0 ) ),
+            extraCycles:     0
         )
     }
 
@@ -45,7 +46,8 @@ class Test_Instruction_INY: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( Y: 0x00 ),
-            outputRegisters: Registers( Y: 0x01, PS: Flags( Z: 0, N: 0 ) )
+            outputRegisters: Registers( Y: 0x01, PS: Flags( Z: 0, N: 0 ) ),
+            extraCycles:     0
         )
     }
 
@@ -56,7 +58,8 @@ class Test_Instruction_INY: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( Y: 0xFE ),
-            outputRegisters: Registers( Y: 0xFF, PS: Flags( Z: 0, N: 1 ) )
+            outputRegisters: Registers( Y: 0xFF, PS: Flags( Z: 0, N: 1 ) ),
+            extraCycles:     0
         )
 
         try self.executeSingleInstruction(
@@ -64,7 +67,8 @@ class Test_Instruction_INY: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( Y: 0x7F ),
-            outputRegisters: Registers( Y: 0x80, PS: Flags( Z: 0, N: 1 ) )
+            outputRegisters: Registers( Y: 0x80, PS: Flags( Z: 0, N: 1 ) ),
+            extraCycles:     0
         )
     }
 }

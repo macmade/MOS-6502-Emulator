@@ -35,7 +35,8 @@ class Test_Instruction_JMP: Test_Instruction
             operand16:       0x0000,
             origin:          0xFF00,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PC: 0x0000 )
+            outputRegisters: Registers( PC: 0x0000 ),
+            extraCycles:     0
         )
     }
 
@@ -47,7 +48,8 @@ class Test_Instruction_JMP: Test_Instruction
             operand16:       0xFF00,
             origin:          0xFF00,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PC: 0xFF00 )
+            outputRegisters: Registers( PC: 0xFF00 ),
+            extraCycles:     0
         )
     }
 
@@ -59,7 +61,8 @@ class Test_Instruction_JMP: Test_Instruction
             operand16:       0x0000,
             origin:          0xFF00,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PC: 0x1000 )
+            outputRegisters: Registers( PC: 0x1000 ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.writeUInt16( 0x1000, at: 0x0000 )
@@ -74,7 +77,8 @@ class Test_Instruction_JMP: Test_Instruction
             operand16:       0x0000,
             origin:          0xFF00,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PC: 0xFF00 )
+            outputRegisters: Registers( PC: 0xFF00 ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.writeUInt16( 0xFF00, at: 0x0000 )

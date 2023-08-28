@@ -34,7 +34,8 @@ class Test_Instruction_TXS: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( X:  0x00 ),
-            outputRegisters: Registers( SP: 0x00 )
+            outputRegisters: Registers( SP: 0x00 ),
+            extraCycles:     0
         )
 
         try self.executeSingleInstruction(
@@ -42,7 +43,8 @@ class Test_Instruction_TXS: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( X:  0x7F ),
-            outputRegisters: Registers( SP: 0x7F )
+            outputRegisters: Registers( SP: 0x7F ),
+            extraCycles:     0
         )
 
         try self.executeSingleInstruction(
@@ -50,7 +52,8 @@ class Test_Instruction_TXS: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( X:  0x80 ),
-            outputRegisters: Registers( SP: 0x80 )
+            outputRegisters: Registers( SP: 0x80 ),
+            extraCycles:     0
         )
 
         try self.executeSingleInstruction(
@@ -58,7 +61,8 @@ class Test_Instruction_TXS: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( X:  0xFF ),
-            outputRegisters: Registers( SP: 0xFF )
+            outputRegisters: Registers( SP: 0xFF ),
+            extraCycles:     0
         )
     }
 }

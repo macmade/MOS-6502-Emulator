@@ -34,7 +34,8 @@ class Test_Instruction_STX: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( X: 0x42 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x1000 ), 0x42 )
@@ -47,7 +48,8 @@ class Test_Instruction_STX: Test_Instruction
             addressingMode:  .zeroPage,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( X: 0x42 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x10 ), 0x42 )
@@ -60,7 +62,8 @@ class Test_Instruction_STX: Test_Instruction
             addressingMode:  .zeroPageY,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( X: 0x42, Y: 0x10 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x20 ), 0x42 )
@@ -73,7 +76,8 @@ class Test_Instruction_STX: Test_Instruction
             addressingMode:  .zeroPageY,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( X: 0x42, Y: 0x20 ),
-            outputRegisters: Registers()
+            outputRegisters: Registers(),
+            extraCycles:     0
         )
 
         XCTAssertEqual( try result.bus.read( at: 0x0F ), 0x42 )

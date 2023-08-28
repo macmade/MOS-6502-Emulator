@@ -35,7 +35,8 @@ class Test_Instruction_BMI: Test_Instruction
             operands:        [ 10 ],
             origin:          0xFF00,
             inputRegisters:  Registers( PS: Flags( N: 0 ) ),
-            outputRegisters: Registers( PC: 0xFF02 )
+            outputRegisters: Registers( PC: 0xFF02 ),
+            extraCycles:     0
         )
     }
 
@@ -47,7 +48,8 @@ class Test_Instruction_BMI: Test_Instruction
             operands:        [ 10 ],
             origin:          0xFF00,
             inputRegisters:  Registers( PS: Flags( N: 1 ) ),
-            outputRegisters: Registers( PC: 0xFF02 + 10 )
+            outputRegisters: Registers( PC: 0xFF02 + 10 ),
+            extraCycles:     0
         )
     }
 
@@ -59,7 +61,8 @@ class Test_Instruction_BMI: Test_Instruction
             operands:        [ UInt8( bitPattern: -10 ) ],
             origin:          0xFF00,
             inputRegisters:  Registers( PS: Flags( N: 1 ) ),
-            outputRegisters: Registers( PC: 0xFF02 - 10 )
+            outputRegisters: Registers( PC: 0xFF02 - 10 ),
+            extraCycles:     0
         )
     }
 
@@ -71,7 +74,8 @@ class Test_Instruction_BMI: Test_Instruction
             operands:        [ 0x00 ],
             origin:          0xFF00,
             inputRegisters:  Registers( PS: Flags( N: 1 ) ),
-            outputRegisters: Registers( PC: 0xFF02 )
+            outputRegisters: Registers( PC: 0xFF02 ),
+            extraCycles:     0
         )
     }
 }

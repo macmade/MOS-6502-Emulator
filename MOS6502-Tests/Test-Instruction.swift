@@ -97,37 +97,37 @@ class Test_Instruction: XCTestCase
     }
 
     @discardableResult
-    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operand8: UInt8, inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
+    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operand8: UInt8, inputRegisters: Registers, outputRegisters: Registers, extraCycles: UInt64, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
     {
-        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operand8: operand8, origin: 0xFF00, inputRegisters: inputRegisters, outputRegisters: outputRegisters, setup: setup )
+        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operand8: operand8, origin: 0xFF00, inputRegisters: inputRegisters, outputRegisters: outputRegisters, extraCycles: extraCycles, setup: setup )
     }
 
     @discardableResult
-    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operand8: UInt8, origin: UInt16, inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
+    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operand8: UInt8, origin: UInt16, inputRegisters: Registers, outputRegisters: Registers, extraCycles: UInt64, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
     {
-        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operands: [ operand8 ], origin: origin, inputRegisters: inputRegisters, outputRegisters: outputRegisters, setup: setup )
+        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operands: [ operand8 ], origin: origin, inputRegisters: inputRegisters, outputRegisters: outputRegisters, extraCycles: extraCycles, setup: setup )
     }
 
     @discardableResult
-    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operand16: UInt16, inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
+    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operand16: UInt16, inputRegisters: Registers, outputRegisters: Registers, extraCycles: UInt64, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
     {
-        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operand16: operand16, origin: 0xFF00, inputRegisters: inputRegisters, outputRegisters: outputRegisters, setup: setup )
+        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operand16: operand16, origin: 0xFF00, inputRegisters: inputRegisters, outputRegisters: outputRegisters, extraCycles: extraCycles, setup: setup )
     }
 
     @discardableResult
-    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operand16: UInt16, origin: UInt16, inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
+    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operand16: UInt16, origin: UInt16, inputRegisters: Registers, outputRegisters: Registers, extraCycles: UInt64, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
     {
-        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operands: [ UInt8( operand16 & 0xFF ), UInt8( ( operand16 >> 8 ) & 0xFF ) ], origin: origin, inputRegisters: inputRegisters, outputRegisters: outputRegisters, setup: setup )
+        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operands: [ UInt8( operand16 & 0xFF ), UInt8( ( operand16 >> 8 ) & 0xFF ) ], origin: origin, inputRegisters: inputRegisters, outputRegisters: outputRegisters, extraCycles: extraCycles, setup: setup )
     }
 
     @discardableResult
-    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operands: [ UInt8 ], inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
+    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operands: [ UInt8 ], inputRegisters: Registers, outputRegisters: Registers, extraCycles: UInt64, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
     {
-        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operands: operands, origin: 0xFF00, inputRegisters: inputRegisters, outputRegisters: outputRegisters, setup: setup )
+        try self.executeSingleInstruction( instruction: instruction, addressingMode: addressingMode, operands: operands, origin: 0xFF00, inputRegisters: inputRegisters, outputRegisters: outputRegisters, extraCycles: extraCycles, setup: setup )
     }
 
     @discardableResult
-    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operands: [ UInt8 ], origin: UInt16, inputRegisters: Registers, outputRegisters: Registers, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
+    func executeSingleInstruction( instruction: String, addressingMode: Instruction.AddressingMode, operands: [ UInt8 ], origin: UInt16, inputRegisters: Registers, outputRegisters: Registers, extraCycles: UInt64, setup: ( ( CPU, Bus, RAM ) throws -> Void )? = nil ) throws -> ( cpu: CPU, bus: Bus, ram: RAM )
     {
         let bus = Bus()
         let cpu = CPU( bus: bus )
@@ -183,12 +183,10 @@ class Test_Instruction: XCTestCase
 
                 XCTAssertNoThrow( try cpu.run( instructions: 1 ) )
 
-                let cycles           = UInt64( instruction.cycles )
-                let additionalCycles = UInt64( cpu.currentContext?.additionalCycles ?? 0 )
-
                 XCTAssertNotNil( cpu.currentContext )
-                XCTAssertLessThanOrEqual( additionalCycles, 2 )
-                XCTAssertEqual( cpu.clock, clock + cycles + additionalCycles, "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
+                XCTAssertLessThanOrEqual( cpu.currentContext?.extraCycles ?? 0, 2 )
+                XCTAssertEqual( UInt64( cpu.currentContext?.extraCycles ?? 0 ), extraCycles )
+                XCTAssertEqual( cpu.clock, clock + UInt64( instruction.cycles ) + extraCycles, "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
 
                 let expectedRegisters = self.registers( from: inputRegisters, with: outputRegisters, defaultRegisters: nil, defaultFlags: nil )
 

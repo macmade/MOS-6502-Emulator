@@ -34,7 +34,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.write( 0xFF, at: 0x1000 )
@@ -48,7 +49,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.write( 0x10, at: 0x1000 )
@@ -62,7 +64,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.write( 0x10, at: 0x1000 )
@@ -76,7 +79,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.write( 0x20, at: 0x1000 )
@@ -90,7 +94,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0xFF ],
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            extraCycles:     0
         )
     }
 
@@ -101,7 +106,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            extraCycles:     0
         )
     }
 
@@ -112,7 +118,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( Y: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            extraCycles:     0
         )
     }
 
@@ -123,7 +130,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0x20 ],
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            extraCycles:     0
         )
     }
 
@@ -134,7 +142,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) )
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.write( 0xFF, at: 0x10 )
@@ -148,7 +157,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) )
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.write( 0x10, at: 0x10 )
@@ -162,7 +172,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers( Y: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) )
+            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.write( 0x10, at: 0x10 )
@@ -176,7 +187,8 @@ class Test_Instruction_CPY: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) )
+            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.write( 0x20, at: 0x10 )

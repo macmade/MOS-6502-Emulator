@@ -42,7 +42,8 @@ class Test_Instruction_PLP: Test_Instruction
                 addressingMode:  .implied,
                 operands:        [],
                 inputRegisters:  Registers( SP: 0x00 ),
-                outputRegisters: Registers( SP: 0x01, PS: Flags( rawValue: byte ) )
+                outputRegisters: Registers( SP: 0x01, PS: Flags( rawValue: byte ) ),
+                extraCycles:     0
             )
             {
                 cpu, bus, ram in try bus.write( byte, at: CPU.stackStart + UInt16( 0x01 ) )
@@ -67,7 +68,8 @@ class Test_Instruction_PLP: Test_Instruction
                 addressingMode:  .implied,
                 operands:        [],
                 inputRegisters:  Registers( SP: 0xFF ),
-                outputRegisters: Registers( SP: 0x00, PS: Flags( rawValue: byte ) )
+                outputRegisters: Registers( SP: 0x00, PS: Flags( rawValue: byte ) ),
+                extraCycles:     0
             )
             {
                 cpu, bus, ram in try bus.write( byte, at: CPU.stackStart + UInt16( 0x00 ) )

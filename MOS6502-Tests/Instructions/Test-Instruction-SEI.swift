@@ -34,7 +34,8 @@ class Test_Instruction_SEI: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( PS: Flags( I: 0 ) ),
-            outputRegisters: Registers( PS: Flags( I: 1 ) )
+            outputRegisters: Registers( PS: Flags( I: 1 ) ),
+            extraCycles:     0
         )
 
         try self.executeSingleInstruction(
@@ -42,7 +43,8 @@ class Test_Instruction_SEI: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( PS: Flags( I: 1 ) ),
-            outputRegisters: Registers( PS: Flags( I: 1 ) )
+            outputRegisters: Registers( PS: Flags( I: 1 ) ),
+            extraCycles:     0
         )
     }
 }
