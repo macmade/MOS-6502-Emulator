@@ -87,6 +87,21 @@ class Test_Instruction_LDY: Test_Instruction
         }
     }
 
+    func testAbsoluteX_PageCross() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "LDY",
+            addressingMode:  .absoluteX,
+            operand16:       0x10FF,
+            inputRegisters:  Registers( X: 0x01 ),
+            outputRegisters: Registers( Y: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            extraCycles:     1
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x42, at: 0x1100 )
+        }
+    }
+
     func testAbsoluteX_Zero() throws
     {
         try self.executeSingleInstruction(

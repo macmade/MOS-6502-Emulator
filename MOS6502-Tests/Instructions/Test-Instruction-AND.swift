@@ -87,6 +87,21 @@ class Test_Instruction_AND: Test_Instruction
         }
     }
 
+    func testAbsoluteX_PageCross() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "AND",
+            addressingMode:  .absoluteX,
+            operand16:       0x1000,
+            inputRegisters:  Registers( A: 0x55, X: 0x10 ),
+            outputRegisters: Registers( A: 0x50, PS: Flags( Z: 0, N: 0 ) ),
+            extraCycles:     0
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x7A, at: 0x1010 )
+        }
+    }
+
     func testAbsoluteX_Zero() throws
     {
         try self.executeSingleInstruction(
@@ -129,6 +144,21 @@ class Test_Instruction_AND: Test_Instruction
         )
         {
             cpu, bus, ram in try bus.write( 0x7A, at: 0x1010 )
+        }
+    }
+
+    func testAbsoluteY_PageCross() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "AND",
+            addressingMode:  .absoluteY,
+            operand16:       0x10FF,
+            inputRegisters:  Registers( A: 0x55, Y: 0x01 ),
+            outputRegisters: Registers( A: 0x50, PS: Flags( Z: 0, N: 0 ) ),
+            extraCycles:     1
+        )
+        {
+            cpu, bus, ram in try bus.write( 0x7A, at: 0x1100 )
         }
     }
 
@@ -321,6 +351,24 @@ class Test_Instruction_AND: Test_Instruction
 
             try bus.writeUInt16( 0x1000, at: 0x10 )
             try bus.write( 0x7A, at: 0x1010 )
+        }
+    }
+
+    func testIndirectY_PageCross() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "AND",
+            addressingMode:  .indirectY,
+            operand8:        0x10,
+            inputRegisters:  Registers( A: 0x55, Y: 0x01 ),
+            outputRegisters: Registers( A: 0x50, PS: Flags( Z: 0, N: 0 ) ),
+            extraCycles:     1
+        )
+        {
+            cpu, bus, ram in
+
+            try bus.writeUInt16( 0x10FF, at: 0x10 )
+            try bus.write( 0x7A, at: 0x1100 )
         }
     }
 
