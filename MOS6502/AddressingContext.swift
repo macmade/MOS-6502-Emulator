@@ -31,7 +31,7 @@ public class AddressingContext
     private var writeValue:    ( UInt8 ) throws -> Void
     private var sourceAddress: UInt16?
 
-    public var additionalCycles: UInt = 0
+    public var extraCycles: UInt = 0
 
     public var address: UInt16
     {
@@ -49,10 +49,10 @@ public class AddressingContext
 
     public convenience init( address: UInt16, cpu: CPU )
     {
-        self.init( address: address, cpu: cpu, additionalCycles: 0 )
+        self.init( address: address, cpu: cpu, extraCycles: 0 )
     }
 
-    public convenience init( address: UInt16, cpu: CPU, additionalCycles: UInt )
+    public convenience init( address: UInt16, cpu: CPU, extraCycles: UInt )
     {
         self.init
         {
@@ -63,8 +63,8 @@ public class AddressingContext
             try cpu.writeUInt8ToMemory( $0, at: address )
         }
 
-        self.sourceAddress    = address
-        self.additionalCycles = additionalCycles
+        self.sourceAddress = address
+        self.extraCycles   = extraCycles
     }
 
     public init( read: @escaping () throws -> UInt8, write: @escaping ( UInt8 ) throws -> Void )
@@ -185,7 +185,7 @@ public class AddressingContext
             throw RuntimeError( message: "Invalid Absolute,X memory address: \( base.asHex ),\( offset.asHex )" )
         }
 
-        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, additionalCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
+        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, extraCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
     }
 
     public class func absoluteY( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
@@ -198,7 +198,7 @@ public class AddressingContext
             throw RuntimeError( message: "Invalid Absolute,Y memory address: \( base.asHex ),\( offset.asHex )" )
         }
 
-        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, additionalCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
+        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, extraCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
     }
 
     public class func indirect( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
@@ -224,7 +224,7 @@ public class AddressingContext
             throw RuntimeError( message: "Invalid (Indirect),Y memory address: (\( zp.asHex )),\( offset.asHex ) = \( base.asHex ) + \( offset.asHex )" )
         }
 
-        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, additionalCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
+        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, extraCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
     }
 
     private class func pageCrossed( base: UInt16, offset: UInt8 ) -> Bool
