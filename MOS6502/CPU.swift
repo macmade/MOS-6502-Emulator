@@ -50,7 +50,8 @@ public class CPU: LogSource, Resettable
     public var beforeInstruction = Event< Void >()
     public var afterInstruction  = Event< Void >()
 
-    public private( set ) var clock: UInt64 = 0
+    public private( set ) var clock:          UInt64 = 0
+    public private( set ) var currentContext: AddressingContext?
 
     private var bus:    Bus
     private var cycles: UInt = 0
@@ -87,6 +88,8 @@ public class CPU: LogSource, Resettable
     {
         if self.cycles == 0
         {
+            self.currentContext = nil
+
             self.beforeInstruction.fire()
 
             if self.registers.PS.contains( .interruptDisable ) == false
@@ -169,9 +172,11 @@ public class CPU: LogSource, Resettable
                 throw RuntimeError( message: "Invalid cycle count for instruction \( opcode.asHex ): \( instruction.mnemonic ) \( instruction.addressingMode.description )" )
             }
 
-            self.cycles = instruction.cycles - 1
+            let context         = try self.context( for: instruction.addressingMode )
+            self.cycles         = ( instruction.cycles + context.additionalCycles ) - 1
+            self.currentContext = context
 
-            try instruction.execute( self, try self.context( for: instruction.addressingMode ) )
+            try instruction.execute( self, context )
         }
         else
         {

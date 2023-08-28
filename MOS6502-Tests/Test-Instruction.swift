@@ -183,7 +183,12 @@ class Test_Instruction: XCTestCase
 
                 XCTAssertNoThrow( try cpu.run( instructions: 1 ) )
 
-                XCTAssertEqual( cpu.clock, clock + UInt64( instruction.cycles ), "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
+                let cycles           = UInt64( instruction.cycles )
+                let additionalCycles = UInt64( cpu.currentContext?.additionalCycles ?? 0 )
+
+                XCTAssertNotNil( cpu.currentContext )
+                XCTAssertLessThanOrEqual( additionalCycles, 2 )
+                XCTAssertEqual( cpu.clock, clock + cycles + additionalCycles, "Incorrect CPU cycles for instruction \( instruction.mnemonic )" )
 
                 let expectedRegisters = self.registers( from: inputRegisters, with: outputRegisters, defaultRegisters: nil, defaultFlags: nil )
 

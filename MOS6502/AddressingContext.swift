@@ -31,6 +31,8 @@ public class AddressingContext
     private var writeValue:    ( UInt8 ) throws -> Void
     private var sourceAddress: UInt16?
 
+    public var additionalCycles: UInt = 0
+
     public var address: UInt16
     {
         get throws
