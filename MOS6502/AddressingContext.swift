@@ -185,7 +185,7 @@ public class AddressingContext
             throw RuntimeError( message: "Invalid Absolute,X memory address: \( base.asHex ),\( offset.asHex )" )
         }
 
-        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, additionalCycles: instruction.additionalCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
+        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, additionalCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
     }
 
     public class func absoluteY( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
@@ -198,7 +198,7 @@ public class AddressingContext
             throw RuntimeError( message: "Invalid Absolute,Y memory address: \( base.asHex ),\( offset.asHex )" )
         }
 
-        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, additionalCycles: instruction.additionalCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
+        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, additionalCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
     }
 
     public class func indirect( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
@@ -224,7 +224,7 @@ public class AddressingContext
             throw RuntimeError( message: "Invalid (Indirect),Y memory address: (\( zp.asHex )),\( offset.asHex ) = \( base.asHex ) + \( offset.asHex )" )
         }
 
-        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, additionalCycles: instruction.additionalCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
+        return AddressingContext( address: base + UInt16( offset ), cpu: cpu, additionalCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
     }
 
     private class func pageCrossed( base: UInt16, offset: UInt8 ) -> Bool
