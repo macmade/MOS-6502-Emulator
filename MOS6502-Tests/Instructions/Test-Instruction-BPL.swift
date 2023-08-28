@@ -53,6 +53,19 @@ class Test_Instruction_BPL: Test_Instruction
         )
     }
 
+    func testRelative_Taken_Forward_PageCross() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BPL",
+            addressingMode:  .relative,
+            operands:        [ 1 ],
+            origin:          0x02FD,
+            inputRegisters:  Registers( PS: Flags( N: 0 ) ),
+            outputRegisters: Registers( PC: 0x02FF + 1 ),
+            extraCycles:     2
+        )
+    }
+
     func testRelative_Taken_Backward() throws
     {
         try self.executeSingleInstruction(
@@ -63,6 +76,19 @@ class Test_Instruction_BPL: Test_Instruction
             inputRegisters:  Registers( PS: Flags( N: 0 ) ),
             outputRegisters: Registers( PC: 0xFF12 - 10 ),
             extraCycles:     1
+        )
+    }
+
+    func testRelative_Taken_Backward_PageCross() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BPL",
+            addressingMode:  .relative,
+            operands:        [ UInt8( bitPattern: -10 ) ],
+            origin:          0xFF00,
+            inputRegisters:  Registers( PS: Flags( N: 0 ) ),
+            outputRegisters: Registers( PC: 0xFF02 - 10 ),
+            extraCycles:     2
         )
     }
 
