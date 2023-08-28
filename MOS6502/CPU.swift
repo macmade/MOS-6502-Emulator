@@ -173,10 +173,11 @@ public class CPU: LogSource, Resettable
             }
 
             let context         = try AddressingContext.context( for: instruction, cpu: self )
-            self.cycles         = ( instruction.cycles + context.extraCycles ) - 1
             self.currentContext = context
 
             try instruction.execute( self, context )
+
+            self.cycles = ( instruction.cycles + context.extraCycles ) - 1
         }
         else
         {
