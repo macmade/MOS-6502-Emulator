@@ -172,7 +172,7 @@ public class CPU: LogSource, Resettable
                 throw RuntimeError( message: "Invalid cycle count for instruction \( opcode.asHex ): \( instruction.mnemonic ) \( instruction.addressingMode.description )" )
             }
 
-            let context         = try self.context( for: instruction.addressingMode )
+            let context         = try AddressingContext.context( for: instruction, cpu: self )
             self.cycles         = ( instruction.cycles + context.additionalCycles ) - 1
             self.currentContext = context
 
@@ -181,26 +181,6 @@ public class CPU: LogSource, Resettable
         else
         {
             throw RuntimeError( message: "Unhandled instruction: \( opcode.asHex )" )
-        }
-    }
-
-    private func context( for addressingMode: Instruction.AddressingMode ) throws -> AddressingContext
-    {
-        switch addressingMode
-        {
-            case .implied:     return try AddressingContext.implied(     cpu: self )
-            case .accumulator: return try AddressingContext.accumulator( cpu: self )
-            case .immediate:   return try AddressingContext.immediate(   cpu: self )
-            case .zeroPage:    return try AddressingContext.zeroPage(    cpu: self )
-            case .zeroPageX:   return try AddressingContext.zeroPageX(   cpu: self )
-            case .zeroPageY:   return try AddressingContext.zeroPageY(   cpu: self )
-            case .relative:    return try AddressingContext.relative(    cpu: self )
-            case .absolute:    return try AddressingContext.absolute(    cpu: self )
-            case .absoluteX:   return try AddressingContext.absoluteX(   cpu: self )
-            case .absoluteY:   return try AddressingContext.absoluteY(   cpu: self )
-            case .indirect:    return try AddressingContext.indirect(    cpu: self )
-            case .indirectX:   return try AddressingContext.indirectX(   cpu: self )
-            case .indirectY:   return try AddressingContext.indirectY(   cpu: self )
         }
     }
 

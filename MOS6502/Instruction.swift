@@ -29,12 +29,13 @@ public class Instruction
 {
     public typealias AddressingMode = xasm65lib.Instruction.AddressingMode
 
-    public var mnemonic:       String
-    public var opcode:         UInt8
-    public var size:           UInt
-    public var cycles:         UInt
-    public var addressingMode: AddressingMode
-    public var execute:        ( CPU, AddressingContext ) throws -> Void
+    public var mnemonic:         String
+    public var opcode:           UInt8
+    public var size:             UInt
+    public var cycles:           UInt
+    public var addressingMode:   AddressingMode
+    public var additionalCycles: xasm65lib.Instruction.AdditionalCycles
+    public var execute:          ( CPU, AddressingContext ) throws -> Void
 
     public class func instruction( for mnemonic: String, addressingMode: AddressingMode ) -> Instruction?
     {
@@ -54,11 +55,12 @@ public class Instruction
 
     public init?( instruction: xasm65lib.Instruction )
     {
-        self.mnemonic       = instruction.mnemonic
-        self.opcode         = instruction.opcode
-        self.size           = instruction.size
-        self.cycles         = instruction.cycles
-        self.addressingMode = instruction.addressingMode
+        self.mnemonic         = instruction.mnemonic
+        self.opcode           = instruction.opcode
+        self.size             = instruction.size
+        self.cycles           = instruction.cycles
+        self.addressingMode   = instruction.addressingMode
+        self.additionalCycles = instruction.additionalCycles
 
         switch instruction.mnemonic
         {
