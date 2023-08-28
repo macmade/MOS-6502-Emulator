@@ -33,9 +33,9 @@ class Test_Instruction_BVC: Test_Instruction
             instruction:     "BVC",
             addressingMode:  .relative,
             operands:        [ 10 ],
-            origin:          0xFF00,
+            origin:          0xFF10,
             inputRegisters:  Registers( PS: Flags( V: 1 ) ),
-            outputRegisters: Registers( PC: 0xFF02 ),
+            outputRegisters: Registers( PC: 0xFF12 ),
             extraCycles:     0
         )
     }
@@ -46,10 +46,10 @@ class Test_Instruction_BVC: Test_Instruction
             instruction:     "BVC",
             addressingMode:  .relative,
             operands:        [ 10 ],
-            origin:          0xFF00,
+            origin:          0xFF10,
             inputRegisters:  Registers( PS: Flags( V: 0 ) ),
-            outputRegisters: Registers( PC: 0xFF02 + 10 ),
-            extraCycles:     0
+            outputRegisters: Registers( PC: 0xFF12 + 10 ),
+            extraCycles:     1
         )
     }
 
@@ -59,10 +59,10 @@ class Test_Instruction_BVC: Test_Instruction
             instruction:     "BVC",
             addressingMode:  .relative,
             operands:        [ UInt8( bitPattern: -10 ) ],
-            origin:          0xFF00,
+            origin:          0xFF10,
             inputRegisters:  Registers( PS: Flags( V: 0 ) ),
-            outputRegisters: Registers( PC: 0xFF02 - 10 ),
-            extraCycles:     0
+            outputRegisters: Registers( PC: 0xFF12 - 10 ),
+            extraCycles:     1
         )
     }
 
@@ -72,10 +72,10 @@ class Test_Instruction_BVC: Test_Instruction
             instruction:     "BVC",
             addressingMode:  .relative,
             operands:        [ 0x00 ],
-            origin:          0xFF00,
+            origin:          0xFF10,
             inputRegisters:  Registers( PS: Flags( V: 0 ) ),
-            outputRegisters: Registers( PC: 0xFF02 ),
-            extraCycles:     0
+            outputRegisters: Registers( PC: 0xFF12 ),
+            extraCycles:     1
         )
     }
 }
