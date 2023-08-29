@@ -98,7 +98,7 @@ public class Bus: WritableMemoryDevice, LogSource, Resettable, IRQSource
     {
         let mapped = try self.deviceForAddress( address )
         let u1     = UInt16( try mapped.device.read( at: mapped.address ) )
-        let u2     = UInt16( try mapped.device.read( at: mapped.address + 1 ) )
+        let u2     = UInt16( try mapped.device.read( at: mapped.address &+ 1 ) )
 
         return ( u2 << 8 ) | u1
     }
@@ -117,7 +117,7 @@ public class Bus: WritableMemoryDevice, LogSource, Resettable, IRQSource
         let u2     = UInt8( ( value >> 8 ) & 0xFF )
 
         try mapped.device.write( u1, at: mapped.address )
-        try mapped.device.write( u2, at: mapped.address + 1 )
+        try mapped.device.write( u2, at: mapped.address &+ 1 )
     }
 
     public func deviceForAddress( _ address: UInt16 ) throws -> ( address: UInt16, device: MemoryDevice )
