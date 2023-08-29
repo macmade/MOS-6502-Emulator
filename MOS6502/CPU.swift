@@ -240,16 +240,16 @@ public class CPU: LogSource, Resettable
 
     public func readUInt8FromMemoryAtPC() throws -> UInt8
     {
-        let value          = try self.readUInt8FromMemory( at: self.registers.PC )
-        self.registers.PC += 1
+        let value           = try self.readUInt8FromMemory( at: self.registers.PC )
+        self.registers.PC &+= 1
 
         return value
     }
 
     public func readUInt16FromMemoryAtPC() throws -> UInt16
     {
-        let value          = try self.readUInt16FromMemory( at: self.registers.PC )
-        self.registers.PC += 2
+        let value           = try self.readUInt16FromMemory( at: self.registers.PC )
+        self.registers.PC &+= 2
 
         return value
     }
