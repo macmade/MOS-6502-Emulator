@@ -73,6 +73,11 @@ class Test_Instruction: XCTestCase
         var PS: Flags?  = nil
     }
 
+    override func setUp()
+    {
+        self.continueAfterFailure = false
+    }
+
     private func registers( from registers: MOS6502.Registers, with additionalRegisters: Registers, defaultRegisters: UInt8?, defaultFlags: UInt8? ) -> MOS6502.Registers
     {
         var flags = MOS6502.Registers.Flags()
