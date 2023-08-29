@@ -92,13 +92,13 @@ class Test_Instruction_AND: Test_Instruction
         try self.executeSingleInstruction(
             instruction:     "AND",
             addressingMode:  .absoluteX,
-            operand16:       0x1000,
-            inputRegisters:  Registers( A: 0x55, X: 0x10 ),
+            operand16:       0x10FF,
+            inputRegisters:  Registers( A: 0x55, X: 0x01 ),
             outputRegisters: Registers( A: 0x50, PS: Flags( Z: 0, N: 0 ) ),
-            extraCycles:     0
+            extraCycles:     1
         )
         {
-            cpu, bus, ram in try bus.write( 0x7A, at: 0x1010 )
+            cpu, bus, ram in try bus.write( 0x7A, at: 0x1100 )
         }
     }
 
