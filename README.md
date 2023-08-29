@@ -1,7 +1,8 @@
 MOS-6502-Emulator
 =================
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/macmade/MOS-6502-Emulator/ci-mac.yaml?label=macOS&logo=apple)](https://github.com/macmade/MOS-6502-Emulator/actions/workflows/ci-mac.yaml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/macmade/MOS-6502-Emulator/ci-mac-build.yaml?label=Build&logo=apple)](https://github.com/macmade/MOS-6502-Emulator/actions/workflows/ci-mac-build.yaml)
+[![Test Status](https://img.shields.io/github/actions/workflow/status/macmade/MOS-6502-Emulator/ci-mac-test.yaml?label=Tests&logo=apple)](https://github.com/macmade/MOS-6502-Emulator/actions/workflows/ci-mac-test.yaml)
 [![Issues](http://img.shields.io/github/issues/macmade/MOS-6502-Emulator.svg?logo=github)](https://github.com/macmade/MOS-6502-Emulator/issues)
 ![Status](https://img.shields.io/badge/status-active-brightgreen.svg?logo=git)
 ![License](https://img.shields.io/badge/license-mit-brightgreen.svg?logo=open-source-initiative)  

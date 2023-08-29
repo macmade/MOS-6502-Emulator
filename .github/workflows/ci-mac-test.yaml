@@ -1,4 +1,4 @@
-name: ci-mac
+name: ci-mac-test
 on:   [push]
 jobs:
     ci:

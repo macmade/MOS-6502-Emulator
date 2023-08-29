@@ -1,0 +1,28 @@
+name: ci-mac-build
+on:   [push]
+jobs:
+    ci:
+        runs-on: macos-latest
+        strategy:
+            matrix:
+                run-config:
+                    - { scheme: 'MOS6502',      configuration: 'Debug',   project: 'MOS-6502-Emulator.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'MOS6502',      configuration: 'Release', project: 'MOS-6502-Emulator.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'MOS6502-Demo', configuration: 'Debug',   project: 'MOS-6502-Emulator.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'MOS6502-Demo', configuration: 'Release', project: 'MOS-6502-Emulator.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+        steps:
+            
+            - uses: actions/checkout@v1
+              with:
+                submodules: 'recursive'
+                
+            - uses: macmade/action-xcodebuild@v1.0.0
+            
+            - uses: macmade/action-slack@v1.0.0
+              if:   ${{ always() }}
+              env:
+                SLACK_WEBHOOK_URL:  ${{ secrets.SLACK_WEBHOOK_URL }}
+              with:
+                channel:    '#ci'
+                status:     ${{ job.status }}
+                title:      ${{ matrix.run-config[ 'scheme' ] }} - ${{ matrix.run-config[ 'configuration' ] }}
