@@ -7,3 +7,6 @@
 [submodule "Submodules/SwiftCurses"]
 	path = Submodules/SwiftCurses
 	url = https://github.com/macmade/SwiftCurses.git
+[submodule "Submodules/MOS-6502-Tests"]
+	path = Submodules/MOS-6502-Tests
+	url = https://github.com/macmade/MOS-6502-Tests.git
