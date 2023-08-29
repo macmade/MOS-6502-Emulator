@@ -187,6 +187,8 @@
 		05C6D1022A89165A00A984EB /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1012A89165A00A984EB /* Bus.swift */; };
 		05C6D1082A896C9900A984EB /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1072A896C9900A984EB /* Clock.swift */; };
 		05C6D10A2A897EB700A984EB /* MC6820.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6D1092A897EB600A984EB /* MC6820.swift */; };
+		05D9A6B72A9E6FF200C2A59E /* Tests in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A6B62A9E6FDF00C2A59E /* Tests */; };
+		05D9A6B92A9E700A00C2A59E /* Test-JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A6B82A9E700A00C2A59E /* Test-JSON.swift */; };
 		05DED74A2A8AA41E00DA42F9 /* RAM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED7492A8AA41D00DA42F9 /* RAM.swift */; };
 		05DED74C2A8AA67A00DA42F9 /* AddressingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED74B2A8AA67A00DA42F9 /* AddressingContext.swift */; };
 /* End PBXBuildFile section */
@@ -558,6 +560,8 @@
 		05C6D1072A896C9900A984EB /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		05C6D1092A897EB600A984EB /* MC6820.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820.swift; sourceTree = "<group>"; };
 		05D9A6B52A9E66F600C2A59E /* ci-mac-test.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "ci-mac-test.yaml"; sourceTree = "<group>"; };
+		05D9A6B62A9E6FDF00C2A59E /* Tests */ = {isa = PBXFileReference; lastKnownFileType = text; name = Tests; path = "Submodules/MOS-6502-Tests/Tests"; sourceTree = SOURCE_ROOT; };
+		05D9A6B82A9E700A00C2A59E /* Test-JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-JSON.swift"; sourceTree = "<group>"; };
 		05DED7492A8AA41D00DA42F9 /* RAM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAM.swift; sourceTree = "<group>"; };
 		05DED74B2A8AA67A00DA42F9 /* AddressingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressingContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -880,8 +884,10 @@
 				05C3C1E52A86471300436F6D /* Test-BinaryInteger.swift */,
 				05C3C1AA2A85703200436F6D /* Test-CPU.swift */,
 				05C3C20B2A868A6300436F6D /* Test-Instruction.swift */,
+				05D9A6B82A9E700A00C2A59E /* Test-JSON.swift */,
 				05C3C19E2A856EC400436F6D /* Test-Memory.swift */,
 				05C3C1E32A8645F200436F6D /* Test-Registers-Flags.swift */,
+				05D9A6B62A9E6FDF00C2A59E /* Tests */,
 			);
 			path = "MOS6502-Tests";
 			sourceTree = "<group>";
@@ -1310,6 +1316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05D9A6B72A9E6FF200C2A59E /* Tests in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1439,6 +1446,7 @@
 				050569B52A96BB6400DDD588 /* Test-Instruction-ORA.swift in Sources */,
 				050569C52A96BB6400DDD588 /* Test-Instruction-INY.swift in Sources */,
 				050569DB2A96BB6400DDD588 /* Test-Instruction-BPL.swift in Sources */,
+				05D9A6B92A9E700A00C2A59E /* Test-JSON.swift in Sources */,
 				050569B12A96BB6400DDD588 /* Test-Instruction-CLI.swift in Sources */,
 				050569BA2A96BB6400DDD588 /* Test-Instruction-NOP.swift in Sources */,
 				050569D52A96BB6400DDD588 /* Test-Instruction-BCC.swift in Sources */,
