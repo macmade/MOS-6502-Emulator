@@ -34,7 +34,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -51,7 +51,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -68,7 +68,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -85,7 +85,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -102,7 +102,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -119,7 +119,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -136,7 +136,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -153,7 +153,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -170,7 +170,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -187,7 +187,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -204,7 +204,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -221,7 +221,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -238,7 +238,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .accumulator,
             operands:        [],
             inputRegisters:  Registers( A: 0x33 ),
-            outputRegisters: Registers( A: 0x66, PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( A: 0x66, P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -250,7 +250,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .accumulator,
             operands:        [],
             inputRegisters:  Registers( A: 0xAA ),
-            outputRegisters: Registers( A: 0x54, PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( A: 0x54, P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -262,7 +262,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .accumulator,
             operands:        [],
             inputRegisters:  Registers( A: 0x00 ),
-            outputRegisters: Registers( A: 0x00, PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( A: 0x00, P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -274,7 +274,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .accumulator,
             operands:        [],
             inputRegisters:  Registers( A: 0x55 ),
-            outputRegisters: Registers( A: 0xAA, PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( A: 0xAA, P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
     }
@@ -286,7 +286,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .accumulator,
             operands:        [],
             inputRegisters:  Registers( A: 0x80 ),
-            outputRegisters: Registers( A: 0x00, PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( A: 0x00, P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -298,7 +298,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .accumulator,
             operands:        [],
             inputRegisters:  Registers( A: 0xC0 ),
-            outputRegisters: Registers( A: 0x80, PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( A: 0x80, P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
     }
@@ -310,7 +310,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -327,7 +327,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -344,7 +344,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -361,7 +361,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -378,7 +378,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -395,7 +395,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -412,7 +412,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0x10,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -429,7 +429,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0x10,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -446,7 +446,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0x10,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -463,7 +463,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0x10,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -480,7 +480,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0x10,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -497,7 +497,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0x10,
             inputRegisters:  Registers( X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -514,7 +514,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
             inputRegisters:  Registers( X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -531,7 +531,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
             inputRegisters:  Registers( X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -548,7 +548,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
             inputRegisters:  Registers( X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -565,7 +565,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
             inputRegisters:  Registers( X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -582,7 +582,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
             inputRegisters:  Registers( X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -599,7 +599,7 @@ class Test_Instruction_ASL: Test_Instruction
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
             inputRegisters:  Registers( X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {

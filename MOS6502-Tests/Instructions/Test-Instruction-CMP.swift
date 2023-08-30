@@ -34,7 +34,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -49,7 +49,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -64,7 +64,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -79,7 +79,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -94,7 +94,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -109,7 +109,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x10FF,
             inputRegisters:  Registers( A: 0x10, X: 0x01 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     1
         )
         {
@@ -124,7 +124,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -139,7 +139,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x20, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -154,7 +154,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteX,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -169,7 +169,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -184,7 +184,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x10FF,
             inputRegisters:  Registers( A: 0x10, Y: 0x01 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     1
         )
         {
@@ -199,7 +199,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -214,7 +214,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x20, Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -229,7 +229,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x1000,
             inputRegisters:  Registers( A: 0x10, Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -244,7 +244,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0xFF ],
             inputRegisters:  Registers( A: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -256,7 +256,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -268,7 +268,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -280,7 +280,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0x20 ],
             inputRegisters:  Registers( A: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
     }
@@ -292,7 +292,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectX,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -310,7 +310,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectX,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -328,7 +328,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectX,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x20, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -346,7 +346,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectX,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -364,7 +364,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectX,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( A: 0x10, X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -382,7 +382,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectX,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( A: 0x10, X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -400,7 +400,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectX,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( A: 0x20, X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -418,7 +418,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectX,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( A: 0x10, X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -436,7 +436,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectY,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -454,7 +454,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectY,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, Y: 0x01 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     1
         )
         {
@@ -472,7 +472,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectY,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -490,7 +490,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectY,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x20, Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -508,7 +508,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .indirectY,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, Y: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -526,7 +526,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPage,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -541,7 +541,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPage,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -556,7 +556,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPage,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -571,7 +571,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPage,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -586,7 +586,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -601,7 +601,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -616,7 +616,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x20, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -631,7 +631,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0x10 ],
             inputRegisters:  Registers( A: 0x10, X: 0x10 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -646,7 +646,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( A: 0x10, X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -661,7 +661,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( A: 0x10, X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -676,7 +676,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( A: 0x20, X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -691,7 +691,7 @@ class Test_Instruction_CMP: Test_Instruction
             addressingMode:  .zeroPageX,
             operands:        [ 0xEF ],
             inputRegisters:  Registers( A: 0x10, X: 0x20 ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {

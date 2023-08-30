@@ -70,7 +70,7 @@ class Test_Instruction: XCTestCase
         var A:  UInt8?  = nil
         var X:  UInt8?  = nil
         var Y:  UInt8?  = nil
-        var PS: Flags?  = nil
+        var P:  Flags?  = nil
     }
 
     override func setUp()
@@ -82,14 +82,14 @@ class Test_Instruction: XCTestCase
     {
         var flags = MOS6502.Registers.Flags()
 
-        if ( additionalRegisters.PS?.C ?? defaultFlags ?? ( registers.PS.contains( .carryFlag        ) ? 1 : 0 ) ) == 1 { flags.insert( .carryFlag ) }
-        if ( additionalRegisters.PS?.Z ?? defaultFlags ?? ( registers.PS.contains( .zeroFlag         ) ? 1 : 0 ) ) == 1 { flags.insert( .zeroFlag ) }
-        if ( additionalRegisters.PS?.I ?? defaultFlags ?? ( registers.PS.contains( .interruptDisable ) ? 1 : 0 ) ) == 1 { flags.insert( .interruptDisable ) }
-        if ( additionalRegisters.PS?.D ?? defaultFlags ?? ( registers.PS.contains( .decimalMode      ) ? 1 : 0 ) ) == 1 { flags.insert( .decimalMode ) }
-        if ( additionalRegisters.PS?.B ?? defaultFlags ?? ( registers.PS.contains( .breakCommand     ) ? 1 : 0 ) ) == 1 { flags.insert( .breakCommand ) }
-        if ( additionalRegisters.PS?.U ?? defaultFlags ?? ( registers.PS.contains( .unused           ) ? 1 : 0 ) ) == 1 { flags.insert( .unused ) }
-        if ( additionalRegisters.PS?.V ?? defaultFlags ?? ( registers.PS.contains( .overflowFlag     ) ? 1 : 0 ) ) == 1 { flags.insert( .overflowFlag ) }
-        if ( additionalRegisters.PS?.N ?? defaultFlags ?? ( registers.PS.contains( .negativeFlag     ) ? 1 : 0 ) ) == 1 { flags.insert( .negativeFlag ) }
+        if ( additionalRegisters.P?.C ?? defaultFlags ?? ( registers.P.contains( .carryFlag        ) ? 1 : 0 ) ) == 1 { flags.insert( .carryFlag ) }
+        if ( additionalRegisters.P?.Z ?? defaultFlags ?? ( registers.P.contains( .zeroFlag         ) ? 1 : 0 ) ) == 1 { flags.insert( .zeroFlag ) }
+        if ( additionalRegisters.P?.I ?? defaultFlags ?? ( registers.P.contains( .interruptDisable ) ? 1 : 0 ) ) == 1 { flags.insert( .interruptDisable ) }
+        if ( additionalRegisters.P?.D ?? defaultFlags ?? ( registers.P.contains( .decimalMode      ) ? 1 : 0 ) ) == 1 { flags.insert( .decimalMode ) }
+        if ( additionalRegisters.P?.B ?? defaultFlags ?? ( registers.P.contains( .breakCommand     ) ? 1 : 0 ) ) == 1 { flags.insert( .breakCommand ) }
+        if ( additionalRegisters.P?.U ?? defaultFlags ?? ( registers.P.contains( .unused           ) ? 1 : 0 ) ) == 1 { flags.insert( .unused ) }
+        if ( additionalRegisters.P?.V ?? defaultFlags ?? ( registers.P.contains( .overflowFlag     ) ? 1 : 0 ) ) == 1 { flags.insert( .overflowFlag ) }
+        if ( additionalRegisters.P?.N ?? defaultFlags ?? ( registers.P.contains( .negativeFlag     ) ? 1 : 0 ) ) == 1 { flags.insert( .negativeFlag ) }
 
         return MOS6502.Registers(
             PC: additionalRegisters.PC ?? registers.PC,
@@ -97,7 +97,7 @@ class Test_Instruction: XCTestCase
             A:  additionalRegisters.A  ?? defaultRegisters ?? registers.A,
             X:  additionalRegisters.X  ?? defaultRegisters ?? registers.X,
             Y:  additionalRegisters.Y  ?? defaultRegisters ?? registers.Y,
-            PS: flags
+            P:  flags
         )
     }
 
@@ -201,14 +201,14 @@ class Test_Instruction: XCTestCase
                 XCTAssertEqual( cpu.registers.X,  expectedRegisters.X,  "Register mismatch for X" )
                 XCTAssertEqual( cpu.registers.Y,  expectedRegisters.Y,  "Register mismatch for Y" )
 
-                XCTAssertEqual( expectedRegisters.PS.contains( .carryFlag        ), cpu.registers.PS.contains( .carryFlag        ), "Register mismatch for PS: carry flag" )
-                XCTAssertEqual( expectedRegisters.PS.contains( .zeroFlag         ), cpu.registers.PS.contains( .zeroFlag         ), "Register mismatch for PS: zero flag" )
-                XCTAssertEqual( expectedRegisters.PS.contains( .interruptDisable ), cpu.registers.PS.contains( .interruptDisable ), "Register mismatch for PS: interrupt disable" )
-                XCTAssertEqual( expectedRegisters.PS.contains( .decimalMode      ), cpu.registers.PS.contains( .decimalMode      ), "Register mismatch for PS: decimal mode" )
-                XCTAssertEqual( expectedRegisters.PS.contains( .breakCommand     ), cpu.registers.PS.contains( .breakCommand     ), "Register mismatch for PS: break command" )
-                XCTAssertEqual( expectedRegisters.PS.contains( .unused           ), cpu.registers.PS.contains( .unused           ), "Register mismatch for PS: unused" )
-                XCTAssertEqual( expectedRegisters.PS.contains( .overflowFlag     ), cpu.registers.PS.contains( .overflowFlag     ), "Register mismatch for PS: overlfow flag" )
-                XCTAssertEqual( expectedRegisters.PS.contains( .negativeFlag     ), cpu.registers.PS.contains( .negativeFlag     ), "Register mismatch for PS: negative flag" )
+                XCTAssertEqual( expectedRegisters.P.contains( .carryFlag        ), cpu.registers.P.contains( .carryFlag        ), "Register mismatch for PS: carry flag" )
+                XCTAssertEqual( expectedRegisters.P.contains( .zeroFlag         ), cpu.registers.P.contains( .zeroFlag         ), "Register mismatch for PS: zero flag" )
+                XCTAssertEqual( expectedRegisters.P.contains( .interruptDisable ), cpu.registers.P.contains( .interruptDisable ), "Register mismatch for PS: interrupt disable" )
+                XCTAssertEqual( expectedRegisters.P.contains( .decimalMode      ), cpu.registers.P.contains( .decimalMode      ), "Register mismatch for PS: decimal mode" )
+                XCTAssertEqual( expectedRegisters.P.contains( .breakCommand     ), cpu.registers.P.contains( .breakCommand     ), "Register mismatch for PS: break command" )
+                XCTAssertEqual( expectedRegisters.P.contains( .unused           ), cpu.registers.P.contains( .unused           ), "Register mismatch for PS: unused" )
+                XCTAssertEqual( expectedRegisters.P.contains( .overflowFlag     ), cpu.registers.P.contains( .overflowFlag     ), "Register mismatch for PS: overlfow flag" )
+                XCTAssertEqual( expectedRegisters.P.contains( .negativeFlag     ), cpu.registers.P.contains( .negativeFlag     ), "Register mismatch for PS: negative flag" )
             }
         }
 

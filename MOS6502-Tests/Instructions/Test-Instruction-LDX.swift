@@ -34,7 +34,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            outputRegisters: Registers( X: 0x42, P: Flags( Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -49,7 +49,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) ),
+            outputRegisters: Registers( X: 0x00, P: Flags( Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -64,7 +64,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .absolute,
             operand16:       0x1000,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) ),
+            outputRegisters: Registers( X: 0xFF, P: Flags( Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -79,7 +79,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x20 ),
-            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            outputRegisters: Registers( X: 0x42, P: Flags( Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -94,7 +94,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x10FF,
             inputRegisters:  Registers( Y: 0x01 ),
-            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            outputRegisters: Registers( X: 0x42, P: Flags( Z: 0, N: 0 ) ),
             extraCycles:     1
         )
         {
@@ -109,7 +109,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x20 ),
-            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) ),
+            outputRegisters: Registers( X: 0x00, P: Flags( Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -124,7 +124,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .absoluteY,
             operand16:       0x1000,
             inputRegisters:  Registers( Y: 0x20 ),
-            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) ),
+            outputRegisters: Registers( X: 0xFF, P: Flags( Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -139,7 +139,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0x42 ],
             inputRegisters:  Registers(),
-            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            outputRegisters: Registers( X: 0x42, P: Flags( Z: 0, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -151,7 +151,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0x00 ],
             inputRegisters:  Registers(),
-            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) ),
+            outputRegisters: Registers( X: 0x00, P: Flags( Z: 1, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -163,7 +163,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .immediate,
             operands:        [ 0xFF ],
             inputRegisters:  Registers(),
-            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) ),
+            outputRegisters: Registers( X: 0xFF, P: Flags( Z: 0, N: 1 ) ),
             extraCycles:     0
         )
     }
@@ -175,7 +175,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            outputRegisters: Registers( X: 0x42, P: Flags( Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -190,7 +190,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) ),
+            outputRegisters: Registers( X: 0x00, P: Flags( Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -205,7 +205,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .zeroPage,
             operand8:        0x10,
             inputRegisters:  Registers(),
-            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) ),
+            outputRegisters: Registers( X: 0xFF, P: Flags( Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -220,7 +220,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .zeroPageY,
             operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            outputRegisters: Registers( X: 0x42, P: Flags( Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -235,7 +235,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .zeroPageY,
             operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) ),
+            outputRegisters: Registers( X: 0x00, P: Flags( Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -250,7 +250,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .zeroPageY,
             operand8:        0x10,
             inputRegisters:  Registers( Y: 0x10 ),
-            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) ),
+            outputRegisters: Registers( X: 0xFF, P: Flags( Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -265,7 +265,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .zeroPageY,
             operand8:        0xEF,
             inputRegisters:  Registers( Y: 0x20 ),
-            outputRegisters: Registers( X: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            outputRegisters: Registers( X: 0x42, P: Flags( Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -280,7 +280,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .zeroPageY,
             operand8:        0xEF,
             inputRegisters:  Registers( Y: 0x20 ),
-            outputRegisters: Registers( X: 0x00, PS: Flags( Z: 1, N: 0 ) ),
+            outputRegisters: Registers( X: 0x00, P: Flags( Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -295,7 +295,7 @@ class Test_Instruction_LDX: Test_Instruction
             addressingMode:  .zeroPageY,
             operand8:        0xEF,
             inputRegisters:  Registers( Y: 0x20 ),
-            outputRegisters: Registers( X: 0xFF, PS: Flags( Z: 0, N: 1 ) ),
+            outputRegisters: Registers( X: 0xFF, P: Flags( Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {

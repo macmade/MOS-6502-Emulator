@@ -33,8 +33,8 @@ class Test_Instruction_CLV: Test_Instruction
             instruction:     "CLV",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( V: 0 ) ),
-            outputRegisters: Registers( PS: Flags( V: 0 ) ),
+            inputRegisters:  Registers( P: Flags( V: 0 ) ),
+            outputRegisters: Registers( P: Flags( V: 0 ) ),
             extraCycles:     0
         )
 
@@ -42,8 +42,8 @@ class Test_Instruction_CLV: Test_Instruction
             instruction:     "CLV",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( V: 1 ) ),
-            outputRegisters: Registers( PS: Flags( V: 0 ) ),
+            inputRegisters:  Registers( P: Flags( V: 1 ) ),
+            outputRegisters: Registers( P: Flags( V: 0 ) ),
             extraCycles:     0
         )
     }

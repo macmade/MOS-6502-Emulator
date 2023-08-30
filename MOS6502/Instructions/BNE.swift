@@ -43,7 +43,7 @@ import Foundation
  */
 public func BNE( cpu: CPU, context: AddressingContext ) throws
 {
-    if cpu.registers.PS.contains( .zeroFlag ) == false
+    if cpu.registers.P.contains( .zeroFlag ) == false
     {
         let target          = try cpu.relativeAddressFromPC( signedOffset: context.read() )
         context.extraCycles = AddressingContext.pageCrossed( from: cpu.registers.PC, to: target ) ? 2 : 1

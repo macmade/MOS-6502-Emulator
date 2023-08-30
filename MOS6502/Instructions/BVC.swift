@@ -43,7 +43,7 @@ import Foundation
  */
 public func BVC( cpu: CPU, context: AddressingContext ) throws
 {
-    if cpu.registers.PS.contains( .overflowFlag ) == false
+    if cpu.registers.P.contains( .overflowFlag ) == false
     {
         let target          = try cpu.relativeAddressFromPC( signedOffset: context.read() )
         context.extraCycles = AddressingContext.pageCrossed( from: cpu.registers.PC, to: target ) ? 2 : 1

@@ -43,5 +43,5 @@ import Foundation
  */
 public func PLP( cpu: CPU, context: AddressingContext ) throws
 {
-    cpu.registers.PS = Registers.Flags( rawValue: try cpu.popUInt8FromStack() )
+    cpu.registers.P = Registers.Flags( rawValue: try cpu.popUInt8FromStack() )
 }

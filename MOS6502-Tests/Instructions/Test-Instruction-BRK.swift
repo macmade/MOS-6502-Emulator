@@ -35,7 +35,7 @@ class Test_Instruction_BRK: Test_Instruction
             operands:        [],
             origin:          0xFF00,
             inputRegisters:  Registers( SP: 0xFF ),
-            outputRegisters: Registers( PC: 0x1000, SP: 0xFC, PS: Flags( B: 1 ) ),
+            outputRegisters: Registers( PC: 0x1000, SP: 0xFC, P: Flags( B: 1 ) ),
             extraCycles:     0
         )
         {

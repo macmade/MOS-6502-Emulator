@@ -33,8 +33,8 @@ class Test_Instruction_CLI: Test_Instruction
             instruction:     "CLI",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( I: 0 ) ),
-            outputRegisters: Registers( PS: Flags( I: 0 ) ),
+            inputRegisters:  Registers( P: Flags( I: 0 ) ),
+            outputRegisters: Registers( P: Flags( I: 0 ) ),
             extraCycles:     0
         )
 
@@ -42,8 +42,8 @@ class Test_Instruction_CLI: Test_Instruction
             instruction:     "CLI",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( I: 1 ) ),
-            outputRegisters: Registers( PS: Flags( I: 0 ) ),
+            inputRegisters:  Registers( P: Flags( I: 1 ) ),
+            outputRegisters: Registers( P: Flags( I: 0 ) ),
             extraCycles:     0
         )
     }

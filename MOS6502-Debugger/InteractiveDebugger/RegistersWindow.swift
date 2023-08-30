@@ -35,14 +35,14 @@ public class RegistersWindow: DebuggerWindow
         window.separator()
 
         let registers: [ ( name: String, value: Either< UInt8, UInt16 >, options: IntegerDisplayOptions ) ] = [
-            ( "PC: ", .right( self.computer.cpu.registers.PC          ), [] ),
-            ( "SP: ", .left(  self.computer.cpu.registers.SP          ), [] ),
-            ( "--",   .left(  0                                       ), [] ),
-            ( "A:  ", .left(  self.computer.cpu.registers.A           ), [ .decimal, .binary ] ),
-            ( "X:  ", .left(  self.computer.cpu.registers.X           ), [ .decimal, .binary ] ),
-            ( "Y:  ", .left(  self.computer.cpu.registers.Y           ), [ .decimal, .binary ] ),
-            ( "--",   .left(  0                                       ), [] ),
-            ( "PS: ", .left(  self.computer.cpu.registers.PS.rawValue ), .binary ),
+            ( "PC: ", .right( self.computer.cpu.registers.PC         ), [] ),
+            ( "SP: ", .left(  self.computer.cpu.registers.SP         ), [] ),
+            ( "--",   .left(  0                                      ), [] ),
+            ( "A:  ", .left(  self.computer.cpu.registers.A          ), [ .decimal, .binary ] ),
+            ( "X:  ", .left(  self.computer.cpu.registers.X          ), [ .decimal, .binary ] ),
+            ( "Y:  ", .left(  self.computer.cpu.registers.Y          ), [ .decimal, .binary ] ),
+            ( "--",   .left(  0                                      ), [] ),
+            ( "PS: ", .left(  self.computer.cpu.registers.P.rawValue ), .binary ),
         ]
 
         registers.forEach
@@ -92,7 +92,7 @@ public class RegistersWindow: DebuggerWindow
         }
         else if key == 0x66 // f
         {
-            self.showPrompt( name: "PS", register: \.PS )
+            self.showPrompt( name: "P", register: \.P )
             {
                 if let value = $0.uint8
                 {

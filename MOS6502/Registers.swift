@@ -31,7 +31,7 @@ public class Registers: Equatable
     public var A:  UInt8  // Accumulator
     public var X:  UInt8  // Index X Register
     public var Y:  UInt8  // Index Y Register
-    public var PS: Flags  // Processor Status
+    public var P:  Flags  // Processor Status
 
     public struct Flags: OptionSet, CustomStringConvertible
     {
@@ -74,17 +74,17 @@ public class Registers: Equatable
 
     public convenience init()
     {
-        self.init( PC: 0, SP: 0, A: 0, X: 0, Y: 0, PS: [] )
+        self.init( PC: 0, SP: 0, A: 0, X: 0, Y: 0, P: [] )
     }
 
-    public init( PC: UInt16, SP: UInt8, A: UInt8, X: UInt8, Y: UInt8, PS: Flags )
+    public init( PC: UInt16, SP: UInt8, A: UInt8, X: UInt8, Y: UInt8, P: Flags )
     {
         self.PC = PC
         self.SP = SP
         self.A  = A
         self.X  = X
         self.Y  = Y
-        self.PS = PS
+        self.P  = P
     }
 
     public static func == ( lhs: Registers, rhs: Registers ) -> Bool
@@ -94,7 +94,7 @@ public class Registers: Equatable
            lhs.A  == rhs.A,
            lhs.X  == rhs.X,
            lhs.Y  == rhs.Y,
-           lhs.PS == rhs.PS
+           lhs.P  == rhs.P
         {
             return true
         }

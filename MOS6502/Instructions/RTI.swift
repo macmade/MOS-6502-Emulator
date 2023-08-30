@@ -43,6 +43,6 @@ import Foundation
  */
 public func RTI( cpu: CPU, context: AddressingContext ) throws
 {
-    cpu.registers.PS = Registers.Flags( rawValue: try cpu.popUInt8FromStack() )
+    cpu.registers.P  = Registers.Flags( rawValue: try cpu.popUInt8FromStack() )
     cpu.registers.PC = try cpu.popUInt16FromStack()
 }

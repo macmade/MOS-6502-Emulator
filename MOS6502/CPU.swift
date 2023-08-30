@@ -73,13 +73,13 @@ public class CPU: LogSource, Resettable
         self.registers.A  = 0
         self.registers.X  = 0
         self.registers.Y  = 0
-        self.registers.PS = [ .interruptDisable ]
+        self.registers.P  = [ .interruptDisable ]
         self.clock        = 6
         self.cycles       = 0
 
         // SP starts at 0x00. Reset pushes PC and SP, so SP will be 0xFD after reset.
         try self.pushUInt16ToStack( value: self.registers.PC )
-        try self.pushUInt8ToStack(  value: self.registers.PS.rawValue )
+        try self.pushUInt8ToStack(  value: self.registers.P.rawValue )
 
         self.onReset.fire()
     }
@@ -92,7 +92,7 @@ public class CPU: LogSource, Resettable
 
             self.beforeInstruction.fire()
 
-            if self.registers.PS.contains( .interruptDisable ) == false
+            if self.registers.P.contains( .interruptDisable ) == false
             {
                 let irqs  = self.irqs
                 self.irqs = []
@@ -224,12 +224,12 @@ public class CPU: LogSource, Resettable
 
     public func setFlag( _ flag: Registers.Flags )
     {
-        self.registers.PS.insert( flag )
+        self.registers.P.insert( flag )
     }
 
     public func clearFlag( _ flag: Registers.Flags )
     {
-        self.registers.PS.remove( flag )
+        self.registers.P.remove( flag )
     }
 
     public func setZeroAndNegativeFlags( for value: UInt8 )

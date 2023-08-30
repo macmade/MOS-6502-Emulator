@@ -43,7 +43,7 @@ import Foundation
  */
 public func BPL( cpu: CPU, context: AddressingContext ) throws
 {
-    if cpu.registers.PS.contains( .negativeFlag ) == false
+    if cpu.registers.P.contains( .negativeFlag ) == false
     {
         let target          = try cpu.relativeAddressFromPC( signedOffset: context.read() )
         context.extraCycles = AddressingContext.pageCrossed( from: cpu.registers.PC, to: target ) ? 2 : 1

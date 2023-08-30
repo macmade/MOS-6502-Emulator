@@ -42,5 +42,5 @@ import Foundation
  */
 public func PHP( cpu: CPU, context: AddressingContext ) throws
 {
-    try cpu.pushUInt8ToStack( value: cpu.registers.PS.rawValue )
+    try cpu.pushUInt8ToStack( value: cpu.registers.P.rawValue )
 }

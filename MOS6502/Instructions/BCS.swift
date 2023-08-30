@@ -43,7 +43,7 @@ import Foundation
  */
 public func BCS( cpu: CPU, context: AddressingContext ) throws
 {
-    if cpu.registers.PS.contains( .carryFlag )
+    if cpu.registers.P.contains( .carryFlag )
     {
         let target          = try cpu.relativeAddressFromPC( signedOffset: context.read() )
         context.extraCycles = AddressingContext.pageCrossed( from: cpu.registers.PC, to: target ) ? 2 : 1

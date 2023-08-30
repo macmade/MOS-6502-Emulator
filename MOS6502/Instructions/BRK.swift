@@ -46,8 +46,8 @@ import Foundation
 public func BRK( cpu: CPU, context: AddressingContext ) throws
 {
     try cpu.pushUInt16ToStack( value: cpu.registers.PC )
-    try cpu.pushUInt8ToStack( value: cpu.registers.PS.rawValue )
-    cpu.registers.PS.insert( .breakCommand )
+    try cpu.pushUInt8ToStack( value: cpu.registers.P.rawValue )
+    cpu.registers.P.insert( .breakCommand )
 
     cpu.registers.PC = try cpu.readUInt16FromMemory( at: CPU.irq )
 }

@@ -35,7 +35,7 @@ class Test_Instruction_RTI: Test_Instruction
             operands:        [],
             origin:          0xFF00,
             inputRegisters:  Registers( SP: 0xFC ),
-            outputRegisters: Registers( PC: 0x1000, SP: 0xFF, PS: Flags( rawValue: 0xFF ) ),
+            outputRegisters: Registers( PC: 0x1000, SP: 0xFF, P: Flags( rawValue: 0xFF ) ),
             extraCycles:     0
         )
         {

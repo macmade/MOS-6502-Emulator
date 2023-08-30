@@ -34,7 +34,7 @@ class Test_Instruction_PLA: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( SP: 0xFF ),
-            outputRegisters: Registers( SP: 0x00, A: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            outputRegisters: Registers( SP: 0x00, A: 0x42, P: Flags( Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -51,7 +51,7 @@ class Test_Instruction_PLA: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( SP: 0x00 ),
-            outputRegisters: Registers( SP: 0x01, A: 0x42, PS: Flags( Z: 0, N: 0 ) ),
+            outputRegisters: Registers( SP: 0x01, A: 0x42, P: Flags( Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -68,7 +68,7 @@ class Test_Instruction_PLA: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( SP: 0x00 ),
-            outputRegisters: Registers( SP: 0x01, A: 0x00, PS: Flags( Z: 1, N: 0 ) ),
+            outputRegisters: Registers( SP: 0x01, A: 0x00, P: Flags( Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -85,7 +85,7 @@ class Test_Instruction_PLA: Test_Instruction
             addressingMode:  .implied,
             operands:        [],
             inputRegisters:  Registers( SP: 0x00 ),
-            outputRegisters: Registers( SP: 0x01, A: 0xFF, PS: Flags( Z: 0, N: 1 ) ),
+            outputRegisters: Registers( SP: 0x01, A: 0xFF, P: Flags( Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {

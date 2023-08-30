@@ -33,8 +33,8 @@ class Test_Instruction_SED: Test_Instruction
             instruction:     "SED",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( D: 0 ) ),
-            outputRegisters: Registers( PS: Flags( D: 1 ) ),
+            inputRegisters:  Registers( P: Flags( D: 0 ) ),
+            outputRegisters: Registers( P: Flags( D: 1 ) ),
             extraCycles:     0
         )
 
@@ -42,8 +42,8 @@ class Test_Instruction_SED: Test_Instruction
             instruction:     "SED",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( D: 1 ) ),
-            outputRegisters: Registers( PS: Flags( D: 1 ) ),
+            inputRegisters:  Registers( P: Flags( D: 1 ) ),
+            outputRegisters: Registers( P: Flags( D: 1 ) ),
             extraCycles:     0
         )
     }

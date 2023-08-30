@@ -155,7 +155,7 @@ final class Test_JSON: XCTestCase
         cpu.registers.A  = test.initial.a
         cpu.registers.X  = test.initial.x
         cpu.registers.Y  = test.initial.y
-        cpu.registers.PS = MOS6502.Registers.Flags( rawValue: test.initial.p )
+        cpu.registers.P  = MOS6502.Registers.Flags( rawValue: test.initial.p )
 
         let instruction = try Disassembler.disassemble(
             stream:       MemoryDeviceStream( device: bus, offset: cpu.registers.PC ),
@@ -175,14 +175,14 @@ final class Test_JSON: XCTestCase
 
         let flags = MOS6502.Registers.Flags( rawValue: test.final.p )
 
-        XCTAssertEqual( flags.contains( .carryFlag        ), cpu.registers.PS.contains( .carryFlag        ), "\( instruction ) - Register mismatch for PS: carry flag" )
-        XCTAssertEqual( flags.contains( .zeroFlag         ), cpu.registers.PS.contains( .zeroFlag         ), "\( instruction ) - Register mismatch for PS: zero flag" )
-        XCTAssertEqual( flags.contains( .interruptDisable ), cpu.registers.PS.contains( .interruptDisable ), "\( instruction ) - Register mismatch for PS: interrupt disable" )
-        XCTAssertEqual( flags.contains( .decimalMode      ), cpu.registers.PS.contains( .decimalMode      ), "\( instruction ) - Register mismatch for PS: decimal mode" )
-        XCTAssertEqual( flags.contains( .breakCommand     ), cpu.registers.PS.contains( .breakCommand     ), "\( instruction ) - Register mismatch for PS: break command" )
-        XCTAssertEqual( flags.contains( .unused           ), cpu.registers.PS.contains( .unused           ), "\( instruction ) - Register mismatch for PS: unused" )
-        XCTAssertEqual( flags.contains( .overflowFlag     ), cpu.registers.PS.contains( .overflowFlag     ), "\( instruction ) - Register mismatch for PS: overlfow flag" )
-        XCTAssertEqual( flags.contains( .negativeFlag     ), cpu.registers.PS.contains( .negativeFlag     ), "\( instruction ) - Register mismatch for PS: negative flag" )
+        XCTAssertEqual( flags.contains( .carryFlag        ), cpu.registers.P.contains( .carryFlag        ), "\( instruction ) - Register mismatch for PS: carry flag" )
+        XCTAssertEqual( flags.contains( .zeroFlag         ), cpu.registers.P.contains( .zeroFlag         ), "\( instruction ) - Register mismatch for PS: zero flag" )
+        XCTAssertEqual( flags.contains( .interruptDisable ), cpu.registers.P.contains( .interruptDisable ), "\( instruction ) - Register mismatch for PS: interrupt disable" )
+        XCTAssertEqual( flags.contains( .decimalMode      ), cpu.registers.P.contains( .decimalMode      ), "\( instruction ) - Register mismatch for PS: decimal mode" )
+        XCTAssertEqual( flags.contains( .breakCommand     ), cpu.registers.P.contains( .breakCommand     ), "\( instruction ) - Register mismatch for PS: break command" )
+        XCTAssertEqual( flags.contains( .unused           ), cpu.registers.P.contains( .unused           ), "\( instruction ) - Register mismatch for PS: unused" )
+        XCTAssertEqual( flags.contains( .overflowFlag     ), cpu.registers.P.contains( .overflowFlag     ), "\( instruction ) - Register mismatch for PS: overlfow flag" )
+        XCTAssertEqual( flags.contains( .negativeFlag     ), cpu.registers.P.contains( .negativeFlag     ), "\( instruction ) - Register mismatch for PS: negative flag" )
 
         try test.final.ram.forEach
         {

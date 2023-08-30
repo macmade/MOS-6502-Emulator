@@ -49,7 +49,7 @@ public func ADC( cpu: CPU, context: AddressingContext ) throws
 {
     let base        = cpu.registers.A
     let add         = try context.read()
-    let carry       = cpu.registers.PS.contains( .carryFlag ) ? UInt8( 1 ) : UInt8( 0 )
+    let carry       = cpu.registers.P.contains( .carryFlag ) ? UInt8( 1 ) : UInt8( 0 )
     let result      = UInt16( cpu.registers.A ) + UInt16( add ) + UInt16( carry )
     cpu.registers.A = UInt8( result & 0xFF )
 

@@ -39,7 +39,7 @@ class Test_Instruction_PHP: Test_Instruction
                 instruction:     "PHP",
                 addressingMode:  .implied,
                 operands:        [],
-                inputRegisters:  Registers( SP: 0xFF, PS: Flags( rawValue: $0 ) ),
+                inputRegisters:  Registers( SP: 0xFF, P: Flags( rawValue: $0 ) ),
                 outputRegisters: Registers( SP: 0xFE ),
                 extraCycles:     0
             )
@@ -60,7 +60,7 @@ class Test_Instruction_PHP: Test_Instruction
                 instruction:     "PHP",
                 addressingMode:  .implied,
                 operands:        [],
-                inputRegisters:  Registers( SP: 0x00, PS: Flags( rawValue: $0 ) ),
+                inputRegisters:  Registers( SP: 0x00, P: Flags( rawValue: $0 ) ),
                 outputRegisters: Registers( SP: 0xFF ),
                 extraCycles:     0
             )

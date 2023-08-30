@@ -33,8 +33,8 @@ class Test_Instruction_SEI: Test_Instruction
             instruction:     "SEI",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( I: 0 ) ),
-            outputRegisters: Registers( PS: Flags( I: 1 ) ),
+            inputRegisters:  Registers( P: Flags( I: 0 ) ),
+            outputRegisters: Registers( P: Flags( I: 1 ) ),
             extraCycles:     0
         )
 
@@ -42,8 +42,8 @@ class Test_Instruction_SEI: Test_Instruction
             instruction:     "SEI",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( I: 1 ) ),
-            outputRegisters: Registers( PS: Flags( I: 1 ) ),
+            inputRegisters:  Registers( P: Flags( I: 1 ) ),
+            outputRegisters: Registers( P: Flags( I: 1 ) ),
             extraCycles:     0
         )
     }

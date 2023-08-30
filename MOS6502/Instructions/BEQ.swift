@@ -43,7 +43,7 @@ import Foundation
  */
 public func BEQ( cpu: CPU, context: AddressingContext ) throws
 {
-    if cpu.registers.PS.contains( .zeroFlag )
+    if cpu.registers.P.contains( .zeroFlag )
     {
         let target          = try cpu.relativeAddressFromPC( signedOffset: context.read() )
         context.extraCycles = AddressingContext.pageCrossed( from: cpu.registers.PC, to: target ) ? 2 : 1

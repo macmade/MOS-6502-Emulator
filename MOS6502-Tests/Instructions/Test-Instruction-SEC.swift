@@ -33,8 +33,8 @@ class Test_Instruction_SEC: Test_Instruction
             instruction:     "SEC",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1 ) ),
             extraCycles:     0
         )
 
@@ -42,8 +42,8 @@ class Test_Instruction_SEC: Test_Instruction
             instruction:     "SEC",
             addressingMode:  .implied,
             operands:        [],
-            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1 ) ),
             extraCycles:     0
         )
     }

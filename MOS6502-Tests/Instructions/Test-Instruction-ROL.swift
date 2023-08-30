@@ -33,8 +33,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -50,8 +50,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -67,8 +67,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -84,8 +84,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -101,8 +101,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -118,8 +118,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -135,8 +135,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -152,8 +152,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -169,8 +169,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -186,8 +186,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absolute,
             operand16:       0x1000,
-            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -203,8 +203,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -220,8 +220,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -237,8 +237,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -254,8 +254,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -271,8 +271,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -288,8 +288,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -305,8 +305,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -322,8 +322,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -339,8 +339,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -356,8 +356,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .absoluteX,
             operand16:       0x1000,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -373,8 +373,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0x33, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( A: 0x66, PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( A: 0x33, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0x66, P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -385,8 +385,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0x33, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( A: 0x67, PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( A: 0x33, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( A: 0x67, P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -397,8 +397,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0xAA, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( A: 0x54, PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( A: 0xAA, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0x54, P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -409,8 +409,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0xAA, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( A: 0x55, PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( A: 0xAA, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( A: 0x55, P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -421,8 +421,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0x00, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( A: 0x00, PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( A: 0x00, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0x00, P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -433,8 +433,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0x55, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( A: 0xAA, PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( A: 0x55, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0xAA, P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
     }
@@ -445,8 +445,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0x55, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( A: 0xAB, PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( A: 0x55, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( A: 0xAB, P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
     }
@@ -457,8 +457,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0x80, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( A: 0x00, PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( A: 0x80, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0x00, P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
     }
@@ -469,8 +469,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0xC0, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( A: 0x80, PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( A: 0xC0, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( A: 0x80, P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
     }
@@ -481,8 +481,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .accumulator,
             operands:        [],
-            inputRegisters:  Registers( A: 0xC0, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( A: 0x81, PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( A: 0xC0, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( A: 0x81, P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
     }
@@ -493,8 +493,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -510,8 +510,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -527,8 +527,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -544,8 +544,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -561,8 +561,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -578,8 +578,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -595,8 +595,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -612,8 +612,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -629,8 +629,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -646,8 +646,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPage,
             operand8:        0x10,
-            inputRegisters:  Registers( PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -663,8 +663,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -680,8 +680,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -697,8 +697,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -714,8 +714,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -731,8 +731,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -748,8 +748,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -765,8 +765,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -782,8 +782,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -799,8 +799,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -816,8 +816,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0x10,
-            inputRegisters:  Registers( X: 0x10, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x10, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -833,8 +833,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -850,8 +850,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -867,8 +867,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -884,8 +884,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -901,8 +901,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -918,8 +918,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -935,8 +935,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 0, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 0, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -952,8 +952,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 1, N: 0 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 1, N: 0 ) ),
             extraCycles:     0
         )
         {
@@ -969,8 +969,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 0 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 0 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {
@@ -986,8 +986,8 @@ class Test_Instruction_ROL: Test_Instruction
             instruction:     "ROL",
             addressingMode:  .zeroPageX,
             operand8:        0xEF,
-            inputRegisters:  Registers( X: 0x20, PS: Flags( C: 1 ) ),
-            outputRegisters: Registers( PS: Flags( C: 1, Z: 0, N: 1 ) ),
+            inputRegisters:  Registers( X: 0x20, P: Flags( C: 1 ) ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 1 ) ),
             extraCycles:     0
         )
         {

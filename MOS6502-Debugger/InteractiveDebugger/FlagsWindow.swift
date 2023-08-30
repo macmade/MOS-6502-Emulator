@@ -33,14 +33,14 @@ public class FlagsWindow: DebuggerWindow
         window.separator()
 
         [
-            ( "Carry:             ", self.computer.cpu.registers.PS.contains( .carryFlag ) ),
-            ( "Zero:              ", self.computer.cpu.registers.PS.contains( .zeroFlag ) ),
-            ( "Interrupt Disable: ", self.computer.cpu.registers.PS.contains( .interruptDisable ) ),
-            ( "Decimal Mode:      ", self.computer.cpu.registers.PS.contains( .decimalMode ) ),
-            ( "Break:             ", self.computer.cpu.registers.PS.contains( .breakCommand ) ),
-            ( "(Unused):          ", self.computer.cpu.registers.PS.contains( .unused ) ),
-            ( "Overflow:          ", self.computer.cpu.registers.PS.contains( .overflowFlag ) ),
-            ( "Negative:          ", self.computer.cpu.registers.PS.contains( .negativeFlag ) ),
+            ( "Carry:             ", self.computer.cpu.registers.P.contains( .carryFlag ) ),
+            ( "Zero:              ", self.computer.cpu.registers.P.contains( .zeroFlag ) ),
+            ( "Interrupt Disable: ", self.computer.cpu.registers.P.contains( .interruptDisable ) ),
+            ( "Decimal Mode:      ", self.computer.cpu.registers.P.contains( .decimalMode ) ),
+            ( "Break:             ", self.computer.cpu.registers.P.contains( .breakCommand ) ),
+            ( "(Unused):          ", self.computer.cpu.registers.P.contains( .unused ) ),
+            ( "Overflow:          ", self.computer.cpu.registers.P.contains( .overflowFlag ) ),
+            ( "Negative:          ", self.computer.cpu.registers.P.contains( .negativeFlag ) ),
         ]
         .forEach
         {
