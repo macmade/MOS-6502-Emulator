@@ -87,6 +87,11 @@ public class Registers: Equatable
         self.P  = P
     }
 
+    public func copy() -> Registers
+    {
+        Registers( PC: self.PC, SP: self.SP, A: self.A, X: self.X, Y: self.Y, P: self.P )
+    }
+
     public static func == ( lhs: Registers, rhs: Registers ) -> Bool
     {
         if lhs.PC == rhs.PC,

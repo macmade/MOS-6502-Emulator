@@ -130,37 +130,7 @@ public class CPU: LogSource, Resettable
 
     private func decodeAndExecuteNextInstruction() throws
     {
-        let disassembly = try? Disassembler.disassemble(
-            stream:       MemoryDeviceStream( device: self.bus, offset: self.registers.PC ),
-            origin:       self.registers.PC,
-            instructions: 1,
-            options:      [ .address, .disassembly ],
-            separator:    " "
-        )
-
-        if let disassembly = disassembly, disassembly.isEmpty == false
-        {
-            let label   = self.disassemblerLabels[ self.registers.PC ]
-            let comment = self.disassemblerComments[ self.registers.PC ]
-
-            if let label = label, let comment = comment
-            {
-                self.logger?.log( text: "" )
-                self.logger?.log( text: "; \( label ): \( comment )" )
-            }
-            else if let label = label
-            {
-                self.logger?.log( text: "" )
-                self.logger?.log( text: "; \( label ):" )
-            }
-            else if let comment = comment
-            {
-                self.logger?.log( text: "" )
-                self.logger?.log( text: "; \( comment )" )
-            }
-
-            self.logger?.log( text: disassembly )
-        }
+        self.logCurrentInstruction()
 
         let opcode = try self.readUInt8FromMemoryAtPC()
 
@@ -183,6 +153,58 @@ public class CPU: LogSource, Resettable
         {
             throw RuntimeError( message: "Unhandled instruction: \( opcode.asHex )" )
         }
+    }
+
+    private func logCurrentInstruction()
+    {
+        do
+        {
+            let instruction = try? Disassembler.disassemble(
+                stream:       MemoryDeviceStream( device: self.bus, offset: self.registers.PC ),
+                origin:       self.registers.PC,
+                instructions: 1,
+                options:      [ .bytes ],
+                separator:    ""
+            )
+
+            let disassembly = try? Disassembler.disassemble(
+                stream:       MemoryDeviceStream( device: self.bus, offset: self.registers.PC ),
+                origin:       self.registers.PC,
+                instructions: 1,
+                options:      [ .disassembly ],
+                separator:    ""
+            )
+
+            guard let instruction = instruction, let disassembly = disassembly
+            else
+            {
+                return
+            }
+
+            let bytes = try instruction.components( separatedBy: " " ).map
+            {
+                guard let byte = UInt8( $0, radix: 16 )
+                else
+                {
+                    throw RuntimeError( message: "Invalid byte: \( $0 )" )
+                }
+
+                return byte
+            }
+
+            self.logger?.logInstruction(
+                address:     self.registers.PC,
+                bytes:       bytes,
+                disassembly: disassembly,
+                registers:   self.registers.copy(),
+                clock:       self.clock,
+                label:       self.disassemblerLabels[ self.registers.PC ],
+
+                comment:     self.disassemblerComments[ self.registers.PC ]
+            )
+        }
+        catch
+        {}
     }
 
     public func pushUInt8ToStack( value: UInt8 ) throws

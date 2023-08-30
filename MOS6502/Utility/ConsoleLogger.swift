@@ -38,4 +38,28 @@ public class ConsoleLogger: Logger
             print( text )
         }
     }
+
+    public func logInstruction( address: UInt16, bytes: [ UInt8 ], disassembly: String, registers: Registers, clock: UInt64, label: String?, comment: String? )
+    {
+        let address     = String( format: "%04X", address )
+        let bytes       = bytes.map { String( format: "%02X", $0 ) }.joined( separator: " " ).padding( toLength: 8, withPad: " ", startingAt: 0 )
+        let a           = String( format: "%02X", registers.A )
+        let x           = String( format: "%02X", registers.X )
+        let y           = String( format: "%02X", registers.Y )
+        let p           = String( format: "%02X", registers.P.rawValue )
+        let sp          = String( format: "%02X", registers.SP )
+        let instruction = "\( address )  \( bytes )  \( disassembly )".padding( toLength: 48, withPad: " ", startingAt: 0 )
+        let registers   = "A:\( a ) X:\( x ) Y:\( y ) P:\( p ) SP:\( sp )"
+        let cycles      = "CYC:\( clock )"
+        let text        = "\( instruction )\( registers ) \( cycles )"
+
+        if let comment = comment
+        {
+            self.log( text: "\( text ) ; \( comment )" )
+        }
+        else
+        {
+            self.log( text: text )
+        }
+    }
 }

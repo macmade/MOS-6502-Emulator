@@ -27,4 +27,5 @@ import Foundation
 public protocol Logger
 {
     func log( text: String )
+    func logInstruction( address: UInt16, bytes: [ UInt8 ], disassembly: String, registers: Registers, clock: UInt64, label: String?, comment: String? )
 }
