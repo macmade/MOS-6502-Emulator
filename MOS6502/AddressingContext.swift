@@ -56,11 +56,23 @@ public class AddressingContext
     {
         self.init
         {
-            try cpu.readUInt8FromMemory( at: address )
+            [ weak cpu ] in guard let cpu = cpu
+            else
+            {
+                throw RuntimeError( message: "Invalid CPU" )
+            }
+
+            return try cpu.readUInt8FromMemory( at: address )
         }
         write:
         {
-            try cpu.writeUInt8ToMemory( $0, at: address )
+            [ weak cpu ] in guard let cpu = cpu
+            else
+            {
+                throw RuntimeError( message: "Invalid CPU" )
+            }
+
+            return try cpu.writeUInt8ToMemory( $0, at: address )
         }
 
         self.sourceAddress = address
@@ -119,11 +131,23 @@ public class AddressingContext
     {
         AddressingContext
         {
-            cpu.registers.A
+            [ weak cpu ] in guard let cpu = cpu
+            else
+            {
+                throw RuntimeError( message: "Invalid CPU" )
+            }
+
+            return cpu.registers.A
         }
         write:
         {
-            cpu.registers.A = $0
+            [ weak cpu ] in guard let cpu = cpu
+            else
+            {
+                throw RuntimeError( message: "Invalid CPU" )
+            }
+
+            return cpu.registers.A = $0
         }
     }
 
