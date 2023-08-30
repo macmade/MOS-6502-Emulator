@@ -74,7 +74,7 @@ public class CPU: LogSource, Resettable
         self.registers.X  = 0
         self.registers.Y  = 0
         self.registers.P  = [ .interruptDisable ]
-        self.clock        = 6
+        self.clock        = 7
         self.cycles       = 0
 
         // SP starts at 0x00. Reset pushes PC and SP, so SP will be 0xFD after reset.
