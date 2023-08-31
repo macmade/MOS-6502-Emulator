@@ -43,7 +43,8 @@ import Foundation
  */
 public func JSR( cpu: CPU, context: AddressingContext ) throws
 {
-    try cpu.pushUInt16ToStack( value: cpu.registers.PC - 1 )
-
-    cpu.registers.PC = try context.address
+    cpu.registers.PC = try context.readAddress()
+    {
+        try cpu.pushUInt16ToStack( value: cpu.registers.PC )
+    }
 }

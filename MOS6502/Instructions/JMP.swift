@@ -42,5 +42,5 @@ import Foundation
  */
 public func JMP( cpu: CPU, context: AddressingContext ) throws
 {
-    cpu.registers.PC = try context.address
+    cpu.registers.PC = try context.readAddress()
 }

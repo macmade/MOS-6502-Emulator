@@ -27,34 +27,20 @@ import XSLabsSwift
 
 public class AddressingContext
 {
-    private var readValue:     ()        throws -> UInt8
-    private var writeValue:    ( UInt8 ) throws -> Void
-    private var sourceAddress: UInt16?
+    private var readValue:        ( ()        throws -> UInt8 )
+    private var writeValue:       ( ( UInt8 ) throws -> Void )
+    private var readAddressLSB:   ( () throws -> UInt8 )?
+    private var readAddressMSB:   ( () throws -> UInt8 )?
+    private var addressTransform: ( ( UInt16 ) throws -> ( address: UInt16, extraCycles: UInt ) )?
+    private var address:          UInt16?
 
     public var extraCycles: UInt = 0
 
-    public var address: UInt16
+    public convenience init( cpu: CPU, readAddressLSB: @escaping () throws -> UInt8, readAddressMSB: @escaping () throws -> UInt8, addressTransform: @escaping ( UInt16 ) throws -> ( address: UInt16, extraCycles: UInt ) )
     {
-        get throws
-        {
-            guard let address = self.sourceAddress
-            else
-            {
-                throw RuntimeError( message: "No address available for the current addressing mode" )
-            }
+        self.init( read: { 0 }, write: { _ in } )
 
-            return address
-        }
-    }
-
-    public convenience init( address: UInt16, cpu: CPU )
-    {
-        self.init( address: address, cpu: cpu, extraCycles: 0 )
-    }
-
-    public convenience init( address: UInt16, cpu: CPU, extraCycles: UInt )
-    {
-        self.init
+        self.readValue =
         {
             [ weak cpu ] in guard let cpu = cpu
             else
@@ -62,9 +48,10 @@ public class AddressingContext
                 throw RuntimeError( message: "Invalid CPU" )
             }
 
-            return try cpu.readUInt8FromMemory( at: address )
+            return try cpu.readUInt8FromMemory( at: self.readAddress() )
         }
-        write:
+
+        self.writeValue =
         {
             [ weak cpu ] in guard let cpu = cpu
             else
@@ -72,17 +59,44 @@ public class AddressingContext
                 throw RuntimeError( message: "Invalid CPU" )
             }
 
-            return try cpu.writeUInt8ToMemory( $0, at: address )
+            return try cpu.writeUInt8ToMemory( $0, at: self.readAddress() )
         }
 
-        self.sourceAddress = address
-        self.extraCycles   = extraCycles
+        self.readAddressLSB   = readAddressLSB
+        self.readAddressMSB   = readAddressMSB
+        self.addressTransform = addressTransform
     }
 
     public init( read: @escaping () throws -> UInt8, write: @escaping ( UInt8 ) throws -> Void )
     {
         self.readValue  = read
         self.writeValue = write
+    }
+
+    public func readAddress( _ betweenReads: ( () throws -> Void )? = nil ) throws -> UInt16
+    {
+        if let address = self.address
+        {
+            return address
+        }
+
+        guard let readLSB = self.readAddressLSB, let readMSB = self.readAddressMSB, let transform = self.addressTransform
+        else
+        {
+            throw RuntimeError( message: "Invalid addressing context" )
+        }
+
+        let lsb = try readLSB()
+
+        try betweenReads?()
+
+        let msb    = try readMSB()
+        let result = try transform( ( UInt16( msb ) << 8 ) | UInt16( lsb ) )
+
+        self.address      = result.address
+        self.extraCycles += result.extraCycles
+
+        return result.address
     }
 
     public func read() throws -> UInt8
@@ -167,17 +181,17 @@ public class AddressingContext
 
     public class func zeroPage( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
     {
-        AddressingContext( address: UInt16( try cpu.readUInt8FromMemoryAtPC() ), cpu: cpu )
+        AddressingContext( cpu: cpu, readAddressLSB: { try cpu.readUInt8FromMemoryAtPC() }, readAddressMSB: { 0 }, addressTransform: { ( $0, 0 ) } )
     }
 
     public class func zeroPageX( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
     {
-        AddressingContext( address: UInt16( try cpu.readUInt8FromMemoryAtPC() &+ cpu.registers.X ), cpu: cpu )
+        AddressingContext( cpu: cpu, readAddressLSB: { try cpu.readUInt8FromMemoryAtPC() &+ cpu.registers.X }, readAddressMSB: { 0 }, addressTransform: { ( $0, 0 ) } )
     }
 
     public class func zeroPageY( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
     {
-        AddressingContext( address: UInt16( try cpu.readUInt8FromMemoryAtPC() &+ cpu.registers.Y ), cpu: cpu )
+        AddressingContext( cpu: cpu, readAddressLSB: { try cpu.readUInt8FromMemoryAtPC() &+ cpu.registers.Y }, readAddressMSB: { 0 }, addressTransform: { ( $0, 0 ) } )
     }
 
     public class func relative( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
@@ -196,44 +210,67 @@ public class AddressingContext
 
     public class func absolute( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
     {
-        AddressingContext( address: try cpu.readUInt16FromMemoryAtPC(), cpu: cpu )
+        AddressingContext( cpu: cpu, readAddressLSB: { try cpu.readUInt8FromMemoryAtPC() }, readAddressMSB: { try cpu.readUInt8FromMemoryAtPC() }, addressTransform: { ( $0, 0 ) } )
     }
 
     public class func absoluteX( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
     {
-        let base   = try cpu.readUInt16FromMemoryAtPC()
-        let offset = cpu.registers.X
-
-        return AddressingContext( address: base &+ UInt16( offset ), cpu: cpu, extraCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
+        AddressingContext( cpu: cpu, readAddressLSB: { try cpu.readUInt8FromMemoryAtPC() }, readAddressMSB: { try cpu.readUInt8FromMemoryAtPC() } )
+        {
+            ( $0 &+ UInt16( cpu.registers.X ), instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: $0, offset: cpu.registers.X ) ? 1 : 0  )
+        }
     }
 
     public class func absoluteY( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
     {
-        let base   = try cpu.readUInt16FromMemoryAtPC()
-        let offset = cpu.registers.Y
-
-        return AddressingContext( address: base &+ UInt16( offset ), cpu: cpu, extraCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
+        AddressingContext( cpu: cpu, readAddressLSB: { try cpu.readUInt8FromMemoryAtPC() }, readAddressMSB: { try cpu.readUInt8FromMemoryAtPC() } )
+        {
+            ( $0 &+ UInt16( cpu.registers.Y ), instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: $0, offset: cpu.registers.Y ) ? 1 : 0  )
+        }
     }
 
     public class func indirect( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
     {
-        AddressingContext( address: try cpu.readUInt16FromMemory( at: try cpu.readUInt16FromMemoryAtPC() ), cpu: cpu )
+        AddressingContext( cpu: cpu, readAddressLSB: { try cpu.readUInt8FromMemoryAtPC() }, readAddressMSB: { try cpu.readUInt8FromMemoryAtPC() } )
+        {
+            [ weak cpu ] in guard let cpu = cpu
+            else
+            {
+                throw RuntimeError( message: "Invalid CPU" )
+            }
+
+            return ( try cpu.readUInt16FromMemory( at: $0 ), 0 )
+        }
     }
 
     public class func indirectX( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
     {
-        let zp = UInt16( try cpu.readUInt8FromMemoryAtPC() &+ cpu.registers.X )
+        AddressingContext( cpu: cpu, readAddressLSB: { try cpu.readUInt8FromMemoryAtPC() }, readAddressMSB: { 0 } )
+        {
+            [ weak cpu ] in guard let cpu = cpu
+            else
+            {
+                throw RuntimeError( message: "Invalid CPU" )
+            }
 
-        return AddressingContext( address: try cpu.readUInt16FromMemory( at: zp ), cpu: cpu )
+            return ( try cpu.readUInt16FromMemory( at: UInt16( UInt8( $0 ) &+ cpu.registers.X ) ), 0 )
+        }
     }
 
     public class func indirectY( cpu: CPU, instruction: Instruction ) throws -> AddressingContext
     {
-        let zp     = try cpu.readUInt8FromMemoryAtPC()
-        let base   = try cpu.readUInt16FromMemory( at: UInt16( zp ) )
-        let offset = cpu.registers.Y
+        AddressingContext( cpu: cpu, readAddressLSB: { try cpu.readUInt8FromMemoryAtPC() }, readAddressMSB: { 0 } )
+        {
+            [ weak cpu ] in guard let cpu = cpu
+            else
+            {
+                throw RuntimeError( message: "Invalid CPU" )
+            }
 
-        return AddressingContext( address: base &+ UInt16( offset ), cpu: cpu, extraCycles: instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: base, offset: offset ) ? 1 : 0 )
+            let address = try cpu.readUInt16FromMemory( at: $0 )
+
+            return ( address &+ UInt16( cpu.registers.Y ), instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: address, offset: cpu.registers.Y ) ? 1 : 0 )
+        }
     }
 
     public class func pageCrossed( base: UInt16, offset: UInt8 ) -> Bool
