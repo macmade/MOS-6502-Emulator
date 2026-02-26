@@ -62,7 +62,7 @@ public class RAM: WritableMemoryDevice, LogSource, Resettable, CustomStringConve
 
     public func reset( _ value: UInt8 ) throws
     {
-        try self.memory.reset( 0x00 )
+        try self.memory.reset( value )
     }
 
     public func read( at address: UInt16 ) throws -> UInt8
