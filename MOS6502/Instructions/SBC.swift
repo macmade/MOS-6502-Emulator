@@ -47,6 +47,18 @@ import Foundation
  */
 public func SBC( cpu: CPU, context: AddressingContext ) throws
 {
+    if cpu.registers.P.contains( .decimalMode )
+    {
+        try SBCDecimal( cpu: cpu, context: context )
+    }
+    else
+    {
+        try SBCBinary( cpu: cpu, context: context )
+    }
+}
+
+public func SBCBinary( cpu: CPU, context: AddressingContext ) throws
+{
     let base        = cpu.registers.A
     let sub         = try context.read()
     let carry       = cpu.registers.P.contains( .carryFlag ) ? UInt8( 1 ) : UInt8( 0 )
@@ -57,3 +69,6 @@ public func SBC( cpu: CPU, context: AddressingContext ) throws
     cpu.setFlag( UInt16( base ) >= ( UInt16( sub ) + UInt16( 1 - carry ) ), for: .carryFlag )
     cpu.setZeroAndNegativeFlags( for: cpu.registers.A )
 }
+
+public func SBCDecimal( cpu: CPU, context: AddressingContext ) throws
+{}

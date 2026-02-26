@@ -47,6 +47,18 @@ import Foundation
  */
 public func ADC( cpu: CPU, context: AddressingContext ) throws
 {
+    if cpu.registers.P.contains( .decimalMode )
+    {
+        try ADCDecimal( cpu: cpu, context: context )
+    }
+    else
+    {
+        try ADCBinary( cpu: cpu, context: context )
+    }
+}
+
+public func ADCBinary( cpu: CPU, context: AddressingContext ) throws
+{
     let base        = cpu.registers.A
     let add         = try context.read()
     let carry       = cpu.registers.P.contains( .carryFlag ) ? UInt8( 1 ) : UInt8( 0 )
@@ -69,3 +81,6 @@ public func ADC( cpu: CPU, context: AddressingContext ) throws
     cpu.setFlag( result > 0xFF, for: .carryFlag )
     cpu.setZeroAndNegativeFlags( for: cpu.registers.A )
 }
+
+public func ADCDecimal( cpu: CPU, context: AddressingContext ) throws
+{}
