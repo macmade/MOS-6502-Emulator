@@ -29,13 +29,16 @@ class Test_Instruction_RTI: Test_Instruction
 {
     func testImplied() throws
     {
+        let status = ( UInt8( 0xFF ) & ~MOS6502.Registers.Flags.breakCommand.rawValue )
+                   | MOS6502.Registers.Flags.unused.rawValue
+
         try self.executeSingleInstruction(
             instruction:     "RTI",
             addressingMode:  .implied,
             operands:        [],
             origin:          0xFF00,
             inputRegisters:  Registers( SP: 0xFC ),
-            outputRegisters: Registers( PC: 0x1000, SP: 0xFF, P: Flags( rawValue: 0xFF ) ),
+            outputRegisters: Registers( PC: 0x1000, SP: 0xFF, P: Flags( rawValue: status ) ),
             extraCycles:     0
         )
         {
