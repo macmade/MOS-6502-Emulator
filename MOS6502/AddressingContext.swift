@@ -239,7 +239,10 @@ public class AddressingContext
                 throw RuntimeError( message: "Invalid CPU" )
             }
 
-            return ( try cpu.readUInt16FromMemory( at: $0 ), 0 )
+            let lsb = try cpu.readUInt8FromMemory( at: $0 )
+            let msb = try cpu.readUInt8FromMemory( at: ( $0 & 0xFF00 ) | ( ( $0 &+ 1 ) & 0x00FF ) )
+
+            return ( ( UInt16( msb ) << 8 ) | UInt16( lsb ), 0 )
         }
     }
 

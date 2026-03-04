@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050569A52A96BB6400DDD588 /* Test-Instruction-ROR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3182A87FADB00436F6D /* Test-Instruction-ROR.swift */; };
+		05112233445566778899AABB /* Test-AddressingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05112233445566778899AABC /* Test-AddressingContext.swift */; };
 		050569A62A96BB6400DDD588 /* Test-Instruction-BNE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3032A87FADB00436F6D /* Test-Instruction-BNE.swift */; };
 		050569A72A96BB6400DDD588 /* Test-Instruction-STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C30C2A87FADB00436F6D /* Test-Instruction-STX.swift */; };
 		050569A82A96BB6400DDD588 /* Test-Instruction-SED.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F02A87FADB00436F6D /* Test-Instruction-SED.swift */; };
@@ -415,6 +416,7 @@
 		05C3C1972A856EA000436F6D /* MOS6502.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MOS6502.xctestplan; sourceTree = "<group>"; };
 		05C3C19C2A856EC400436F6D /* MOS6502Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MOS6502Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C19E2A856EC400436F6D /* Test-Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Memory.swift"; sourceTree = "<group>"; };
+		05112233445566778899AABC /* Test-AddressingContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-AddressingContext.swift"; sourceTree = "<group>"; };
 		05C3C1A62A85700100436F6D /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		05C3C1A82A85700700436F6D /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
 		05C3C1AA2A85703200436F6D /* Test-CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-CPU.swift"; sourceTree = "<group>"; };
@@ -881,6 +883,7 @@
 			isa = PBXGroup;
 			children = (
 				05C3C2E62A87FADB00436F6D /* Instructions */,
+				05112233445566778899AABC /* Test-AddressingContext.swift */,
 				05C3C1E52A86471300436F6D /* Test-BinaryInteger.swift */,
 				05C3C1AA2A85703200436F6D /* Test-CPU.swift */,
 				05C3C20B2A868A6300436F6D /* Test-Instruction.swift */,
@@ -1446,6 +1449,7 @@
 				050569B52A96BB6400DDD588 /* Test-Instruction-ORA.swift in Sources */,
 				050569C52A96BB6400DDD588 /* Test-Instruction-INY.swift in Sources */,
 				050569DB2A96BB6400DDD588 /* Test-Instruction-BPL.swift in Sources */,
+				05112233445566778899AABB /* Test-AddressingContext.swift in Sources */,
 				05D9A6B92A9E700A00C2A59E /* Test-JSON.swift in Sources */,
 				050569B12A96BB6400DDD588 /* Test-Instruction-CLI.swift in Sources */,
 				050569BA2A96BB6400DDD588 /* Test-Instruction-NOP.swift in Sources */,

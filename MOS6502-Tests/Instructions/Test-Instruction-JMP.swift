@@ -84,4 +84,44 @@ class Test_Instruction_JMP: Test_Instruction
             cpu, bus, ram in try bus.writeUInt16( 0xFF00, at: 0x0000 )
         }
     }
+
+    func testIndirect_PageBoundaryWrap() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "JMP",
+            addressingMode:  .indirect,
+            operand16:       0x70FF,
+            origin:          0xFF00,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( PC: 0x989D ),
+            extraCycles:     0
+        )
+        {
+            cpu, bus, ram in
+
+            try bus.write( 0x9D, at: 0x70FF )
+            try bus.write( 0x98, at: 0x7000 )
+            try bus.write( 0xAA, at: 0x7100 )
+        }
+    }
+
+    func testIndirect_PageBoundaryWrapAtFFFF() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "JMP",
+            addressingMode:  .indirect,
+            operand16:       0xFFFF,
+            origin:          0xFF00,
+            inputRegisters:  Registers(),
+            outputRegisters: Registers( PC: 0x0B60 ),
+            extraCycles:     0
+        )
+        {
+            cpu, bus, ram in
+
+            try bus.write( 0x60, at: 0xFFFF )
+            try bus.write( 0x0B, at: 0xFF00 )
+            try bus.write( 0xCC, at: 0x0000 )
+        }
+    }
 }
