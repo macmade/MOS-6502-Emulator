@@ -134,4 +134,48 @@ final class Test_AddressingContext: XCTestCase
         XCTAssertEqual( context.extraCycles, 1 )
         XCTAssertEqual( env.cpu.registers.PC, 0x2001 )
     }
+
+    func testIndirectXPointerWrapsAtZeroPageFF() throws
+    {
+        let env         = try self.makeCPU( operands: [ 0xFE ] )
+        let instruction = try self.makeInstruction( "LDA", .indirectX )
+
+        env.cpu.registers.X = 0x01
+
+        try env.bus.write( 0x78, at: 0x00FF )
+        try env.bus.write( 0x56, at: 0x0000 )
+        try env.bus.write( 0xAB, at: 0x0100 )
+
+        try env.bus.write( 0x42, at: 0x5678 )
+        try env.bus.write( 0x99, at: 0xAB78 )
+
+        let context = try AddressingContext.context( for: instruction, cpu: env.cpu )
+
+        XCTAssertEqual( try context.readAddress(), 0x5678 )
+        XCTAssertEqual( try context.read(), 0x42 )
+        XCTAssertEqual( context.extraCycles, 0 )
+        XCTAssertEqual( env.cpu.registers.PC, 0x2001 )
+    }
+
+    func testIndirectYPointerWrapsAtZeroPageFF() throws
+    {
+        let env         = try self.makeCPU( operands: [ 0xFF ] )
+        let instruction = try self.makeInstruction( "LDA", .indirectY )
+
+        env.cpu.registers.Y = 0x01
+
+        try env.bus.write( 0x34, at: 0x00FF )
+        try env.bus.write( 0x12, at: 0x0000 )
+        try env.bus.write( 0xAB, at: 0x0100 )
+
+        try env.bus.write( 0x42, at: 0x1235 )
+        try env.bus.write( 0x99, at: 0xAB35 )
+
+        let context = try AddressingContext.context( for: instruction, cpu: env.cpu )
+
+        XCTAssertEqual( try context.readAddress(), 0x1235 )
+        XCTAssertEqual( try context.read(), 0x42 )
+        XCTAssertEqual( context.extraCycles, 0 )
+        XCTAssertEqual( env.cpu.registers.PC, 0x2001 )
+    }
 }

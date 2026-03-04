@@ -256,7 +256,11 @@ public class AddressingContext
                 throw RuntimeError( message: "Invalid CPU" )
             }
 
-            return ( try cpu.readUInt16FromMemory( at: UInt16( UInt8( $0 ) &+ cpu.registers.X ) ), 0 )
+            let pointer = UInt8( $0 ) &+ cpu.registers.X
+            let lsb     = try cpu.readUInt8FromMemory( at: UInt16( pointer ) )
+            let msb     = try cpu.readUInt8FromMemory( at: UInt16( pointer &+ 1 ) )
+
+            return ( ( UInt16( msb ) << 8 ) | UInt16( lsb ), 0 )
         }
     }
 
@@ -270,7 +274,10 @@ public class AddressingContext
                 throw RuntimeError( message: "Invalid CPU" )
             }
 
-            let address = try cpu.readUInt16FromMemory( at: $0 )
+            let pointer = UInt8( $0 )
+            let lsb     = try cpu.readUInt8FromMemory( at: UInt16( pointer ) )
+            let msb     = try cpu.readUInt8FromMemory( at: UInt16( pointer &+ 1 ) )
+            let address = ( UInt16( msb ) << 8 ) | UInt16( lsb )
 
             return ( address &+ UInt16( cpu.registers.Y ), instruction.extraCycles == .ifPageCrossed && AddressingContext.pageCrossed( base: address, offset: cpu.registers.Y ) ? 1 : 0 )
         }

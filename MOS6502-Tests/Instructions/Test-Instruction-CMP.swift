@@ -429,6 +429,28 @@ class Test_Instruction_CMP: Test_Instruction
         }
     }
 
+    func testIndirectX_PointerWrapAtFF() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CMP",
+            addressingMode:  .indirectX,
+            operands:        [ 0xFE ],
+            inputRegisters:  Registers( A: 0x20, X: 0x01 ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
+            extraCycles:     0
+        )
+        {
+            cpu, bus, ram in
+
+            try bus.write( 0x34, at: 0x00FF )
+            try bus.write( 0x12, at: 0x0000 )
+            try bus.write( 0xAB, at: 0x0100 )
+
+            try bus.write( 0x10, at: 0x1234 )
+            try bus.write( 0x30, at: 0xAB34 )
+        }
+    }
+
     func testIndirectY() throws
     {
         try self.executeSingleInstruction(
@@ -444,6 +466,28 @@ class Test_Instruction_CMP: Test_Instruction
 
             try bus.writeUInt16( 0x1000, at: 0x10 )
             try bus.write( 0xFF, at: 0x1010 )
+        }
+    }
+
+    func testIndirectY_PointerWrapAtFF() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "CMP",
+            addressingMode:  .indirectY,
+            operands:        [ 0xFF ],
+            inputRegisters:  Registers( A: 0x20, Y: 0x01 ),
+            outputRegisters: Registers( P: Flags( C: 1, Z: 0, N: 0 ) ),
+            extraCycles:     0
+        )
+        {
+            cpu, bus, ram in
+
+            try bus.write( 0x34, at: 0x00FF )
+            try bus.write( 0x12, at: 0x0000 )
+            try bus.write( 0xAB, at: 0x0100 )
+
+            try bus.write( 0x10, at: 0x1235 )
+            try bus.write( 0x30, at: 0xAB35 )
         }
     }
 
