@@ -111,7 +111,7 @@ class Test_Instruction_JMP: Test_Instruction
             instruction:     "JMP",
             addressingMode:  .indirect,
             operand16:       0xFFFF,
-            origin:          0xFF00,
+            origin:          0x8000,
             inputRegisters:  Registers(),
             outputRegisters: Registers( PC: 0x0B60 ),
             extraCycles:     0
