@@ -29,17 +29,41 @@ class Test_Instruction_BRK: Test_Instruction
 {
     func testImplied() throws
     {
-        try self.executeSingleInstruction(
+        let result = try self.executeSingleInstruction(
             instruction:     "BRK",
             addressingMode:  .implied,
             operands:        [],
             origin:          0xFF00,
-            inputRegisters:  Registers( SP: 0xFF ),
-            outputRegisters: Registers( PC: 0x1000, SP: 0xFC, P: Flags( B: 1 ) ),
+            inputRegisters:  Registers( SP: 0xFF, P: Flags( rawValue: 0x00 ) ),
+            outputRegisters: Registers( PC: 0x1000, SP: 0xFC, P: Flags( I: 1 ) ),
             extraCycles:     0
         )
         {
             cpu, bus, ram in try bus.writeUInt16( 0x1000, at: CPU.irq )
         }
+
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFF ) ), 0xFF )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFE ) ), 0x02 )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFD ) ), 0x10 )
+    }
+
+    func testImplied_PreservesFlagsInPushedStatus() throws
+    {
+        let result = try self.executeSingleInstruction(
+            instruction:     "BRK",
+            addressingMode:  .implied,
+            operands:        [],
+            origin:          0xFF00,
+            inputRegisters:  Registers( SP: 0xFF, P: Flags( rawValue: 0x09 ) ),
+            outputRegisters: Registers( PC: 0x1000, SP: 0xFC, P: Flags( C: 1, I: 1, D: 1 ) ),
+            extraCycles:     0
+        )
+        {
+            cpu, bus, ram in try bus.writeUInt16( 0x1000, at: CPU.irq )
+        }
+
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFF ) ), 0xFF )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFE ) ), 0x02 )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFD ) ), 0x19 )
     }
 }
