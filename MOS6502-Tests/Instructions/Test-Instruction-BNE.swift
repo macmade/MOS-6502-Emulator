@@ -104,4 +104,30 @@ class Test_Instruction_BNE: Test_Instruction
             extraCycles:     1
         )
     }
+
+    func testRelative_Taken_Forward_WrapsAtFFFF() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BNE",
+            addressingMode:  .relative,
+            operands:        [ 0x77 ],
+            origin:          0xFFD1,
+            inputRegisters:  Registers( P: Flags( Z: 0 ) ),
+            outputRegisters: Registers( PC: 0xFFD3 &+ 0x77 ),
+            extraCycles:     2
+        )
+    }
+
+    func testRelative_Taken_Backward_WrapsAt0000() throws
+    {
+        try self.executeSingleInstruction(
+            instruction:     "BNE",
+            addressingMode:  .relative,
+            operands:        [ UInt8( bitPattern: -127 ) ],
+            origin:          0x0060,
+            inputRegisters:  Registers( P: Flags( Z: 0 ) ),
+            outputRegisters: Registers( PC: 0x0062 &- 127 ),
+            extraCycles:     2
+        )
+    }
 }
