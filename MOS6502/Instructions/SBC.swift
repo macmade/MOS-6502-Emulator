@@ -71,4 +71,31 @@ public func SBCBinary( cpu: CPU, context: AddressingContext ) throws
 }
 
 public func SBCDecimal( cpu: CPU, context: AddressingContext ) throws
-{}
+{
+    let base              = cpu.registers.A
+    let sub               = try context.read()
+    let carry             = cpu.registers.P.contains( .carryFlag ) ? UInt8( 1 ) : UInt8( 0 )
+    let borrow            = UInt8( 1 - carry )
+    let binaryResult      = UInt16( base ) &- UInt16( sub ) &- UInt16( borrow )
+    let binaryAccumulator = UInt8( binaryResult & 0xFF )
+
+    var low  = Int( base & 0x0F ) - Int( sub & 0x0F ) - Int( borrow )
+    var high = Int( base >> 4 )   - Int( sub >> 4 )
+
+    if low < 0
+    {
+        low  -= 0x06
+        high -= 1
+    }
+
+    if high < 0
+    {
+        high -= 0x06
+    }
+
+    cpu.registers.A = UInt8( ( ( high << 4 ) & 0xF0 ) | ( low & 0x0F ) )
+
+    cpu.setFlag( ( ( base ^ binaryAccumulator ) & ( base ^ sub ) & 0x80 ) != 0, for: .overflowFlag )
+    cpu.setFlag( binaryResult < 0x100, for: .carryFlag )
+    cpu.setZeroAndNegativeFlags( for: binaryAccumulator )
+}

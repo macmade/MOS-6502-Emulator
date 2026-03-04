@@ -83,4 +83,28 @@ public func ADCBinary( cpu: CPU, context: AddressingContext ) throws
 }
 
 public func ADCDecimal( cpu: CPU, context: AddressingContext ) throws
-{}
+{
+    let base      = cpu.registers.A
+    let add       = try context.read()
+    let carry     = cpu.registers.P.contains( .carryFlag ) ? UInt16( 1 ) : UInt16( 0 )
+    let binarySum = UInt16( base )        + UInt16( add )        + carry
+    var low       = UInt16( base & 0x0F ) + UInt16( add & 0x0F ) + carry
+    var high      = UInt16( base >> 4 )   + UInt16( add >> 4 )   + ( low > 0x09 ? 1 : 0 )
+
+    if low > 0x09
+    {
+        low &+= 0x06
+    }
+
+    cpu.setFlag( ( binarySum & 0x00FF ) == 0, for: .zeroFlag )
+    cpu.setFlag( ( high & 0x08 ) != 0, for: .negativeFlag )
+    cpu.setFlag( ( ( ( high << 4 ) ^ UInt16( base ) ) & 0x80 ) != 0 && ( ( UInt16( base ) ^ UInt16( add ) ) & 0x80 ) == 0, for: .overflowFlag )
+
+    if high > 0x09
+    {
+        high &+= 0x06
+    }
+
+    cpu.setFlag( high > 0x0F, for: .carryFlag )
+    cpu.registers.A = UInt8( ( ( high << 4 ) | ( low & 0x0F ) ) & 0xFF )
+}

@@ -25,9 +25,9 @@
 import MOS6502
 import XCTest
 
-class Test_Instruction_ADC: Test_Instruction
+class Test_Instruction_ADC_Binary: Test_Instruction
 {
-    func testAbsolute() throws
+    func testBinaryAbsolute() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -42,7 +42,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_WithCarry() throws
+    func testBinaryAbsolute_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -57,7 +57,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_Carry() throws
+    func testBinaryAbsolute_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -72,7 +72,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_WithCarry_Carry() throws
+    func testBinaryAbsolute_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -87,7 +87,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_Zero() throws
+    func testBinaryAbsolute_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -102,7 +102,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_Negative() throws
+    func testBinaryAbsolute_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -117,7 +117,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_WithCarry_Negative() throws
+    func testBinaryAbsolute_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -132,7 +132,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_Carry_Zero() throws
+    func testBinaryAbsolute_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -147,7 +147,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_WithCarry_Carry_Zero() throws
+    func testBinaryAbsolute_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -162,7 +162,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_Carry_Negative() throws
+    func testBinaryAbsolute_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -177,7 +177,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_WithCarry_Carry_Negative() throws
+    func testBinaryAbsolute_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -192,7 +192,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_Overflow_Negative() throws
+    func testBinaryAbsolute_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -207,7 +207,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_WithCarry_Overflow_Negative() throws
+    func testBinaryAbsolute_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -222,7 +222,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_Carry_Overflow() throws
+    func testBinaryAbsolute_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -237,7 +237,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsolute_WithCarry_Carry_Overflow() throws
+    func testBinaryAbsolute_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -252,7 +252,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX() throws
+    func testBinaryAbsoluteX() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -267,7 +267,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_PageCross() throws
+    func testBinaryAbsoluteX_PageCross() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -282,7 +282,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_WithCarry() throws
+    func testBinaryAbsoluteX_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -297,7 +297,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_Carry() throws
+    func testBinaryAbsoluteX_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -312,7 +312,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_WithCarry_Carry() throws
+    func testBinaryAbsoluteX_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -327,7 +327,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_Zero() throws
+    func testBinaryAbsoluteX_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -342,7 +342,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_Negative() throws
+    func testBinaryAbsoluteX_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -357,7 +357,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_WithCarry_Negative() throws
+    func testBinaryAbsoluteX_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -372,7 +372,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_Carry_Zero() throws
+    func testBinaryAbsoluteX_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -387,7 +387,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_WithCarry_Carry_Zero() throws
+    func testBinaryAbsoluteX_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -402,7 +402,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_Carry_Negative() throws
+    func testBinaryAbsoluteX_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -417,7 +417,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_WithCarry_Carry_Negative() throws
+    func testBinaryAbsoluteX_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -432,7 +432,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_Overflow_Negative() throws
+    func testBinaryAbsoluteX_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -447,7 +447,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_WithCarry_Overflow_Negative() throws
+    func testBinaryAbsoluteX_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -462,7 +462,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_Carry_Overflow() throws
+    func testBinaryAbsoluteX_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -477,7 +477,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteX_WithCarry_Carry_Overflow() throws
+    func testBinaryAbsoluteX_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -492,7 +492,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY() throws
+    func testBinaryAbsoluteY() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -507,7 +507,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_PageCross() throws
+    func testBinaryAbsoluteY_PageCross() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -522,7 +522,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_WithCarry() throws
+    func testBinaryAbsoluteY_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -537,7 +537,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_Carry() throws
+    func testBinaryAbsoluteY_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -552,7 +552,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_WithCarry_Carry() throws
+    func testBinaryAbsoluteY_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -567,7 +567,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_Zero() throws
+    func testBinaryAbsoluteY_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -582,7 +582,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_Negative() throws
+    func testBinaryAbsoluteY_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -597,7 +597,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_WithCarry_Negative() throws
+    func testBinaryAbsoluteY_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -612,7 +612,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_Carry_Zero() throws
+    func testBinaryAbsoluteY_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -627,7 +627,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_WithCarry_Carry_Zero() throws
+    func testBinaryAbsoluteY_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -642,7 +642,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_Carry_Negative() throws
+    func testBinaryAbsoluteY_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -657,7 +657,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_WithCarry_Carry_Negative() throws
+    func testBinaryAbsoluteY_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -672,7 +672,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_Overflow_Negative() throws
+    func testBinaryAbsoluteY_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -687,7 +687,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_WithCarry_Overflow_Negative() throws
+    func testBinaryAbsoluteY_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -702,7 +702,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_Carry_Overflow() throws
+    func testBinaryAbsoluteY_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -717,7 +717,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testAbsoluteY_WithCarry_Carry_Overflow() throws
+    func testBinaryAbsoluteY_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -732,7 +732,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testImmediate() throws
+    func testBinaryImmediate() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -744,7 +744,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_WithCarry() throws
+    func testBinaryImmediate_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -756,7 +756,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_Carry() throws
+    func testBinaryImmediate_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -768,7 +768,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_WithCarry_Carry() throws
+    func testBinaryImmediate_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -780,7 +780,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_Zero() throws
+    func testBinaryImmediate_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -792,7 +792,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_Negative() throws
+    func testBinaryImmediate_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -804,7 +804,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_WithCarry_Negative() throws
+    func testBinaryImmediate_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -816,7 +816,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_Carry_Zero() throws
+    func testBinaryImmediate_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -828,7 +828,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_WithCarry_Carry_Zero() throws
+    func testBinaryImmediate_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -840,7 +840,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_Carry_Negative() throws
+    func testBinaryImmediate_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -852,7 +852,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_WithCarry_Carry_Negative() throws
+    func testBinaryImmediate_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -864,7 +864,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_Overflow_Negative() throws
+    func testBinaryImmediate_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -876,7 +876,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_WithCarry_Overflow_Negative() throws
+    func testBinaryImmediate_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -888,7 +888,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_Carry_Overflow() throws
+    func testBinaryImmediate_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -900,7 +900,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testImmediate_WithCarry_Carry_Overflow() throws
+    func testBinaryImmediate_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -912,7 +912,7 @@ class Test_Instruction_ADC: Test_Instruction
         )
     }
 
-    func testIndirectX() throws
+    func testBinaryIndirectX() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -930,7 +930,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_WithCarry() throws
+    func testBinaryIndirectX_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -948,7 +948,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Carry() throws
+    func testBinaryIndirectX_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -966,7 +966,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_WithCarry_Carry() throws
+    func testBinaryIndirectX_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -984,7 +984,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Zero() throws
+    func testBinaryIndirectX_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1002,7 +1002,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Negative() throws
+    func testBinaryIndirectX_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1020,7 +1020,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_WithCarry_Negative() throws
+    func testBinaryIndirectX_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1038,7 +1038,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Carry_Zero() throws
+    func testBinaryIndirectX_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1056,7 +1056,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_WithCarry_Carry_Zero() throws
+    func testBinaryIndirectX_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1074,7 +1074,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Carry_Negative() throws
+    func testBinaryIndirectX_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1092,7 +1092,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_WithCarry_Carry_Negative() throws
+    func testBinaryIndirectX_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1110,7 +1110,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Overflow_Negative() throws
+    func testBinaryIndirectX_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1128,7 +1128,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_WithCarry_Overflow_Negative() throws
+    func testBinaryIndirectX_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1146,7 +1146,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Carry_Overflow() throws
+    func testBinaryIndirectX_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1164,7 +1164,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_WithCarry_Carry_Overflow() throws
+    func testBinaryIndirectX_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1182,7 +1182,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap() throws
+    func testBinaryIndirectX_Wrap() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1200,7 +1200,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_WithCarry() throws
+    func testBinaryIndirectX_Wrap_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1218,7 +1218,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_Carry() throws
+    func testBinaryIndirectX_Wrap_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1236,7 +1236,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_WithCarry_Carry() throws
+    func testBinaryIndirectX_Wrap_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1254,7 +1254,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_Zero() throws
+    func testBinaryIndirectX_Wrap_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1272,7 +1272,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_Negative() throws
+    func testBinaryIndirectX_Wrap_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1290,7 +1290,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_WithCarry_Negative() throws
+    func testBinaryIndirectX_Wrap_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1308,7 +1308,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_Carry_Zero() throws
+    func testBinaryIndirectX_Wrap_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1326,7 +1326,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_WithCarry_Carry_Zero() throws
+    func testBinaryIndirectX_Wrap_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1344,7 +1344,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_Carry_Negative() throws
+    func testBinaryIndirectX_Wrap_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1362,7 +1362,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_WithCarry_Carry_Negative() throws
+    func testBinaryIndirectX_Wrap_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1380,7 +1380,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_Overflow_Negative() throws
+    func testBinaryIndirectX_Wrap_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1398,7 +1398,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_WithCarry_Overflow_Negative() throws
+    func testBinaryIndirectX_Wrap_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1416,7 +1416,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_Carry_Overflow() throws
+    func testBinaryIndirectX_Wrap_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1434,7 +1434,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectX_Wrap_WithCarry_Carry_Overflow() throws
+    func testBinaryIndirectX_Wrap_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1452,7 +1452,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY() throws
+    func testBinaryIndirectY() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1470,7 +1470,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_PageCross() throws
+    func testBinaryIndirectY_PageCross() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1488,7 +1488,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_WithCarry() throws
+    func testBinaryIndirectY_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1506,7 +1506,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_Carry() throws
+    func testBinaryIndirectY_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1524,7 +1524,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_WithCarry_Carry() throws
+    func testBinaryIndirectY_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1542,7 +1542,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_Zero() throws
+    func testBinaryIndirectY_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1560,7 +1560,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_Negative() throws
+    func testBinaryIndirectY_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1578,7 +1578,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_WithCarry_Negative() throws
+    func testBinaryIndirectY_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1596,7 +1596,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_Carry_Zero() throws
+    func testBinaryIndirectY_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1614,7 +1614,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_WithCarry_Carry_Zero() throws
+    func testBinaryIndirectY_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1632,7 +1632,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_Carry_Negative() throws
+    func testBinaryIndirectY_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1650,7 +1650,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_WithCarry_Carry_Negative() throws
+    func testBinaryIndirectY_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1668,7 +1668,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_Overflow_Negative() throws
+    func testBinaryIndirectY_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1686,7 +1686,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_WithCarry_Overflow_Negative() throws
+    func testBinaryIndirectY_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1704,7 +1704,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_Carry_Overflow() throws
+    func testBinaryIndirectY_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1722,7 +1722,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testIndirectY_WithCarry_Carry_Overflow() throws
+    func testBinaryIndirectY_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1740,7 +1740,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage() throws
+    func testBinaryZeroPage() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1755,7 +1755,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_WithCarry() throws
+    func testBinaryZeroPage_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1770,7 +1770,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_Carry() throws
+    func testBinaryZeroPage_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1785,7 +1785,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_WithCarry_Carry() throws
+    func testBinaryZeroPage_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1800,7 +1800,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_Zero() throws
+    func testBinaryZeroPage_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1815,7 +1815,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_Negative() throws
+    func testBinaryZeroPage_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1830,7 +1830,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_WithCarry_Negative() throws
+    func testBinaryZeroPage_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1845,7 +1845,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_Carry_Zero() throws
+    func testBinaryZeroPage_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1860,7 +1860,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_WithCarry_Carry_Zero() throws
+    func testBinaryZeroPage_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1875,7 +1875,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_Carry_Negative() throws
+    func testBinaryZeroPage_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1890,7 +1890,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_WithCarry_Carry_Negative() throws
+    func testBinaryZeroPage_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1905,7 +1905,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_Overflow_Negative() throws
+    func testBinaryZeroPage_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1920,7 +1920,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_WithCarry_Overflow_Negative() throws
+    func testBinaryZeroPage_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1935,7 +1935,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_Carry_Overflow() throws
+    func testBinaryZeroPage_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1950,7 +1950,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPage_WithCarry_Carry_Overflow() throws
+    func testBinaryZeroPage_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1965,7 +1965,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX() throws
+    func testBinaryZeroPageX() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1980,7 +1980,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_WithCarry() throws
+    func testBinaryZeroPageX_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -1995,7 +1995,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Carry() throws
+    func testBinaryZeroPageX_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2010,7 +2010,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_WithCarry_Carry() throws
+    func testBinaryZeroPageX_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2025,7 +2025,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Zero() throws
+    func testBinaryZeroPageX_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2040,7 +2040,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Negative() throws
+    func testBinaryZeroPageX_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2055,7 +2055,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_WithCarry_Negative() throws
+    func testBinaryZeroPageX_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2070,7 +2070,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Carry_Zero() throws
+    func testBinaryZeroPageX_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2085,7 +2085,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_WithCarry_Carry_Zero() throws
+    func testBinaryZeroPageX_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2100,7 +2100,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Carry_Negative() throws
+    func testBinaryZeroPageX_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2115,7 +2115,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_WithCarry_Carry_Negative() throws
+    func testBinaryZeroPageX_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2130,7 +2130,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Overflow_Negative() throws
+    func testBinaryZeroPageX_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2145,7 +2145,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_WithCarry_Overflow_Negative() throws
+    func testBinaryZeroPageX_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2160,7 +2160,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Carry_Overflow() throws
+    func testBinaryZeroPageX_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2175,7 +2175,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_WithCarry_Carry_Overflow() throws
+    func testBinaryZeroPageX_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2190,7 +2190,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap() throws
+    func testBinaryZeroPageX_Wrap() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2205,7 +2205,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_WithCarry() throws
+    func testBinaryZeroPageX_Wrap_WithCarry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2220,7 +2220,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_Carry() throws
+    func testBinaryZeroPageX_Wrap_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2235,7 +2235,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_WithCarry_Carry() throws
+    func testBinaryZeroPageX_Wrap_WithCarry_Carry() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2250,7 +2250,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_Zero() throws
+    func testBinaryZeroPageX_Wrap_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2265,7 +2265,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_Negative() throws
+    func testBinaryZeroPageX_Wrap_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2280,7 +2280,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_WithCarry_Negative() throws
+    func testBinaryZeroPageX_Wrap_WithCarry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2295,7 +2295,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_Carry_Zero() throws
+    func testBinaryZeroPageX_Wrap_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2310,7 +2310,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_WithCarry_Carry_Zero() throws
+    func testBinaryZeroPageX_Wrap_WithCarry_Carry_Zero() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2325,7 +2325,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_Carry_Negative() throws
+    func testBinaryZeroPageX_Wrap_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2340,7 +2340,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_WithCarry_Carry_Negative() throws
+    func testBinaryZeroPageX_Wrap_WithCarry_Carry_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2355,7 +2355,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_Overflow_Negative() throws
+    func testBinaryZeroPageX_Wrap_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2370,7 +2370,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_WithCarry_Overflow_Negative() throws
+    func testBinaryZeroPageX_Wrap_WithCarry_Overflow_Negative() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2385,7 +2385,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_Carry_Overflow() throws
+    func testBinaryZeroPageX_Wrap_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
@@ -2400,7 +2400,7 @@ class Test_Instruction_ADC: Test_Instruction
         }
     }
 
-    func testZeroPageX_Wrap_WithCarry_Carry_Overflow() throws
+    func testBinaryZeroPageX_Wrap_WithCarry_Carry_Overflow() throws
     {
         try self.executeSingleInstruction(
             instruction:     "ADC",
