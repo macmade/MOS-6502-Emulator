@@ -37,12 +37,14 @@ class Test_Instruction_PLP: Test_Instruction
         {
             byte in
 
+            let status = ( byte & ~MOS6502.Registers.Flags.breakCommand.rawValue )
+                       | MOS6502.Registers.Flags.unused.rawValue
             let result = try self.executeSingleInstruction(
                 instruction:     "PLP",
                 addressingMode:  .implied,
                 operands:        [],
                 inputRegisters:  Registers( SP: 0x00 ),
-                outputRegisters: Registers( SP: 0x01, P: Flags( rawValue: byte ) ),
+                outputRegisters: Registers( SP: 0x01, P: Flags( rawValue: status ) ),
                 extraCycles:     0
             )
             {
@@ -63,12 +65,14 @@ class Test_Instruction_PLP: Test_Instruction
         {
             byte in
 
+            let status = ( byte & ~MOS6502.Registers.Flags.breakCommand.rawValue )
+                       | MOS6502.Registers.Flags.unused.rawValue
             let result = try self.executeSingleInstruction(
                 instruction:     "PLP",
                 addressingMode:  .implied,
                 operands:        [],
                 inputRegisters:  Registers( SP: 0xFF ),
-                outputRegisters: Registers( SP: 0x00, P: Flags( rawValue: byte ) ),
+                outputRegisters: Registers( SP: 0x00, P: Flags( rawValue: status ) ),
                 extraCycles:     0
             )
             {

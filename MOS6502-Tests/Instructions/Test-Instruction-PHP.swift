@@ -35,6 +35,9 @@ class Test_Instruction_PHP: Test_Instruction
         }
         .forEach
         {
+            let pushed = $0
+                       | MOS6502.Registers.Flags.breakCommand.rawValue
+                       | MOS6502.Registers.Flags.unused.rawValue
             let result = try self.executeSingleInstruction(
                 instruction:     "PHP",
                 addressingMode:  .implied,
@@ -44,7 +47,7 @@ class Test_Instruction_PHP: Test_Instruction
                 extraCycles:     0
             )
 
-            XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFF ) ), $0 )
+            XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFF ) ), pushed )
         }
     }
 
@@ -56,6 +59,9 @@ class Test_Instruction_PHP: Test_Instruction
         }
         .forEach
         {
+            let pushed = $0
+                       | MOS6502.Registers.Flags.breakCommand.rawValue
+                       | MOS6502.Registers.Flags.unused.rawValue
             let result = try self.executeSingleInstruction(
                 instruction:     "PHP",
                 addressingMode:  .implied,
@@ -65,7 +71,7 @@ class Test_Instruction_PHP: Test_Instruction
                 extraCycles:     0
             )
 
-            XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0x00 ) ), $0 )
+            XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0x00 ) ), pushed )
         }
     }
 }

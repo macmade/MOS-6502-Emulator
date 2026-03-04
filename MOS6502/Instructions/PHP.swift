@@ -42,5 +42,9 @@ import Foundation
  */
 public func PHP( cpu: CPU, context: AddressingContext ) throws
 {
-    try cpu.pushUInt8ToStack( value: cpu.registers.P.rawValue )
+    let status = cpu.registers.P.rawValue
+               | Registers.Flags.breakCommand.rawValue
+               | Registers.Flags.unused.rawValue
+    
+    try cpu.pushUInt8ToStack( value: status )
 }

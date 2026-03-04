@@ -43,5 +43,8 @@ import Foundation
  */
 public func PLP( cpu: CPU, context: AddressingContext ) throws
 {
-    cpu.registers.P = Registers.Flags( rawValue: try cpu.popUInt8FromStack() )
+    let status = ( try cpu.popUInt8FromStack() & ~Registers.Flags.breakCommand.rawValue )
+               | Registers.Flags.unused.rawValue
+    
+    cpu.registers.P = Registers.Flags( rawValue: status )
 }
