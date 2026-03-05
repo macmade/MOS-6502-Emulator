@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		050569A52A96BB6400DDD588 /* Test-Instruction-ROR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3182A87FADB00436F6D /* Test-Instruction-ROR.swift */; };
-		05112233445566778899AABB /* Test-AddressingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05112233445566778899AABC /* Test-AddressingContext.swift */; };
 		050569A62A96BB6400DDD588 /* Test-Instruction-BNE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3032A87FADB00436F6D /* Test-Instruction-BNE.swift */; };
 		050569A72A96BB6400DDD588 /* Test-Instruction-STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C30C2A87FADB00436F6D /* Test-Instruction-STX.swift */; };
 		050569A82A96BB6400DDD588 /* Test-Instruction-SED.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F02A87FADB00436F6D /* Test-Instruction-SED.swift */; };
@@ -46,8 +45,6 @@
 		050569C82A96BB6400DDD588 /* Test-Instruction-PLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F32A87FADB00436F6D /* Test-Instruction-PLP.swift */; };
 		050569C92A96BB6400DDD588 /* Test-Instruction-STA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3122A87FADB00436F6D /* Test-Instruction-STA.swift */; };
 		050569CA2A96BB6400DDD588 /* Test-Instruction-ADC-Binary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2FD2A87FADB00436F6D /* Test-Instruction-ADC-Binary.swift */; };
-		A1D0C0112B00000100436F6D /* Test-Instruction-ADC-Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0C0012B00000100436F6D /* Test-Instruction-ADC-Decimal.swift */; };
-		A1D0C0122B00000100436F6D /* Test-Instruction-SBC-Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0C0022B00000100436F6D /* Test-Instruction-SBC-Decimal.swift */; };
 		050569CB2A96BB6400DDD588 /* Test-Instruction-BVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2FB2A87FADB00436F6D /* Test-Instruction-BVC.swift */; };
 		050569CC2A96BB6400DDD588 /* Test-Instruction-RTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2F62A87FADB00436F6D /* Test-Instruction-RTI.swift */; };
 		050569CD2A96BB6400DDD588 /* Test-Instruction-BVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C3152A87FADB00436F6D /* Test-Instruction-BVS.swift */; };
@@ -65,6 +62,8 @@
 		050569D92A96BB6400DDD588 /* Test-Instruction-TSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C31D2A87FADB00436F6D /* Test-Instruction-TSX.swift */; };
 		050569DA2A96BB6400DDD588 /* Test-Instruction-RTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C2EA2A87FADB00436F6D /* Test-Instruction-RTS.swift */; };
 		050569DB2A96BB6400DDD588 /* Test-Instruction-BPL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3C30F2A87FADB00436F6D /* Test-Instruction-BPL.swift */; };
+		0509831C2F5A242000FB62BF /* Test-Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509831B2F5A242000FB62BF /* Test-Bus.swift */; };
+		05112233445566778899AABB /* Test-AddressingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05112233445566778899AABC /* Test-AddressingContext.swift */; };
 		0520D9212A95F74A00ECFB20 /* InstructionsHistoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520D9202A95F74A00ECFB20 /* InstructionsHistoryWindow.swift */; };
 		0520D9232A960EDC00ECFB20 /* 6502-Functional-Test.bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0520D9222A960EBD00ECFB20 /* 6502-Functional-Test.bin */; };
 		054E88F42A93AD19001E47DD /* MC6820Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */; };
@@ -194,6 +193,8 @@
 		05D9A6B92A9E700A00C2A59E /* Test-JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A6B82A9E700A00C2A59E /* Test-JSON.swift */; };
 		05DED74A2A8AA41E00DA42F9 /* RAM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED7492A8AA41D00DA42F9 /* RAM.swift */; };
 		05DED74C2A8AA67A00DA42F9 /* AddressingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED74B2A8AA67A00DA42F9 /* AddressingContext.swift */; };
+		A1D0C0112B00000100436F6D /* Test-Instruction-ADC-Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0C0012B00000100436F6D /* Test-Instruction-ADC-Decimal.swift */; };
+		A1D0C0122B00000100436F6D /* Test-Instruction-SBC-Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0C0022B00000100436F6D /* Test-Instruction-SBC-Decimal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -318,6 +319,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0509831B2F5A242000FB62BF /* Test-Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Bus.swift"; sourceTree = "<group>"; };
+		05112233445566778899AABC /* Test-AddressingContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-AddressingContext.swift"; sourceTree = "<group>"; };
 		0520D9202A95F74A00ECFB20 /* InstructionsHistoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsHistoryWindow.swift; sourceTree = "<group>"; };
 		0520D9222A960EBD00ECFB20 /* 6502-Functional-Test.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "6502-Functional-Test.bin"; sourceTree = "<group>"; };
 		054E88F32A93AD19001E47DD /* MC6820Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC6820Keyboard.swift; sourceTree = "<group>"; };
@@ -418,7 +421,6 @@
 		05C3C1972A856EA000436F6D /* MOS6502.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MOS6502.xctestplan; sourceTree = "<group>"; };
 		05C3C19C2A856EC400436F6D /* MOS6502Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MOS6502Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C3C19E2A856EC400436F6D /* Test-Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-Memory.swift"; sourceTree = "<group>"; };
-		05112233445566778899AABC /* Test-AddressingContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-AddressingContext.swift"; sourceTree = "<group>"; };
 		05C3C1A62A85700100436F6D /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		05C3C1A82A85700700436F6D /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
 		05C3C1AA2A85703200436F6D /* Test-CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-CPU.swift"; sourceTree = "<group>"; };
@@ -528,8 +530,6 @@
 		05C3C3092A87FADB00436F6D /* Test-Instruction-CLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-CLI.swift"; sourceTree = "<group>"; };
 		05C3C30A2A87FADB00436F6D /* Test-Instruction-LDA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-LDA.swift"; sourceTree = "<group>"; };
 		05C3C30B2A87FADB00436F6D /* Test-Instruction-SBC-Binary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-SBC-Binary.swift"; sourceTree = "<group>"; };
-		A1D0C0012B00000100436F6D /* Test-Instruction-ADC-Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-ADC-Decimal.swift"; sourceTree = "<group>"; };
-		A1D0C0022B00000100436F6D /* Test-Instruction-SBC-Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-SBC-Decimal.swift"; sourceTree = "<group>"; };
 		05C3C30C2A87FADB00436F6D /* Test-Instruction-STX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-STX.swift"; sourceTree = "<group>"; };
 		05C3C30D2A87FADB00436F6D /* Test-Instruction-TAX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-TAX.swift"; sourceTree = "<group>"; };
 		05C3C30E2A87FADB00436F6D /* Test-Instruction-CLV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-CLV.swift"; sourceTree = "<group>"; };
@@ -570,6 +570,8 @@
 		05D9A6B82A9E700A00C2A59E /* Test-JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-JSON.swift"; sourceTree = "<group>"; };
 		05DED7492A8AA41D00DA42F9 /* RAM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAM.swift; sourceTree = "<group>"; };
 		05DED74B2A8AA67A00DA42F9 /* AddressingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressingContext.swift; sourceTree = "<group>"; };
+		A1D0C0012B00000100436F6D /* Test-Instruction-ADC-Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-ADC-Decimal.swift"; sourceTree = "<group>"; };
+		A1D0C0022B00000100436F6D /* Test-Instruction-SBC-Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test-Instruction-SBC-Decimal.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -889,6 +891,7 @@
 				05C3C2E62A87FADB00436F6D /* Instructions */,
 				05112233445566778899AABC /* Test-AddressingContext.swift */,
 				05C3C1E52A86471300436F6D /* Test-BinaryInteger.swift */,
+				0509831B2F5A242000FB62BF /* Test-Bus.swift */,
 				05C3C1AA2A85703200436F6D /* Test-CPU.swift */,
 				05C3C20B2A868A6300436F6D /* Test-Instruction.swift */,
 				05D9A6B82A9E700A00C2A59E /* Test-JSON.swift */,
@@ -1502,6 +1505,7 @@
 				05C3C1E42A8645F200436F6D /* Test-Registers-Flags.swift in Sources */,
 				050569C42A96BB6400DDD588 /* Test-Instruction-STY.swift in Sources */,
 				050569D32A96BB6400DDD588 /* Test-Instruction-TAX.swift in Sources */,
+				0509831C2F5A242000FB62BF /* Test-Bus.swift in Sources */,
 				050569B92A96BB6400DDD588 /* Test-Instruction-BCS.swift in Sources */,
 				05C3C1E62A86471300436F6D /* Test-BinaryInteger.swift in Sources */,
 				050569D22A96BB6400DDD588 /* Test-Instruction-EOR.swift in Sources */,
