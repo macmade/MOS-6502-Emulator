@@ -29,15 +29,17 @@ public class Clock: LogSource
 {
     public enum Frequency
     {
-        case hz( UInt )
+        case hz(  UInt )
+        case khz( UInt )
         case mhz( UInt )
 
         public var nanoseconds: Int
         {
             switch self
             {
-                case .hz(  let hz ):  return Int( ( 1.0 / Double( hz         ) ) * 1000000000 )
-                case .mhz( let mhz ): return Int( ( 1.0 / Double( mhz * 1000 ) ) * 1000000000 )
+                case .hz(  let hz  ): return Int( ( 1.0 / Double( max( hz,  1 )           ) ) * 1000000000 )
+                case .khz( let khz ): return Int( ( 1.0 / Double( max( khz, 1 ) * 1000    ) ) * 1000000000 )
+                case .mhz( let mhz ): return Int( ( 1.0 / Double( max( mhz, 1 ) * 1000000 ) ) * 1000000000 )
             }
         }
     }

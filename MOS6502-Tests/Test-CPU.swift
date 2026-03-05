@@ -38,6 +38,27 @@ final class Test_CPU: XCTestCase
         return ( cpu, bus, ram )
     }
 
+    func testClockFrequencyNanosecondsForHz() throws
+    {
+        XCTAssertEqual( Clock.Frequency.hz( 0 ).nanoseconds, 1000000000 )
+        XCTAssertEqual( Clock.Frequency.hz( 1 ).nanoseconds, 1000000000 )
+        XCTAssertEqual( Clock.Frequency.hz( 2 ).nanoseconds, 500000000 )
+    }
+
+    func testClockFrequencyNanosecondsForKHz() throws
+    {
+        XCTAssertEqual( Clock.Frequency.khz( 0 ).nanoseconds, 1000000 )
+        XCTAssertEqual( Clock.Frequency.khz( 1 ).nanoseconds, 1000000 )
+        XCTAssertEqual( Clock.Frequency.khz( 2 ).nanoseconds, 500000 )
+    }
+
+    func testClockFrequencyNanosecondsForMHz() throws
+    {
+        XCTAssertEqual( Clock.Frequency.mhz( 0 ).nanoseconds, 1000 )
+        XCTAssertEqual( Clock.Frequency.mhz( 1 ).nanoseconds, 1000 )
+        XCTAssertEqual( Clock.Frequency.mhz( 2 ).nanoseconds, 500 )
+    }
+
     func testResetInitializesRegistersClockAndStack() throws
     {
         let env = try self.makeCPU()

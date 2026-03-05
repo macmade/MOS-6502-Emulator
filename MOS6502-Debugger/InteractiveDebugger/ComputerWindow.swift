@@ -38,6 +38,7 @@ public class ComputerWindow: DebuggerWindow
         switch self.computer.clock.frequency
         {
             case .hz(  let hz  ): window.printLine( foreground: .yellow, text: "\(  hz )Hz" )
+            case .khz( let khz ): window.printLine( foreground: .yellow, text: "\( khz )KHz" )
             case .mhz( let mhz ): window.printLine( foreground: .yellow, text: "\( mhz )MHz" )
         }
 
