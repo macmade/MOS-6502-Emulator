@@ -37,7 +37,7 @@ public class Bus: WritableMemoryDevice, LogSource, Resettable, IRQSource
         {
             self.devices.forEach
             {
-                if var source = $0 as? LogSource
+                if var source = $0.device as? LogSource
                 {
                     source.logger = self.logger
                 }
@@ -72,6 +72,11 @@ public class Bus: WritableMemoryDevice, LogSource, Resettable, IRQSource
         if var irqSource = device as? IRQSource
         {
             irqSource.sendIRQ = self.sendIRQ
+        }
+
+        if var source = device as? LogSource
+        {
+            source.logger = self.logger
         }
 
         self.devices.append( ( address: address, size: size, device: device ) )
