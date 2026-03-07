@@ -69,17 +69,13 @@ public class CPU: LogSource, Resettable
     public func reset() throws
     {
         self.registers.PC = try self.bus.readUInt16( at: CPU.resetVector )
-        self.registers.SP = 0x00
+        self.registers.SP = 0xFD
         self.registers.A  = 0
         self.registers.X  = 0
         self.registers.Y  = 0
         self.registers.P  = [ .interruptDisable ]
         self.clock        = 7
         self.cycles       = 0
-
-        // SP starts at 0x00. Reset pushes PC and SP, so SP will be 0xFD after reset.
-        try self.pushUInt16ToStack( value: self.registers.PC )
-        try self.pushUInt8ToStack(  value: self.registers.P.rawValue )
 
         self.onReset.fire()
     }

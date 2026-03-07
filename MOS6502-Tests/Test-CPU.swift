@@ -59,10 +59,13 @@ final class Test_CPU: XCTestCase
         XCTAssertEqual( Clock.Frequency.mhz( 2 ).nanoseconds, 500 )
     }
 
-    func testResetInitializesRegistersClockAndStack() throws
+    func testResetInitializesRegistersClockWithoutStackWrites() throws
     {
         let env = try self.makeCPU()
 
+        try env.bus.writeUInt8( 0xAA, at: 0x0100 )
+        try env.bus.writeUInt8( 0xBB, at: 0x01FE )
+        try env.bus.writeUInt8( 0xCC, at: 0x01FF )
         try env.bus.writeUInt16( 0x1234, at: CPU.resetVector )
         try env.cpu.reset()
 
@@ -81,9 +84,9 @@ final class Test_CPU: XCTestCase
         XCTAssertFalse( env.cpu.registers.P.contains( .overflowFlag ) )
         XCTAssertFalse( env.cpu.registers.P.contains( .negativeFlag ) )
 
-        XCTAssertEqual( try env.bus.readUInt8( at: 0x0100 ), 0x12 )
-        XCTAssertEqual( try env.bus.readUInt8( at: 0x01FF ), 0x34 )
-        XCTAssertEqual( try env.bus.readUInt8( at: 0x01FE ), Registers.Flags.interruptDisable.rawValue )
+        XCTAssertEqual( try env.bus.readUInt8( at: 0x0100 ), 0xAA )
+        XCTAssertEqual( try env.bus.readUInt8( at: 0x01FE ), 0xBB )
+        XCTAssertEqual( try env.bus.readUInt8( at: 0x01FF ), 0xCC )
     }
 
     func testPushAndPopUInt8FromStack() throws
