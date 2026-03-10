@@ -27,7 +27,33 @@ import XSLabsSwift
 
 public class Bus: WritableMemoryDevice, LogSource, Resettable, InterruptSource
 {
-    public var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
+    public var sendIRQ: ( () -> Void )?
+    {
+        didSet
+        {
+            self.devices.forEach
+            {
+                if var source = $0.device as? InterruptSource
+                {
+                    source.sendIRQ = self.sendIRQ
+                }
+            }
+        }
+    }
+
+    public var sendNMI: ( () -> Void )?
+    {
+        didSet
+        {
+            self.devices.forEach
+            {
+                if var source = $0.device as? InterruptSource
+                {
+                    source.sendNMI = self.sendNMI
+                }
+            }
+        }
+    }
 
     public private( set ) var devices: [ ( address: UInt16, size: UInt64, device: MemoryDevice ) ] = []
 
@@ -72,6 +98,7 @@ public class Bus: WritableMemoryDevice, LogSource, Resettable, InterruptSource
         if var source = device as? InterruptSource
         {
             source.sendIRQ = self.sendIRQ
+            source.sendNMI = self.sendNMI
         }
 
         if var source = device as? LogSource

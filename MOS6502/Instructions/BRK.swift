@@ -45,13 +45,5 @@ import Foundation
  */
 public func BRK( cpu: CPU, context: AddressingContext ) throws
 {
-    cpu.registers.P.insert( .breakCommand )
-
-    try cpu.pushUInt16ToStack( value: cpu.registers.PC &+ 1 )
-    try cpu.pushUInt8ToStack( value: cpu.registers.P.rawValue )
-
-    cpu.registers.P.remove( .breakCommand )
-    cpu.registers.P.insert( .interruptDisable )
-
-    cpu.registers.PC = try cpu.readUInt16FromMemory( at: CPU.irq )
+    try cpu.enterInterrupt( vector: CPU.irq, pushedProgramCounter: cpu.registers.PC &+ 1, setBreakFlagInPushedStatus: true )
 }

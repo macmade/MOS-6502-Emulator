@@ -74,7 +74,8 @@ final class Test_Bus: XCTestCase
 
     private final class IRQAwareDevice: WritableMemoryDevice, InterruptSource
     {
-        var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
+        var sendIRQ: ( () -> Void )?
+        var sendNMI: ( () -> Void )?
 
         func read( at address: UInt16 ) throws -> UInt8
         {
@@ -219,26 +220,30 @@ final class Test_Bus: XCTestCase
 
     func testMapDevicePropagatesIRQHandler() throws
     {
-        let bus    = Bus()
-        let device = IRQAwareDevice()
-
+        let bus           = Bus()
+        let device        = IRQAwareDevice()
         var didReceiveIRQ = false
-
-        bus.sendIRQ =
-        {
-            callback in
-
-            callback()
-        }
+        bus.sendIRQ       = { didReceiveIRQ = true }
 
         try bus.mapDevice( device, at: 0x5000, size: 1 )
 
-        device.sendIRQ?
-        {
-            didReceiveIRQ = true
-        }
+        device.sendIRQ?()
 
         XCTAssertTrue( didReceiveIRQ )
+    }
+
+    func testMapDevicePropagatesNMIHandler() throws
+    {
+        let bus           = Bus()
+        let device        = IRQAwareDevice()
+        var didReceiveNMI = false
+        bus.sendNMI       = { didReceiveNMI = true }
+
+        try bus.mapDevice( device, at: 0x5000, size: 1 )
+
+        device.sendNMI?()
+
+        XCTAssertTrue( didReceiveNMI )
     }
 
     func testResetCallsResetOnMappedResettableDevices() throws

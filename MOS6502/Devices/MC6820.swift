@@ -41,7 +41,8 @@ public class MC6820: WritableMemoryDevice, LogSource, Resettable, InterruptSourc
     private var ready1Observer: Any?
     private var ready2Observer: Any?
 
-    public var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
+    public var sendIRQ: ( () -> Void )?
+    public var sendNMI: ( () -> Void )?
 
     public init( peripheral1: MC6820Peripheral, peripheral2: MC6820Peripheral )
     {
@@ -134,12 +135,11 @@ public class MC6820: WritableMemoryDevice, LogSource, Resettable, InterruptSourc
     {
         if peripheral.ready
         {
-            self.sendIRQ?
-            {
-                self[ keyPath: or ]    = peripheral.data
-                self[ keyPath: cr ]   |= 0x80
-                peripheral.acknowledge = true
-            }
+            self[ keyPath: or ]    = peripheral.data
+            self[ keyPath: cr ]   |= 0x80
+            peripheral.acknowledge = true
+
+            self.sendIRQ?()
         }
     }
 }

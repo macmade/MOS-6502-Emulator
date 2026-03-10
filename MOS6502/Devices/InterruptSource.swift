@@ -26,7 +26,13 @@ import Foundation
 
 public protocol InterruptSource
 {
-    var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
+    var sendIRQ: ( () -> Void )?
+    {
+        get
+        set
+    }
+
+    var sendNMI: ( () -> Void )?
     {
         get
         set

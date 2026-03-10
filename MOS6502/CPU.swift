@@ -53,17 +53,16 @@ public class CPU: LogSource, Resettable
     public private( set ) var clock:          UInt64 = 0
     public private( set ) var currentContext: AddressingContext?
 
-    private var bus:    Bus
-    private var cycles: UInt = 0
-    private var irqs:   [ () -> Void ] = []
+    private var bus:        Bus
+    private var cycles:     UInt = 0
+    private var pendingIRQ: Bool = false
+    private var pendingNMI: Bool = false
 
     public init( bus: Bus )
     {
-        self.bus = bus
-        self.bus.sendIRQ =
-        {
-            [ weak self ] in self?.irqs.append( $0 )
-        }
+        self.bus         = bus
+        self.bus.sendIRQ = { [ weak self ] in self?.pendingIRQ = true }
+        self.bus.sendNMI = { [ weak self ] in self?.pendingNMI = true }
     }
 
     public func reset() throws
@@ -76,6 +75,8 @@ public class CPU: LogSource, Resettable
         self.registers.P  = [ .interruptDisable ]
         self.clock        = 7
         self.cycles       = 0
+        self.pendingIRQ   = false
+        self.pendingNMI   = false
 
         self.onReset.fire()
     }
@@ -88,15 +89,11 @@ public class CPU: LogSource, Resettable
 
             self.beforeInstruction.fire()
 
-            if self.registers.P.contains( .interruptDisable ) == false
+            if try self.servicePendingInterruptIfNeeded() == false
             {
-                let irqs  = self.irqs
-                self.irqs = []
-
-                irqs.forEach { $0() }
+                try self.decodeAndExecuteNextInstruction()
             }
 
-            try self.decodeAndExecuteNextInstruction()
             self.afterInstruction.fire()
         }
         else
@@ -195,7 +192,6 @@ public class CPU: LogSource, Resettable
                 registers:   self.registers.copy(),
                 clock:       self.clock,
                 label:       self.disassemblerLabels[ self.registers.PC ],
-
                 comment:     self.disassemblerComments[ self.registers.PC ]
             )
         }
@@ -306,5 +302,51 @@ public class CPU: LogSource, Resettable
         }
 
         return self.registers.PC &- UInt16( -offset )
+    }
+
+    func enterInterrupt( vector: UInt16, pushedProgramCounter: UInt16, setBreakFlagInPushedStatus: Bool ) throws
+    {
+        var status = self.registers.P.rawValue | Registers.Flags.unused.rawValue
+
+        if setBreakFlagInPushedStatus
+        {
+            status |= Registers.Flags.breakCommand.rawValue
+        }
+        else
+        {
+            status &= ~Registers.Flags.breakCommand.rawValue
+        }
+
+        try self.pushUInt16ToStack( value: pushedProgramCounter )
+        try self.pushUInt8ToStack( value: status )
+
+        self.registers.P.remove( .breakCommand )
+        self.registers.P.insert( .interruptDisable )
+        
+        self.registers.PC = try self.readUInt16FromMemory( at: vector )
+        self.cycles       = 6
+    }
+
+    private func servicePendingInterruptIfNeeded() throws -> Bool
+    {
+        if self.pendingNMI
+        {
+            self.pendingNMI = false
+
+            try self.enterInterrupt( vector: CPU.nmi, pushedProgramCounter: self.registers.PC, setBreakFlagInPushedStatus: false )
+
+            return true
+        }
+
+        if self.pendingIRQ, self.registers.P.contains( .interruptDisable ) == false
+        {
+            self.pendingIRQ = false
+
+            try self.enterInterrupt( vector: CPU.irq, pushedProgramCounter: self.registers.PC, setBreakFlagInPushedStatus: false )
+
+            return true
+        }
+
+        return false
     }
 }

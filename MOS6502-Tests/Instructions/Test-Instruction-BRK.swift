@@ -44,7 +44,7 @@ class Test_Instruction_BRK: Test_Instruction
 
         XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFF ) ), 0xFF )
         XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFE ) ), 0x02 )
-        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFD ) ), 0x10 )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFD ) ), 0x30 )
     }
 
     func testImplied_PreservesFlagsInPushedStatus() throws
@@ -64,6 +64,6 @@ class Test_Instruction_BRK: Test_Instruction
 
         XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFF ) ), 0xFF )
         XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFE ) ), 0x02 )
-        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFD ) ), 0x19 )
+        XCTAssertEqual( try result.ram.read( at: CPU.stackStart + UInt16( 0xFD ) ), 0x39 )
     }
 }

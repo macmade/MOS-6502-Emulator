@@ -221,6 +221,91 @@ final class Test_CPU: XCTestCase
         XCTAssertEqual( env.cpu.clock, 9 )
     }
 
+    func testIRQIsDeferredWhileInterruptsAreDisabled() throws
+    {
+        let env = try self.makeCPU()
+
+        try env.bus.writeUInt16( 0x4000, at: CPU.resetVector )
+        try env.bus.writeUInt16( 0x5000, at: CPU.irq )
+        try env.bus.writeUInt8( 0xEA, at: 0x4000 )
+        try env.cpu.reset()
+
+        env.bus.sendIRQ?()
+
+        try env.cpu.run( instructions: 1 )
+
+        XCTAssertEqual( env.cpu.registers.PC, 0x4001 )
+        XCTAssertEqual( env.cpu.registers.SP, 0xFD )
+        XCTAssertEqual( try env.bus.readUInt8( at: 0x01FD ), 0x00 )
+    }
+
+    func testPendingIRQIsServicedAfterInterruptsAreEnabled() throws
+    {
+        let env = try self.makeCPU()
+
+        try env.bus.writeUInt16( 0x4000, at: CPU.resetVector )
+        try env.bus.writeUInt16( 0x5000, at: CPU.irq )
+        try env.bus.writeUInt8( 0x58, at: 0x4000 ) // CLI
+        try env.bus.writeUInt8( 0xEA, at: 0x4001 ) // NOP
+        try env.cpu.reset()
+
+        env.bus.sendIRQ?()
+
+        try env.cpu.run( instructions: 1 )
+
+        XCTAssertEqual( env.cpu.registers.PC, 0x4001 )
+        XCTAssertFalse( env.cpu.registers.P.contains( .interruptDisable ) )
+
+        try env.cpu.run( instructions: 1 )
+
+        XCTAssertEqual( env.cpu.registers.PC, 0x5000 )
+        XCTAssertEqual( env.cpu.registers.SP, 0xFA )
+        XCTAssertTrue( env.cpu.registers.P.contains( .interruptDisable ) )
+        XCTAssertEqual( try env.bus.readUInt8( at: 0x01FB ), 0x20 )
+        XCTAssertEqual( try env.bus.readUInt16( at: 0x01FC ), 0x4001 )
+    }
+
+    func testNMIIsServicedEvenWhenInterruptsAreDisabled() throws
+    {
+        let env = try self.makeCPU()
+
+        try env.bus.writeUInt16( 0x4000, at: CPU.resetVector )
+        try env.bus.writeUInt16( 0x6000, at: CPU.nmi )
+        try env.cpu.reset()
+
+        env.bus.sendNMI?()
+
+        try env.cpu.run( instructions: 1 )
+
+        XCTAssertEqual( env.cpu.registers.PC, 0x6000 )
+        XCTAssertEqual( env.cpu.registers.SP, 0xFA )
+        XCTAssertEqual( try env.bus.readUInt8( at: 0x01FB ), 0x24 )
+        XCTAssertEqual( try env.bus.readUInt16( at: 0x01FC ), 0x4000 )
+    }
+
+    func testNMIHasPriorityOverIRQ() throws
+    {
+        let env = try self.makeCPU()
+
+        try env.bus.writeUInt16( 0x4000, at: CPU.resetVector )
+        try env.bus.writeUInt16( 0x5000, at: CPU.irq )
+        try env.bus.writeUInt16( 0x6000, at: CPU.nmi )
+        try env.bus.writeUInt8( 0x58, at: 0x4000 ) // CLI
+        try env.bus.writeUInt8( 0xEA, at: 0x4001 ) // NOP
+        try env.cpu.reset()
+
+        try env.cpu.run( instructions: 1 )
+
+        env.bus.sendIRQ?()
+        env.bus.sendNMI?()
+
+        try env.cpu.run( instructions: 1 )
+
+        XCTAssertEqual( env.cpu.registers.PC, 0x6000 )
+        XCTAssertEqual( try env.bus.readUInt8( at: 0x01FB ), 0x20 )
+        XCTAssertEqual( try env.bus.readUInt16( at: 0x01FC ), 0x4001 )
+    }
+
     func testRunExecutesMultipleInstructions() throws
     {
         let env = try self.makeCPU()
