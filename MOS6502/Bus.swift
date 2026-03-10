@@ -25,7 +25,7 @@
 import Foundation
 import XSLabsSwift
 
-public class Bus: WritableMemoryDevice, LogSource, Resettable, IRQSource
+public class Bus: WritableMemoryDevice, LogSource, Resettable, InterruptSource
 {
     public var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
 
@@ -69,9 +69,9 @@ public class Bus: WritableMemoryDevice, LogSource, Resettable, IRQSource
             }
         }
 
-        if var irqSource = device as? IRQSource
+        if var source = device as? InterruptSource
         {
-            irqSource.sendIRQ = self.sendIRQ
+            source.sendIRQ = self.sendIRQ
         }
 
         if var source = device as? LogSource

@@ -24,7 +24,7 @@
 
 import Foundation
 
-public protocol IRQSource
+public protocol InterruptSource
 {
     var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
     {

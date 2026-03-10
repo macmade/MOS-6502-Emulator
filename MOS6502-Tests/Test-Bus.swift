@@ -72,7 +72,7 @@ final class Test_Bus: XCTestCase
         }
     }
 
-    private final class IRQAwareDevice: WritableMemoryDevice, IRQSource
+    private final class IRQAwareDevice: WritableMemoryDevice, InterruptSource
     {
         var sendIRQ: ( ( @escaping () -> Void ) -> Void )?
 
